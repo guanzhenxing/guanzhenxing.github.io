@@ -1,0 +1,855 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="实战,Visual Studio Code," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="命令模式（Command Palette）通过F1或者Ctrl+Shift+P打开主命令面板。在主命令面板中可以执行VSCode的任何一条命令。Command Palette是VSCode中最有用的模式，在这里你可以安装组件也可以查看快捷键等。  在主面板模式下按backspace可以进入Ctrl+P模式中。 本地文件导航模式（Ctrl+P）通过Ctrl+P进入“本地文件导航模式”，该模式默认列出">
+<meta name="keywords" content="实战,Visual Studio Code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visual Studio Code常用快捷键">
+<meta property="og:url" content="http://webfuse.cn/2016/07/20/Visual Studio Code常用快捷键/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="命令模式（Command Palette）通过F1或者Ctrl+Shift+P打开主命令面板。在主命令面板中可以执行VSCode的任何一条命令。Command Palette是VSCode中最有用的模式，在这里你可以安装组件也可以查看快捷键等。  在主面板模式下按backspace可以进入Ctrl+P模式中。 本地文件导航模式（Ctrl+P）通过Ctrl+P进入“本地文件导航模式”，该模式默认列出">
+<meta property="og:image" content="http://webfuse.cn/2016/07/20/Visual%20Studio%20Code常用快捷键/ctrl_shift_p.jpg">
+<meta property="og:image" content="http://webfuse.cn/2016/07/20/Visual%20Studio%20Code常用快捷键/ctrl_p.jpg">
+<meta property="og:image" content="http://webfuse.cn/2016/07/20/Visual%20Studio%20Code常用快捷键/ctrl_p_1.jpg">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.913Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Visual Studio Code常用快捷键">
+<meta name="twitter:description" content="命令模式（Command Palette）通过F1或者Ctrl+Shift+P打开主命令面板。在主命令面板中可以执行VSCode的任何一条命令。Command Palette是VSCode中最有用的模式，在这里你可以安装组件也可以查看快捷键等。  在主面板模式下按backspace可以进入Ctrl+P模式中。 本地文件导航模式（Ctrl+P）通过Ctrl+P进入“本地文件导航模式”，该模式默认列出">
+<meta name="twitter:image" content="http://webfuse.cn/2016/07/20/Visual%20Studio%20Code常用快捷键/ctrl_shift_p.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Visual Studio Code常用快捷键 | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Visual Studio Code常用快捷键
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T10:03:25+08:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/开发工具/" itemprop="url" rel="index">
+                    <span itemprop="name">开发工具</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/20/Visual Studio Code常用快捷键/" class="leancloud_visitors" data-flag-title="Visual Studio Code常用快捷键">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="命令模式（Command-Palette）"><a href="#命令模式（Command-Palette）" class="headerlink" title="命令模式（Command Palette）"></a>命令模式（Command Palette）</h2><p>通过F1或者Ctrl+Shift+P打开主命令面板。在主命令面板中可以执行VSCode的任何一条命令。Command Palette是VSCode中最有用的模式，在这里你可以安装组件也可以查看快捷键等。</p>
+<img src="/2016/07/20/Visual%20Studio%20Code常用快捷键/ctrl_shift_p.jpg" alt="ctrl_shift_p.jpg" title="">
+<p>在主面板模式下按backspace可以进入Ctrl+P模式中。</p>
+<h2 id="本地文件导航模式（Ctrl-P）"><a href="#本地文件导航模式（Ctrl-P）" class="headerlink" title="本地文件导航模式（Ctrl+P）"></a>本地文件导航模式（Ctrl+P）</h2><p>通过Ctrl+P进入“本地文件导航模式”，该模式默认列出了你打开过的文件。在输入框中可以输入你想要打开的文件。</p>
+<img src="/2016/07/20/Visual%20Studio%20Code常用快捷键/ctrl_p.jpg" alt="ctrl_p.jpg" title="">
+<p>就像上图的输入框中的提示一样，输入”?”可以获得一些帮助。</p>
+<img src="/2016/07/20/Visual%20Studio%20Code常用快捷键/ctrl_p_1.jpg" alt="ctrl_p_1.jpg" title="">
+<p>以上输入框中：</p>
+<ul>
+<li>输入<code>:</code>跳转到行数，也可以用<code>Ctrl+G</code></li>
+<li>输入<code>@</code>跳转到symbol（搜索变量或者函数），也可以<code>Ctrl+Shift+O</code>直接进入</li>
+<li>输入<code>@:</code>根据分类跳转symbol，查找属性或函数，也可以<code>Ctrl+Shift+O</code>后输入<code>:</code>进入</li>
+<li>输入<code>#</code>根据名字查找symbol，也可以<code>Ctrl+T</code></li>
+</ul>
+<h2 id="编辑器以及窗口"><a href="#编辑器以及窗口" class="headerlink" title="编辑器以及窗口"></a>编辑器以及窗口</h2><ul>
+<li>打开新窗口：<code>Ctrl+Shift+N</code></li>
+<li>关闭窗口：<code>Ctrl+Shift+W</code></li>
+<li>新建文件：<code>Ctrl+N</code></li>
+<li>打开文件：<code>Ctrl+O</code></li>
+<li>在历史打开的文件之间切换：<code>Ctrl+Tab</code>、<code>Alt+Left</code>、<code>Alt+Right</code></li>
+<li>切出一个新的编辑界面<code>Ctrl+\</code></li>
+<li>在各个编辑界面之间切换<code>Ctrl+1</code>、<code>Ctrl+2</code>、<code>Ctrl+3</code></li>
+<li>关闭编辑器：<code>Ctrl+F4</code></li>
+<li>查找：<code>Ctrl+F</code></li>
+<li>查找替换：<code>Ctrl+H</code></li>
+<li>整个文件夹搜索：<code>Ctrl+Shift+F</code></li>
+<li>显示/隐藏侧边栏：<code>Ctrl+B</code></li>
+<li>Show Explorer：<code>Ctrl+Shift+E</code></li>
+<li>Show Search：<code>Ctrl+Shift+F</code></li>
+<li>Show Git：<code>Ctrl+Shift+G</code></li>
+<li>Show Debug：<code>Ctrl+Shift+D</code></li>
+<li>Show Output：<code>Ctrl+Shift+U</code></li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><ul>
+<li>代码缩进：<code>Ctrl+[</code>、<code>Ctrl+]</code></li>
+<li>折叠/打开代码：<code>Ctrl+Shift+[</code>、<code>Ctrl+Shift+]</code></li>
+<li>复制一行（在不选中的情况下）：<code>Ctrl+C</code></li>
+<li>剪切一行（在不选中的情况下）：<code>Ctrl+X</code></li>
+<li>上下移动一行：<code>Alt+Up</code>、<code>Alt+Down</code></li>
+<li>上下复制一行：<code>Alt+Shift+Up</code>、<code>Alt+Shift+Down</code></li>
+<li>跳转到定义处：<code>F12</code></li>
+<li>定义处缩略图（不跳转过去）：<code>Alt+F12</code>；<code>Esc</code>退出</li>
+<li>列出所有的引用：<code>Shift+F12</code>，<code>Esc</code>退出</li>
+<li>同时修改文本中的匹配：<code>Ctrl+F2</code></li>
+<li>重命名：<code>F2 + 输入新的命名</code></li>
+<li>跳转到下一个Warn/Error：<code>F8</code></li>
+<li>显示Warn/Error：<code>Ctrl+Shift+M</code></li>
+</ul>
+<h2 id="光标"><a href="#光标" class="headerlink" title="光标"></a>光标</h2><ul>
+<li>光标移到行首：<code>Home</code></li>
+<li>光标移到行尾：<code>End</code></li>
+<li>光标移到到文件开头：<code>Ctrl+Home</code></li>
+<li>光标移到文件结尾：<code>Ctrl+End</code></li>
+<li>选中当前行：<code>Ctrl+i</code></li>
+<li>选择从行首到光标处<code>Shift+Home</code></li>
+<li>选择从光标到行尾<code>Shift+End</code></li>
+<li>删除光标右侧的所有字<code>Ctrl+Delete</code></li>
+<li>同时选中所有匹配的：<code>Ctrl+Shift+L</code>、<code>Ctrl+F2</code></li>
+<li>选中下一个匹配：<code>Ctrl+D</code></li>
+<li>退回到上一个光标操作：<code>Ctrl+U</code></li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/实战/" rel="tag">#实战</a>
+          
+            <a href="/tags/Visual-Studio-Code/" rel="tag">#Visual Studio Code</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/07/使用json-server模拟REST API/" rel="next" title="使用json-server模拟REST API">
+                <i class="fa fa-chevron-left"></i> 使用json-server模拟REST API
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/26/Groovy入门/" rel="prev" title="Groovy入门">
+                Groovy入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令模式（Command-Palette）"><span class="nav-number">1.</span> <span class="nav-text">命令模式（Command Palette）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地文件导航模式（Ctrl-P）"><span class="nav-number">2.</span> <span class="nav-text">本地文件导航模式（Ctrl+P）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑器以及窗口"><span class="nav-number">3.</span> <span class="nav-text">编辑器以及窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#光标"><span class="nav-number">5.</span> <span class="nav-text">光标</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

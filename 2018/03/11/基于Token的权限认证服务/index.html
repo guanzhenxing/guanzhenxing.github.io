@@ -1,0 +1,860 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="实战,权限认证," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在这两年接触的项目基本上是基于前后端分离、多种后端服务组合而成的，这有别于先前的“单体”的项目，而且我们还需要考虑外部应用接入的场景、用户-服务的鉴权、服务-服务的鉴权等多种鉴权场景。 本方案基于客户端Token与网关结合的方式。所有的客户端请求都经过网关，网关将校验客户端发送上来的Token等信息，如果通过则转发给对应的服务，如果不通过则直接返回40X给客户端。 架构  获得authorize,">
+<meta name="keywords" content="实战,权限认证">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Token的权限认证服务">
+<meta property="og:url" content="http://webfuse.cn/2018/03/11/基于Token的权限认证服务/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="在这两年接触的项目基本上是基于前后端分离、多种后端服务组合而成的，这有别于先前的“单体”的项目，而且我们还需要考虑外部应用接入的场景、用户-服务的鉴权、服务-服务的鉴权等多种鉴权场景。 本方案基于客户端Token与网关结合的方式。所有的客户端请求都经过网关，网关将校验客户端发送上来的Token等信息，如果通过则转发给对应的服务，如果不通过则直接返回40X给客户端。 架构  获得authorize,">
+<meta property="og:image" content="http://webfuse.cn/2018/03/11/基于Token的权限认证服务/auth-arch.png">
+<meta property="og:image" content="http://webfuse.cn/2018/03/11/基于Token的权限认证服务/auth-sequence.png">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.930Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于Token的权限认证服务">
+<meta name="twitter:description" content="在这两年接触的项目基本上是基于前后端分离、多种后端服务组合而成的，这有别于先前的“单体”的项目，而且我们还需要考虑外部应用接入的场景、用户-服务的鉴权、服务-服务的鉴权等多种鉴权场景。 本方案基于客户端Token与网关结合的方式。所有的客户端请求都经过网关，网关将校验客户端发送上来的Token等信息，如果通过则转发给对应的服务，如果不通过则直接返回40X给客户端。 架构  获得authorize,">
+<meta name="twitter:image" content="http://webfuse.cn/2018/03/11/基于Token的权限认证服务/auth-arch.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 基于Token的权限认证服务 | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于Token的权限认证服务
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-11T22:03:58+08:00" content="2018-03-11">
+              2018-03-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/UAA/" itemprop="url" rel="index">
+                    <span itemprop="name">UAA</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/03/11/基于Token的权限认证服务/" class="leancloud_visitors" data-flag-title="基于Token的权限认证服务">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在这两年接触的项目基本上是基于前后端分离、多种后端服务组合而成的，这有别于先前的“单体”的项目，而且我们还需要考虑外部应用接入的场景、用户-服务的鉴权、服务-服务的鉴权等多种鉴权场景。</p>
+<p>本方案基于客户端Token与网关结合的方式。所有的客户端请求都经过网关，网关将校验客户端发送上来的Token等信息，如果通过则转发给对应的服务，如果不通过则直接返回40X给客户端。</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><img src="/2018/03/11/基于Token的权限认证服务/auth-arch.png" alt="auth-arch.png" title="">
+<ol>
+<li>获得authorize,用户/设备从UAA Service中获得authorize信息</li>
+<li>附加mac token,请求在访问服务时候附加上mac token</li>
+<li>Gateway进行认证，Gateway将收到的每个mac token发送给UAA Service进行校验</li>
+<li>每个服务只有权限去操作自己负责的那部分功能（待规划）</li>
+</ol>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><img src="/2018/03/11/基于Token的权限认证服务/auth-sequence.png" alt="auth-sequence.png" title="">
+<ol>
+<li>用户/客户端从UAA Service中获得Token</li>
+<li>如果UAA Service中无此用户/客户端,则抛出AuthorizationException异常并返回401</li>
+<li>如果UAA Service认证成功，返回对应的Token信息</li>
+<li>用户的请求数据，请求头Authorization中带上Token信息</li>
+<li>网关过滤所有的请求，携带Token、请求信息向UAA Service请求鉴权</li>
+<li>如果UAA Service鉴权失败，抛出AuthenticationException异常并返回403</li>
+<li>如果UAA Service鉴权成功，返回用户的权限等信息</li>
+<li>网关向业务发起请求（此时，不携带授权信息。因为鉴权等都在网关处理了）</li>
+<li>业务服务向微服务发起请求，同样也不携带授权信息</li>
+<li>返回结果给用户</li>
+</ol>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>根据开发阶段的鉴权、用户-服务的鉴权、服务-服务的鉴权等不同的场景，定义了三种方式的协议。</p>
+<h3 id="Debug-Token协议"><a href="#Debug-Token协议" class="headerlink" title="Debug Token协议"></a>Debug Token协议</h3><p>debug token适用于在开发测试环境调试API。</p>
+<h4 id="协议-1"><a href="#协议-1" class="headerlink" title="协议"></a>协议</h4><p>在Client发出api请求之前，必须将debug token的信息放在HTTP Header的Authorization里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization:DEBUG userid=&quot;123456&quot;,realm=&quot;&quot;</div></pre></td></tr></table></figure>
+<p>上面的代码中：</p>
+<blockquote>
+<p>userid为调试的用户</p>
+<p>realm为可选字段，预定为用户所在的领域(应用、行业或者机构）</p>
+</blockquote>
+<h4 id="示例（伪代码）"><a href="#示例（伪代码）" class="headerlink" title="示例（伪代码）"></a>示例（伪代码）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GET /v0.1/resources HTTP/1.1</div><div class="line">Host: a.dynamax.io</div><div class="line">Accept: application/json</div><div class="line">Authorization: DEBUG userid=&apos;&apos;,realm=&apos;&apos;</div></pre></td></tr></table></figure>
+<h3 id="Mac-Token协议"><a href="#Mac-Token协议" class="headerlink" title="Mac Token协议"></a>Mac Token协议</h3><p>mac token适用于不安全网络下的API授权</p>
+<h4 id="协议-2"><a href="#协议-2" class="headerlink" title="协议"></a>协议</h4><p>通过“登录接口”可以获得Token。mac_token的数据结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;user_id&quot;:&quot;&quot;, //用户标识</div><div class="line">    &quot;access_token&quot;:&quot;&quot;, //token标识</div><div class="line">    &quot;expires_at&quot;:&quot;&quot;,    //本token的过期时间</div><div class="line">    &quot;refresh_token&quot;:&quot;&quot;,   //用以续期</div><div class="line">    &quot;mac_key&quot;:&quot;&quot;,   //hmac的密钥</div><div class="line">    &quot;mac_algorithm&quot;:&quot;hmac-sha-256&quot;  //hmac算法的名称</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>hmac算法见：[[<a href="https://tools.ietf.org/html/rfc2104" target="_blank" rel="external">https://tools.ietf.org/html/rfc2104</a>]]</p>
+<p>在Client发出api请求之前，必须将mac token的信息放在HTTP Header的Authorization里面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization:MAC id=&quot;&quot;,nonce=&quot;&quot;,mac=&quot;&quot;</div></pre></td></tr></table></figure></p>
+<p>上面的代码中：</p>
+<blockquote>
+<p>id为mac_token.access_token</p>
+<p>nonce为 时间戳:随机码（客户端生成），有效时间+-5分钟</p>
+<p>mac为请求签名： mac=base64(hmac(mac_token.mac_key,mac_token.mac_algorithm,request_content))</p>
+<p>request_content = nonce + \n + http-method + \n + request-url + \n + host + \n </p>
+<p>http-method，请求的方法，大写，如：GET</p>
+<p>request-url，请求的地址（包含参数的部分，不包含域名部分），区分大小写，如/v0.1/databases</p>
+<p>host，为HTTP Header中的host，区分大小写，如dynamax.io</p>
+</blockquote>
+<h4 id="示例-伪代码）"><a href="#示例-伪代码）" class="headerlink" title="示例(伪代码）"></a>示例(伪代码）</h4><p>获得token</p>
+<p><strong>request</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">POST /v0.1/tokens HTTP/1.1</div><div class="line">Host: api.uaa.dynamax.io</div><div class="line">Accept: application/json</div><div class="line">Content-Type: application/json</div><div class="line">&#123;</div><div class="line">    &quot;username&quot;:&quot;330134&quot;,</div><div class="line">    &quot;password&quot;:&quot;******&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>reqponse</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 201 Created</div><div class="line">Content-Type: application/json;charset=UTF-8</div><div class="line">Cache-Control: no-store</div><div class="line">Pragma: no-Cache</div><div class="line">&#123;</div><div class="line">    &quot;user_id&quot;:&quot;&quot;,</div><div class="line">    &quot;access_token&quot;:&quot;&quot;,</div><div class="line">    &quot;expires_at&quot;:&quot;&quot;,</div><div class="line">    &quot;refresh_token&quot;:&quot;&quot;,</div><div class="line">    &quot;mac_key&quot;:&quot;&quot;,</div><div class="line">    &quot;mac_algorithm&quot;:&quot;&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="访问资源"><a href="#访问资源" class="headerlink" title="访问资源"></a>访问资源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GET /v0.1/resources HTTP/1.1</div><div class="line">Host: resources.dynamax.io</div><div class="line">Accept: application/json</div><div class="line">Authorization:MAC id=&quot;adFeww3Fw4VV09876&quot;,nonce=&quot;1234234345343:adfasd32&quot;,mac=&quot;SDFS8weadfa42234&quot;</div></pre></td></tr></table></figure>
+<h3 id="Bearer-Token协议"><a href="#Bearer-Token协议" class="headerlink" title="Bearer Token协议"></a>Bearer Token协议</h3><p>bearer token适用于安全网络下的api授权。也就是说，bearer适用于微服务之间的相互调用的api授权。</p>
+<h4 id="协议-3"><a href="#协议-3" class="headerlink" title="协议"></a>协议</h4><p>可以通过“bearer_token”的接口获得相应的bearer_token，数据结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">&quot;user_id&quot;:&quot;&quot;, //用户标识</div><div class="line">&quot;access_token&quot;:&quot;&quot; //token标识</div><div class="line">&quot;expires_at&quot;:&quot;&quot; //本token的过期时间</div><div class="line">&quot;refresh_token&quot;:&quot;&quot; //用以续期</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在Client发出api请求之前，必须将bearer token的信息放在HTTP Header的Authorization里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization:BEARER &quot;XXX123XXXXX&quot; user_id:&quot;&quot;</div></pre></td></tr></table></figure>
+<p>上面的代码中：</p>
+<blockquote>
+<p>“XXX123XXXXX”为bearer_token.access_token</p>
+<p>user_id可选，该值位获得bearer token对应的账号。该值用来传递用户信息到其他服务端，用来判断是否有权限。</p>
+</blockquote>
+<h2 id="待优化的点"><a href="#待优化的点" class="headerlink" title="待优化的点"></a>待优化的点</h2><ul>
+<li>怎么鉴定一个请求是否需要认证？白名单？</li>
+<li>各个业务服务以及微服务是否需要再次认证？会不会出现绕过网关的情况？</li>
+<li>所有的服务都通过网关，在UAA Service中进行鉴权，会不会造成UAA Service是个瓶颈点？</li>
+<li>是否能够很方便地扩展到OAuth2？</li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/实战/" rel="tag">#实战</a>
+          
+            <a href="/tags/权限认证/" rel="tag">#权限认证</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/01/RBAC实践/" rel="next" title="RBAC实践">
+                <i class="fa fa-chevron-left"></i> RBAC实践
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/22/Java面试手册/" rel="prev" title="Java面试手册">
+                Java面试手册 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#架构"><span class="nav-number">1.</span> <span class="nav-text">架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程"><span class="nav-number">2.</span> <span class="nav-text">流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议"><span class="nav-number">3.</span> <span class="nav-text">协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Debug-Token协议"><span class="nav-number">3.1.</span> <span class="nav-text">Debug Token协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#协议-1"><span class="nav-number">3.1.1.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例（伪代码）"><span class="nav-number">3.1.2.</span> <span class="nav-text">示例（伪代码）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mac-Token协议"><span class="nav-number">3.2.</span> <span class="nav-text">Mac Token协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#协议-2"><span class="nav-number">3.2.1.</span> <span class="nav-text">协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-伪代码）"><span class="nav-number">3.2.2.</span> <span class="nav-text">示例(伪代码）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问资源"><span class="nav-number">3.2.3.</span> <span class="nav-text">访问资源</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bearer-Token协议"><span class="nav-number">3.3.</span> <span class="nav-text">Bearer Token协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#协议-3"><span class="nav-number">3.3.1.</span> <span class="nav-text">协议</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#待优化的点"><span class="nav-number">4.</span> <span class="nav-text">待优化的点</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

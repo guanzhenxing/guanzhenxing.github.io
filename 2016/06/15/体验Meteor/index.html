@@ -1,0 +1,911 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="NodeJs,Meteor," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="Meteor是什么?在Meteor官网的教程上是这样对Meteor进行解释的：  Meteor is a full-stack JavaScript platform for developing modern web and mobile applications. Meteor includes a key set of technologies for building connected-">
+<meta name="keywords" content="NodeJs,Meteor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="体验Meteor">
+<meta property="og:url" content="http://webfuse.cn/2016/06/15/体验Meteor/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="Meteor是什么?在Meteor官网的教程上是这样对Meteor进行解释的：  Meteor is a full-stack JavaScript platform for developing modern web and mobile applications. Meteor includes a key set of technologies for building connected-">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="体验Meteor">
+<meta name="twitter:description" content="Meteor是什么?在Meteor官网的教程上是这样对Meteor进行解释的：  Meteor is a full-stack JavaScript platform for developing modern web and mobile applications. Meteor includes a key set of technologies for building connected-">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 体验Meteor | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                体验Meteor
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-15T10:29:40+08:00" content="2016-06-15">
+              2016-06-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/NodeJs/" itemprop="url" rel="index">
+                    <span itemprop="name">NodeJs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/15/体验Meteor/" class="leancloud_visitors" data-flag-title="体验Meteor">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Meteor是什么"><a href="#Meteor是什么" class="headerlink" title="Meteor是什么?"></a>Meteor是什么?</h1><p>在<a href="http://guide.meteor.com/" target="_blank" rel="external">Meteor官网的教程</a>上是这样对Meteor进行解释的：</p>
+<blockquote>
+<p>Meteor is a full-stack JavaScript platform for developing modern web and mobile applications. Meteor includes a key set of technologies for building connected-client reactive applications, a build tool, and a curated set of packages from the Node.js and general JavaScript community.</p>
+</blockquote>
+<ul>
+<li>Meteor是一个构建在Node.js之上的全栈开发平台，用来开发实时网页程序（数据更新，页面立马重新渲染）。</li>
+<li>Meteor位于程序数据库和用户界面之间，保持二者之间的数据同步更新。</li>
+<li>Meteor在客户端和服务器端都使用JavaScript作为开发语言。</li>
+<li>Meteor程序的代码在前后两端共用。</li>
+<li>Meteor的数据库默认使用MongoDB。</li>
+</ul>
+<p>Meteor存在丰富的资源：<a href="https://atmospherejs.com/" target="_blank" rel="external">atmospherejs</a></p>
+<h1 id="Quick-start"><a href="#Quick-start" class="headerlink" title="Quick start"></a>Quick start</h1><p>本文使用的开发环境是Windows 10，使用ReactJs开发。</p>
+<h2 id="创建一个简单的应用"><a href="#创建一个简单的应用" class="headerlink" title="创建一个简单的应用"></a>创建一个简单的应用</h2><h3 id="安装Meteor"><a href="#安装Meteor" class="headerlink" title="安装Meteor"></a>安装Meteor</h3><p>从<a href="https://install.meteor.com/windows" target="_blank" rel="external">官网</a>上下载Meteor的安装包，按照常规安装方法进行安装即可。</p>
+<h3 id="创建一个应用"><a href="#创建一个应用" class="headerlink" title="创建一个应用"></a>创建一个应用</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><pre><code>meteor help &lt;command&gt; ：帮助
+meteor create &lt;app-name&gt; ： 创建项目
+meteor create --list ： 查看有哪些示例项目
+meteor create --example &lt;example-name&gt; ： 创建示例项目的工程。example-name为meteor create --list命令的结果。
+meteor create --package &lt;package-name&gt; ： 创建本地meteor包
+meteor update ：升级meteor及其组件到最新版本
+meteor add &lt;package-name&gt; ： 添加包
+meteor remove &lt;package-name&gt; ： 删除包
+meteor ： 使用Meteor运行当前应用
+meteor mongo ： 打开meteor的mongodb shell。
+meteor reset ： 重置项目为初始状态，移除本地所有数据。
+meteor deploy ： 部署程序。
+meteor debug ： 用debug模式运行程序。
+</code></pre><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><pre><code>步骤1：meteor create news-list
+步骤2：cd news-list
+步骤3：meteor npm install
+步骤4：meteor
+步骤5：运行浏览器，输入http://localhost:3000查看结果
+</code></pre><p>官网提供了丰富的TodoList系列例子是一个非常值得学习的范例。</p>
+<p>还有一些比较有意思的项目： <a href="https://github.com/RocketChat/Rocket.Chat" target="_blank" rel="external">Rocket.Chat</a>、<a href="https://github.com/wekan/wekan" target="_blank" rel="external">wekan</a>、<a href="https://github.com/TelescopeJS/Telescope" target="_blank" rel="external">Telescope</a>等，我们可以在这些项目的基础上进行开发。</p>
+<h2 id="代码风格以及目录结构"><a href="#代码风格以及目录结构" class="headerlink" title="代码风格以及目录结构"></a>代码风格以及目录结构</h2><h3 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h3><ul>
+<li>建议采用统一的代码规范，可以使用eslint工具。</li>
+<li>建议使用ES2015/ES6</li>
+</ul>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><h4 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h4><p>通过官方的一个例子来说明目录结构：</p>
+<pre><code>imports/
+  startup/
+    client/
+      index.js                 # import client startup through a single index entry point
+      routes.js                # set up all routes in the app
+      useraccounts-configuration.js # configure login templates
+    server/
+      fixtures.js              # fill the DB with example data on startup
+      index.js                 # import server startup through a single index entry point
+
+  api/
+    lists/                     # a unit of domain logic
+      server/
+        publications.js        # all list-related publications
+        publications.tests.js  # tests for the list publications
+      lists.js                 # definition of the Lists collection
+      lists.tests.js           # tests for the behavior of that collection
+      methods.js               # methods related to lists
+      methods.tests.js         # tests for those methods
+
+  ui/
+    components/                # all reusable components in the application
+                               # can be split by domain if there are many
+    layouts/                   # wrapper components for behaviour and visuals
+    pages/                     # entry points for rendering used by the router
+
+client/
+  main.js                      # client entry point, imports all client code
+
+server/
+  main.js                      # server entry point, imports all server code
+</code></pre><p>建议将代码放到imports文件夹中，在Meteor v1.3中就可以根据需要对引用的文件进行懒加载。</p>
+<ul>
+<li>imports/startup：将系统启动是需要进行处理的代码放在该文件夹下。</li>
+<li>imports/api：将业务逻辑代码放在该文件夹下。</li>
+<li>imports/ui：将UI渲染的代码放在此处。</li>
+<li>client：存放在客户端运行的代码。</li>
+<li>server：存放在服务端运行的代码。</li>
+</ul>
+<h4 id="加载顺序"><a href="#加载顺序" class="headerlink" title="加载顺序"></a>加载顺序</h4><ol>
+<li>html模板文件将首先加载。</li>
+<li>以main.开头的文件将最后加载。</li>
+<li>在任何lib/文件夹下的文件将随后加载。</li>
+<li>更深层的目录将随后加载。</li>
+<li>整个路径中文件以字母顺序加载。</li>
+</ol>
+<p>例子如下：</p>
+<pre><code>nav.html
+main.html
+client/lib/methods.js
+client/lib/styles.js
+lib/feature/styles.js
+lib/collections.js
+client/feature-y.js
+feature-x.js
+client/main.js
+</code></pre><p>上述的例子是以加载顺序列出的。因为html总是被优先加载，所以main.html在第二个被加载了。因为第4条，目录比较深的client/lib/styles.js和client/lib/methods.js等会优先加载。根据第5条，client/lib/styles.js比lib/feature/styles.js优先加载。</p>
+<p>可以通过Meteor.startup控制那些可以运行在服务端也可以运行在客户端的代码。</p>
+<h4 id="一些特殊的文件夹"><a href="#一些特殊的文件夹" class="headerlink" title="一些特殊的文件夹"></a>一些特殊的文件夹</h4><p>以下是一些特殊的文件夹说明：</p>
+<ul>
+<li><p><strong>imports</strong></p>
+<p>  该文件夹下没有被import的文件不会被加载。</p>
+</li>
+<li><p><strong>client</strong></p>
+<p>  该文件夹下的代码只会被客户端运行。</p>
+</li>
+<li><p><strong>server</strong></p>
+<p>  该文件夹下的代码只会在服务端运行。</p>
+</li>
+<li><p><strong>public</strong></p>
+<p>  该文件夹下中的文件会原样发送到客户端。用来放置资源等。假设有张图片/public/background.png， 在HTML中用 &lt;img src=’/background.png’/&gt;引用或是在CSS中用 background-image: url(/background.png) 引用。 注意图片URL中不包含/public。</p>
+</li>
+<li><p><strong>private</strong></p>
+<p>  该文件夹中的文件只能由服务端代码通过Assets API 来获取，客户端无法获取。</p>
+</li>
+<li><p><strong>client/compatibility</strong></p>
+<p>  这个文件夹是兼容的JavaScript库。各文件中使用var定义的变量将成为全局变量使用。该文件夹下的各文件在其他的客户端文件执行前被执行。</p>
+</li>
+<li><p><strong>tests</strong></p>
+<p>  测试文件夹。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NodeJs/" rel="tag">#NodeJs</a>
+          
+            <a href="/tags/Meteor/" rel="tag">#Meteor</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/03/GraphQL初体验/" rel="next" title="GraphQL初体验">
+                <i class="fa fa-chevron-left"></i> GraphQL初体验
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/24/SpringMVC异常处理/" rel="prev" title="SpringMVC异常处理">
+                SpringMVC异常处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Meteor是什么"><span class="nav-number">1.</span> <span class="nav-text">Meteor是什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Quick-start"><span class="nav-number">2.</span> <span class="nav-text">Quick start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个简单的应用"><span class="nav-number">2.1.</span> <span class="nav-text">创建一个简单的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Meteor"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装Meteor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个应用"><span class="nav-number">2.1.2.</span> <span class="nav-text">创建一个应用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用命令"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码风格以及目录结构"><span class="nav-number">2.2.</span> <span class="nav-text">代码风格以及目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码风格"><span class="nav-number">2.2.1.</span> <span class="nav-text">代码风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录结构"><span class="nav-number">2.2.2.</span> <span class="nav-text">目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件结构"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">文件结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载顺序"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">加载顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些特殊的文件夹"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">一些特殊的文件夹</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

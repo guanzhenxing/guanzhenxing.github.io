@@ -1,0 +1,955 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="PouchDB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="PouchDB是一款数据库。它可以在浏览器里面存储你的本地信息，所以适合于基于浏览器的可离线存储方案。PouchDB实际上是一个JavaScript库。 快速入门可以参考Getting Started Guide入门PouchDB。 安装PouchDB与使用安装：`npm install pouchdb --save`  使用：`var PouchDB = require(&amp;apos;pouchd">
+<meta name="keywords" content="PouchDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PouchDB简单入门">
+<meta property="og:url" content="http://webfuse.cn/2016/09/24/PouchDB简单入门/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="PouchDB是一款数据库。它可以在浏览器里面存储你的本地信息，所以适合于基于浏览器的可离线存储方案。PouchDB实际上是一个JavaScript库。 快速入门可以参考Getting Started Guide入门PouchDB。 安装PouchDB与使用安装：`npm install pouchdb --save`  使用：`var PouchDB = require(&amp;apos;pouchd">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PouchDB简单入门">
+<meta name="twitter:description" content="PouchDB是一款数据库。它可以在浏览器里面存储你的本地信息，所以适合于基于浏览器的可离线存储方案。PouchDB实际上是一个JavaScript库。 快速入门可以参考Getting Started Guide入门PouchDB。 安装PouchDB与使用安装：`npm install pouchdb --save`  使用：`var PouchDB = require(&amp;apos;pouchd">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> PouchDB简单入门 | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                PouchDB简单入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-24T11:40:28+08:00" content="2016-09-24">
+              2016-09-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/PouchDB/" itemprop="url" rel="index">
+                    <span itemprop="name">PouchDB</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/09/24/PouchDB简单入门/" class="leancloud_visitors" data-flag-title="PouchDB简单入门">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>PouchDB是一款数据库。它可以在浏览器里面存储你的本地信息，所以适合于基于浏览器的可离线存储方案。PouchDB实际上是一个JavaScript库。</p>
+<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><p>可以参考<a href="https://pouchdb.com/getting-started.html" target="_blank" rel="external">Getting Started Guide</a>入门PouchDB。</p>
+<h2 id="安装PouchDB与使用"><a href="#安装PouchDB与使用" class="headerlink" title="安装PouchDB与使用"></a>安装PouchDB与使用</h2><pre><code>安装：`npm install pouchdb --save`
+
+使用：`var PouchDB = require(&apos;pouchdb&apos;);`
+</code></pre><h2 id="简单操作"><a href="#简单操作" class="headerlink" title="简单操作"></a>简单操作</h2><h3 id="新增与修改数据"><a href="#新增与修改数据" class="headerlink" title="新增与修改数据"></a>新增与修改数据</h3><p><code>db.put({},function callback(err,result){})</code>。新的数据中每一条都要有一个唯一的主键<code>_id</code>，在提交的数据里，如果存在与数据库中相同的<code>_id</code>，PouchDB就将更新该数据，否者就创建一条新数据。使用<code>db.post</code>可以提交没有<code>_id</code>的数据。回调函数callback中：如果err为非空，说明插入数据失败；如果err为空，则表示插入成功，result里返回成功后数据<code>_id</code>和<code>_rev</code>，<code>_rev</code>代表这条数据的版本号。</p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p><code>db.remove()</code>。删除数据的时候，我们需要同时提供<code>_id</code>和<code>_rev</code>项。我们使用<code>remove()</code>的时候，并没有真正删除掉文档，它只是被添加了一个<code>_deleted</code>标志，值为true。以下3种写法都可以删除数据：</p>
+<pre><code>db.get(&apos;mittens&apos;).then(function (doc) {
+  return db.remove(doc);
+});
+
+db.get(&apos;mydoc&apos;).then(function (doc) {
+  return db.remove(doc._id, doc._rev);
+});
+
+db.get(&apos;mydoc&apos;).then(function (doc) {
+  doc._deleted = true;
+  return db.put(doc);
+});
+</code></pre><h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p><code>db.get(_id)</code>获得指定的数据</p>
+<h3 id="在浏览器中查看PouchDB"><a href="#在浏览器中查看PouchDB" class="headerlink" title="在浏览器中查看PouchDB"></a>在浏览器中查看PouchDB</h3><p>通过<a href="https://chrome.google.com/webstore/detail/pouchdb-inspector/hbhhpaojmpfimakffndmpmpndcmonkfa" target="_blank" rel="external">PouchDB Inspector</a>，它是用于在Chrome中查看PouchDB的插件。</p>
+<p>通过浏览器中的IndexedDB/WebSQL查看。</p>
+<h3 id="debug模式"><a href="#debug模式" class="headerlink" title="debug模式"></a>debug模式</h3><p>开启debug模式：<code>PouchDB.debug.enable(&#39;*&#39;)</code><br>关闭debug模式：<code>PouchDB.debug.disable()</code></p>
+<h3 id="删除本地数据库"><a href="#删除本地数据库" class="headerlink" title="删除本地数据库"></a>删除本地数据库</h3><p>在Chrome中，通过使用<a href="https://chrome.google.com/webstore/detail/clearbrowserdata/apehfighfmpoieeniallefdeibodgmmb" target="_blank" rel="external">ClearBrowserData extension</a>插件删除</p>
+<p>在Firefox中，通过使用<a href="https://addons.mozilla.org/en-US/firefox/addon/clear-recent-history/" target="_blank" rel="external">Clear Recent History+ add-on</a>插件删除</p>
+<p>在Safari中，通过 Safari → Clear History and Website Data 删除</p>
+<p>通过代码：<code>db.destroy()</code>，返回的是一个Promise</p>
+<h1 id="理解revisions-rev"><a href="#理解revisions-rev" class="headerlink" title="理解revisions(_rev)"></a>理解revisions(_rev)</h1><p>字段<code>_rev</code>是一个版本标志。它是在新增或者修改的时候生成的一个随机数。在PouchDB中，更新数据的时候必须要有<code>_rev</code>字段作为条件。如：</p>
+<pre><code>var doc = {
+  &apos;_id&apos;: &apos;mittens&apos;,
+  &apos;_rev&apos;: &apos;1-7df5244f3d6cf5d5b260b9c641f9c604&apos;,
+  &apos;name&apos;: &apos;Mittens&apos;,
+  &apos;occupation&apos;: &apos;kitten&apos;,
+  &apos;age&apos;: 4,
+  &apos;hobbies&apos;: [
+    &apos;playing with balls of yarn&apos;,
+    &apos;chasing laser pointers&apos;,
+    &quot;lookin&apos; hella cute&quot;
+  ]
+}
+</code></pre><p>如果没有<code>_rev</code>字段，更新的时候就会报错。</p>
+<pre><code>{
+    status: 409,
+    name: &apos;conflict&apos;,
+    message: &apos;Documentupdateconflict&apos;,
+    error: true
+}
+</code></pre><p>为什么我们一定需要<code>_rev</code>呢？因为使用<code>_rev</code>可以更好地进行同步工作</p>
+<h1 id="Asynchronous-Code"><a href="#Asynchronous-Code" class="headerlink" title="Asynchronous Code"></a>Asynchronous Code</h1><p>PouchDB提供了一个完全异步API。</p>
+<p>callback形式：</p>
+<pre><code>db.get(&apos;mittens&apos;, function (error, doc) {
+  if (error) {
+    // oh noes! we got an error
+  } else {
+    // okay, doc contains our document
+  }
+});
+</code></pre><p>Promise形式：</p>
+<pre><code>db.get(&apos;mittens&apos;).then(function (doc) {
+  // okay, doc contains our document
+}).catch(function (err) {
+  // oh noes! we got an error
+});
+</code></pre><h1 id="批量操作"><a href="#批量操作" class="headerlink" title="批量操作"></a>批量操作</h1><p>可以使用bulkDocs()和allDocs()进行批量操作</p>
+<h2 id="使用bulkDocs-一次性操作多个doc"><a href="#使用bulkDocs-一次性操作多个doc" class="headerlink" title="使用bulkDocs()一次性操作多个doc"></a>使用bulkDocs()一次性操作多个doc</h2><pre><code>db.bulkDocs([
+  {
+    _id: &apos;mittens&apos;,
+    occupation: &apos;kitten&apos;,
+    cuteness: 9.0
+  },
+  {
+    _id: &apos;katie&apos;,
+    occupation: &apos;kitten&apos;,
+    cuteness: 7.0
+  },
+  {
+    _id: &apos;felix&apos;,
+    occupation: &apos;kitten&apos;,
+    cuteness: 8.0
+  }
+])
+</code></pre><p>使用<code>bulkDocs()</code>可以在一次请求中进行处理操作。我们也可以使用<code>bulkDocs()</code>批量修改或者批量删除，每个对象中都包含<code>_rev</code>和<code>_deleted</code>即可。</p>
+<p>因为PouchDB并不支持事务。所以在bulkDocs()中，一个操作失败了，并不能确保所有的操作都失败。</p>
+<h2 id="使用allDocs-一次性读取多个doc"><a href="#使用allDocs-一次性读取多个doc" class="headerlink" title="使用allDocs()一次性读取多个doc"></a>使用allDocs()一次性读取多个doc</h2><p>我们使用allDocs()返回的数据是按照<code>_id</code>排序的。</p>
+<pre><code>db.allDocs({include_docs: true}).then(res =&gt; {
+    console.log(JSON.stringify(res))
+})
+</code></pre><p>如果我们没有传入<code>include_docs: true</code>只会返回基本的id、key和value.rev。</p>
+<p>在allDocs()中，你可以进行排序、过滤等操作。可以通过阅读<a href="https://pouchdb.com/2014/04/14/pagination-strategies-with-pouchdb.html" target="_blank" rel="external">“Pagination strategies with PouchDB”</a>获悉如何进行分页操作。</p>
+<h1 id="附件操作"><a href="#附件操作" class="headerlink" title="附件操作"></a>附件操作</h1><p>PouchDB支持附件操作</p>
+<h2 id="如何存储附件"><a href="#如何存储附件" class="headerlink" title="如何存储附件"></a>如何存储附件</h2><p>可以使用base64-encoded格式或者Blob进行存储附件。</p>
+<p>存储一个附件：</p>
+<pre><code>db.put({
+  _id: &apos;mydoc&apos;,
+  _attachments: {
+    &apos;myattachment.txt&apos;: {
+      content_type: &apos;text/plain&apos;,
+      data: &apos;aGVsbG8gd29ybGQ=&apos;
+    }
+  }
+})
+</code></pre><p>以上代码中，<code>myattachment.txt</code>是文件名；<code>content_type</code>是格式；<code>aGVsbG8gd29ybGQ=</code>是base64编码后的数据。</p>
+<p>我们如何读取附件呢？</p>
+<pre><code>db.get(&apos;mydoc&apos;).then(data =&gt; {
+    console.log(data)
+})
+</code></pre><p>使用以上代码时，PouchDB只会附件的基本信息，返回：</p>
+<pre><code>{
+    _attachments: {
+        myattachment.txt: {
+            content_type: &quot;text/plain&quot;,
+            digest: &quot;md5-XrY7u+Ae7tCTyyK7j1rNww==&quot;,
+            length: 11,
+            revpos: 1,
+            stub: true
+        }
+    },
+    _id: &quot;mydoc&quot;,
+    _rev: &quot;1-a2308e4759440419de42048838ed86d3&quot;
+}
+</code></pre><p>要获得附件内容，我们必须得在查询中添加参数：<code>attachments: true</code>。</p>
+<pre><code>db.get(&apos;mydoc&apos;, {attachments: true}).then(data =&gt; {
+    console.log(data)
+})
+</code></pre><h2 id="图片附件"><a href="#图片附件" class="headerlink" title="图片附件"></a>图片附件</h2><pre><code>db.put({
+    _id: &apos;meowth&apos;,
+    _attachments: {
+      &apos;meowth.png&apos;: {
+        content_type: &apos;image/png&apos;,
+        data: &apos;iVBORw0KGgoAAAANSUhEUgAAACgAAAAkCAIAAAB0Xu9BAAAABGdBTUEAALGPC/xhBQAAAuNJREFUWEetmD1WHDEQhDdxRMYlnBFyBIccgdQhKVcgJeQMpE5JSTd2uqnvIGpVUqmm9TPrffD0eLMzUn+qVnXPwiFd/PP6eLh47v7EaazbmxsOxjhTT88z9hV7GoNF1cUCvN7TTPv/gf/+uQPm862MWTL6fff4HfDx4S79/oVAlAUwqOmYR0rnazuFnhfOy/ErMKkcBFOr1vOjUi2MFn4nuMil6OPh5eGANLhW3y6u3aH7ijEDCxgCvzFmimvc95TekZLyMSeJC68Bkw0kqUy1K87FlpGZqsGFCyqEtQNDdFUtFctTiuhnPKNysid/WFEFLE2O102XJdEE+8IgeuGsjeJyGHm/xHvQ3JtKVsGGp85g9rK6xMHtvHO9+WACYjk5vkVM6XQ6OZubCJvTfPicYPeHO2AKFl5NuF5UK1VDUbeLxh2BcRGKTQE3irHm3+vPj6cfCod50Eqv5QxtwBQUGhZhbrGVuRia1B4MNp6edwBxld2sl1splfHCwfsvCZfrCQyWmX10djjOlWJSSy3VQlS6LmfrgNvaieRWx1LZ6s9co+P0DLsy3OdLU3lWRclQsVcHJBcUQ0k9/WVVrmpRzYQzpgAdQcAXxZzUnFX3proannrYH+Vq6KkLi+UkarH09mC8YPr2RMWOlEqFkQClsykGEv7CqCUbXcG8+SaGvJ4a8d4y6epND+pEhxoN0vWUu5ntXlFb5/JT7JfJJqoTdy9u9qc7ax3xJRHqJLADWEl23cFWl4K9fvoaCJ2BHpmJ3s3z+O0U/DmzdMjB9alWZtg4e3yxzPa7lUR7nkvxLHO9+tvJX3mtSDpwX8GajB283I8R8a7D2MhUZr1iNWdny256yYLd52DwRYBtRMvE7rsmtxIUE+zLKQCDO4jlxB6CZ8M17GhuY+XTE8vNhQiIiSE82ZsGwk1pht4ZSpT0YVpon6EvevOXXH8JxVR78QzNuamupW/7UB7wO/+7sG5V4ekXb4cL5Lyv+4IAAAAASUVORK5CYII=&apos;
+      }
+    }
+  }).then(function () {
+    return db.getAttachment(&apos;meowth&apos;, &apos;meowth.png&apos;)
+  }).then(function (blob) {
+    var url = URL.createObjectURL(blob)
+    var img = document.createElement(&apos;img&apos;)
+    img.src = url
+    document.body.appendChild(img)
+  }).catch(function (err) {
+    console.log(err)
+  })
+</code></pre><p>上面代码中，我们使用URL.createObjectURL()，将Blob转换成URL。</p>
+<p>上面代码更值得让我们注意的是，使用了<code>db.getAttachment</code>方法。该方法返回一个Blob，而不是返回base64编码的String。不过我们可以在base64和blob直接互转。</p>
+<h2 id="直接存储二进制数据"><a href="#直接存储二进制数据" class="headerlink" title="直接存储二进制数据"></a>直接存储二进制数据</h2><p>可以直接使用<code>putAttachment()</code>方法，如果已经存在附件则该方法将覆盖已存在的附件，如果不存在附件则创建一个新的附件。</p>
+<p><em>在NodeJS中，PouchDB返回的Blobs被Buffers代替。同样的，在PouchDB中，NodeJS的Buffers被Blobs替代。</em></p>
+<h2 id="附件上传"><a href="#附件上传" class="headerlink" title="附件上传"></a>附件上传</h2><p>可以使用H5的<code>File</code>API上传附件，也可以使用<code>&lt;input type=&quot;file&quot;&gt;</code>进行附件上传，而且它们的元素已经是Blob。以下是一个简单的例子：</p>
+<pre><code>&lt;input type=&quot;file&quot;&gt;
+
+var input = document.querySelector(&apos;input&apos;);
+input.addEventListener(&apos;change&apos;, function () {
+  var file = input.files[0]; // file is a Blob
+
+  db.put({
+    _id: &apos;mydoc&apos;,
+    _attachments: {
+      filename: {
+        type: file.type,
+        data: file
+      }
+    }
+  }).catch(function (err) {
+    console.log(err);
+  });
+});
+</code></pre><h2 id="Base64-vs-Blobs-Buffers"><a href="#Base64-vs-Blobs-Buffers" class="headerlink" title="Base64 vs Blobs/Buffers"></a>Base64 vs Blobs/Buffers</h2><p>PouchDB将根据Base64格式的数据或者Blobs/Buffers数据选择最佳的存储结构。</p>
+<p>根据<a href="https://pouchdb.com/guides/attachments.html#base64-vs-blobs-buffers" target="_blank" rel="external">官方例子的代码</a>，我们可以在使用put()保存Blobs，也可以使用putAttachment()保存Base64。getAttachment()方法总是返回Blobs。在各个查询方法中，都可以传入选项<code>{attachments: true}</code>，返回Base64；传入参数<code>{binary: true}</code>返回二进制。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PouchDB/" rel="tag">#PouchDB</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/12/MOP方法合成/" rel="next" title="MOP方法合成">
+                <i class="fa fa-chevron-left"></i> MOP方法合成
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/14/从零开始nginx配置/" rel="prev" title="从零开始nginx配置">
+                从零开始nginx配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#快速入门"><span class="nav-number">1.</span> <span class="nav-text">快速入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装PouchDB与使用"><span class="nav-number">1.1.</span> <span class="nav-text">安装PouchDB与使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单操作"><span class="nav-number">1.2.</span> <span class="nav-text">简单操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新增与修改数据"><span class="nav-number">1.2.1.</span> <span class="nav-text">新增与修改数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据"><span class="nav-number">1.2.2.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询数据"><span class="nav-number">1.2.3.</span> <span class="nav-text">查询数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在浏览器中查看PouchDB"><span class="nav-number">1.2.4.</span> <span class="nav-text">在浏览器中查看PouchDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#debug模式"><span class="nav-number">1.2.5.</span> <span class="nav-text">debug模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除本地数据库"><span class="nav-number">1.2.6.</span> <span class="nav-text">删除本地数据库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#理解revisions-rev"><span class="nav-number">2.</span> <span class="nav-text">理解revisions(_rev)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Asynchronous-Code"><span class="nav-number">3.</span> <span class="nav-text">Asynchronous Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#批量操作"><span class="nav-number">4.</span> <span class="nav-text">批量操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用bulkDocs-一次性操作多个doc"><span class="nav-number">4.1.</span> <span class="nav-text">使用bulkDocs()一次性操作多个doc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用allDocs-一次性读取多个doc"><span class="nav-number">4.2.</span> <span class="nav-text">使用allDocs()一次性读取多个doc</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附件操作"><span class="nav-number">5.</span> <span class="nav-text">附件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何存储附件"><span class="nav-number">5.1.</span> <span class="nav-text">如何存储附件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片附件"><span class="nav-number">5.2.</span> <span class="nav-text">图片附件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接存储二进制数据"><span class="nav-number">5.3.</span> <span class="nav-text">直接存储二进制数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附件上传"><span class="nav-number">5.4.</span> <span class="nav-text">附件上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Base64-vs-Blobs-Buffers"><span class="nav-number">5.5.</span> <span class="nav-text">Base64 vs Blobs/Buffers</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

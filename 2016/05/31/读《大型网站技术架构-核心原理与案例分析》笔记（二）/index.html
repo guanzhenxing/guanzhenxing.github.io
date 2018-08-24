@@ -1,0 +1,1076 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="架构," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="瞬时响应：网站的高性能架构网站的性能是客观的指标，可以具体到响应时间、吞吐量等技术指标；也可以是主观感受。 性能测试不同视角下的网站性能1. 用户视角的网站性能    网站性能就是用户在浏览器上直观感受到的网站响应速度是快还是慢。    主要优化手段：前端架构优化技术。如：优化HTML、浏览器缓存、使用CDN、反向代理技术、浏览器的并发和异步等等。 2. 开发人员视角的网站性能    开发人员关注">
+<meta name="keywords" content="架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《大型网站技术架构-核心原理与案例分析》笔记（二）">
+<meta property="og:url" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="瞬时响应：网站的高性能架构网站的性能是客观的指标，可以具体到响应时间、吞吐量等技术指标；也可以是主观感受。 性能测试不同视角下的网站性能1. 用户视角的网站性能    网站性能就是用户在浏览器上直观感受到的网站响应速度是快还是慢。    主要优化手段：前端架构优化技术。如：优化HTML、浏览器缓存、使用CDN、反向代理技术、浏览器的并发和异步等等。 2. 开发人员视角的网站性能    开发人员关注">
+<meta property="og:image" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/性能测试压力曲线.jpg">
+<meta property="og:image" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/并发用户访问响应时间曲线.jpg">
+<meta property="og:image" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/分层后按模块分隔的网站架构模型.jpg">
+<meta property="og:image" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/CAP原理.jpg">
+<meta property="og:image" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/发布流程.jpg">
+<meta property="og:image" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/不同功能进行物理分离实现伸缩.jpg">
+<meta property="og:image" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/IMG_20160614_233511.jpg">
+<meta property="og:image" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/MySQL集群伸缩性方案.jpg">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.947Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读《大型网站技术架构-核心原理与案例分析》笔记（二）">
+<meta name="twitter:description" content="瞬时响应：网站的高性能架构网站的性能是客观的指标，可以具体到响应时间、吞吐量等技术指标；也可以是主观感受。 性能测试不同视角下的网站性能1. 用户视角的网站性能    网站性能就是用户在浏览器上直观感受到的网站响应速度是快还是慢。    主要优化手段：前端架构优化技术。如：优化HTML、浏览器缓存、使用CDN、反向代理技术、浏览器的并发和异步等等。 2. 开发人员视角的网站性能    开发人员关注">
+<meta name="twitter:image" content="http://webfuse.cn/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/性能测试压力曲线.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 读《大型网站技术架构-核心原理与案例分析》笔记（二） | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                读《大型网站技术架构-核心原理与案例分析》笔记（二）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-31T23:47:14+08:00" content="2016-05-31">
+              2016-05-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/" class="leancloud_visitors" data-flag-title="读《大型网站技术架构-核心原理与案例分析》笔记（二）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="瞬时响应：网站的高性能架构"><a href="#瞬时响应：网站的高性能架构" class="headerlink" title="瞬时响应：网站的高性能架构"></a>瞬时响应：网站的高性能架构</h1><p>网站的性能是客观的指标，可以具体到响应时间、吞吐量等技术指标；也可以是主观感受。</p>
+<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><h3 id="不同视角下的网站性能"><a href="#不同视角下的网站性能" class="headerlink" title="不同视角下的网站性能"></a>不同视角下的网站性能</h3><p><strong>1. 用户视角的网站性能<br></strong><br>    网站性能就是用户在浏览器上直观感受到的网站响应速度是快还是慢。<br><br>    主要优化手段：前端架构优化技术。如：优化HTML、浏览器缓存、使用CDN、反向代理技术、浏览器的并发和异步等等。</p>
+<p><strong>2. 开发人员视角的网站性能<br></strong><br>    开发人员关注的网站性能就是程序本身及其子系统的性能，包括响应延迟、系统吞吐量、并发处理能力、系统稳定性等技术指标。<br><br>    主要优化手段：缓存加速数据读取，使用集群提高吞吐能力，使用异步消息加快请求响应及实现削峰，使用代码优化手段改善程序性能。</p>
+<p><strong>3. 运维人员视角的网站性能</strong><br><br>    运维人员更关注基础设施性能和资源利用率。如：网络运营商的带宽能力、服务器硬件配置、数据中心网络架构、服务器和网络带宽的资源利用率等。<br><br>    主要优化手段：建设优化骨干网络、使用性价比定制服务器、利用虚拟化技术优化资源利用等。</p>
+<h3 id="性能测试指标"><a href="#性能测试指标" class="headerlink" title="性能测试指标"></a>性能测试指标</h3><p>网站性能测试的主要指标有响应时间、并发数、吞吐量、性能计数器等。</p>
+<h4 id="响应时间"><a href="#响应时间" class="headerlink" title="响应时间"></a>响应时间</h4><p>指应用执行一个操作需要的时间，包括从发出请求开始到收到最后响应数据所需要的时间。响应时间是系统最重要的性能指标，直接反映了系统的“快慢”。</p>
+<p>一些性能指标可以参考：<a href="http://people.eecs.berkeley.edu/~rcs/research/interactive_latency.html" target="_blank" rel="external">Latency Numbers Every Programmer Should Know</a></p>
+<h4 id="并发数"><a href="#并发数" class="headerlink" title="并发数"></a>并发数</h4><p>指系统能够同时处理请求的数目，这个数字也反映了系统的负载特性。对于网站而言，并发数即网站并发用户数，指同时提交请求的用户数目。</p>
+<p>网站系统用户数 &gt;&gt; 网站在线用户数 &gt;&gt; 网站并发用户数</p>
+<p>测试程序通过多线程模式并发用户的办法来测试系统的并发处理能力，为了真实模拟用户行为，测试程序并不是启动多线程然后不停地发送请求，而是在两次请求之间加入一个随机等待时间，这个时间被称为<strong>思考时间</strong>。</p>
+<h4 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a>吞吐量</h4><p>指单位时间内系统处理的请求数量，体现系统的整理处理能力。对于网站来说，可以用“请求数/秒”、“页面数/秒”、“访问人数/天”、“处理的业务数/小时”等来衡量。</p>
+<ul>
+<li>TPS：每秒处理的事务数</li>
+<li>HPS：每秒处理HTTP请求数</li>
+<li>QPS：每秒处理查询数</li>
+</ul>
+<p><em>ps:一个很生动的高速公路上汽车、收费站的例子说明了并发数、吞吐量和响应时间的关系。</em></p>
+<h4 id="性能计数器"><a href="#性能计数器" class="headerlink" title="性能计数器"></a>性能计数器</h4><p>它是描述服务器或操作系统性能的一些数据指标。</p>
+<p>System Load：即系统负载，指当前正在被CPU执行和等待被CPU执行的进程数目总和，是反映系统忙闲程度的重要指标。</p>
+<h3 id="性能测试-1"><a href="#性能测试-1" class="headerlink" title="性能测试"></a>性能测试</h3><p>性能测试是一个总称，具体可细分为<strong>性能测试、负载测试、压力测试、稳定性测试</strong>。</p>
+<p>性能测试时一个不断对系统增加访问压力，以获得系统性能指标、最大负载能力、最大压力承受能力的过程。增加访问压力指，在系统测试环境中，就是不断增加测试程序的并发请求数。</p>
+<img src="/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/性能测试压力曲线.jpg" alt="性能测试压力曲线.jpg" title="">
+<p>如上图：横坐标表示消耗的系统资源，纵坐标表示系统处理能力（吞吐量）。</p>
+<ul>
+<li><p>在开始阶段，随着并发请求数目的增加，系统使用较少的资源就达到较好的处理能力（a～b段），这一段是<strong>网站的日常运行区间</strong>，网站的绝大部分访问负载压力都集中在这一段区间，被称作<strong>性能测试</strong>，<em>测试目标是评估系统性能是否符合需求及设计目标</em>；</p>
+</li>
+<li><p>随着压力的持续增加，系统处理能力增加变缓，直到达到一个最大值（c点），这是<strong>系统的最大负载点</strong>，这一段被称作<strong>负载测试*</strong>。测试目标是评估当系统因为突发事件超出日常访问压力的情况下，保证系统正常运行情况下能够承受的最大访问负载压力；*</p>
+</li>
+<li><p>超过这个点后，再增加压力，系统的处理能力反而下降，而资源消耗却更多，直到资源消耗达到极限（d点），这个点可以看作是<strong>系统的崩溃点</strong>，超过这个点继续加大并发请求数目，系统不能再处理任何请求，这一段被称作<strong>压力测试**</strong>，<em>测试目标是评估可能导致系统崩溃的最大访问负载压力。</em></p>
+</li>
+</ul>
+<p>性能测试反应的是系统在实际生产环境中使用时，随着用户并发访问数量的增加，系统的处理能力。与性能曲线相对应的是用户访问的等待时间（系统响应时间）</p>
+<img src="/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/并发用户访问响应时间曲线.jpg" alt="并发用户访问响应时间曲线.jpg" title="">
+<h3 id="性能优化策略"><a href="#性能优化策略" class="headerlink" title="性能优化策略"></a>性能优化策略</h3><p><strong>性能分析：</strong>检查请求处理的各个环节的日志，分析哪个环节响应时间不合理、超过预期；然后检查监控数据，分析影响性能的主要因素是内存、磁盘、网络、还是CPU，是代码问题还是架构设计不合理，或者系统资源确实不足。</p>
+<p><strong>性能优化：</strong>根据网站分层架构，可分为Web前端性能优化、应用服务器性能优化、存储服务器性能优化3大类。</p>
+<h2 id="Web前端性能优化"><a href="#Web前端性能优化" class="headerlink" title="Web前端性能优化"></a>Web前端性能优化</h2><p>主要手段有：优化浏览器访问、使用CDN加速、使用反向代理。</p>
+<h3 id="优化浏览器访问"><a href="#优化浏览器访问" class="headerlink" title="优化浏览器访问"></a>优化浏览器访问</h3><ul>
+<li>减少HTTP请求。主要手段，合并CSS、合并JavaScript、合并图片、尽可能合并数据请求。</li>
+<li>使用浏览器缓存。通过设置HTTP头中Cache-Control和Expires的属性。</li>
+<li>启用压缩。压缩HTML、CSS、JavaScript。</li>
+<li>CSS放在页面最上面、JavaScript放在页面最下面。</li>
+<li>减少Cookie传输。</li>
+</ul>
+<h3 id="使用CDN加速"><a href="#使用CDN加速" class="headerlink" title="使用CDN加速"></a>使用CDN加速</h3><p>CDN能够缓存对的一般是静态资源，如图片、文件、CSS、Script脚本、静态网页等。</p>
+<h3 id="使用反向代理"><a href="#使用反向代理" class="headerlink" title="使用反向代理"></a>使用反向代理</h3><ul>
+<li>具有保护网络安全的作用。</li>
+<li>可以配置缓存功能加速Web请求。</li>
+<li>实现负载均衡的功能。</li>
+</ul>
+<h2 id="应用服务器性能优化"><a href="#应用服务器性能优化" class="headerlink" title="应用服务器性能优化"></a>应用服务器性能优化</h2><p>主要优化手段：缓存、集群、异步等。</p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p><strong>优先考虑使用缓存优化性能</strong></p>
+<p>缓存主要是为了存放那些读写比很高、很少变化的数据。</p>
+<p>缓存使用中遇到的问题：</p>
+<ul>
+<li>对频繁修改的数据使用缓存。（这个是极不合理的）</li>
+<li>没有热点的访问。（这是在浪费缓存资源）</li>
+<li>数据不一致与脏读。（这个要根据具体的业务分析）</li>
+<li>缓存雪崩。（缓存的可用性很重要，通过分布式缓存可以解决）</li>
+<li>缓存预热。（缓存系统启动的时候就把热点数据加载好）</li>
+<li>缓存穿透。（大量访问不存在数据，缓存中不会存在，访问数据库）</li>
+</ul>
+<p><strong>分布式缓存架构</strong></p>
+<ul>
+<li>以JBoss Cache为代表的需要更新同步的分布式缓存</li>
+<li>以Memcached为代表的不互相通信的分布式缓存</li>
+</ul>
+<h3 id="异步操作"><a href="#异步操作" class="headerlink" title="异步操作"></a>异步操作</h3><p>可以使用消息队列进行异步操作</p>
+<h3 id="使用集群"><a href="#使用集群" class="headerlink" title="使用集群"></a>使用集群</h3><p>使用负载均衡技术为一个应用构建一个由多台服务器组成的服务器集群。</p>
+<h3 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h3><p><strong>多线程</strong></p>
+<p>使用多线程的原因主要由两个：IO阻塞和多CPU。</p>
+<p>一台服务器启动多少线程合适呢？一般公式如下：</p>
+<pre><code>启动线程数 = [任务执行时间/(任务执行时间 - IO等待时间)] * CPU内核数
+</code></pre><p>最佳启动线程数和CPU内核数量成正比，和IO阻塞时间成反比。如果任务都是CPU计算型任务，那么多线程最多不超过CPU内核数；如果任务需要等待磁盘操作，网络响应，那么多启动线程有助于提高任务并发度，提高系统吞吐能力，改善系统性能。</p>
+<p><strong>资源复用</strong></p>
+<p>从编程角度，资源复用的方式主要有两种模式：<strong>单例</strong>和<strong>对象池</strong>。</p>
+<p><strong>数据结构</strong></p>
+<p><strong>垃圾回收</strong></p>
+<h2 id="存储服务器性能优化"><a href="#存储服务器性能优化" class="headerlink" title="存储服务器性能优化"></a>存储服务器性能优化</h2><ul>
+<li>使用固态硬盘</li>
+<li>关系型数据库主要使用B+树；NoSQL主要使用LSM树</li>
+<li>RAID（廉价磁盘冗余阵列）；HDFS（Hadoop分布式文件系统）</li>
+</ul>
+<h1 id="万无一失：网站的高可用架构"><a href="#万无一失：网站的高可用架构" class="headerlink" title="万无一失：网站的高可用架构"></a>万无一失：网站的高可用架构</h1><p>网站的可用性（Availability）描述网站可有效访问的特性。</p>
+<h2 id="网站的可用性的度量与考核"><a href="#网站的可用性的度量与考核" class="headerlink" title="网站的可用性的度量与考核"></a>网站的可用性的度量与考核</h2><h3 id="网站可用性度量"><a href="#网站可用性度量" class="headerlink" title="网站可用性度量"></a>网站可用性度量</h3><p>网站不可用也被称作网站故障，业界通常用多少个9来衡量网站的可用性。</p>
+<p>网站不可用时间（故障时间） = 故障修复时间点 - 故障发现（报告）时间点</p>
+<p>网站年度可用性指标 = （1 - 网站不可用时间/年度总时间） * 100%</p>
+<h3 id="网站可用性考核"><a href="#网站可用性考核" class="headerlink" title="网站可用性考核"></a>网站可用性考核</h3><p>可用性指标是网站架构设计的重要指标，对外是服务承若，对内是考核指标。可以用故障分对工程师进行考核。</p>
+<p>故障分是指对网站故障进行分类加权计算故障责任的方法。</p>
+<p>故障分 = 故障时间（分钟） * 故障权重。</p>
+<p>ps:不同的故障类别设置不同的权重值。</p>
+<h2 id="高可用的网站架构"><a href="#高可用的网站架构" class="headerlink" title="高可用的网站架构"></a>高可用的网站架构</h2><p>网站的高可用架构设计的主要目的就是保证服务器硬件故障时服务依然可用、数据依然保存并能够被访问。</p>
+<p>主要手段是数据和服务的冗余备份及失效转移。</p>
+<p>分层模：应用层、服务层、数据层。应用层主要负责具体业务逻辑处理；服务层负责提供可复用的服务；数据层负责数据的存储于访问。</p>
+<p>ps：个人理解。这里的分层和代码中的分层有相似的地方，但又有不同的地方。在代码中应用层（Controller）只是作为跳转，很少去处理业务逻辑。很高兴的是，本书提供了一张图说明了此处分层的意思：</p>
+<img src="/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/分层后按模块分隔的网站架构模型.jpg" alt="分层后按模块分隔的网站架构模型.jpg" title="">
+<h2 id="高可用的应用"><a href="#高可用的应用" class="headerlink" title="高可用的应用"></a>高可用的应用</h2><p>应用层主要处理网站应用的业务逻辑，因此有时也称为“<strong>业务逻辑层</strong>”，应用的一个显著特点是应用的无状态性。</p>
+<p>无状态的应用是指应用服务器不保存业务的上下文信息，而仅根据每次请求提交的数据进行相应的业务逻辑处理，每个服务实例（服务器）之间完全对等，请求提交到任意服务器，处理结构都是完全一样的。</p>
+<h3 id="通过负载均衡进行无状态服务的失效转移"><a href="#通过负载均衡进行无状态服务的失效转移" class="headerlink" title="通过负载均衡进行无状态服务的失效转移"></a>通过负载均衡进行无状态服务的失效转移</h3><h3 id="应用服务器集群的Session管理"><a href="#应用服务器集群的Session管理" class="headerlink" title="应用服务器集群的Session管理"></a>应用服务器集群的Session管理</h3><ul>
+<li>Session复制。在集群规模小的时候使用。</li>
+<li>Session绑定。将同一个IP源的请求，发给一台服务器。</li>
+<li>利用Cookie记录Session。</li>
+<li>Session服务器。</li>
+</ul>
+<h2 id="高可用的服务"><a href="#高可用的服务" class="headerlink" title="高可用的服务"></a>高可用的服务</h2><p>可复用的服务模块为业务产品提供基础公共服务，大型网站中这些服务通常都独立分布式部署，被具体应用远程调用。</p>
+<ul>
+<li>分级管理</li>
+<li>超时设置</li>
+<li>异步调用</li>
+<li>服务降级：拒绝服务和关闭服务</li>
+<li>幂等性设计</li>
+</ul>
+<h2 id="高可用的数据"><a href="#高可用的数据" class="headerlink" title="高可用的数据"></a>高可用的数据</h2><p>保证数据存储高可用的手段是数据备份和失效转移机制。</p>
+<h3 id="CAP原理"><a href="#CAP原理" class="headerlink" title="CAP原理"></a>CAP原理</h3><p>高可用的数据有如下几个层面的含义：</p>
+<ul>
+<li>数据持久性</li>
+<li>数据可访问性</li>
+<li>数据一致性</li>
+</ul>
+<p>CAP原理认为，一个提供数据服务的存储系统无法同时满足数据一致性（Consistency）、数据可用性（Availibility）、分区耐受性（Partition Tolerance，系统具有跨网络分区的伸缩性）这三个条件。</p>
+<img src="/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/CAP原理.jpg" alt="CAP原理.jpg" title="">
+<p>在大型网站中，通常会选择强化分布式存储系统的可用性（A）和伸缩性（P），而在某种程度上放弃一致性（C）。</p>
+<p>数据一致性分为：数据强一致性、数据用户一致、数据最终一致。</p>
+<h3 id="数据备份"><a href="#数据备份" class="headerlink" title="数据备份"></a>数据备份</h3><h4 id="冷备份"><a href="#冷备份" class="headerlink" title="冷备份"></a>冷备份</h4><h4 id="热备份"><a href="#热备份" class="headerlink" title="热备份"></a>热备份</h4><ul>
+<li><p>异步热备方式</p>
+<p>  应用程序将数据写入主存储服务器（Master），然后再通过异步现场将操作数据同步到从存储服务器（Slave）。通常使用读写分离的方法访问Slave和Master数据库，写操作只访问Master数据库，读操作只访问Slave数据库。</p>
+</li>
+<li><p>同步热备方式</p>
+<p>  应用程序同时将操作数据写入各个村粗服务器。没有主从之分。</p>
+</li>
+</ul>
+<h3 id="失效转移"><a href="#失效转移" class="headerlink" title="失效转移"></a>失效转移</h3><p>如果数据服务器集群中任何一台服务器宕机，那么应用程序针对这台服务器的所有读写操作都需要重新路由到其他服务器，保证数据访问不会失败，这个过程叫做<strong>失效转移</strong>。</p>
+<p>失效转移操作由三部分组成：</p>
+<ul>
+<li>失效确认：心跳检测和应用程序访问失败报告</li>
+<li>访问转移</li>
+<li>数据恢复</li>
+</ul>
+<h2 id="高可用网站的软件质量保证"><a href="#高可用网站的软件质量保证" class="headerlink" title="高可用网站的软件质量保证"></a>高可用网站的软件质量保证</h2><h3 id="网站发布"><a href="#网站发布" class="headerlink" title="网站发布"></a>网站发布</h3><img src="/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/发布流程.jpg" alt="发布流程.jpg" title="">
+<h3 id="自动化测试"><a href="#自动化测试" class="headerlink" title="自动化测试"></a>自动化测试</h3><h3 id="预发布验证"><a href="#预发布验证" class="headerlink" title="预发布验证"></a>预发布验证</h3><p>预发布服务器和生产服务器的唯一不同就是没有配置在负载均衡服务器上，外部用户不能访问。</p>
+<p>预处理服务器和线上正式服务器都部署在相同的环境下，可能使用的数据库也是相同的。</p>
+<p>ps：怎么处理数据问题？难道不是应该部署在不同的数据环境下么？</p>
+<h3 id="代码控制"><a href="#代码控制" class="headerlink" title="代码控制"></a>代码控制</h3><p>trunk分支可以用来发布预生产和生产</p>
+<p>dev分支可以用来发布测试和压测等。</p>
+<h3 id="自动化发布"><a href="#自动化发布" class="headerlink" title="自动化发布"></a>自动化发布</h3><h3 id="灰度发布"><a href="#灰度发布" class="headerlink" title="灰度发布"></a>灰度发布</h3><p>可立即回滚的发布。</p>
+<h2 id="网站运行监控"><a href="#网站运行监控" class="headerlink" title="网站运行监控"></a>网站运行监控</h2><p>不允许没有监控的系统上线。</p>
+<h3 id="监控数据采集"><a href="#监控数据采集" class="headerlink" title="监控数据采集"></a>监控数据采集</h3><h4 id="用户行为日志收集"><a href="#用户行为日志收集" class="headerlink" title="用户行为日志收集"></a>用户行为日志收集</h4><p>包括用户操作系统与浏览器版本信息、IP地址、页面访问路径、页面停留时间等</p>
+<ul>
+<li>服务器日志收集</li>
+<li>客户端浏览器日志收集</li>
+</ul>
+<h4 id="服务器性能监控"><a href="#服务器性能监控" class="headerlink" title="服务器性能监控"></a>服务器性能监控</h4><p>收集服务器性能指标，如系统Load、内存占用、磁盘IO、网络IO等。</p>
+<h4 id="运行数据报告"><a href="#运行数据报告" class="headerlink" title="运行数据报告"></a>运行数据报告</h4><p>如缓存命中率、平均响应延迟时间、待处理的任务数等</p>
+<h3 id="监控管理"><a href="#监控管理" class="headerlink" title="监控管理"></a>监控管理</h3><h4 id="系统报警"><a href="#系统报警" class="headerlink" title="系统报警"></a>系统报警</h4><h4 id="失效转移-1"><a href="#失效转移-1" class="headerlink" title="失效转移"></a>失效转移</h4><h4 id="自动优雅降级"><a href="#自动优雅降级" class="headerlink" title="自动优雅降级"></a>自动优雅降级</h4><h1 id="永无止境：网站的伸缩性架构"><a href="#永无止境：网站的伸缩性架构" class="headerlink" title="永无止境：网站的伸缩性架构"></a>永无止境：网站的伸缩性架构</h1><p>网站的伸缩性是指不需要改变网站的软硬件设计，仅仅通过改变部署的服务器数量就可以扩大或者缩小网站的服务处理能力。</p>
+<h2 id="网站架构的伸缩性设计"><a href="#网站架构的伸缩性设计" class="headerlink" title="网站架构的伸缩性设计"></a>网站架构的伸缩性设计</h2><p>网站架构的伸缩性设计可分为两类，一类是根据功能进行物理分离实现伸缩，一类是单一功能通过集群实现伸缩。前者是不同的服务器部署不同的服务，提供不同的功能；后者是集群内的多台服务器部署相同的服务，提供相同的功能。</p>
+<h3 id="不同功能进行物理分离实现伸缩"><a href="#不同功能进行物理分离实现伸缩" class="headerlink" title="不同功能进行物理分离实现伸缩"></a>不同功能进行物理分离实现伸缩</h3><ul>
+<li>纵向分离（分层后分离）：将业务处理流程上的不同部分分离部署，实现系统伸缩性。</li>
+<li>横向分离（业务分割后分离）：将不同的业务模块分离部署，实现系统伸缩性。</li>
+</ul>
+<img src="/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/不同功能进行物理分离实现伸缩.jpg" alt="不同功能进行物理分离实现伸缩.jpg" title="">
+<h3 id="单一功能通过集群规模实现伸缩"><a href="#单一功能通过集群规模实现伸缩" class="headerlink" title="单一功能通过集群规模实现伸缩"></a>单一功能通过集群规模实现伸缩</h3><p>集群伸缩性又可分为应用服务器集群伸缩性和数据库服务器集群伸缩性。这两种集群由于对数据状态管理的不同，技术实现也有非常大的区别。而数据服务器集群也可分为缓存服务器集群和存储数据服务器集群，这两种集群的伸缩性设计也不大相同。</p>
+<h2 id="应用服务器集群的伸缩性设计"><a href="#应用服务器集群的伸缩性设计" class="headerlink" title="应用服务器集群的伸缩性设计"></a>应用服务器集群的伸缩性设计</h2><p>负载均衡服务器：HTTP请求分发装置。</p>
+<h3 id="HTTP重定向负载均衡"><a href="#HTTP重定向负载均衡" class="headerlink" title="HTTP重定向负载均衡"></a>HTTP重定向负载均衡</h3><p>HTTP重定向服务器是一台普通的应用服务器，其唯一的功能就是根据用户的HTTP请求计算一台真实的Web服务器地址，并将该Web服务器地址写入HTTP重定向响应中（状态码302）返回给用户浏览器。</p>
+<ul>
+<li>优点：比较简单。</li>
+<li>缺点：浏览器需呀两次请求服务器才能完成一次访问，性能较差；重定向服务器可能成为集群的瓶颈；搜索引擎对302状态码不友好。</li>
+</ul>
+<h3 id="DNS域名解析负载均衡"><a href="#DNS域名解析负载均衡" class="headerlink" title="DNS域名解析负载均衡"></a>DNS域名解析负载均衡</h3><p>每次域名解析请求都会根据负载均衡算法计算一个不同的IP地址返回（DNS服务器中有对一个域名配置多个IP地址）。这样一个域名记录中配置的多个服务器就构成一个集群，并可以实现负载均衡。</p>
+<ul>
+<li>优点：将负载均衡的工作交给DNS，省去了网站管理维护负载均衡服务器的麻烦；DNS还支持基于地理位置的域名解析，改善性能。</li>
+<li>缺点：DNS的多级解析，可能会存在域名、IP缓存问题；DNS在供应商那边，无法做更多的改善和更强大的管理。</li>
+</ul>
+<h3 id="反向代理负载均衡"><a href="#反向代理负载均衡" class="headerlink" title="反向代理负载均衡"></a>反向代理负载均衡</h3><p>反向代理服务器可以同时提供负载均衡的功能。</p>
+<p>管理一组Web服务器，将请求根据负载均衡算法转发到不同Web服务器上。Web服务器处理完成的响应也需要通过代理服务器返回给用户。由于Web服务器不直接对外提供服务，因此Web服务器不需要使用外部IO地址，而反向代理服务器则需要配置双网卡和内部外部两套IP地址。</p>
+<ul>
+<li>优点：和反向代理服务器功能集成在一起，部署简单；</li>
+<li>缺点：反向代理服务器是所有请求和响应的中转站，其性能可能成为瓶颈。</li>
+</ul>
+<h3 id="IP负载均衡"><a href="#IP负载均衡" class="headerlink" title="IP负载均衡"></a>IP负载均衡</h3><p>关键在于真实物理Web服务器响应数据包如何返回给负载均衡服务器。一种方案是负载均衡服务器在修改目的IP地址的同时修改元地址，将数据包源地址设为自身IP，即源地址转换（SNAT），这样Web服务器的响应会再回到负载均衡服务器；另一种方案是将负载均衡服务器作为真实物理服务器集群的网关服务器，这样所有的响应数据都会到达负载均衡服务器。</p>
+<h3 id="数据链路层负载均衡"><a href="#数据链路层负载均衡" class="headerlink" title="数据链路层负载均衡"></a>数据链路层负载均衡</h3><p>数据链路层负载均衡是指在通信协议的数据链路层修改mac地址进行负载均衡。</p>
+<p>这是目前大型网站使用最广的一种负载均衡手段。在Linux平台上最好的负载均衡开源产品是LVS（Linux Virtual Server）。</p>
+<h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><p>负载均衡服务器的实现可以分为两个部分：</p>
+<p>1、根据负载均衡算法和Web服务器列表计算得到集群中一台Web服务器的地址。<br><br>2、将请求数据发送到该地址对应的Web服务器上。</p>
+<p>负载均衡算法：</p>
+<ul>
+<li><p>轮询（Round Robin，RR）<br><br>所有请求被依次分发到每台应用服务器上，即每台服务器需要处理的请求数目都相同，适合于所有服务器硬件都相同的场景。</p>
+</li>
+<li><p>加权轮询（Weighted Round Robin,WRR）<br><br>根据应用服务器硬件性能的情况，在轮询的基础上，按照配置的权重将请求分发到每个服务器，高性能的服务器能分配更多请求。</p>
+</li>
+<li><p>随机（Random）<br><br>请求被随机分配到各个应用服务器。因为随机算法本身很均衡，在服务器性能不同的情况下也可以加权，所以这种方案简单实用。</p>
+</li>
+<li><p>最少连接（Least Connections）<br><br>记录每个应用服务器正在处理的连接数（请求数），将新到的请求分发到最少连接的服务器上。这是最符合负载均衡定义的算法。</p>
+</li>
+<li><p>源地址散列（Source Hashing）<br><br>根据请求来源的IP地址进行Hash计算，得到应用服务器，这样来自同一个IP地址的请求总在同一个服务器上处理，该请求的上下文信息可以存储在这台服务器上，在一个会话周期内重复使用，从而实现会话黏滞。</p>
+</li>
+</ul>
+<h2 id="分布式缓存服务器集群的伸缩性设计"><a href="#分布式缓存服务器集群的伸缩性设计" class="headerlink" title="分布式缓存服务器集群的伸缩性设计"></a>分布式缓存服务器集群的伸缩性设计</h2><p>分布式缓存服务器集群中不同服务器中缓存的数据各不相同，缓存访问请求不可以在缓存服务器集群中的任意一台处理，必须先找到缓存有需要数据的服务器，然后才能访问。</p>
+<p>新加入缓存服务器后应使整个缓存服务器集群中已经缓存的数据尽可能还被访问到，这是分布式缓存集群伸缩性设计的最主要目标。</p>
+<h3 id="Memcached分布式缓存集群的访问模型"><a href="#Memcached分布式缓存集群的访问模型" class="headerlink" title="Memcached分布式缓存集群的访问模型"></a>Memcached分布式缓存集群的访问模型</h3><img src="/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/IMG_20160614_233511.jpg" alt="IMG_20160614_233511.jpg" title="">
+<p>其中路由算法负责根据应用程序输入的缓存数据KEY计算得到应该讲数据写入到Memcached的哪台服务器（写缓存）或应该从哪台服务器读取数据（读缓存）。</p>
+<h3 id="Memcached分布式缓存集群的伸缩性挑战"><a href="#Memcached分布式缓存集群的伸缩性挑战" class="headerlink" title="Memcached分布式缓存集群的伸缩性挑战"></a>Memcached分布式缓存集群的伸缩性挑战</h3><p>在缓存服务器扩容的时候，缓存不能被命中的问题是个很棘手的挑战。</p>
+<p>一种办法是在网站访问量最少的时候扩容缓存服务器集群，然后模拟请求的方法逐渐预热缓存。</p>
+<p>另一种方法是一致性Hash算法。</p>
+<h3 id="分布式缓存的一致性Hash算法"><a href="#分布式缓存的一致性Hash算法" class="headerlink" title="分布式缓存的一致性Hash算法"></a>分布式缓存的一致性Hash算法</h3><p>一次性Hash算法通过一个叫作一致性Hash环的数据结构实现KEY到缓存服务器的Hash映射。</p>
+<h2 id="数据存储服务器集群的伸缩性设计"><a href="#数据存储服务器集群的伸缩性设计" class="headerlink" title="数据存储服务器集群的伸缩性设计"></a>数据存储服务器集群的伸缩性设计</h2><p>数据存储服务器集群的伸缩性对数据的持久性和可用性提出了更高的要求。</p>
+<h3 id="关系数据库集群的伸缩性设计"><a href="#关系数据库集群的伸缩性设计" class="headerlink" title="关系数据库集群的伸缩性设计"></a>关系数据库集群的伸缩性设计</h3><img src="/2016/05/31/读《大型网站技术架构-核心原理与案例分析》笔记（二）/MySQL集群伸缩性方案.jpg" alt="MySQL集群伸缩性方案.jpg" title="">
+<p>如上图，数据写操作都在主服务器上，由主服务器将数据同步到集群中其他从服务器，数据读操作以及数据分析等离线操作在从服务器上进行。</p>
+<p>同时我们也可以根据业务进行分库，比如将数据量很大的库拆分成多个库，分别存储。</p>
+<p>支持数据分片的分布式关系型数据库解决方案产品有Amoeba和Cobar。</p>
+<p>由于各类分布式关系型数据库解决方案都是很简陋，限制了关系型数据库的一些功能（比如事务）。所以，我们必须在业务上回避分布式关系型数据库的各种特点：避免事务或利用事务补偿机制代替数据库事务；分解数据访问逻辑避免JOIN操作等。</p>
+<h3 id="NoSQL数据库集群的伸缩性设计"><a href="#NoSQL数据库集群的伸缩性设计" class="headerlink" title="NoSQL数据库集群的伸缩性设计"></a>NoSQL数据库集群的伸缩性设计</h3><p>NoSQL数据库产品都放弃了关系型数据库的两大重要基础：以关系代数为基础的结构化查询语句（SQL）和事务一致性保证（ACID）。而强化了高可用性和可伸缩性。</p>
+<h1 id="随需应变：网站的可扩展架构"><a href="#随需应变：网站的可扩展架构" class="headerlink" title="随需应变：网站的可扩展架构"></a>随需应变：网站的可扩展架构</h1><p>扩展性（Extensibility）:对现有系统影响最小的情况下，系统功能可持续扩展或提升的能力。表现在系统基础设施稳定不需要经常变更，应用之间较少依赖和耦合，对需求变更可以敏捷响应。</p>
+<p>伸缩性（Scalability）：指系统能够通过增加（减少）自身资源规模的方式增强（减少）自己计算处理事务的能力。</p>
+<h2 id="构建可扩展的网站架构"><a href="#构建可扩展的网站架构" class="headerlink" title="构建可扩展的网站架构"></a>构建可扩展的网站架构</h2><p>设计网站可扩展架构的核心思想是模块化，并在此基础上，降低模块间的耦合性，提高模块的复用性。</p>
+<h2 id="利用分布式消息队列降低系统耦合性"><a href="#利用分布式消息队列降低系统耦合性" class="headerlink" title="利用分布式消息队列降低系统耦合性"></a>利用分布式消息队列降低系统耦合性</h2><p>如果模块之间不存在直接调用，那么新模块或者修改模块就对其他模块影响最小，这样系统的可扩展性无疑是更好一些的。</p>
+<h3 id="事件驱动架构"><a href="#事件驱动架构" class="headerlink" title="事件驱动架构"></a>事件驱动架构</h3><p>事件驱动架构（Event Driven Architecture）：通过在低耦合的模块之间传输事件消息，以保持模块的松散耦合，并借助事件消息的通信完成模块间合作，典型的EDA架构就是操作系统中常见的生产者消费者模式。具体的实现如：分布式消息队列等。</p>
+<h3 id="分布式消息队列"><a href="#分布式消息队列" class="headerlink" title="分布式消息队列"></a>分布式消息队列</h3><p>分布式消息队列可以看做是将先进先出的数据结构部署到独立的服务器上，应用程序可以通过远程访问接口使用分布式消息队列，进行消息存取操作，进而实现分布式的异步调用。</p>
+<p>消息生产者应用程序通过远程访问接口将消息推送给消息队列服务器，消息队列服务器将消息写入本地内存队列后立即返回成功响应给消息生产者。消息队列服务器根据消息订阅列表查找订阅消息的消息消费者应用程序，将消息队列中的消息按照先进先出的原则将消息通过远程通信接口发送给消息消费者程序。</p>
+<h2 id="利用分布式服务打造可复用的业务平台"><a href="#利用分布式服务打造可复用的业务平台" class="headerlink" title="利用分布式服务打造可复用的业务平台"></a>利用分布式服务打造可复用的业务平台</h2><p>使用分布式服务是减低系统耦合性的另一个重要手段。</p>
+<p>解决巨无霸系统的方案就是拆分。将模块独立部署，降低系统耦合性。拆分可分为纵向拆分和横向拆分两种。</p>
+<p>纵向拆分：将一个大应用拆分为多个小应用。如果新增业务较为独立，那么就直接将其设计部署为一个独立的Web应用系统。</p>
+<p>横向拆分：将复用的业务拆分出来，独立部署为分布式服务，新增业务只需要调用这些分布式服务，不需要依赖具体的模块代码，即可快速搭建一个应用系统，而模块内业务逻辑变化的时候，只要接口保持一致就不会影响业务程序和其他模块。</p>
+<p>纵向拆分相对比较简单，通过梳理业务，将较少相关的业务剥离，使其成为独立的Web应用。而对横向拆分，不但需要识别可复用的业务，设计服务接口，规范服务依赖关系，还需要完善的分布式服务管理框架。</p>
+<p><em>ps:横向拆分和现在流行的微服务架构很类似。</em></p>
+<h3 id="WebServer与企业级分布式服务"><a href="#WebServer与企业级分布式服务" class="headerlink" title="WebServer与企业级分布式服务"></a>WebServer与企业级分布式服务</h3><p>服务提供者通过WSDL（Web Services Description language，Web服务描述语言）向注册中心（Service Broker）描述自身提供的服务接口属性，注册中心使用UDDI（Universal Description,Discovery,and Integration，统一描述、发现和集成）发布服务提供者提供的服务，服务请求者从注册中心检索到服务信息后，通过SOAP（Simple Object Access Protocol，简单对象访问协议）和服务提供者通信，使用相关服务。</p>
+<h3 id="大型网站分布式服务的需求与特点"><a href="#大型网站分布式服务的需求与特点" class="headerlink" title="大型网站分布式服务的需求与特点"></a>大型网站分布式服务的需求与特点</h3><ul>
+<li>负载均衡</li>
+<li>失效转移</li>
+<li>高效的远程通信</li>
+<li>整合异构系统</li>
+<li>对应用最少侵入</li>
+<li>版本管理</li>
+<li>实时监控</li>
+</ul>
+<h3 id="分布式服务框架设计"><a href="#分布式服务框架设计" class="headerlink" title="分布式服务框架设计"></a>分布式服务框架设计</h3><p>可以参见Facebook的Thrift、淘宝的Dubbo等</p>
+<h2 id="可扩展的数据结构"><a href="#可扩展的数据结构" class="headerlink" title="可扩展的数据结构"></a>可扩展的数据结构</h2><p>可以使用NoSQL，做到可扩展数据结构设计。</p>
+<h2 id="利用开放平台建设网站生态圈"><a href="#利用开放平台建设网站生态圈" class="headerlink" title="利用开放平台建设网站生态圈"></a>利用开放平台建设网站生态圈</h2><p>开放平台是网站内部和外部交互的接口，外部需要面对众多的第三方开发者，内部需要面对网站内诸多的业务服务。</p>
+<ul>
+<li>API接口</li>
+<li>协议转换</li>
+<li>安全</li>
+<li>审计</li>
+<li>路由</li>
+<li>流程</li>
+</ul>
+<h1 id="固若金汤：网站的安全架构"><a href="#固若金汤：网站的安全架构" class="headerlink" title="固若金汤：网站的安全架构"></a>固若金汤：网站的安全架构</h1><h2 id="网站应用攻击与防御"><a href="#网站应用攻击与防御" class="headerlink" title="网站应用攻击与防御"></a>网站应用攻击与防御</h2><p>常见的攻击有XSS攻击、SQL注入攻击、CSRF攻击、Session劫持等手段。</p>
+<h3 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h3><p>XSS攻击即跨站点脚本攻击（Cross Site Script），指黑客通过篡改网页，注入恶意HTML脚本，在用户浏览网页时，控制用户浏览器进行恶意操作的一种攻击方式。</p>
+<p>常见的XSS攻击类型：</p>
+<ul>
+<li>反射型，攻击者诱使用户点击一个嵌入恶意脚本的链接，达到攻击的目的。</li>
+<li>持久型，黑客提交含有恶意脚本的请求，保存在被攻击的Web站点的数据库中，用户浏览网页时，恶意脚本被包含在正常页面中，达到攻击的目的。</li>
+</ul>
+<p>防范手段：</p>
+<ul>
+<li>过滤，转换输入</li>
+<li>HttpOnly</li>
+</ul>
+<h3 id="注入攻击"><a href="#注入攻击" class="headerlink" title="注入攻击"></a>注入攻击</h3><ul>
+<li>SQL注入</li>
+<li>OS注入</li>
+</ul>
+<h3 id="CSRF攻击"><a href="#CSRF攻击" class="headerlink" title="CSRF攻击"></a>CSRF攻击</h3><p>CSRF(Cross Site Request Forgery，跨站点请求伪造)，攻击者通过跨站请求，以合法用户的身份进行非法操作。CSRF的主要手段是利用跨站请求，在用户不知情的情况下，以用户的身份伪造请求。其核心是利用了浏览器Cookie或服务器Session策略，盗取用户身份。</p>
+<h3 id="其他攻击和漏洞"><a href="#其他攻击和漏洞" class="headerlink" title="其他攻击和漏洞"></a>其他攻击和漏洞</h3><ul>
+<li>Error Code</li>
+<li>HTML注释</li>
+<li>文件上传</li>
+<li>路径遍历</li>
+</ul>
+<h3 id="Web应用防火墙"><a href="#Web应用防火墙" class="headerlink" title="Web应用防火墙"></a>Web应用防火墙</h3><p>ModSecurity是一个开源的Web应用防火墙，探测攻击并保护Web应用程序，既可以嵌入到Web应用服务器中，也可以作为一个独立的应用程序启动。</p>
+<h3 id="网站安全漏洞扫描"><a href="#网站安全漏洞扫描" class="headerlink" title="网站安全漏洞扫描"></a>网站安全漏洞扫描</h3><h2 id="信息加密技术及密钥安全管理"><a href="#信息加密技术及密钥安全管理" class="headerlink" title="信息加密技术及密钥安全管理"></a>信息加密技术及密钥安全管理</h2><p>信息加密技术可分为三种：单项散列加密、对称加密和非对称加密。</p>
+<h3 id="单项散列加密"><a href="#单项散列加密" class="headerlink" title="单项散列加密"></a>单项散列加密</h3><p>如：MD5、SHA等</p>
+<h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>如：DES算法、RC算法等</p>
+<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>如：RSA算法等</p>
+<h3 id="密钥安全管理"><a href="#密钥安全管理" class="headerlink" title="密钥安全管理"></a>密钥安全管理</h3><ul>
+<li>将密钥和算法放在一台单独的服务器上，其他系统通过调用该系统的服务进行加解密。</li>
+<li>加密算法放在应用系统中，密钥则放在独立服务器上。</li>
+</ul>
+<h2 id="信息过滤与反垃圾"><a href="#信息过滤与反垃圾" class="headerlink" title="信息过滤与反垃圾"></a>信息过滤与反垃圾</h2><p>常见的信息过滤与反垃圾手段有以下几种。</p>
+<h3 id="文本匹配"><a href="#文本匹配" class="headerlink" title="文本匹配"></a>文本匹配</h3><p>文本匹配主要解决敏感词过滤的问题。</p>
+<h3 id="分类算法"><a href="#分类算法" class="headerlink" title="分类算法"></a>分类算法</h3><p>比较简单实用的分类算法有贝叶斯分类算法。</p>
+<h3 id="黑名单"><a href="#黑名单" class="headerlink" title="黑名单"></a>黑名单</h3><h2 id="电子商务风险控制"><a href="#电子商务风险控制" class="headerlink" title="电子商务风险控制"></a>电子商务风险控制</h2><h3 id="风险"><a href="#风险" class="headerlink" title="风险"></a>风险</h3><h3 id="风控"><a href="#风控" class="headerlink" title="风控"></a>风控</h3><h4 id="规则引擎"><a href="#规则引擎" class="headerlink" title="规则引擎"></a>规则引擎</h4><h4 id="统计模型"><a href="#统计模型" class="headerlink" title="统计模型"></a>统计模型</h4>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/架构/" rel="tag">#架构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/31/也谈《致加西亚的信》/" rel="next" title="也谈《致加西亚的信》">
+                <i class="fa fa-chevron-left"></i> 也谈《致加西亚的信》
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/03/GraphQL初体验/" rel="prev" title="GraphQL初体验">
+                GraphQL初体验 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#瞬时响应：网站的高性能架构"><span class="nav-number">1.</span> <span class="nav-text">瞬时响应：网站的高性能架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">1.1.</span> <span class="nav-text">性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不同视角下的网站性能"><span class="nav-number">1.1.1.</span> <span class="nav-text">不同视角下的网站性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能测试指标"><span class="nav-number">1.1.2.</span> <span class="nav-text">性能测试指标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#响应时间"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">响应时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并发数"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">并发数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#吞吐量"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">吞吐量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能计数器"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">性能计数器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能测试-1"><span class="nav-number">1.1.3.</span> <span class="nav-text">性能测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能优化策略"><span class="nav-number">1.1.4.</span> <span class="nav-text">性能优化策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web前端性能优化"><span class="nav-number">1.2.</span> <span class="nav-text">Web前端性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优化浏览器访问"><span class="nav-number">1.2.1.</span> <span class="nav-text">优化浏览器访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用CDN加速"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用CDN加速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用反向代理"><span class="nav-number">1.2.3.</span> <span class="nav-text">使用反向代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用服务器性能优化"><span class="nav-number">1.3.</span> <span class="nav-text">应用服务器性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">1.3.1.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步操作"><span class="nav-number">1.3.2.</span> <span class="nav-text">异步操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用集群"><span class="nav-number">1.3.3.</span> <span class="nav-text">使用集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码优化"><span class="nav-number">1.3.4.</span> <span class="nav-text">代码优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储服务器性能优化"><span class="nav-number">1.4.</span> <span class="nav-text">存储服务器性能优化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#万无一失：网站的高可用架构"><span class="nav-number">2.</span> <span class="nav-text">万无一失：网站的高可用架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网站的可用性的度量与考核"><span class="nav-number">2.1.</span> <span class="nav-text">网站的可用性的度量与考核</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网站可用性度量"><span class="nav-number">2.1.1.</span> <span class="nav-text">网站可用性度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网站可用性考核"><span class="nav-number">2.1.2.</span> <span class="nav-text">网站可用性考核</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用的网站架构"><span class="nav-number">2.2.</span> <span class="nav-text">高可用的网站架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用的应用"><span class="nav-number">2.3.</span> <span class="nav-text">高可用的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过负载均衡进行无状态服务的失效转移"><span class="nav-number">2.3.1.</span> <span class="nav-text">通过负载均衡进行无状态服务的失效转移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用服务器集群的Session管理"><span class="nav-number">2.3.2.</span> <span class="nav-text">应用服务器集群的Session管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用的服务"><span class="nav-number">2.4.</span> <span class="nav-text">高可用的服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用的数据"><span class="nav-number">2.5.</span> <span class="nav-text">高可用的数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP原理"><span class="nav-number">2.5.1.</span> <span class="nav-text">CAP原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据备份"><span class="nav-number">2.5.2.</span> <span class="nav-text">数据备份</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#冷备份"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">冷备份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#热备份"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">热备份</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#失效转移"><span class="nav-number">2.5.3.</span> <span class="nav-text">失效转移</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高可用网站的软件质量保证"><span class="nav-number">2.6.</span> <span class="nav-text">高可用网站的软件质量保证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网站发布"><span class="nav-number">2.6.1.</span> <span class="nav-text">网站发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动化测试"><span class="nav-number">2.6.2.</span> <span class="nav-text">自动化测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预发布验证"><span class="nav-number">2.6.3.</span> <span class="nav-text">预发布验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码控制"><span class="nav-number">2.6.4.</span> <span class="nav-text">代码控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动化发布"><span class="nav-number">2.6.5.</span> <span class="nav-text">自动化发布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#灰度发布"><span class="nav-number">2.6.6.</span> <span class="nav-text">灰度发布</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网站运行监控"><span class="nav-number">2.7.</span> <span class="nav-text">网站运行监控</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#监控数据采集"><span class="nav-number">2.7.1.</span> <span class="nav-text">监控数据采集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用户行为日志收集"><span class="nav-number">2.7.1.1.</span> <span class="nav-text">用户行为日志收集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器性能监控"><span class="nav-number">2.7.1.2.</span> <span class="nav-text">服务器性能监控</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运行数据报告"><span class="nav-number">2.7.1.3.</span> <span class="nav-text">运行数据报告</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监控管理"><span class="nav-number">2.7.2.</span> <span class="nav-text">监控管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统报警"><span class="nav-number">2.7.2.1.</span> <span class="nav-text">系统报警</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#失效转移-1"><span class="nav-number">2.7.2.2.</span> <span class="nav-text">失效转移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动优雅降级"><span class="nav-number">2.7.2.3.</span> <span class="nav-text">自动优雅降级</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#永无止境：网站的伸缩性架构"><span class="nav-number">3.</span> <span class="nav-text">永无止境：网站的伸缩性架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网站架构的伸缩性设计"><span class="nav-number">3.1.</span> <span class="nav-text">网站架构的伸缩性设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不同功能进行物理分离实现伸缩"><span class="nav-number">3.1.1.</span> <span class="nav-text">不同功能进行物理分离实现伸缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单一功能通过集群规模实现伸缩"><span class="nav-number">3.1.2.</span> <span class="nav-text">单一功能通过集群规模实现伸缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用服务器集群的伸缩性设计"><span class="nav-number">3.2.</span> <span class="nav-text">应用服务器集群的伸缩性设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP重定向负载均衡"><span class="nav-number">3.2.1.</span> <span class="nav-text">HTTP重定向负载均衡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS域名解析负载均衡"><span class="nav-number">3.2.2.</span> <span class="nav-text">DNS域名解析负载均衡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反向代理负载均衡"><span class="nav-number">3.2.3.</span> <span class="nav-text">反向代理负载均衡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP负载均衡"><span class="nav-number">3.2.4.</span> <span class="nav-text">IP负载均衡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路层负载均衡"><span class="nav-number">3.2.5.</span> <span class="nav-text">数据链路层负载均衡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负载均衡算法"><span class="nav-number">3.2.6.</span> <span class="nav-text">负载均衡算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式缓存服务器集群的伸缩性设计"><span class="nav-number">3.3.</span> <span class="nav-text">分布式缓存服务器集群的伸缩性设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Memcached分布式缓存集群的访问模型"><span class="nav-number">3.3.1.</span> <span class="nav-text">Memcached分布式缓存集群的访问模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Memcached分布式缓存集群的伸缩性挑战"><span class="nav-number">3.3.2.</span> <span class="nav-text">Memcached分布式缓存集群的伸缩性挑战</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式缓存的一致性Hash算法"><span class="nav-number">3.3.3.</span> <span class="nav-text">分布式缓存的一致性Hash算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据存储服务器集群的伸缩性设计"><span class="nav-number">3.4.</span> <span class="nav-text">数据存储服务器集群的伸缩性设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关系数据库集群的伸缩性设计"><span class="nav-number">3.4.1.</span> <span class="nav-text">关系数据库集群的伸缩性设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSQL数据库集群的伸缩性设计"><span class="nav-number">3.4.2.</span> <span class="nav-text">NoSQL数据库集群的伸缩性设计</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随需应变：网站的可扩展架构"><span class="nav-number">4.</span> <span class="nav-text">随需应变：网站的可扩展架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#构建可扩展的网站架构"><span class="nav-number">4.1.</span> <span class="nav-text">构建可扩展的网站架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用分布式消息队列降低系统耦合性"><span class="nav-number">4.2.</span> <span class="nav-text">利用分布式消息队列降低系统耦合性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件驱动架构"><span class="nav-number">4.2.1.</span> <span class="nav-text">事件驱动架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式消息队列"><span class="nav-number">4.2.2.</span> <span class="nav-text">分布式消息队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用分布式服务打造可复用的业务平台"><span class="nav-number">4.3.</span> <span class="nav-text">利用分布式服务打造可复用的业务平台</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WebServer与企业级分布式服务"><span class="nav-number">4.3.1.</span> <span class="nav-text">WebServer与企业级分布式服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大型网站分布式服务的需求与特点"><span class="nav-number">4.3.2.</span> <span class="nav-text">大型网站分布式服务的需求与特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分布式服务框架设计"><span class="nav-number">4.3.3.</span> <span class="nav-text">分布式服务框架设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可扩展的数据结构"><span class="nav-number">4.4.</span> <span class="nav-text">可扩展的数据结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用开放平台建设网站生态圈"><span class="nav-number">4.5.</span> <span class="nav-text">利用开放平台建设网站生态圈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#固若金汤：网站的安全架构"><span class="nav-number">5.</span> <span class="nav-text">固若金汤：网站的安全架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#网站应用攻击与防御"><span class="nav-number">5.1.</span> <span class="nav-text">网站应用攻击与防御</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#XSS攻击"><span class="nav-number">5.1.1.</span> <span class="nav-text">XSS攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注入攻击"><span class="nav-number">5.1.2.</span> <span class="nav-text">注入攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSRF攻击"><span class="nav-number">5.1.3.</span> <span class="nav-text">CSRF攻击</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他攻击和漏洞"><span class="nav-number">5.1.4.</span> <span class="nav-text">其他攻击和漏洞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web应用防火墙"><span class="nav-number">5.1.5.</span> <span class="nav-text">Web应用防火墙</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网站安全漏洞扫描"><span class="nav-number">5.1.6.</span> <span class="nav-text">网站安全漏洞扫描</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息加密技术及密钥安全管理"><span class="nav-number">5.2.</span> <span class="nav-text">信息加密技术及密钥安全管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单项散列加密"><span class="nav-number">5.2.1.</span> <span class="nav-text">单项散列加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对称加密"><span class="nav-number">5.2.2.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非对称加密"><span class="nav-number">5.2.3.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#密钥安全管理"><span class="nav-number">5.2.4.</span> <span class="nav-text">密钥安全管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息过滤与反垃圾"><span class="nav-number">5.3.</span> <span class="nav-text">信息过滤与反垃圾</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文本匹配"><span class="nav-number">5.3.1.</span> <span class="nav-text">文本匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类算法"><span class="nav-number">5.3.2.</span> <span class="nav-text">分类算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#黑名单"><span class="nav-number">5.3.3.</span> <span class="nav-text">黑名单</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#电子商务风险控制"><span class="nav-number">5.4.</span> <span class="nav-text">电子商务风险控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#风险"><span class="nav-number">5.4.1.</span> <span class="nav-text">风险</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#风控"><span class="nav-number">5.4.2.</span> <span class="nav-text">风控</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#规则引擎"><span class="nav-number">5.4.2.1.</span> <span class="nav-text">规则引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#统计模型"><span class="nav-number">5.4.2.2.</span> <span class="nav-text">统计模型</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

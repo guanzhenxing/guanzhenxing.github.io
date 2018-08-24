@@ -1,0 +1,1007 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="读书笔记,Java," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。 import java.io.IOException; import java.math.BigInteger; import java.nio.charset.StandardCharsets; import java.nio.file.Files; impor">
+<meta name="keywords" content="读书笔记,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《写给大忙人看的JavaSE8》读书笔记">
+<meta property="og:url" content="http://webfuse.cn/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。 import java.io.IOException; import java.math.BigInteger; import java.nio.charset.StandardCharsets; import java.nio.file.Files; impor">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《写给大忙人看的JavaSE8》读书笔记">
+<meta name="twitter:description" content="重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。 import java.io.IOException; import java.math.BigInteger; import java.nio.charset.StandardCharsets; import java.nio.file.Files; impor">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 《写给大忙人看的JavaSE8》读书笔记 | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《写给大忙人看的JavaSE8》读书笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-02-08T23:08:32+08:00" content="2018-02-08">
+              2018-02-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/" class="leancloud_visitors" data-flag-title="《写给大忙人看的JavaSE8》读书笔记">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。</p>
+<pre><code>import java.io.IOException;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.LongAdder;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Java8Demo {
+
+    /**
+    * 带有参数变量的表达式都被称为lambda表达式
+    * lambda表达式：基本型为 (形参列表)-&gt;{方法体}
+    * 方法引用： ::操作符将方法名和对象或类的名字分割开来
+    */
+    public void aboutLambda() {
+        Comparator&lt;String&gt; comp = (str1, str2) -&gt; 0;
+
+        new Thread(() -&gt; {
+            for (int i = 0; i &lt; 100; i++)
+                System.out.println(&quot;Lambda Expression&quot;);
+        }).start();
+
+        //函数式接口：对于只包含一个抽象方法的接口，你可以通过lambda表达式来创建该接口的对象。
+        Arrays.sort(new String[]{&quot;a&quot;, &quot;b&quot;}, comp);
+
+        //方法引用等同于提供方法参数的lambda表达式
+        Arrays.asList(&quot;&quot;, &quot;&quot;).stream().forEach(System.out::print);//情况1：对象::实例方法
+        Arrays.asList(1, 2).stream().map(Math::abs).collect(Collectors.toList());//情况2：类::静态方法
+        Arrays.sort(new String[]{&quot;&quot;, &quot;&quot;}, Comparator.comparingInt(String::length)); //情况3：类::实例方法。第一个参数会成为执行方法的对象.String::length 等于 (x)-&gt;x.length()
+        String[] arr = Arrays.asList(&quot;&quot;, &quot;&quot;).stream().toArray(String[]::new);   //情况4：类::new
+
+        //所有的lambda表达式都是延迟执行的
+    }
+
+
+    public void aboutStreamAPI() {
+        List&lt;String&gt; words = new ArrayList&lt;&gt;();
+        long count = words.parallelStream().filter(w -&gt; w.length() &gt; 12).count();
+
+        //Stream遵循“做什么，而不是怎么去做”的原则。
+        //在使用Stream时候，你会通过三个阶段来建立一个操作流水线：
+        //1-创建一个Stream
+        //2-在一个或多个步骤中，指定将初始Stream转换为另一个Stream的中间操作
+        //3-使用一个终止操作来产生一个结果。该操作会强制它之前的延迟操作立即执行。在这之后，该Stream操作就不会再被使用了。
+
+        Stream&lt;String&gt; wordStream = Stream.of(new String[]{});
+        Stream&lt;String&gt; song = Stream.of(&quot;&quot;, &quot;&quot;, &quot;&quot;);
+
+        Stream&lt;String&gt; echos = Stream.generate(() -&gt; &quot;Echo&quot;); //创建一个含有常亮值的Stream
+        Stream&lt;Double&gt; randoms = Stream.generate(Math::random); //创建一个含有随机数的Stream
+        //iterate方法接受一个“种子”的值和一个函数作为参数
+        Stream&lt;BigInteger&gt; integers = Stream.iterate(BigInteger.ZERO, n -&gt; n.add(BigInteger.ONE));
+
+
+        //流转换是指从一个流中读取数据，并将转换后的数据写入到另一个流中。
+        //filter方法的参数是一个Predicate&lt;T&gt;对象——即一个从T到boolean的函数。
+        //我们使用map方法对流中的值进行某种形式的转换，它会对每个元素应用一个函数，并将返回的值收集到一个新的流中。
+
+        //distinct方法会根据原始流中的元素返回一个具有相同顺序、抑制了重复元素的新流。
+
+        //聚合方法：如果你希望对元素求和，或者以其他方式将流中的元素组合为一个值
+        //    - count方法：返回流中元素的总数
+        //    - max方法：返回流中最大值
+        //    - min方法：返回流中最小值
+        //    - reduce方法： 提供聚合操作
+
+        //Optional&lt;T&gt;对象或者是对一个T类型对象的封装，或者表示不是任何对象。
+        // if(optionalValue.ifPresent()) optionalValue.get().someMethod();
+        // optionalValue.ifPresent(v-&gt;results::add);
+        // Optional&lt;Boolean&gt; added = optionalValue.map(results::add);   //返回一个值
+        // optionalValue.orElse(&quot;&quot;);
+        // optionalValue.orElseGet(()-&gt;System.out.print(&quot;....&quot;));
+        // optionalValue.orElseThrow(NoSuchElementException:new);
+        // 可以使用Optional.of(result)或者Optional.empty()来创建一个Optional对象
+        // ofNullable方法中，如果obj不为null,那么Optional.ofNullable(obj)会返回Optional.of(obj),否则会返回Optional.empty()。
+        //使用flatMap来组合可选函数。Optional&lt;U&gt; u =  s.f().flatMap(T::g);
+
+        //以下3个是等效的
+        HashSet&lt;String&gt; res = wordStream.collect(HashSet::new, HashSet::add, HashSet::addAll);
+        List&lt;String&gt; res1 = wordStream.collect(Collectors.toList());
+        Set&lt;String&gt; res2 = wordStream.collect(Collectors.toSet());
+
+        //将字符串连接起来
+        String str = wordStream.collect(Collectors.joining());
+
+        //将字符串连接起来，中间以,隔开
+        String str1 = wordStream.collect(Collectors.joining(&quot;, &quot;));
+
+        //使用(Int|Double|Long)SummaryStatistics来获得一个流的总和、平均值、最大值或最小值
+        IntSummaryStatistics summary = wordStream.collect(Collectors.summarizingInt(String::length));
+        double averageWordLength = summary.getAverage();
+        double maxWordLength = summary.getMax();
+
+        //将一个Stream对象中的元素收集到一个map中
+        //Map&lt;Integer,String&gt; idToName = peopleStream.collect(Collectors.toMap(Person::getId,Person::getName));
+
+        //上面的转换成Map中，如果存在相同的键异常，我们可以重写方法搞定。
+        Stream&lt;Locale&gt; locales = Stream.of(Locale.getAvailableLocales());
+        Map&lt;String, String&gt; languageNames = locales.collect(Collectors.toMap(
+                l -&gt; l.getDisplayLanguage(),
+                l -&gt; l.getDisplayLanguage(l),
+                (existingValue, newValue) -&gt; existingValue
+        ));
+
+
+        //groupingBy方法，对具有相同特性的值进行分组
+        //当分类函数式一个predicate函数（即返回一个布尔值的函数）时，流元素会被分为两组列表：一组是函数会返回true的元素，另一组返回false的元素。
+        //在这种情况下，使用partitioningBy会比groupingBy更有效率。
+
+    }
+
+    public void aboutTime() {
+
+        Instant start = Instant.now();
+        Instant end = Instant.now();
+        Duration timeElapsed = Duration.between(start, end);
+        timeElapsed.toMillis();
+        timeElapsed.toDays();
+        timeElapsed.plusDays(1).getSeconds();
+        start.plusMillis(1);
+
+        // 以下是来自廖雪峰的博客
+        // Java 8新增了LocalDate和LocalTime接口，为什么要搞一套全新的处理日期和时间的API？因为旧的java.util.Date实在是太难用了。
+        // java.util.Date月份从0开始，一月是0，十二月是11，变态吧！java.time.LocalDate月份和星期都改成了enum，就不可能再用错了。
+        // java.util.Date和SimpleDateFormatter都不是线程安全的，而LocalDate和LocalTime和最基本的String一样，是不变类型，不但线程安全，而且不能修改。
+        // java.util.Date是一个“万能接口”，它包含日期、时间，还有毫秒数，如果你只想用java.util.Date存储日期，或者只存储时间，那么，只有你知道哪些部分的数据是有用的，哪些部分的数据是不能用的。在新的Java 8中，日期和时间被明确划分为LocalDate和LocalTime，LocalDate无法包含时间，LocalTime无法包含日期。当然，LocalDateTime才能同时包含日期和时间。
+        // 新接口更好用的原因是考虑到了日期时间的操作，经常发生往前推或往后推几天的情况。用java.util.Date配合Calendar要写好多代码，而且一般的开发人员还不一定能写对。
+
+        // 取当前日期：
+        LocalDate today = LocalDate.now(); // -&gt; 2014-12-24
+        // 根据年月日取日期，12月就是12：
+        LocalDate crischristmas = LocalDate.of(2014, 12, 25); // -&gt; 2014-12-25
+        // 根据字符串取：
+        LocalDate endOfFeb = LocalDate.parse(&quot;2014-02-28&quot;); // 严格按照ISO yyyy-MM-dd验证，02写成2都不行，当然也有一个重载方法允许自己定义格式
+        LocalDate.parse(&quot;2014-02-29&quot;); // 无效日期无法通过：DateTimeParseException: Invalid date
+
+        // LocalTime只包含时间，以前用java.util.Date怎么才能只表示时间呢？答案是，假装忽略日期。
+        // LocalTime包含毫秒：
+        LocalTime now = LocalTime.now(); // 11:09:09.240
+
+        //你可能想清除毫秒数：
+        LocalTime now1 = LocalTime.now().withNano(0); // 11:09:09
+
+        //构造时间也很简单：
+        LocalTime zero = LocalTime.of(0, 0, 0); // 00:00:00
+        LocalTime mid = LocalTime.parse(&quot;12:00:00&quot;); // 12:00:00
+
+        //日期校正器
+        //TemporalAdjusters类提供了很多静态方法来进行常用的校正。你可以将一个校正放的结果传递给with方法。
+        LocalDate firstTuesday = LocalDate.of(2018, 2, 1).with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY)); //计算2月的第一个星期二
+
+        //实现自己的校验器
+        TemporalAdjuster NEXT_WORKDAY = TemporalAdjusters.ofDateAdjuster(w -&gt; {
+            LocalDate result = w;
+            do {
+                result = result.plusDays(1);
+            } while (result.getDayOfWeek().getValue() &gt;= 6);
+            return result;
+        });
+        LocalDate backToWork = LocalDate.now().with(NEXT_WORKDAY);
+
+        //格式化与解析
+        // String formatted =  DateTimeFormatter.ISO_DATE_TIME.format();
+    }
+
+
+    public void aboutConcurrency() {
+        //原子性 lambda
+        // ConcurrentHashMap
+        ConcurrentHashMap&lt;String, LongAdder&gt; map = new ConcurrentHashMap();
+        map.putIfAbsent(&quot;&quot;, new LongAdder());
+        map.get(&quot;&quot;).increment();
+
+        //批量数据操作有三类：
+        //1)search会对每个键和（或）值应用一个函数，直到函数返回一个非null的结果。然后search会终止并返回该函数的结果。
+        //2)reduce会通过提供的累积函数，将所有的键和（或）值组合起来。
+        //3)forEach会对所有的键和（或）值应用一个函数。
+
+        //在使用这几种操作时，你需要指定一个并行阈值。如果映射包含的元素数量超过了这个阈值，批量操作就以并行方式执行。
+        //如果你希望批量数据操作在一个线程中运行，请使用Long.MAX_VALUE作为阈值。
+        //如果你希望批量数据操作尽可能使用更多的线程，则应该使用1作为阈值。
+
+        Set&lt;String&gt; words = map.keySet();
+
+        //并行数组操作
+        //静态方法Arrays.parallelSort可以对原始类型数组或者对象数组进行排序。
+        try {
+            String contents = new String(Files.readAllBytes(Paths.get(&quot;&quot;)), StandardCharsets.UTF_8);
+            String[] words1 = contents.split(&quot;&quot;);
+            Arrays.parallelSort(words1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //可完成的Future
+        //Future&lt;T&gt;接口用来表示一个在将来某个时间点可用的、类型为T的值。
+    }
+
+    public void aboutOthers() {
+
+        String joined = String.join(&quot;/&quot;, &quot;usr&quot;, &quot;local&quot;, &quot;bin&quot;);
+        String ids = String.join(&quot;, &quot;, ZoneId.getAvailableZoneIds());
+
+        Objects.isNull(&quot;&quot;);
+        Objects.nonNull(&quot;&quot;);
+    }
+
+}
+</code></pre>
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/22/Ehcache缓存持久化/" rel="next" title="Ehcache缓存持久化">
+                <i class="fa fa-chevron-left"></i> Ehcache缓存持久化
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/14/多种用户登录模式设计/" rel="prev" title="多种用户登录模式设计">
+                多种用户登录模式设计 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

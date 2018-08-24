@@ -1,0 +1,828 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="读书笔记,架构," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概念什么是伸缩性伸缩性是指系统可以根据需求和成本调整自身处理能力的一种能力。伸缩性常常意味着系统可以改变自身的处理能力以满足更多用户访问、处理更多数据而不会对用户体验造成任何影响。主要从以下几个方面度量：  处理更多数据 处理更高的并发 处理更高频次的用户交互  性能更多的是衡量系统处理一个请求或者执行一个任务需要花费多长时间，而伸缩性则更关注系统是否能够随着请求数量的增加（或减少）而相应地拥有相">
+<meta name="keywords" content="读书笔记,架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="可伸缩的Web应用碎碎念">
+<meta property="og:url" content="http://webfuse.cn/2017/01/18/可伸缩的Web应用碎碎念/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="概念什么是伸缩性伸缩性是指系统可以根据需求和成本调整自身处理能力的一种能力。伸缩性常常意味着系统可以改变自身的处理能力以满足更多用户访问、处理更多数据而不会对用户体验造成任何影响。主要从以下几个方面度量：  处理更多数据 处理更高的并发 处理更高频次的用户交互  性能更多的是衡量系统处理一个请求或者执行一个任务需要花费多长时间，而伸缩性则更关注系统是否能够随着请求数量的增加（或减少）而相应地拥有相">
+<meta property="og:image" content="http://webfuse.cn/2017/01/18/可伸缩的Web应用碎碎念/基础架构高层概览.png">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.927Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="可伸缩的Web应用碎碎念">
+<meta name="twitter:description" content="概念什么是伸缩性伸缩性是指系统可以根据需求和成本调整自身处理能力的一种能力。伸缩性常常意味着系统可以改变自身的处理能力以满足更多用户访问、处理更多数据而不会对用户体验造成任何影响。主要从以下几个方面度量：  处理更多数据 处理更高的并发 处理更高频次的用户交互  性能更多的是衡量系统处理一个请求或者执行一个任务需要花费多长时间，而伸缩性则更关注系统是否能够随着请求数量的增加（或减少）而相应地拥有相">
+<meta name="twitter:image" content="http://webfuse.cn/2017/01/18/可伸缩的Web应用碎碎念/基础架构高层概览.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 可伸缩的Web应用碎碎念 | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                可伸缩的Web应用碎碎念
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-18T21:44:52+08:00" content="2017-01-18">
+              2017-01-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/18/可伸缩的Web应用碎碎念/" class="leancloud_visitors" data-flag-title="可伸缩的Web应用碎碎念">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="什么是伸缩性"><a href="#什么是伸缩性" class="headerlink" title="什么是伸缩性"></a>什么是伸缩性</h2><p>伸缩性是指系统可以根据需求和成本调整自身处理能力的一种能力。伸缩性常常意味着系统可以改变自身的处理能力以满足更多用户访问、处理更多数据而不会对用户体验造成任何影响。<br>主要从以下几个方面度量：</p>
+<ul>
+<li>处理更多数据</li>
+<li>处理更高的并发</li>
+<li>处理更高频次的用户交互</li>
+</ul>
+<p>性能更多的是衡量系统处理一个请求或者执行一个任务需要花费多长时间，而伸缩性则更关注系统是否能够随着请求数量的增加（或减少）而相应地拥有相适应的处理能力。</p>
+<h2 id="伸缩性方案"><a href="#伸缩性方案" class="headerlink" title="伸缩性方案"></a>伸缩性方案</h2><p>有两种不同的伸缩性方案：垂直伸缩和水平伸缩。</p>
+<h3 id="垂直伸缩"><a href="#垂直伸缩" class="headerlink" title="垂直伸缩"></a>垂直伸缩</h3><p>通过升级硬件和网络吞吐能力可以实现垂直伸缩。<br>方案：</p>
+<ul>
+<li>通过使用RAID（独立冗余磁盘阵列）增加I/O吞吐能力。</li>
+<li>通过切换到SSD改善I/O访问速度。</li>
+<li>通过增加内存减少I/O操作。</li>
+<li>通过升级网络接口或者增加网络接口提高网络吞吐能力、</li>
+<li>更新服务器获得更多处理器或者更多虚拟核。</li>
+</ul>
+<p>优缺点：</p>
+<ul>
+<li>实现简单。不需要重构任何东西。</li>
+<li>成本制约。当达到某个点以后，成本会很高。</li>
+<li>垂直伸缩是有极限的。</li>
+</ul>
+<p>缓存和CDN</p>
+<h3 id="水平伸缩"><a href="#水平伸缩" class="headerlink" title="水平伸缩"></a>水平伸缩</h3><p>水平伸缩是指通过增加服务器提升计算能力的一类架构方法。水平伸缩可以克服垂直伸缩带来的地位计算成本随着计算能力增加而迅速飙升的问题。</p>
+<p>在水平伸缩架构中，每一种服务器角色都可以通过增加服务器进行扩容伸缩。构建水平伸缩系统先从那些容易的地方做起，比如Web服务器、缓存；暂缓那些难以做到的地方，比如数据库和其他持久层。</p>
+<p>边缘缓存（edge-cache）：一种距离用户较近的HTTP缓存服务器，便于部分缓存用户的HTTP流量。</p>
+<h2 id="应用架构概述"><a href="#应用架构概述" class="headerlink" title="应用架构概述"></a>应用架构概述</h2><p>应用架构是关于业务模型的演化。</p>
+<img src="/2017/01/18/可伸缩的Web应用碎碎念/基础架构高层概览.png" alt="基础架构高层概览" title="基础架构高层概览">
+<p>将领域模型放在应用架构的核心，我们确保各种组件围绕这个核心展开，服务于这个业务，而不是其他什么东西。</p>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>前端的主要职责是成为用户的接口，用户通过网页、移动APP或者Web服务器调用完成和应用的交互。无论实际交互方式是什么，前端应该是介于公开接口和内部服务调用之间的处理层，是系统向用户呈现的功能展示，因此不该是整个系统的核心或者重点。前端应该尽量地保持简单（业务逻辑简单）。</p>
+<p>业务逻辑只存在于Web服务层，因此我们可以避免视图和业务强耦合带来的问题。</p>
+<p>前端不应该关心数据库或第三方服务。但是，允许前端组件发送消息给消息中间件以及使用缓存等。</p>
+<h3 id="Web服务"><a href="#Web服务" class="headerlink" title="Web服务"></a>Web服务</h3><p>SOA：面向服务的体系架构。是一种以低耦合和高度自治的服务为中心的软件架构，主要目标是实现业务需求。SOA倾向于所有的服务都基于约定由清晰的定义，并且都是用相同的通信协议。不管用什么样的技术或者协议，只要你的服务是松耦合的并解决一组特定的细分领域的业务需求就可以了。</p>
+<p>其他架构：分层架构、六角形架构和事件驱动架构等。</p>
+<p>无论使用什么样的架构，目的都是讲系统切分成更小的独立的功能单位。这样做的目的是构建更高层次的抽象以实现隐藏复杂性、减少依赖，各部分独立伸缩，以及每个部分并行开发。</p>
+<h3 id="支撑技术"><a href="#支撑技术" class="headerlink" title="支撑技术"></a>支撑技术</h3><p>支撑技术有：消息队列、应用缓存、主数据存储、搜索引擎等。这些支撑技术应该是一种即插即用的扩张组件，更换这些组件的连接就能够切换组件，保证整体架构不受影响。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+          
+            <a href="/tags/架构/" rel="tag">#架构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/02/前后端分离中的请求跨域问题/" rel="next" title="前后端分离中的请求跨域问题">
+                <i class="fa fa-chevron-left"></i> 前后端分离中的请求跨域问题
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/20/软件设计中“简单”这个原则/" rel="prev" title="软件设计中“简单”这个原则">
+                软件设计中“简单”这个原则 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是伸缩性"><span class="nav-number">1.1.</span> <span class="nav-text">什么是伸缩性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伸缩性方案"><span class="nav-number">1.2.</span> <span class="nav-text">伸缩性方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直伸缩"><span class="nav-number">1.2.1.</span> <span class="nav-text">垂直伸缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平伸缩"><span class="nav-number">1.2.2.</span> <span class="nav-text">水平伸缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用架构概述"><span class="nav-number">1.3.</span> <span class="nav-text">应用架构概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前端"><span class="nav-number">1.3.1.</span> <span class="nav-text">前端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web服务"><span class="nav-number">1.3.2.</span> <span class="nav-text">Web服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支撑技术"><span class="nav-number">1.3.3.</span> <span class="nav-text">支撑技术</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,861 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ES6,NodeJs,babel," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="这篇文章的前提是读者知道什么是ES6以及为什么我们需要用到babel。本文的行文思路是怎么搭建一个es6+babel的开发环境。 基本使用创建工程目录 创建一个文件夹，命名为use-babel 使用npm init初始化目录 创建babel的配置文件.babelrc，该文件用来设置转码规则和插件  安装babel在工程目录下执行： npm install --save-dev babel-cli">
+<meta name="keywords" content="ES6,NodeJs,babel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单使用babel">
+<meta property="og:url" content="http://webfuse.cn/2016/08/11/简单使用babel/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="这篇文章的前提是读者知道什么是ES6以及为什么我们需要用到babel。本文的行文思路是怎么搭建一个es6+babel的开发环境。 基本使用创建工程目录 创建一个文件夹，命名为use-babel 使用npm init初始化目录 创建babel的配置文件.babelrc，该文件用来设置转码规则和插件  安装babel在工程目录下执行： npm install --save-dev babel-cli">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.941Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单使用babel">
+<meta name="twitter:description" content="这篇文章的前提是读者知道什么是ES6以及为什么我们需要用到babel。本文的行文思路是怎么搭建一个es6+babel的开发环境。 基本使用创建工程目录 创建一个文件夹，命名为use-babel 使用npm init初始化目录 创建babel的配置文件.babelrc，该文件用来设置转码规则和插件  安装babel在工程目录下执行： npm install --save-dev babel-cli">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 简单使用babel | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                简单使用babel
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-11T21:11:08+08:00" content="2016-08-11">
+              2016-08-11
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/11/简单使用babel/" class="leancloud_visitors" data-flag-title="简单使用babel">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这篇文章的前提是读者知道什么是ES6以及为什么我们需要用到babel。本文的行文思路是怎么搭建一个es6+babel的开发环境。</p>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><h2 id="创建工程目录"><a href="#创建工程目录" class="headerlink" title="创建工程目录"></a>创建工程目录</h2><ol>
+<li>创建一个文件夹，命名为use-babel</li>
+<li>使用<code>npm init</code>初始化目录</li>
+<li>创建babel的配置文件<code>.babelrc</code>，该文件用来设置转码规则和插件</li>
+</ol>
+<h2 id="安装babel"><a href="#安装babel" class="headerlink" title="安装babel"></a>安装babel</h2><p>在工程目录下执行：</p>
+<pre><code>npm install --save-dev babel-cli -g
+npm install --save-dev babel-preset-es2015
+npm install --save-dev babel-preset-stage-0
+npm install --save-dev babel-preset-stage-1
+npm install --save-dev babel-polyfill
+</code></pre><p>然后<code>.babelrc</code>文件中输入：</p>
+<pre><code>{
+  &quot;presets&quot;: [
+    &quot;es2015&quot;,
+    &quot;stage-0&quot;,
+    &quot;stage-1&quot;
+  ],
+  &quot;plugins&quot;: []
+}
+</code></pre><h2 id="使用babel"><a href="#使用babel" class="headerlink" title="使用babel"></a>使用babel</h2><p>改写<code>package.json</code>如下：</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;babel-node&quot;: &quot;babel-node --presets es2015,stage-0,stage-1&quot;,
+  &quot;start&quot;: &quot;npm run babel-node src/index.js&quot;
+},
+</code></pre><p>工程目录下执行 <code>npm start</code>。</p>
+<h1 id="Babel的一些解释"><a href="#Babel的一些解释" class="headerlink" title="Babel的一些解释"></a>Babel的一些解释</h1><h2 id="babel-cli"><a href="#babel-cli" class="headerlink" title="babel-cli"></a>babel-cli</h2><p>babel-cli是babel提供的一个命令行转码工具。具体的使用可以参考<a href="https://babeljs.io/docs/usage/cli/" target="_blank" rel="external">官方文档</a></p>
+<p>特别要提的是，babel-cli还提供了babel-node。它类似于node，可以在运行前预编译ES2015，你就可以直接使用babel-node运行你的ES2015程序了。</p>
+<p>因为babel-node会去读取<code>.babelrc</code>文件中的配置，所以上面的package.json中的代码又可以改写为：</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;start&quot;: &quot;babel-node src/index.js&quot;
+},
+</code></pre><h2 id="babel-插件"><a href="#babel-插件" class="headerlink" title="babel 插件"></a>babel 插件</h2><p>babel插件提供了转码规则。我们可以根据自己的需要安装不同的转码规则。具体插件列表可以自行查看<a href="https://babeljs.io/docs/plugins/" target="_blank" rel="external">官方文档</a></p>
+<p>ES2015的转码规则：babel-preset-es2015</p>
+<p>ES7不同阶段语法提案的转码规则（共有4个阶段）：preset-stage-0，preset-stage-1，preset-stage-2，preset-stage-3</p>
+<p>ReactJs的转码规则：babel-preset-react</p>
+<h2 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a>babel-register</h2><p><code>babel-register</code>是在你的程序中直接使用的。可以认为它改写了<code>require</code>，在使用<code>babel-register</code>的程序中，会对<code>require</code>的js先进行转码处理。这样，你就不需要自己去转码了。</p>
+<p>但是，babel-register只会对require命令加载的文件转码，而不会对当前文件转码。</p>
+<p>由于它是实时转码，所以只适合在开发环境使用。</p>
+<p>使用<code>npm install babel-register --save-dev</code>安装。</p>
+<pre><code>require(&quot;babel-register&quot;);
+require(&apos;./config&apos;);    //这样，我们就可以在config.js中使用ES2015的语法了。
+</code></pre><h2 id="babel-core"><a href="#babel-core" class="headerlink" title="babel-core"></a>babel-core</h2><p>如果你很喜欢在代码中使用babel，那么你就可以使用<code>babel-core</code>。（ps:目前我还没用过transform等方法）</p>
+<p>具体的使用可以参考<a href="https://babeljs.io/docs/usage/api/" target="_blank" rel="external">官方文档</a>。</p>
+<h2 id="babel-polyfill"><a href="#babel-polyfill" class="headerlink" title="babel-polyfill"></a>babel-polyfill</h2><p>babel虽然能转码ES6，但是还有很多新的API语法是转不了的，比如Promise、Object.assign、Generator等。</p>
+<p>如果想使用这些新的API，我们必须在代码中用到<code>babel-polyfill</code>。</p>
+<p>使用<code>npm install --save babel-polyfill</code>安装，并且在代码中<code>require(&#39;babel-polyfill&#39;);</code>或<code>import &#39;babel-polyfill&#39;;</code></p>
+<p>如果我们要在多个地方使用到<code>babel-polyfill</code>的话，我们可以直接使用<code>babel-runtime</code>。</p>
+<p>安装<code>babel-plugin-transform-runtime</code>和<code>babel-runtime</code>，并更新<code>.babelrc</code>。</p>
+<pre><code>$ npm install --save-dev babel-plugin-transform-runtime
+$ npm install --save babel-runtime
+</code></pre><p>向plugins中添加”transform-runtime”</p>
+<pre><code>{
+  &quot;plugins&quot;: [
+   &quot;transform-runtime&quot;
+  ]
+}
+</code></pre><h2 id="在webpack中使用"><a href="#在webpack中使用" class="headerlink" title="在webpack中使用"></a>在webpack中使用</h2><p>一个比较经典的配置为：</p>
+<pre><code>module: {
+  loaders:  [
+    {
+      test: /\.js/,
+      loader: &apos;babel?presets[]=es2015,presets[]=react,plugins[]=transform-runtime&apos;
+    }
+  ]
+}
+</code></pre><hr>
+<p>其他的一些babel的资料：<br>Babel用户手册 ： <a href="https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md" target="_blank" rel="external">https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md</a><br>Babel官网：<a href="https://babeljs.io" target="_blank" rel="external">https://babeljs.io</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
+          
+            <a href="/tags/NodeJs/" rel="tag">#NodeJs</a>
+          
+            <a href="/tags/babel/" rel="tag">#babel</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/10/Groovy中的MOP——Groovy对象/" rel="next" title="Groovy中的MOP——Groovy对象">
+                <i class="fa fa-chevron-left"></i> Groovy中的MOP——Groovy对象
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/15/Groovy中的拦截方法/" rel="prev" title="Groovy中的拦截方法">
+                Groovy中的拦截方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本使用"><span class="nav-number">1.</span> <span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建工程目录"><span class="nav-number">1.1.</span> <span class="nav-text">创建工程目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装babel"><span class="nav-number">1.2.</span> <span class="nav-text">安装babel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用babel"><span class="nav-number">1.3.</span> <span class="nav-text">使用babel</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Babel的一些解释"><span class="nav-number">2.</span> <span class="nav-text">Babel的一些解释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#babel-cli"><span class="nav-number">2.1.</span> <span class="nav-text">babel-cli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babel-插件"><span class="nav-number">2.2.</span> <span class="nav-text">babel 插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babel-register"><span class="nav-number">2.3.</span> <span class="nav-text">babel-register</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babel-core"><span class="nav-number">2.4.</span> <span class="nav-text">babel-core</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babel-polyfill"><span class="nav-number">2.5.</span> <span class="nav-text">babel-polyfill</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在webpack中使用"><span class="nav-number">2.6.</span> <span class="nav-text">在webpack中使用</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

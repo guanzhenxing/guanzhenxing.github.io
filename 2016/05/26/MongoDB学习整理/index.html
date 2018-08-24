@@ -1,0 +1,1124 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MongoDB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="MongoDB概念 database：数据库。一个MongoDB实例可以容纳多个数据库。 collection：集合。类似于关系型数据库中的表。 document：文档。类似于关系型数据库中的行。 field：域。类似于关系型数据库中的字段。  常用的命令 show dbs：显示所有的数据库 db：显示当前数据库对象 use XXX：连接到指定的数据库，XXX为数据库名 创建与删除使用 use D">
+<meta name="keywords" content="MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB学习整理">
+<meta property="og:url" content="http://webfuse.cn/2016/05/26/MongoDB学习整理/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="MongoDB概念 database：数据库。一个MongoDB实例可以容纳多个数据库。 collection：集合。类似于关系型数据库中的表。 document：文档。类似于关系型数据库中的行。 field：域。类似于关系型数据库中的字段。  常用的命令 show dbs：显示所有的数据库 db：显示当前数据库对象 use XXX：连接到指定的数据库，XXX为数据库名 创建与删除使用 use D">
+<meta property="og:image" content="http://webfuse.cn/2016/05/26/MongoDB学习整理/aggregation-pipeline.png">
+<meta property="og:image" content="http://webfuse.cn/2016/05/26/MongoDB学习整理/map-reduce.png">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.910Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB学习整理">
+<meta name="twitter:description" content="MongoDB概念 database：数据库。一个MongoDB实例可以容纳多个数据库。 collection：集合。类似于关系型数据库中的表。 document：文档。类似于关系型数据库中的行。 field：域。类似于关系型数据库中的字段。  常用的命令 show dbs：显示所有的数据库 db：显示当前数据库对象 use XXX：连接到指定的数据库，XXX为数据库名 创建与删除使用 use D">
+<meta name="twitter:image" content="http://webfuse.cn/2016/05/26/MongoDB学习整理/aggregation-pipeline.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> MongoDB学习整理 | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MongoDB学习整理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-26T10:46:29+08:00" content="2016-05-26">
+              2016-05-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/MongoDB/" itemprop="url" rel="index">
+                    <span itemprop="name">MongoDB</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/26/MongoDB学习整理/" class="leancloud_visitors" data-flag-title="MongoDB学习整理">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="MongoDB概念"><a href="#MongoDB概念" class="headerlink" title="MongoDB概念"></a>MongoDB概念</h2><ul>
+<li>database：数据库。一个MongoDB实例可以容纳多个数据库。</li>
+<li>collection：集合。类似于关系型数据库中的表。</li>
+<li>document：文档。类似于关系型数据库中的行。</li>
+<li>field：域。类似于关系型数据库中的字段。</li>
+</ul>
+<p>常用的命令</p>
+<pre><code>show dbs：显示所有的数据库
+db：显示当前数据库对象
+use XXX：连接到指定的数据库，XXX为数据库名
+</code></pre><h2 id="创建与删除"><a href="#创建与删除" class="headerlink" title="创建与删除"></a>创建与删除</h2><p>使用 <code>use DATABASE_NAME</code>命令可以创建数据库。如果数据库不存在就创建，如果存在就切到该数据库。刚创建的数据库在用<code>show dbs</code>命令时是不显示出来的，需要插入一条数据后使用<code>show dbs</code>命令才会显示。</p>
+<p>使用<code>db.dropDatabase()</code>命令删除当前数据库。</p>
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><h3 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h3><p>使用insert()或save()方法向集合中插入文档。<br>语法：<code>db.COLLECTION_NAME.insert(document)</code></p>
+<pre><code>db.col.insert({
+    &quot;name&quot; : &quot;ZZ&quot;,
+    &quot;name_cn&quot; : &quot;造字法&quot;,
+    &quot;order&quot; : 0,
+    &quot;update_time&quot; : 1463404597556,
+    &quot;delete_flag&quot; : false
+})
+</code></pre><p>使用insert()方法后，MongoDB会自动给你添加一个_id字段，并自动给予一个值。使用save()方法，如果不指定_id字段save()方法就类似于insert()方法，如果指定_id字段，则会更新该_id的数据（其实就是修改）。</p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>使用remove()方法删除集合中的文档。<br>语法：</p>
+<pre><code>db.COLLECTION_NAME.remove(
+   &lt; query语句 &gt;,
+   {
+     justOne: &lt; boolean &gt;,
+     writeConcern: &lt; document &gt;
+   }
+)
+
+query语句:删除文档的条件（可选）。
+justOne : （可选）如果设为 true 或 1，则只删除一个文档。
+writeConcern :（可选）抛出异常的级别。
+</code></pre><p>示例：</p>
+<pre><code>db.col.remove({&quot;name&quot;:&quot;ZZ&quot;})
+</code></pre><h3 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h3><p>使用update()或save()方法向集合中插入文档。<br>update()语法：</p>
+<pre><code>db.COLLECTION_NAME.update(
+   &lt; query查询条件 &gt;,
+   &lt; update语句 &gt;,
+   {
+     upsert: &lt; boolean &gt;,
+     multi: &lt; boolean &gt;,
+     writeConcern: &lt; document &gt;
+   }
+)
+
+query语句:更新的查询条件，类似于SQL语句的where。
+update语句:要更新的对象以及更新操作符（如:$）,类似于SQL语句的set。
+upsert:可选，这个参数的意思是，如果不存在update的记录，是否插入新对象；true为插入，默认是false，不插入。
+multi:可选，mongodb默认是false，只更新找到的第一条记录；如果这个参数为true，就把按条件查出来多条记录全部更新。
+writeConcern:可选，抛出异常的级别。
+</code></pre><p>示例：</p>
+<pre><code>db.col.update({&quot;name&quot;:&quot;ZZ&quot;},{$set:{&quot;name_cn&quot;:&quot;造字&quot;}})
+db.col.update({&quot;name&quot;:&quot;ZZ&quot;},{$set:{&quot;name_cn&quot;:&quot;造字&quot;}},{multi:true})
+</code></pre><p>save()语法：</p>
+<pre><code>db.COLLECTION_NAME.save(
+   &lt; document &gt;,
+   {
+     writeConcern: &lt; document &gt;
+   }
+)
+
+document:文档数据。
+writeConcern:可选，抛出异常的级别。
+</code></pre><h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><p>使用find()方法对集合进行查询。</p>
+<p>语法：</p>
+<pre><code>db.COLLECTION_NAME.find(query, projection)
+
+query:查询的条件语句
+projection:映射关系语句
+</code></pre><p>示例：</p>
+<pre><code>db.dimensions.find()
+db.dimensions.find({&quot;name&quot;:&quot;ZZ&quot;})
+</code></pre><h4 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h4><h5 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a>比较操作符</h5><table>
+<thead>
+<tr>
+<th style="text-align:right">操作符</th>
+<th style="text-align:center">语法格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">等于</td>
+<td style="text-align:center">{ &lt; field &gt;: &lt; value &gt; }</td>
+</tr>
+<tr>
+<td style="text-align:right">$eq(等于)</td>
+<td style="text-align:center">{ &lt; field &gt;: { $eq: &lt; value &gt; } }</td>
+</tr>
+<tr>
+<td style="text-align:right">$gt(大于)</td>
+<td style="text-align:center">{ &lt; field &gt;: { $gt: &lt; value &gt; } }</td>
+</tr>
+<tr>
+<td style="text-align:right">$gte(大于等于)</td>
+<td style="text-align:center">{ &lt; field &gt;: { $gte: &lt; value &gt; } }</td>
+</tr>
+<tr>
+<td style="text-align:right">$lt(小于)</td>
+<td style="text-align:center">{ &lt; field &gt;: { $lt: &lt; value &gt; } }</td>
+</tr>
+<tr>
+<td style="text-align:right">$lte(小于等于)</td>
+<td style="text-align:center">{ &lt; field &gt;: { $lte: &lt; value &gt; } }</td>
+</tr>
+<tr>
+<td style="text-align:right">$ne(不等于)</td>
+<td style="text-align:center">{ &lt; field &gt;: { $ne: &lt; value &gt; } }</td>
+</tr>
+<tr>
+<td style="text-align:right">$in</td>
+<td style="text-align:center">{ &lt; field &gt;: { $in: [&lt; value1 &gt;, &lt; value2 &gt;, … &lt; valueN &gt; ] } }</td>
+</tr>
+<tr>
+<td style="text-align:right">$nin</td>
+<td style="text-align:center">{ &lt; field &gt;: { $nin: [&lt; value1 &gt;, &lt; value2 &gt;, … &lt; valueN &gt; ] } }</td>
+</tr>
+</tbody>
+</table>
+<h5 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h5><table>
+<thead>
+<tr>
+<th style="text-align:right">操作符</th>
+<th style="text-align:center">语法格式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">AND</td>
+<td style="text-align:center">{key1:value1, key2:value2}</td>
+</tr>
+<tr>
+<td style="text-align:right">$and(AND操作)</td>
+<td style="text-align:center">{ $and: [ { &lt; expression1 &gt; }, { &lt; expression2 &gt; } , … , { &lt; expressionN &gt; } ] }</td>
+</tr>
+<tr>
+<td style="text-align:right">$or(OR操作)</td>
+<td style="text-align:center">{ $or: [ { &lt; expression1 &gt; }, { &lt; expression2 &gt; } , … , { &lt; expressionN &gt; } ] }</td>
+</tr>
+<tr>
+<td style="text-align:right">$not(NOT操作)</td>
+<td style="text-align:center">{ field: { $not: { &lt; operator-expression &gt; } } }</td>
+</tr>
+<tr>
+<td style="text-align:right">$nor(NOT OR操作)</td>
+<td style="text-align:center">{ $nor: [ { &lt; expression1 &gt; }, { &lt; expression2 &gt; }, …  { &lt; expressionN &gt; } ] }</td>
+</tr>
+</tbody>
+</table>
+<p>示例代码：</p>
+<pre><code>db.t_resources.find({&quot;create_time&quot;:1463233651537,&quot;update_time&quot;:1463416983501})
+db.inventory.find( { $and: [ { price: { $ne: 1.99 } }, { price: { $exists: true } } ] } )
+db.inventory.find( { $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] } )
+db.inventory.find( { price: { $not: { $gt: 1.99 } } } )
+db.inventory.find( { $nor: [ { price: 1.99 }, { sale: true } ]  } )
+</code></pre><h5 id="其他常用的操作符"><a href="#其他常用的操作符" class="headerlink" title="其他常用的操作符"></a>其他常用的操作符</h5><table>
+<thead>
+<tr>
+<th style="text-align:right">操作符</th>
+<th style="text-align:center">语法格式</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">$exists</td>
+<td style="text-align:center">{ field: { $exists: &lt; boolean &gt; } }</td>
+<td style="text-align:center">是否存在</td>
+</tr>
+<tr>
+<td style="text-align:right">$type</td>
+<td style="text-align:center">{ field: { $type: &lt; BSON type number &gt; or &lt; String alias &gt; } }</td>
+<td style="text-align:center">基于BSON类型来检索集合中匹配的数据类型，并返回结果</td>
+</tr>
+<tr>
+<td style="text-align:right">$all</td>
+<td style="text-align:center">{ &lt; field &gt;: { $all: [ &lt; value1 &gt; , &lt; value2 &gt; … ] } }</td>
+<td style="text-align:center">数组中的值全部包含</td>
+</tr>
+</tbody>
+</table>
+<p>示例代码：</p>
+<pre><code>db.articles.find( { tags: { $all: [ [ &quot;ssl&quot;, &quot;security&quot; ] ] } } )
+db.addressBook.find( { &quot;zipCode&quot; : { $type : 2 } } )
+db.records.find( { b: { $exists: false } } )
+</code></pre><h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><p>使用sort()对数据进行排序。sort()方法可以通过参数指定排序的字段，<strong>并使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而-1是用于降序排列</strong>。</p>
+<p>语法：<code>db.COLLECTION_NAME.find().sort({field: value})</code></p>
+<p>示例：</p>
+<pre><code>db.dimensions.find().sort({&apos;name_cn&apos;:1,&apos;update_time&apos;:-1})
+</code></pre><h4 id="limit和skip方法"><a href="#limit和skip方法" class="headerlink" title="limit和skip方法"></a>limit和skip方法</h4><p>如果要读取指定数量的数据记录，可以使用limit()方法。</p>
+<p>语法：<code>db.COLLECTION_NAME.find().limit(NUMBER)</code></p>
+<p>可以使用skip()方法跳过一定数量来读取数据。</p>
+<p>语法：<code>db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)</code></p>
+<p>所以，skip()方法和limit()方法结合可以用来分页。</p>
+<p>示例：</p>
+<pre><code>db.dimensions.find().skip(10).limit(10)
+</code></pre><h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p>创建索引来提升查询性能是很常见的做法。</p>
+<p>在MySQL中explain显示了MySQL如何使用索引来处理select语句以及连接表。同理，Mongo中的EXPLAIN用来描述查询路径，通过判断查询使用了哪个索引来帮助开发者诊断慢查询。如：<code>db.numbers.find( {num: {&quot;$gt&quot;: 199995 }} ).explain()</code></p>
+<p>创建索引的示例：</p>
+<pre><code>db.numbers.ensureIndex({num: 1})
+或者
+db.numbers.createIndex({num: 1})
+</code></pre><p>在MongoDB v3.0.0以后，建议使用的是createIndex()方法，ensureIndex()方法是不赞成在v3.0.0以后的Mongo版本中使用的。</p>
+<p>语法：<code>db.collection.createIndex( &lt;key and index type specification&gt;, &lt;options&gt; )</code></p>
+<p>语法中 Key 值为你要创建的索引字段，<strong>1为指定按升序创建索引</strong>，如果你想<strong>按降序来创建索引指定为-1即可</strong>。</p>
+<p>下表是一些比较常用的创建索引时候的附加参数：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">操作符</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">background</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 “background” 可选参数。 “background” 默认值为false。</td>
+</tr>
+<tr>
+<td style="text-align:right">unique</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">建立的索引是否唯一。指定为true创建唯一索引。默认值为false.</td>
+</tr>
+<tr>
+<td style="text-align:right">name</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。</td>
+</tr>
+<tr>
+<td style="text-align:right">sparse</td>
+<td style="text-align:center">Boolean</td>
+<td style="text-align:center">对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为 false.</td>
+</tr>
+<tr>
+<td style="text-align:right">expireAfterSeconds</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间.</td>
+</tr>
+<tr>
+<td style="text-align:right">weights</td>
+<td style="text-align:center">document</td>
+<td style="text-align:center">索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。</td>
+</tr>
+</tbody>
+</table>
+<p>示例代码：</p>
+<pre><code>db.numbers.createIndex({num: 1}, {background: true})
+</code></pre><h2 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h2><p>MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。</p>
+<h3 id="Aggregation-Pipeline"><a href="#Aggregation-Pipeline" class="headerlink" title="Aggregation Pipeline"></a>Aggregation Pipeline</h3><p>语法：<code>db.collection.aggregate(pipeline, options)</code>，其中pipeline是一个管道数组，options是选项。</p>
+<p>我们以一张官方文档上的图来说明一下聚合操作：</p>
+<img src="/2016/05/26/MongoDB学习整理/aggregation-pipeline.png" alt="aggregation-pipeline.png" title="">
+<p>上图中我们看到了\$match,\$group。这两个是什么呢？ 答案就在以下常用的piple操作列表。</p>
+<ul>
+<li>$project：修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。</li>
+<li>$limit：用来限制MongoDB聚合管道返回的文档数。</li>
+<li>$skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。</li>
+<li>$unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。</li>
+<li>$group：将集合中的文档分组，可用于统计结果（参数与group方法不同哦~）。</li>
+<li>$sort：将输入文档排序后输出。</li>
+<li>$geoNear：输出接近某一地理位置的有序文档。</li>
+<li>$lookup：将Left Outer Join引入到MongoDB。</li>
+<li>\$match：用于过滤数据，只输出符合条件的文档。$match使用MongoDB的标准查询操作。</li>
+</ul>
+<p>以上各操作的用法详见：<a href="https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/" target="_blank" rel="external">MongoDB文档</a></p>
+<h3 id="distinct方法"><a href="#distinct方法" class="headerlink" title="distinct方法"></a>distinct方法</h3><p>MongoDB的distinct命令是获取特定字段中不同值列表的最简单工具。该命令既适用于单键，也适用于数组键。distinct默认覆盖整个集合，但也可以通过查询选择器进行约束。</p>
+<p>语法：<code>db.collection.distinct(field, query)</code></p>
+<p>示例：</p>
+<pre><code>db.products.distinct(&quot;tags&quot;)
+db.inventory.distinct( &quot;item.sku&quot;, { dept: &quot;A&quot; } )
+</code></pre><h3 id="group方法"><a href="#group方法" class="headerlink" title="group方法"></a>group方法</h3><p>gourp方法的作用与SQL中的 “SELECT &lt;…&gt; GROUP BY &lt;…&gt;”的作用一样。</p>
+<p>语法：<code>db.collection.group({ key, reduce, initial [, keyf] [, cond] [, finalize] })</code></p>
+<p>示例：</p>
+<pre><code>results = db.reviews.group({
+    key:{
+        user_id:true
+    },
+    initial:{
+        reviews:0,
+        votes:0
+    },
+    reduce:function(doc,aggregator){
+        aggregator.reviews +=1;
+        aggregator.votes += doc.votes;
+    },
+    finalize:function(doc){
+        doc.average_votes = doc.votes / doc.reviews;
+    }
+})
+</code></pre><p>group方法的各个参数说明如下：</p>
+<ul>
+<li>key，描述分组字段的文档。如上例，我们根据user_id分组，所以设置user_id:true。</li>
+<li>keyf，这是一个JavaScript函数，应用于文档之上，为该文档生成一个键，当用于分组的键需要计算时，这个函数非常有用。</li>
+<li>initial，作为聚合结果初始值的文档。reduce函数第一次运行时，该初始文档会作为聚合器的第一个值，通常会包含所有要聚合的键。</li>
+<li>reduce，用于执行聚合的JavaScript函数。该函数接受两个参数：正被迭代的当前文档和用于存储聚合结果的聚合器文档。聚合器的初始值就是初始文档。reduce函数并不返回任何内容，它只不过是修改聚合器对象。</li>
+<li>cond，过滤要聚合文档的查询选择器。如果不希望分组操作处理整个集合，就必须提供一个查询选择器。</li>
+<li>finalize，在返回结果集之前应用于每个结果文档的JavaScript函数。该函数支持对分组操作的结果进行后置处理。</li>
+</ul>
+<h3 id="Map-Reduce"><a href="#Map-Reduce" class="headerlink" title="Map-Reduce"></a>Map-Reduce</h3><p>Map-Reduce是一种计算模型，简单的说就是将大批量的工作（数据）分解（MAP）执行，然后再将结果合并成最终结果（REDUCE）。<br>MongoDB提供的Map-Reduce非常灵活，对于大规模数据分析也相当实用。</p>
+<p>语法：</p>
+<pre><code>db.collection.mapReduce(
+                         &lt;map&gt;,
+                         &lt;reduce&gt;,
+                         {
+                           out: &lt;collection&gt;,
+                           query: &lt;document&gt;,
+                           sort: &lt;document&gt;,
+                           limit: &lt;number&gt;,
+                           finalize: &lt;function&gt;,
+                           scope: &lt;document&gt;,
+                           jsMode: &lt;boolean&gt;,
+                           verbose: &lt;boolean&gt;,
+                           bypassDocumentValidation: &lt;boolean&gt;
+                         }
+                       )
+</code></pre><p>同样的，来一张官方的图：<br><img src="/2016/05/26/MongoDB学习整理/map-reduce.png" alt="map-reduce.png" title=""></p>
+<p>主要的参数说明如下;</p>
+<ul>
+<li>map，应用于每个文档之上的JavaScript函数。该函数必须调用emit()来选择要聚合的键和值。</li>
+<li>reduce，一个JavaScript函数，接受一个键和一个值列表。该函数对返回值的结构有严格要求，必须总是与values数组所提供的结构一致。reduce函数通常会迭代一个值的列表，在此过程中对其进行聚合。</li>
+<li>query，用于过滤映射处理的集合的查询选择器。该参数的作用与group的cond参数相同。</li>
+<li>sort，对于查询的排序。</li>
+<li>limit，一个整数，指定了查询和排序的条数。</li>
+<li>out，该参数决定了如何返回输出内容。要将所有输出作为命令本身的结果，传入{inline: 1}。请注意，这仅适用于结果集符合16 MB返回限制的情况。</li>
+</ul>
+<hr>
+<p>参考：</p>
+<ul>
+<li><a href="http://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="external">http://www.runoob.com/mongodb/mongodb-tutorial.html</a></li>
+<li>《MongoDB 实战》</li>
+<li>《MongoDB官方文档》</li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MongoDB/" rel="tag">#MongoDB</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/25/ES6入门-Map/" rel="next" title="ES6入门-Map">
+                <i class="fa fa-chevron-left"></i> ES6入门-Map
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/30/读《大型网站技术架构-核心原理与案例分析》笔记（一）/" rel="prev" title="读《大型网站技术架构-核心原理与案例分析》笔记（一）">
+                读《大型网站技术架构-核心原理与案例分析》笔记（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MongoDB概念"><span class="nav-number">1.</span> <span class="nav-text">MongoDB概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建与删除"><span class="nav-number">2.</span> <span class="nav-text">创建与删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增删改查"><span class="nav-number">3.</span> <span class="nav-text">增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#新增"><span class="nav-number">3.1.</span> <span class="nav-text">新增</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">3.2.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改"><span class="nav-number">3.3.</span> <span class="nav-text">修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询"><span class="nav-number">3.4.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#条件"><span class="nav-number">3.4.1.</span> <span class="nav-text">条件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#比较操作符"><span class="nav-number">3.4.1.1.</span> <span class="nav-text">比较操作符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑操作符"><span class="nav-number">3.4.1.2.</span> <span class="nav-text">逻辑操作符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他常用的操作符"><span class="nav-number">3.4.1.3.</span> <span class="nav-text">其他常用的操作符</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排序"><span class="nav-number">3.4.2.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#limit和skip方法"><span class="nav-number">3.4.3.</span> <span class="nav-text">limit和skip方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引"><span class="nav-number">4.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合"><span class="nav-number">5.</span> <span class="nav-text">聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Aggregation-Pipeline"><span class="nav-number">5.1.</span> <span class="nav-text">Aggregation Pipeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#distinct方法"><span class="nav-number">5.2.</span> <span class="nav-text">distinct方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#group方法"><span class="nav-number">5.3.</span> <span class="nav-text">group方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-Reduce"><span class="nav-number">5.4.</span> <span class="nav-text">Map-Reduce</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

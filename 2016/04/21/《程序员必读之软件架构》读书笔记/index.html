@@ -1,0 +1,1093 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="读书笔记,架构," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="架构师真正要学会的东西1. 要学会去看，然后忘掉（所见即所得(WYSIWYG)） 2. 要学会去听，然后忘掉 3. 要学会去做，然后忘掉 4. 要学会超越 每个开发者都应该知道软件架构的五件事：1. 软件架构不是大型预先设计 2. 每个软件团队都需要考虑软件架构 3. 软件架构的角色关乎编码、指导和合作 4. 无需使用UML 5. 好的软件架构是支持敏捷开发的 什么是软件架构1、 什么是架构作为名">
+<meta name="keywords" content="读书笔记,架构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《程序员必读之软件架构》读书笔记">
+<meta property="og:url" content="http://webfuse.cn/2016/04/21/《程序员必读之软件架构》读书笔记/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="架构师真正要学会的东西1. 要学会去看，然后忘掉（所见即所得(WYSIWYG)） 2. 要学会去听，然后忘掉 3. 要学会去做，然后忘掉 4. 要学会超越 每个开发者都应该知道软件架构的五件事：1. 软件架构不是大型预先设计 2. 每个软件团队都需要考虑软件架构 3. 软件架构的角色关乎编码、指导和合作 4. 无需使用UML 5. 好的软件架构是支持敏捷开发的 什么是软件架构1、 什么是架构作为名">
+<meta property="og:image" content="http://webfuse.cn/2016/04/21/《程序员必读之软件架构》读书笔记/软件架构角色.png">
+<meta property="og:image" content="http://webfuse.cn/2016/04/21/《程序员必读之软件架构》读书笔记/架构结构的简单模型.png">
+<meta property="og:image" content="http://webfuse.cn/2016/04/21/《程序员必读之软件架构》读书笔记/代码之上的辅助信息图.png">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.920Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《程序员必读之软件架构》读书笔记">
+<meta name="twitter:description" content="架构师真正要学会的东西1. 要学会去看，然后忘掉（所见即所得(WYSIWYG)） 2. 要学会去听，然后忘掉 3. 要学会去做，然后忘掉 4. 要学会超越 每个开发者都应该知道软件架构的五件事：1. 软件架构不是大型预先设计 2. 每个软件团队都需要考虑软件架构 3. 软件架构的角色关乎编码、指导和合作 4. 无需使用UML 5. 好的软件架构是支持敏捷开发的 什么是软件架构1、 什么是架构作为名">
+<meta name="twitter:image" content="http://webfuse.cn/2016/04/21/《程序员必读之软件架构》读书笔记/软件架构角色.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 《程序员必读之软件架构》读书笔记 | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《程序员必读之软件架构》读书笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T13:40:46+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/21/《程序员必读之软件架构》读书笔记/" class="leancloud_visitors" data-flag-title="《程序员必读之软件架构》读书笔记">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="架构师真正要学会的东西"><a href="#架构师真正要学会的东西" class="headerlink" title="架构师真正要学会的东西"></a>架构师真正要学会的东西</h3><pre><code>1. 要学会去看，然后忘掉（所见即所得(WYSIWYG)）
+2. 要学会去听，然后忘掉
+3. 要学会去做，然后忘掉
+4. 要学会超越
+</code></pre><h3 id="每个开发者都应该知道软件架构的五件事："><a href="#每个开发者都应该知道软件架构的五件事：" class="headerlink" title="每个开发者都应该知道软件架构的五件事："></a>每个开发者都应该知道软件架构的五件事：</h3><pre><code>1. 软件架构不是大型预先设计
+2. 每个软件团队都需要考虑软件架构
+3. 软件架构的角色关乎编码、指导和合作
+4. 无需使用UML
+5. 好的软件架构是支持敏捷开发的
+</code></pre><h2 id="什么是软件架构"><a href="#什么是软件架构" class="headerlink" title="什么是软件架构"></a>什么是软件架构</h2><h3 id="1、-什么是架构"><a href="#1、-什么是架构" class="headerlink" title="1、 什么是架构"></a>1、 什么是架构</h3><p>作为名词：和结构有关。将产品分解为一系列组件、模块和交互。</p>
+<p>作为动词：以需求为基础的，对产品进行的构建、设计、设定愿景以及决策。</p>
+<h3 id="2、-架构的种类"><a href="#2、-架构的种类" class="headerlink" title="2、 架构的种类"></a>2、 架构的种类</h3><p>“技术架构”通常指软件、硬件，或者两者兼有。</p>
+<p>不管你是构建软件系统、网络还是数据库，任何成功的方案都需要你理解问题，并设定一个愿景可以和每个参与构建最终产品的人沟通。不论任何领域的架构，其实最主要就是结构和愿景。</p>
+<h3 id="3、-软件架构是什么"><a href="#3、-软件架构是什么" class="headerlink" title="3、 软件架构是什么"></a>3、 软件架构是什么</h3><h4 id="应用程序架构"><a href="#应用程序架构" class="headerlink" title="应用程序架构"></a>应用程序架构</h4><p>应用程序架构的关注点是应用程序，通常包括将应用程序解构为类和组件，确保设计模式的正确应用，构建或使用框架等等。本质上，应用程序架构谈论的是软件设计的低级切面，通常只考虑单一的技术栈。</p>
+<p>应用程序架构着重考虑软件和代码组织。</p>
+<h4 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h4><p>系统架构描述为从组件和服务到子系统等更高层次的抽象。系统架构的定义大多数都包括了软件和硬件。</p>
+<p>系统架构是更大规模的应用程序架构。</p>
+<h4 id="软件架构"><a href="#软件架构" class="headerlink" title="软件架构"></a>软件架构</h4><p>软件架构就是应用程序和系统架构的结合。</p>
+<p>从代码结构和基础到将代码成功部署到生产环境，与一个软件系统重要元素相关的所有东西就是软件架构。<br>包括：</p>
+<ul>
+<li>开发技术（面向对象、重构、单元测试、代码整洁和技术实践）；</li>
+<li>安全性；</li>
+<li>性能、可伸缩性、可用性和其他质量属性；</li>
+<li>监控；</li>
+<li>客观环境的约束；互操作性、与其他软件系统的集成；</li>
+<li>运营、支持和维护的需求…</li>
+</ul>
+<h4 id="企业架构：战略而非代码"><a href="#企业架构：战略而非代码" class="headerlink" title="企业架构：战略而非代码"></a>企业架构：战略而非代码</h4><p>企业架构一般是指整个组织的中心工作，着眼于如何组织和利用人员、流程和技术来使企业有效和高效地工作。</p>
+<h3 id="4、-敏捷软件架构是什么"><a href="#4、-敏捷软件架构是什么" class="headerlink" title="4、 敏捷软件架构是什么"></a>4、 敏捷软件架构是什么</h3><h4 id="敏捷是什么"><a href="#敏捷是什么" class="headerlink" title="敏捷是什么"></a>敏捷是什么</h4><p>快速行动，拥抱变化，持续交互，接受反馈，不一而足；</p>
+<p>团队动态、系统思维、心理学以及其他可能会跟创建高效团队联系在一起的事情。</p>
+<h4 id="好的架构带来敏捷"><a href="#好的架构带来敏捷" class="headerlink" title="好的架构带来敏捷"></a>好的架构带来敏捷</h4><h3 id="5、-架构对上设计"><a href="#5、-架构对上设计" class="headerlink" title="5、 架构对上设计"></a>5、 架构对上设计</h3><p>架构和设计的区别：</p>
+<p>格雷迪▪布奇（Grady Booch）的观点：</p>
+<ul>
+<li>“作为名词，设计是指一个系统内命名的（尽管有时无法命名）结构或行为，解决或有助于解决该系统的一个或多个问题。因而设计代表了潜在的决策空间的一个点。</li>
+<li>所有的架构都是设计，但并非所有的设计都是架构。</li>
+<li>架构反映了使一个系统成型的重要设计决策，而重要性则通过改变的成本来衡量。</li>
+</ul>
+<p>以上的观点本质上是：重要决策即“架构”，其他的都是“设计”。</p>
+<p>我们的软件系统中哪些可能是重要的（或者说“架构的”）：</p>
+<ul>
+<li>系统的形态（例如：客户端-服务端、基于Web、原生移动客户端、分布式、异步，等等）；</li>
+<li>软件系统的结构（例如：组件、层、交互，等等）；</li>
+<li>技术选择（即编程语言、部署平台，等等）；</li>
+<li>框架选择（例如，Web MVC框架、持久性/ORM框架，等等）；</li>
+<li>设计方法/模式选择（例如，针对性能、可伸缩性、可用性等的方法）;</li>
+</ul>
+<h3 id="6、软件架构重要吗"><a href="#6、软件架构重要吗" class="headerlink" title="6、软件架构重要吗"></a>6、软件架构重要吗</h3><h4 id="缺乏软件架构将引发的问题"><a href="#缺乏软件架构将引发的问题" class="headerlink" title="缺乏软件架构将引发的问题"></a>缺乏软件架构将引发的问题</h4><h4 id="软件架构的好处"><a href="#软件架构的好处" class="headerlink" title="软件架构的好处"></a>软件架构的好处</h4><ul>
+<li>让团队跟随一个清晰的愿景和路线图，无论这个愿景是一人的还是整个团队的；</li>
+<li>技术领导力和更好的协调；</li>
+<li>与人交流的刺激因素，以便回答与重要决策、非功能需求、限制和其他横切关注点相关的问题；</li>
+<li>识别和减轻风险的框架；</li>
+<li>方法和标准的一致性，随之而来的结构良好的代码库；</li>
+<li>正在构建的产品的坚实基础；</li>
+<li>对不同的听众，以不同的抽象来交流解决方案的结构。</li>
+</ul>
+<h2 id="软件架构的角色"><a href="#软件架构的角色" class="headerlink" title="软件架构的角色"></a>软件架构的角色</h2><img src="/2016/04/21/《程序员必读之软件架构》读书笔记/软件架构角色.png" alt="软件架构角色" title="软件架构角色">
+<h5 id="1-、架构驱动力"><a href="#1-、架构驱动力" class="headerlink" title="1 、架构驱动力"></a>1 、架构驱动力</h5><p>这个角色首先要理解业务目标和管理架构驱动力，其中包括需求（功能性需求和非功能性需求）和环境的限制。</p>
+<h5 id="2-、设计软件"><a href="#2-、设计软件" class="headerlink" title="2 、设计软件"></a>2 、设计软件</h5><p>设计软件的过程是软件架构角色的一部分。涉及到要理解如何解决架构驱动力带来的问题，创建系统的整体结构，并为交付设定一个愿景。</p>
+<p>软件设计的一个关键部分是技术选择。</p>
+<h5 id="3、技术风险"><a href="#3、技术风险" class="headerlink" title="3、技术风险"></a>3、技术风险</h5><p>就是主动发现、减轻和承担高优先级的技术风险，这样才能保住你的项目和工作。</p>
+<h5 id="4、架构演变"><a href="#4、架构演变" class="headerlink" title="4、架构演变"></a>4、架构演变</h5><p>在整个交付过程中依据不断变化的需求和团队反馈来对其演化。</p>
+<h5 id="5、编写代码"><a href="#5、编写代码" class="headerlink" title="5、编写代码"></a>5、编写代码</h5><p>编码为架构师提供了一种与团队分享软件开发经验的方式，从而帮助他们更好地理解如何从开发的角度看待架构。</p>
+<h5 id="6、质量保证"><a href="#6、质量保证" class="headerlink" title="6、质量保证"></a>6、质量保证</h5><p>它的内容不只是代码评审，还可以是引入一些标准和工作实践，如编码标准、设计原则和工具等。质量保证也包括确保团队对架构实现的一致。</p>
+<h4 id="合作或失败"><a href="#合作或失败" class="headerlink" title="合作或失败"></a>合作或失败</h4><p>一个软件系统需要很多人做出贡献。这包括了从需要理解和认同架构的直接开发团队、一直到那些对安全性、数据库、运营、维护或支持感兴趣的人组成的扩展团队。<strong>任何担任架构角色的人都需要与这些人合作</strong>，以确保架构能与周围环境成功整合。</p>
+<h4 id="技术领导是一个角色而非级别"><a href="#技术领导是一个角色而非级别" class="headerlink" title="技术领导是一个角色而非级别"></a>技术领导是一个角色而非级别</h4><h4 id="提出你自己对这个角色的定义"><a href="#提出你自己对这个角色的定义" class="headerlink" title="提出你自己对这个角色的定义"></a>提出你自己对这个角色的定义</h4><p>对于对软件架构角色的期望，要跟你的团队达成共识；</p>
+<p>如果看到益处，就在你的组织里对其标准；</p>
+<h3 id="架构师应该编码"><a href="#架构师应该编码" class="headerlink" title="架构师应该编码"></a>架构师应该编码</h3><ul>
+<li>不放弃编码但也不把时间都用于编码</li>
+<li>构建原型、框架和基础</li>
+<li>进行代码评审</li>
+<li>实验并与时俱进</li>
+</ul>
+<h3 id="从开发者到架构师"><a href="#从开发者到架构师" class="headerlink" title="从开发者到架构师"></a>从开发者到架构师</h3><p>经验是一个好的评价标准，但你需要看得更深。</p>
+<blockquote>
+<p>架构驱动力：捕捉和挑战一套复杂的非功能需求，还是简单地假设它们的存在。</p>
+<p>设计软件：从零开始设计一个软件系统，还是扩展已有的。</p>
+<p>技术风险：证明你的架构能够工作，还是盲目乐观。</p>
+<p>架构演变：持续参与和演化你的架构，还是把它交给“实现团队”。</p>
+<p>编写代码：参与交互的实践部分，还是袖手旁观。</p>
+<p>质量保证：保证质量并选择标准，还是反其道而行之或无所作为。</p>
+<p>以上的大部分可以归结为<strong><em>是承担寻找方案的责任还是推诿问题</em></strong>。</p>
+</blockquote>
+<h3 id="拓展T"><a href="#拓展T" class="headerlink" title="拓展T"></a>拓展T</h3><h4 id="进一步的技术能力"><a href="#进一步的技术能力" class="headerlink" title="进一步的技术能力"></a>进一步的技术能力</h4><p>“T”指的是技术，这也正是优秀的软件架构师应该懂得的。作为软件开发者，我们需要知道编程语法、API、框架、设计模式、自动化单元测试和其他日常的底层技术。而这些对于架构师来说使基础。因为扮演软件架构角色的人要懂技术，他们才能回答：</p>
+<ul>
+<li>该方案是否有效？</li>
+<li>我们要这样去构建吗？</li>
+</ul>
+<h4 id="知识面宽"><a href="#知识面宽" class="headerlink" title="知识面宽"></a>知识面宽</h4><p>软件架构师要能够回答以下类型的问题：</p>
+<ul>
+<li>和其他可选技术相比，我们所选的是否最合适？</li>
+<li>对该系统的设计和构建，还有哪些选择？</li>
+<li>是否应该采用一种通用的架构模式？</li>
+<li>我们是否明白所做决策的利弊？</li>
+<li>我们照顾到了品质属性的需求吗？</li>
+<li>如何证明这种架构行之有效？</li>
+</ul>
+<h4 id="软件架构师是通才型专家"><a href="#软件架构师是通才型专家" class="headerlink" title="软件架构师是通才型专家"></a>软件架构师是通才型专家</h4><p>虽然一般性的设计知识、技巧、模式和方法通常适用于许多不同的技术，但不明白如何将其成功应用在底层细节上可能会导致问题。找到那些知你不知的人，与他们紧密合作。</p>
+<h4 id="软件架构是技术活"><a href="#软件架构是技术活" class="headerlink" title="软件架构是技术活"></a>软件架构是技术活</h4><h3 id="软技能"><a href="#软技能" class="headerlink" title="软技能"></a>软技能</h3><p>软技能包括：</p>
+<ul>
+<li>领导力：创造共有的愿景并带领人民向着共同目标前行的能力</li>
+<li>沟通</li>
+<li>影响力</li>
+<li>信心</li>
+<li>合作</li>
+<li>指导:对他人进行角色、技能上的指导</li>
+<li>辅导：对他人学习方面的指引</li>
+<li>动力：保持团队愉快、开朗和积极</li>
+<li>润滑剂：特别是在团队有不同的意见时，需要探索、客观、帮助团队达成共识</li>
+<li>政治：至少要明白周围发生了什么</li>
+<li>责任感：如果软件架构不能满足业务目标，无法交付非功能性需求或技术品质很差，都是你的问题</li>
+<li>授权：授权的不是责任</li>
+<li>保持积极</li>
+</ul>
+<h3 id="软件架构不是接力运动"><a href="#软件架构不是接力运动" class="headerlink" title="软件架构不是接力运动"></a>软件架构不是接力运动</h3><p>软件架构不需要“解决方案架构师”，需要负责大局的人。</p>
+<h3 id="软件架构需要引入控制"><a href="#软件架构需要引入控制" class="headerlink" title="软件架构需要引入控制"></a>软件架构需要引入控制</h3><p>从部分控制开始，倾听反馈，以便随着项目的推进再微调。如果团队老是问“为什么”和“怎么办”，那可能就需要更多指导。如果团队好像总是在和你对着干，可能你就是把操作杆推得太多。这没有一个标准的答案，但有一些控制是好事，因此很值得花些时间看看你的团队适合引入多少控制。</p>
+<blockquote>
+<p><strong>如果你是软件架构师：</strong></p>
+<ul>
+<li>包容与合作：让开发团队参与软件架构的过程，帮助他们了解大局，认同你所做的决策。</li>
+<li>动手：参与项目的日常开发工作来提高你对架构交付的理解。</li>
+</ul>
+<p><strong>如果你是软件开发者：</strong></p>
+<ul>
+<li><p>了解大局：花些时间去了解大局将帮助你了解架构决策的语境，增强你对系统整体的理解。</p>
+</li>
+<li><p>挑战架构决策：有了对大局的了解，就有机会挑战眼前的架构决策了。</p>
+</li>
+<li><p>申请参与：申请参与架构工作。</p>
+</li>
+</ul>
+</blockquote>
+<p>敏捷软件项目仍然需要架构，因为那些围绕复杂非功能需求和约束的棘手问题不会消失，只是对架构角色的执行不同。集体代码所有制，每个人都要能在架构的层次上工作，因此每个人某种程度上都是架构师。</p>
+<h2 id="设计软件"><a href="#设计软件" class="headerlink" title="设计软件"></a>设计软件</h2><h3 id="架构驱动力"><a href="#架构驱动力" class="headerlink" title="架构驱动力"></a>架构驱动力</h3><p>一套常见的驱动、影响和塑造最终软件架构的东西：</p>
+<ol>
+<li>功能需求</li>
+<li>质量属性</li>
+<li>约束</li>
+<li>原则</li>
+<li>理解影响</li>
+</ol>
+<p>了解以上东西可以帮助你减少摆在你面前的可选项，特别是如果你发现驱动力包括了复杂的非功能性需求或者像部署平台的限制之类的主要约束。然后根据特定的目标和语境，做出“明智”的设计决策。</p>
+<h3 id="质量属性（非功能性需求）"><a href="#质量属性（非功能性需求）" class="headerlink" title="质量属性（非功能性需求）"></a>质量属性（非功能性需求）</h3><p>非功能性需求通常被看作“能力”，主要更服务质量有关。</p>
+<ol>
+<li>性能：响应时间和延迟</li>
+<li>可伸缩性</li>
+<li>可用性</li>
+<li>安全性</li>
+<li>容灾恢复</li>
+<li>可访问性</li>
+<li>监测</li>
+<li>管理（对监测管理）</li>
+<li>审计（日志）</li>
+<li>灵活性</li>
+<li>可扩展性</li>
+<li>可维护性</li>
+<li>法律法规</li>
+<li>国际化</li>
+<li>本地化</li>
+</ol>
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><p>约束也是可以驱动、塑造和影响你的架构。常见的约束有：</p>
+<ol>
+<li>时间和预算的约束</li>
+<li>技术约束</li>
+<li>人员约束</li>
+<li>组织约束</li>
+</ol>
+<p>每个软件系统都要屈从于一个或者多个约束，软件架构角色的一部分就是找出这些约束，搞清楚它们为什么会被强加进来，让它们帮助你塑造软件架构。</p>
+<h3 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h3><p>原则是你为了将标准方法和一致性引入构建软件的方式而想采用的。</p>
+<h5 id="开发原则"><a href="#开发原则" class="headerlink" title="开发原则"></a>开发原则</h5><p>例如：编码标准和规范、自动化单元测试、静态分析工具等等。</p>
+<h5 id="架构原则"><a href="#架构原则" class="headerlink" title="架构原则"></a>架构原则</h5><p>例如：分层策略；业务逻辑位置；高内聚、低耦合、SOLID等；无状态组件；存储过程；域模型；HTTP会话使用；始终一致和最终一致等等。</p>
+<p>在构建软件系统的时候，要担心“最佳实践”。即使是最善意的原则，有的时候也会产生意想不到的负面影响。如果只是构建一个快速的技术方案，为确保完整的关注点分离而采用复杂的分层策略，也能耗费大量的时间。<strong>原则通常是因为好的理由才引入，但它们并不是任何时候都有好处。</strong></p>
+<h3 id="技术不是实现细节"><a href="#技术不是实现细节" class="headerlink" title="技术不是实现细节"></a>技术不是实现细节</h3><p>架构图应该包括技术的选择。技术不只是一个“实现细节”，你做出的技术决策跟你分解、安排和设计系统的方式同等重要。</p>
+<h3 id="更多的分层等于更高复杂度"><a href="#更多的分层等于更高复杂度" class="headerlink" title="更多的分层等于更高复杂度"></a>更多的分层等于更高复杂度</h3><h3 id="协同设计是一把双刃剑"><a href="#协同设计是一把双刃剑" class="headerlink" title="协同设计是一把双刃剑"></a>协同设计是一把双刃剑</h3><p>采用白板来设计软件的一个主要原因是它鼓励更加合作的方式，而不是大家都对着自己电脑上最喜欢的建模工具，各自为政。合作，也就是相互沟通和挑战。</p>
+<h3 id="软件架构是对话的平台"><a href="#软件架构是对话的平台" class="headerlink" title="软件架构是对话的平台"></a>软件架构是对话的平台</h3><h2 id="可视化软件"><a href="#可视化软件" class="headerlink" title="可视化软件"></a>可视化软件</h2><h3 id="沟通障碍"><a href="#沟通障碍" class="headerlink" title="沟通障碍"></a>沟通障碍</h3><p>ps:关于这一点，我不觉得应该抛弃UML或者怎么样，团队有一个共同的语言就OK。</p>
+<h3 id="对草图的需要"><a href="#对草图的需要" class="headerlink" title="对草图的需要"></a>对草图的需要</h3><p>画草图不是艺术</p>
+<p>画草图不是综合模型</p>
+<p>画草图可以协作活动</p>
+<h3 id="无效的草图"><a href="#无效的草图" class="headerlink" title="无效的草图"></a>无效的草图</h3><p>草图是捕捉和呈现软件架构的好方法，它们通常会缺少UML图的正规和严谨。图表应该需要被理解。</p>
+<h3 id="C4：语境、容器、组件和类"><a href="#C4：语境、容器、组件和类" class="headerlink" title="C4：语境、容器、组件和类"></a>C4：语境、容器、组件和类</h3><p>软件系统由多个容器构成，容器又由多个组件构成，组件由一个或多个类实现。</p>
+<ul>
+<li>类：在一个面向对象的世界里，类是软件系统的最小结构单元。</li>
+<li>组件：组件可以想象成一个或多个类组成的逻辑群组。组件通常由多个类在更高层次的约束下组合而成。</li>
+<li>容器：容器是指一个在其内部可以执行组件或驻留数据的东西。它可以是从网络或应用服务器直到富客户端应用或数据库的任何东西。</li>
+<li>系统：系统是最高的抽象层次，代表了能够提供价值的东西。</li>
+</ul>
+<img src="/2016/04/21/《程序员必读之软件架构》读书笔记/架构结构的简单模型.png" alt="架构结构的简单模型" title="架构结构的简单模型">
+<h3 id="总结软件的静态视图"><a href="#总结软件的静态视图" class="headerlink" title="总结软件的静态视图"></a>总结软件的静态视图</h3><ul>
+<li>语境：设定场景的高层次图，包括关键的系统依赖和参与者。（应该也叫用例图）</li>
+<li>容器：容器图显示了高层次的技术选择，容器如何分担责任、如何通信。</li>
+<li>组件：组件图可以让你看到每个容器的关键逻辑组件及之间的关系。</li>
+<li>类：这是一个可选的层次。如果想解析某个模式或组件将（或已经）被怎样实现，画少量高层次UML类的图。</li>
+</ul>
+<h3 id="明确技术选择"><a href="#明确技术选择" class="headerlink" title="明确技术选择"></a>明确技术选择</h3><p>技术选择不应该是实现细节。</p>
+<p>技术选择有助于把其他理想化和概念化的软件设计带回现实，再次脚踏实地。</p>
+<h3 id="图应该反映现实"><a href="#图应该反映现实" class="headerlink" title="图应该反映现实"></a>图应该反映现实</h3><p>图应该表达反映现实的抽象，而不是对不存在的进行概念化表现。你应该能看到图的元素反映在代码库中，反之亦然。如果你能明白自己要如何编写代码，就能知道如何可视化。</p>
+<h3 id="软件架构和编码"><a href="#软件架构和编码" class="headerlink" title="软件架构和编码"></a>软件架构和编码</h3><p>组件最简单的方式就是，它是接口背后的一组相关行为，可以用一个或多个协作类实现（当然，假设是面向对象的语言）。好的组件和好的类有一些共性，应该高内聚、低耦合，有良好定义的公共接口、良好的封装等。</p>
+<ul>
+<li>用层封装代码</li>
+<li>用特性封装</li>
+<li>用组件封装</li>
+</ul>
+<h3 id="有效的草图"><a href="#有效的草图" class="headerlink" title="有效的草图"></a>有效的草图</h3><p>包括：标题、标签、形状、职责、线条、颜色、边框、布局、方向、要点、图表的评审清单、倾听问题。</p>
+<h2 id="为软件生成文档"><a href="#为软件生成文档" class="headerlink" title="为软件生成文档"></a>为软件生成文档</h2><h3 id="代码不会讲述完整的故事"><a href="#代码不会讲述完整的故事" class="headerlink" title="代码不会讲述完整的故事"></a>代码不会讲述完整的故事</h3><p>需要使用更多的信息来描述一个系统。</p>
+<img src="/2016/04/21/《程序员必读之软件架构》读书笔记/代码之上的辅助信息图.png" alt="代码之上的辅助信息图" title="代码之上的辅助信息图">
+<h3 id="软件文档即指南"><a href="#软件文档即指南" class="headerlink" title="软件文档即指南"></a>软件文档即指南</h3><p>把辅助文档作为一个指南，它应该给人们上手提供足够的信息，帮助他们加快探索的过程。<br>以下的标题描述了你可能想要包含在软件指南中的事情：</p>
+<ol>
+<li>语境；</li>
+<li>功能性概览；</li>
+<li>质量属性；</li>
+<li>约束；</li>
+<li>原则；</li>
+<li>软件架构；</li>
+<li>外部接口；</li>
+<li>代码；</li>
+<li>数据；</li>
+<li>基础设施架构；</li>
+<li>部署；</li>
+<li>运营和支持；</li>
+<li>决策日志；</li>
+</ol>
+<h2 id="开发生命周期中的软件架构"><a href="#开发生命周期中的软件架构" class="headerlink" title="开发生命周期中的软件架构"></a>开发生命周期中的软件架构</h2><h3 id="敏捷和架构的冲突"><a href="#敏捷和架构的冲突" class="headerlink" title="敏捷和架构的冲突"></a>敏捷和架构的冲突</h3><p>冲突1：团队结构</p>
+<p>冲突2：流程和产出</p>
+<p>软件架构提供了TDD、BDD、DDD、RDD和代码整洁的分界线</p>
+<p>（TDD：测试驱动设计；BDD：行为驱动设计；DDD：领域驱动设计；RDD：责任驱动设计）</p>
+<p>你需要思考架构的驱动力（影响最终软件架构的主要事情），包括以下：</p>
+<ul>
+<li>功能需求：需求驱动架构。</li>
+<li>质量属性：非功能需求（比如：性能、可扩展性、安全等）通常是技术方面的，也很难改造。</li>
+<li>约束：约束普遍存在于现实世界，包括批准的技术清单、规定的集成标准、目标部署环境、团队规模等。</li>
+<li>原则：是在试图为软件提供一致性和清晰度时你想要采用的东西。</li>
+</ul>
+<p>架构是改变起来很困难或者成本很高的东西，跟那些你不能用一个下午就轻松完成重构的、大的或者“主要”的决策有关。它包括核心技术选择，全面的高层次结构（全局）以及对如何解决各种复杂、高风险、关键问题的理解，等等。<em>软件架构很重要。</em></p>
+<h3 id="恰如其分的预先设计"><a href="#恰如其分的预先设计" class="headerlink" title="恰如其分的预先设计"></a>恰如其分的预先设计</h3><p>软件的一个主要分歧是要做多少预先设计。</p>
+<p><strong>多少预先设计是太少</strong></p>
+<ul>
+<li>不了解系统边界是什么，在哪里。</li>
+<li>团队中对“大局”没有形成共识。</li>
+<li>无法交流整体愿景。</li>
+<li>团队成员对需要做的事情不清楚或感到不适。</li>
+<li>没有考虑非功能需求/质量属性。</li>
+<li>没有考虑（现实的）环境约束如何影响软件（比如部署环境）。</li>
+<li>没有考虑主要的风险，比如非功能需求、外部接口等。</li>
+<li>尚未确认重大问题及其答案。</li>
+<li>没有考虑关注点分离、适当的抽象层次、分层、可修改性，拐点等。</li>
+<li>对架构师要扮演的角色没有共识。</li>
+<li>解决问题的方法不一致。</li>
+<li>团队缺乏控制和指导。</li>
+<li>项目生命周期中本应预先考虑到的重大架构变化。</li>
+<li>过多的设计选择和选项，往往伴以团队成员对解决方案或前进方向的反对。</li>
+<li>对于设计是否管用的不确定（比如，设计过程中没有执行原型的部分）。</li>
+<li>缺乏技术选择（即不必要的延迟）。</li>
+</ul>
+<p><strong>多少预先设计是太多</strong></p>
+<ul>
+<li>太多信息（即很长的文档或信息超载）。</li>
+<li>在太多抽象层次都过于详细。</li>
+<li>太多图表。</li>
+<li>在文档中编写代码或伪代码。</li>
+<li>过于死板，缺乏灵活性的架构。</li>
+<li>所有抽象层次的所有决策都已做出。</li>
+<li>有众多展示了所有可能交互的序列图的类层次设计。</li>
+<li>详细的实体关系模型和数据库的设计（比如，表、视图、存储过程和索引）。</li>
+<li>分析瘫痪和纠缠于次要细节的团队。</li>
+<li>编码成了对团队来说无聊而消极的设计文物到代码的简单交换。</li>
+<li>一个无节制的“设计阶段”（即时间和预算）。</li>
+<li>还未进行任何编码就已达到最后期限。</li>
+</ul>
+<p><strong>多少是“恰如其分”</strong></p>
+<p>如果需要做到“恰如其分”，以下几点不管软件架构角色由一个人扮演还是团队内共享都适用。</p>
+<ul>
+<li><strong>结构</strong><ul>
+<li>是什么：理解主要的结构元素，以及它们如何基于架构驱动力组合在一起。</li>
+<li>怎么做：设计并分解为容器和组件。</li>
+</ul>
+</li>
+<li><strong>风险</strong><ul>
+<li>是什么：识别和缓解最高优先级的风险。</li>
+<li>怎么做：风险风暴和具体的实验。</li>
+</ul>
+</li>
+<li><strong>愿景</strong><ul>
+<li>是什么：创建并交流团队展开工作的愿景。</li>
+<li>怎么做：语境、容器和组件图。</li>
+</ul>
+</li>
+</ul>
+<p><strong>把恰如其分的预先设计置于适当的语境</strong></p>
+<p>对每个解决方案提出以下类型的问题：</p>
+<ul>
+<li>架构会管用吗？如果不管用，为什么？</li>
+<li>所有关键的风险都已被识别了吗？</li>
+<li>架构是否过于简单？是否过于复杂？</li>
+<li>架构是否有效地交流过？</li>
+<li>图的哪些地方是受人喜欢的？哪些可以改进？</li>
+<li>细节是否太多？细节是否足够？</li>
+<li>你能把这作为七点交给你的团队吗？</li>
+<li>控制是否太多？指导是否不足？</li>
+<li>你对已做出或推迟的技术决策的程度满意吗？</li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+          
+            <a href="/tags/架构/" rel="tag">#架构</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/21/Hello Blog/" rel="next" title="Hello Blog">
+                <i class="fa fa-chevron-left"></i> Hello Blog
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/25/Web服务器会做些什么/" rel="prev" title="Web服务器会做些什么">
+                Web服务器会做些什么 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构师真正要学会的东西"><span class="nav-number">1.</span> <span class="nav-text">架构师真正要学会的东西</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每个开发者都应该知道软件架构的五件事："><span class="nav-number">2.</span> <span class="nav-text">每个开发者都应该知道软件架构的五件事：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是软件架构"><span class="nav-number"></span> <span class="nav-text">什么是软件架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、-什么是架构"><span class="nav-number">1.</span> <span class="nav-text">1、 什么是架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、-架构的种类"><span class="nav-number">2.</span> <span class="nav-text">2、 架构的种类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、-软件架构是什么"><span class="nav-number">3.</span> <span class="nav-text">3、 软件架构是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用程序架构"><span class="nav-number">3.1.</span> <span class="nav-text">应用程序架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统架构"><span class="nav-number">3.2.</span> <span class="nav-text">系统架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件架构"><span class="nav-number">3.3.</span> <span class="nav-text">软件架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#企业架构：战略而非代码"><span class="nav-number">3.4.</span> <span class="nav-text">企业架构：战略而非代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、-敏捷软件架构是什么"><span class="nav-number">4.</span> <span class="nav-text">4、 敏捷软件架构是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#敏捷是什么"><span class="nav-number">4.1.</span> <span class="nav-text">敏捷是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#好的架构带来敏捷"><span class="nav-number">4.2.</span> <span class="nav-text">好的架构带来敏捷</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、-架构对上设计"><span class="nav-number">5.</span> <span class="nav-text">5、 架构对上设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、软件架构重要吗"><span class="nav-number">6.</span> <span class="nav-text">6、软件架构重要吗</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#缺乏软件架构将引发的问题"><span class="nav-number">6.1.</span> <span class="nav-text">缺乏软件架构将引发的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件架构的好处"><span class="nav-number">6.2.</span> <span class="nav-text">软件架构的好处</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件架构的角色"><span class="nav-number"></span> <span class="nav-text">软件架构的角色</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-、架构驱动力"><span class="nav-number">0.0.1.</span> <span class="nav-text">1 、架构驱动力</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-、设计软件"><span class="nav-number">0.0.2.</span> <span class="nav-text">2 、设计软件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、技术风险"><span class="nav-number">0.0.3.</span> <span class="nav-text">3、技术风险</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、架构演变"><span class="nav-number">0.0.4.</span> <span class="nav-text">4、架构演变</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、编写代码"><span class="nav-number">0.0.5.</span> <span class="nav-text">5、编写代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、质量保证"><span class="nav-number">0.0.6.</span> <span class="nav-text">6、质量保证</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合作或失败"><span class="nav-number">0.1.</span> <span class="nav-text">合作或失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技术领导是一个角色而非级别"><span class="nav-number">0.2.</span> <span class="nav-text">技术领导是一个角色而非级别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提出你自己对这个角色的定义"><span class="nav-number">0.3.</span> <span class="nav-text">提出你自己对这个角色的定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#架构师应该编码"><span class="nav-number">1.</span> <span class="nav-text">架构师应该编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#从开发者到架构师"><span class="nav-number">2.</span> <span class="nav-text">从开发者到架构师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拓展T"><span class="nav-number">3.</span> <span class="nav-text">拓展T</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进一步的技术能力"><span class="nav-number">3.1.</span> <span class="nav-text">进一步的技术能力</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知识面宽"><span class="nav-number">3.2.</span> <span class="nav-text">知识面宽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件架构师是通才型专家"><span class="nav-number">3.3.</span> <span class="nav-text">软件架构师是通才型专家</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件架构是技术活"><span class="nav-number">3.4.</span> <span class="nav-text">软件架构是技术活</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软技能"><span class="nav-number">4.</span> <span class="nav-text">软技能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件架构不是接力运动"><span class="nav-number">5.</span> <span class="nav-text">软件架构不是接力运动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件架构需要引入控制"><span class="nav-number">6.</span> <span class="nav-text">软件架构需要引入控制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计软件"><span class="nav-number"></span> <span class="nav-text">设计软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#架构驱动力"><span class="nav-number">1.</span> <span class="nav-text">架构驱动力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#质量属性（非功能性需求）"><span class="nav-number">2.</span> <span class="nav-text">质量属性（非功能性需求）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束"><span class="nav-number">3.</span> <span class="nav-text">约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原则"><span class="nav-number">4.</span> <span class="nav-text">原则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#开发原则"><span class="nav-number">4.0.1.</span> <span class="nav-text">开发原则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#架构原则"><span class="nav-number">4.0.2.</span> <span class="nav-text">架构原则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术不是实现细节"><span class="nav-number">5.</span> <span class="nav-text">技术不是实现细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多的分层等于更高复杂度"><span class="nav-number">6.</span> <span class="nav-text">更多的分层等于更高复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协同设计是一把双刃剑"><span class="nav-number">7.</span> <span class="nav-text">协同设计是一把双刃剑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件架构是对话的平台"><span class="nav-number">8.</span> <span class="nav-text">软件架构是对话的平台</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化软件"><span class="nav-number"></span> <span class="nav-text">可视化软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#沟通障碍"><span class="nav-number">1.</span> <span class="nav-text">沟通障碍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对草图的需要"><span class="nav-number">2.</span> <span class="nav-text">对草图的需要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无效的草图"><span class="nav-number">3.</span> <span class="nav-text">无效的草图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C4：语境、容器、组件和类"><span class="nav-number">4.</span> <span class="nav-text">C4：语境、容器、组件和类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结软件的静态视图"><span class="nav-number">5.</span> <span class="nav-text">总结软件的静态视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#明确技术选择"><span class="nav-number">6.</span> <span class="nav-text">明确技术选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图应该反映现实"><span class="nav-number">7.</span> <span class="nav-text">图应该反映现实</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件架构和编码"><span class="nav-number">8.</span> <span class="nav-text">软件架构和编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有效的草图"><span class="nav-number">9.</span> <span class="nav-text">有效的草图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为软件生成文档"><span class="nav-number"></span> <span class="nav-text">为软件生成文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码不会讲述完整的故事"><span class="nav-number">1.</span> <span class="nav-text">代码不会讲述完整的故事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件文档即指南"><span class="nav-number">2.</span> <span class="nav-text">软件文档即指南</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发生命周期中的软件架构"><span class="nav-number"></span> <span class="nav-text">开发生命周期中的软件架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#敏捷和架构的冲突"><span class="nav-number">1.</span> <span class="nav-text">敏捷和架构的冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恰如其分的预先设计"><span class="nav-number">2.</span> <span class="nav-text">恰如其分的预先设计</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

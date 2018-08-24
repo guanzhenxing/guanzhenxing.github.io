@@ -1,0 +1,1618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>WebFuse</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://webfuse.cn/"/>
+  <updated>2018-08-24T16:26:56.271Z</updated>
+  <id>http://webfuse.cn/</id>
+  
+  <author>
+    <name>Hing Kwan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>以太坊学习摘要</title>
+    <link href="http://webfuse.cn/2018/08/24/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%AD%A6%E4%B9%A0%E6%91%98%E8%A6%81/"/>
+    <id>http://webfuse.cn/2018/08/24/以太坊学习摘要/</id>
+    <published>2018-08-24T14:05:11.000Z</published>
+    <updated>2018-08-24T16:26:56.271Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="以太坊"><a href="#以太坊" class="headerlink" title="以太坊"></a>以太坊</h2><p>以太坊（Ethereum）是一个建立在区块链技术之上， 去中心化应用平台。它允许任何人在平台中建立和使用通过区块链技术运行的去中心化应用。与比特币相比，以太坊属于区块链2.0的范畴。</p>
+<p>从平台角度来看，以太坊类似于苹果或者安卓的应用商店；从技术角度来说，以太坊类似于一个区块链操作系统。</p>
+<p>下图是以太坊的组成：</p>
+<img src="/2018/08/24/以太坊学习摘要/以太坊组成.png" alt="以太坊组成.png" title="">
+<p>所以，可以理解为：“以太坊=区块链+智能合约”。开发者在以太坊上可以开发任意的应用，实现任意的智能合约。以太坊的虚拟机和智能合约扩展了外部应用程序在区块链技术上的应用。另外，以太坊中的智能合约是运行在虚拟机（也就是EVM，Ethereum Virtual Machine，以太坊虚拟机）上的。</p>
+<h2 id="智能合约"><a href="#智能合约" class="headerlink" title="智能合约"></a>智能合约</h2><p>智能合约就是以太坊上的程序，它是代码和数据（状态）的集合。所以，不管什么样功能的合约，站在技术的角度上来讲，就是通过执行一组程序改变了一些值。</p>
+<p>我们不但可以实现数字货币，还可以实现众筹合约、担保合约、融资租赁合约、期货合约以及各种金融与非金融的订单合约。</p>
+<p>在以太坊中，每个合约都有一个唯一的地址来标识它自己（由创建者的哈希地址和曾经发送过的交易的数量推算出来）。客户端可以与这个地址进行交互，可以发送ether，调用函数，查询当前的状态等。</p>
+<p>有三种常见的智能合约语言，这些语言可以被编译成智能合约运行在以太坊虚拟矿机上。它们是：</p>
+<ul>
+<li>Solidity：和Javascript语言类似。这是目前最受欢迎的和功能丰富的智能合约脚本语言。</li>
+<li>Serpent：和Python语言类似，在以太坊历史的早期受欢迎。</li>
+<li>LLL (Lisp Like Language)：和Lisp类似，只有在早期使用。它大概是最难用的。</li>
+</ul>
+<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>状态可以理解为以太坊中的某些内容发生变化。</p>
+<p>对于区块链账本，这里的变化可以指一笔转账，也可以是合约的某个规则被激活等，总之就是数据动了，以太坊中将变化的过程称为<strong>状态转变函数</strong></p>
+<p>在以太坊系统中，状态是由被称为“账户”的对象和在两个账户之间转移价值和信息的状态转换构成的。</p>
+<blockquote>
+<p>以太坊的每个区块头中都包含了指向三棵树（状态树、交易树、数据树）的指针。</p>
+</blockquote>
+<h2 id="账户"><a href="#账户" class="headerlink" title="账户"></a>账户</h2><p>以太坊具有账户的概念。在以太坊中有两类的账户：外部账户 和 合约账户。</p>
+<h3 id="外部账户"><a href="#外部账户" class="headerlink" title="外部账户"></a>外部账户</h3><p>外部账户（EOA，Externally Owned Account）,它就是一个一般账户的概念。外部账户是由一对秘钥定义的，一个私钥一个公钥，公钥的后20位作为地址。</p>
+<p>外部账户没有关联任何的代码。</p>
+<h3 id="合约账户"><a href="#合约账户" class="headerlink" title="合约账户"></a>合约账户</h3><p>智能合约的部署是指把合约字节码发布到区块链上，并使用一个特定的地址来标示这个合约，这个地址称为合约账户。合约账户是可编程的，可以执行图灵完备的计算任务，合约账户之间可以传递消息。</p>
+<h3 id="区别和联系"><a href="#区别和联系" class="headerlink" title="区别和联系"></a>区别和联系</h3><p>合约账户的地址是通过合约创建者的地址和该地址发出过的交易数量计算得到的。</p>
+<p>一个外部账户可以通过创建和用自己的私钥来对交易进行签名，来发送消息给另一个外部账户或合约账户。</p>
+<p>在两个外部账户之间传送消息是价值转移的过程。但从外部账户到合约账户的消息会激活合约账户的代码，允许它执行各种动作（比如转移代币，写入内部存储，挖出一个新代币，执行一些运算，创建一个新的合约等等）。</p>
+<p>只有当外部账户发出指令时，合同账户才会执行相应的操作。</p>
+<h3 id="账户的结构"><a href="#账户的结构" class="headerlink" title="账户的结构"></a>账户的结构</h3><p>以太坊中的账户包含以下4个部分：</p>
+<ul>
+<li>随机数（Nonce）。用于确定每笔交易智能被处理一次的计数器，也就是每个账户的交易计数，用于防止重放攻击。当某个账户发送一笔交易时，根据已生成的交易数来累加这个数字。</li>
+<li>账户目前的以太币余额（Balance）。</li>
+<li>账户的存储（Root），它是一个哈希值，指向的是一棵patricia trie（帕夏尔前缀树）。默认为空</li>
+<li>账户的合约代码（CodeHash），只有合约账户才有，否则为空。</li>
+</ul>
+<h2 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h2><p>以太坊中的交易就是状态的转换过程。</p>
+<p>交易在以太坊中是在签名的数据包，这个数据包中存储了从外部账户发送的消息。所谓的交易就是一个消息，这个消息被发送者签名了。</p>
+<h3 id="交易类型："><a href="#交易类型：" class="headerlink" title="交易类型："></a>交易类型：</h3><ul>
+<li>转账交易。也就是从一个账户往另一个账户转账发以太币。</li>
+<li>合约创建交易。也就是创建一个合约，因为创建合约也要消耗以太坊。</li>
+<li>合约执行交易。在以太坊中，执行合约也算一种交易。</li>
+</ul>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
+<li>AccountNonce：表明交易的发送者已经发送过的交易数，与账户中定义的随机数对应。</li>
+<li>Price和GasLimit：用来抵抗拒绝服务攻击。就是为了让交易的执行带上成本，每进行一次交易都要支付一定的手续费，GasLimit是交易执行所需的计算量，Price是单价，两者的乘积就是手续费。如果交易在执行的过程中实际所需的消耗超出了Gas限制就会出错回滚，如果存在多余的Gas就会退还多余部分。</li>
+<li>Recipient：接收方的地址。</li>
+<li>Amount：发送的以太坊金额，单位wei。</li>
+<li>Payload：交易携带的数据，根据不同的交易类型有不同的用法。</li>
+<li>V、R、S：交易的签名数字。</li>
+</ul>
+<blockquote>
+<p>以太坊的区块头中有交易信息。</p>
+</blockquote>
+<h3 id="计量单位"><a href="#计量单位" class="headerlink" title="计量单位"></a>计量单位</h3><p>最小单位是wei。1 ether = 1000 000 000 000 000 000 wei。</p>
+<blockquote>
+<p>kwei = 1000wei</p>
+<p>mwei = 1000kwei</p>
+<p>gwei = 1000mwei</p>
+<p>szabo = 1000gwei</p>
+<p>finney = 1000szabo</p>
+<p>ether = 1000finney</p>
+</blockquote>
+<h2 id="收据"><a href="#收据" class="headerlink" title="收据"></a>收据</h2><p>在以太坊中，收据是指每条交易执行所影响的数据条，在以太坊的区块头中存储了收据树的根哈希值。</p>
+<p>收据实际上是一个数据的统计记录，记录了执行后的特征数据。</p>
+<p>数据结构如下：</p>
+<ul>
+<li>PostState： 状态树的根哈希。通过这个字段使得收据可以直接访问都状态数据。</li>
+<li>CumulativeGasUsed：累计的Gas消耗，包含关联的本条交易以及之前的交易所消耗的Gas之和，或者说是指所在区域的Gas消耗之和。</li>
+<li>TxHash：交易事务的哈希值。</li>
+<li>ContractAddress：合约地址，如果是普通的转账交易则为空。</li>
+<li>GasUsed：本条交易消耗的Gas。</li>
+</ul>
+<h2 id="Gas"><a href="#Gas" class="headerlink" title="Gas"></a>Gas</h2><p>在以太坊中Gas可以理解为在以太坊平台上执行程序需要付出的成本或者手续费。</p>
+<p>Gas是通过以太坊中合约的执行计算量来决定的，这个计算量可以简单理解为是算力的消耗，执行一次SHA3哈希计算会消耗20个Gas，执行一次普通的转账交易就要消耗21000个Gas。</p>
+<p>以太币总额 = 消耗的Gas ✖️ Gas单价。</p>
+<h2 id="以太坊客户端"><a href="#以太坊客户端" class="headerlink" title="以太坊客户端"></a>以太坊客户端</h2><p>以太坊客户端，其实我们可以把它理解为一个开发者工具，它提供账户管理、挖矿、转账、智能合约的部署和执行等等功能。</p>
+<p>go-ethereum是官方的Go语言客户端。可用于挖矿、组件私有链、管理账号、部署智能合约等。它提供了一个交互式命令控制台，通过命令控制台中包含了以太坊的各种功能（API）。</p>
+<p>除go-ethereum外，官方还提供了cpp-ethereum，基于C++写的。</p>
+<h2 id="以太坊网络"><a href="#以太坊网络" class="headerlink" title="以太坊网络"></a>以太坊网络</h2><p>我们可以把以太网络分为3种：主网、测试网络和私有网络。</p>
+<ul>
+<li>生产环境网络（主网）: 以太坊的生产网络顾名思义，也就是产生真正有价值的 的以太币的网络。</li>
+<li>测试网络: 以太坊的测试网络也是官方提供的，顾名思义就是专供用户来开发、调试和测试的。上面的合约执行不消耗真实的以太币。官方提供的为：Rinkeby</li>
+<li>私有网络：以太坊的私有网络，顾名思义就是由用户自己创建的私有网络。</li>
+</ul>
+<h2 id="以太币"><a href="#以太币" class="headerlink" title="以太币"></a>以太币</h2><p>以太币每年的产量则是固定的。</p>
+<p>以太币的数量以这种形式存在：Pre-mine（矿前） + Block rewards（区块奖励） + Uncle rewards（叔块奖励） + Uncle referencing rewards（叔块引用奖励）</p>
+<ul>
+<li>矿前：2014年7月/8月间，为众筹大约发行了7200万以太币。这些币有的时候被称之为“矿前”。众筹阶段之后，以太币每年的产量被限制在7200万以太币的25%（每年以太币的矿产量，不高于1800万，除了一次性为crowdsale而发行的7200万以太币）</li>
+<li>区块奖励：每产生一个新区块就会产生5个新以太币。每年有225万个区块被挖出来，每个区块5个以太币，也就是每年会产出1130万个以太币。</li>
+<li>叔块奖励：有些区块被挖得稍晚一些，因此不能称为主区块链的组成部分，以太币称它们为“ uncles”，并且在之后的区块中，可以引用它们。如果uncles在之后的区块链中作为叔块被引用，每个叔块会为挖矿者产出大约4.375个以太币（5个以太币奖励的8分之7）.这被称之为叔块奖励。</li>
+<li>叔块引用奖励：矿工每引用一个叔块，就得到了大约0.15个以太币（最多引用两个叔块）。</li>
+</ul>
+<hr>
+<p>引用：</p>
+<ul>
+<li>《白话区块链》</li>
+<li><a href="https://github.com/ethereum/wiki/wiki/%5B%E4%B8%AD%E6%96%87%5D-%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%99%BD%E7%9A%AE%E4%B9%A6" target="_blank" rel="external">以太坊白皮书</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24012669" target="_blank" rel="external">一个基础的以太坊介绍</a></li>
+<li><a href="https://learnblockchain.cn/2017/11/20/whatiseth/" target="_blank" rel="external">以太坊是什么 - 以太坊开发入门指南</a></li>
+<li><a href="http://me.tryblockchain.org/getting-up-to-speed-on-ethereum.html" target="_blank" rel="external">以太坊开发入门，完整入门篇</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;以太坊&quot;&gt;&lt;a href=&quot;#以太坊&quot; class=&quot;headerlink&quot; title=&quot;以太坊&quot;&gt;&lt;/a&gt;以太坊&lt;/h2&gt;&lt;p&gt;以太坊（Ethereum）是一个建立在区块链技术之上， 去中心化应用平台。它允许任何人在平台中建立和使用通过区块链技术运行的去中心化
+    
+    </summary>
+    
+      <category term="区块链" scheme="http://webfuse.cn/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="以太坊" scheme="http://webfuse.cn/tags/%E4%BB%A5%E5%A4%AA%E5%9D%8A/"/>
+    
+      <category term="区块链" scheme="http://webfuse.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>离职前夕的随想</title>
+    <link href="http://webfuse.cn/2018/07/25/%E7%A6%BB%E8%81%8C%E5%89%8D%E5%A4%95%E7%9A%84%E9%9A%8F%E6%83%B3/"/>
+    <id>http://webfuse.cn/2018/07/25/离职前夕的随想/</id>
+    <published>2018-07-24T16:03:21.000Z</published>
+    <updated>2018-07-28T03:19:46.941Z</updated>
+    
+    <content type="html"><![CDATA[<p>去年，离开ND后的第一天，在去临海的动车上，写了《十年》一文。没想到的是今年，在离开德诺的前一天晚上，又写下了一篇类似的文章。</p>
+<p>离开德诺不舍是真，但是浓浓的不甘也是真。故事终究是有聚有散，事情也无法分辨谁对谁错，无非就是那一时刻的选择而已。</p>
+<p>最近在看《少有人走的路》，也就刚看了第一章，也许明天开始又会重新从头开始看，不为别的，只是觉得第一章就已经很和我口味了。一年来，特别是今年以来的一些事情让我很无语，其实，现在想来也是自己的问题罢了。“我的时间是我的责任，是我，只有我，能决定怎么安排和利用我的时间”，同理，他人的时间应该也是他人负责，旁人无法左右。</p>
+<p>最后，引用“自律是解决人生问题最主要的工具，也是消除人生痛苦最重要的方法。”这句来做个结束吧！希望，新的开始是自己想要的开始，新的征程是充满激情的征程~</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;去年，离开ND后的第一天，在去临海的动车上，写了《十年》一文。没想到的是今年，在离开德诺的前一天晚上，又写下了一篇类似的文章。&lt;/p&gt;
+&lt;p&gt;离开德诺不舍是真，但是浓浓的不甘也是真。故事终究是有聚有散，事情也无法分辨谁对谁错，无非就是那一时刻的选择而已。&lt;/p&gt;
+&lt;p&gt;最近
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://webfuse.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="生活" scheme="http://webfuse.cn/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="杂念" scheme="http://webfuse.cn/tags/%E6%9D%82%E5%BF%B5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java面试手册</title>
+    <link href="http://webfuse.cn/2018/07/22/Java%E9%9D%A2%E8%AF%95%E6%89%8B%E5%86%8C/"/>
+    <id>http://webfuse.cn/2018/07/22/Java面试手册/</id>
+    <published>2018-07-22T00:19:45.000Z</published>
+    <updated>2018-07-28T03:19:46.909Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Java面试手册"><a href="#Java面试手册" class="headerlink" title="Java面试手册"></a>Java面试手册</h1><p>《Java面试手册》整理了从业到现在看到的、经历过的一些Java面试题。</p>
+<p>主要发布在我的GitHUb上，见：<a href="https://github.com/guanzhenxing/java_interview_manual" target="_blank" rel="external">Java面试手册</a></p>
+<p>这些面试题的主要来源是一些网站还有github上的内容，由于平常在收藏到“印象笔记”中的时候没有保留来源出处，如果有介意版权的可以联系我。</p>
+<p>主要分为以下部分：</p>
+<ul>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-basic/index.md" target="_blank" rel="external">Java基础</a><ul>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-basic/oop.md" target="_blank" rel="external">面向对象</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-basic/basic.md" target="_blank" rel="external">基础</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-basic/collections.md" target="_blank" rel="external">集合</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-basic/multithread.md" target="_blank" rel="external">多线程</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-basic/jvm.md" target="_blank" rel="external">JVM</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-basic/nio.md" target="_blank" rel="external">NIO</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/design-pattern/index.md" target="_blank" rel="external">设计模式</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/data-structures-and-algorithms/index.md" target="_blank" rel="external">数据结构与算法</a><ul>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/data-structures-and-algorithms/algorithms.md" target="_blank" rel="external">算法</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/data-structures-and-algorithms/data-structures.md" target="_blank" rel="external">数据结构</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-web/index.md" target="_blank" rel="external">JavaWeb</a><ul>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-web/http.md" target="_blank" rel="external">HTTP基础</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-web/java-web-basic.md" target="_blank" rel="external">JavaWeb基础</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-web/spring.md" target="_blank" rel="external">Spring系列</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-web/mybatis.md" target="_blank" rel="external">MyBatis</a></li>
+<li>Hibernate</li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/java-web/tomcat.md" target="_blank" rel="external">Tomcat</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/db-cache/index.md" target="_blank" rel="external">数据库与缓存</a><ul>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/db-cache/db_basic.md" target="_blank" rel="external">数据库基本理论</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/db-cache/cache_basic.md" target="_blank" rel="external">缓存基本理论</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/db-cacahe/db-index.md" target="_blank" rel="external">数据库索引</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/db-cache/sharding.md" target="_blank" rel="external">分库分表</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/db-cache/mysql.md" target="_blank" rel="external">MySQL</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/db-cache/mongodb.md" target="_blank" rel="external">MongoDB</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/db-cache/redis.md" target="_blank" rel="external">Redis</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/mq/index.md" target="_blank" rel="external">消息队列</a><ul>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/mq/basic.md" target="_blank" rel="external">MQ基础</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/distributed/index.md" target="_blank" rel="external">分布式</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/mic-service/index.md" target="_blank" rel="external">微服务</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/security-performance/index.md" target="_blank" rel="external">安全和性能</a><ul>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/security-performance/security.md" target="_blank" rel="external">安全</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/security-performance/performance.md" target="_blank" rel="external">性能</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/network-server/index.md" target="_blank" rel="external">网络与服务器</a><ul>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/network-server/network.md" target="_blank" rel="external">计算机网络</a></li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/network-server/nginx.md" target="_blank" rel="external">Nginx</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/software_engineering/index.md" target="_blank" rel="external">软件工程</a><ul>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/software_engineering-server/uml.md" target="_blank" rel="external">UML</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/guanzhenxing/java_interview_manual/blob/master/business/index.md" target="_blank" rel="external">业务</a></li>
+</ul>
+<hr>
+<p>主要参考：</p>
+<ul>
+<li><a href="http://blog.720ui.com/2018/java_interview_final/" target="_blank" rel="external">Java面试通关要点汇总集【终极版】</a></li>
+<li><a href="https://github.com/xingshaocheng/architect-awesome" target="_blank" rel="external">《后端架构师技术图谱》</a></li>
+<li><code>https://github.com/hadyang/interview</code></li>
+<li><code>https://github.com/crossoverJie/Java-Interview</code></li>
+<li><a href="https://segmentfault.com/a/1190000012063898" target="_blank" rel="external">后台开发常问面试题集锦</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Java面试手册&quot;&gt;&lt;a href=&quot;#Java面试手册&quot; class=&quot;headerlink&quot; title=&quot;Java面试手册&quot;&gt;&lt;/a&gt;Java面试手册&lt;/h1&gt;&lt;p&gt;《Java面试手册》整理了从业到现在看到的、经历过的一些Java面试题。&lt;/p&gt;
+&lt;p&gt;主要
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://webfuse.cn/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="读书笔记" scheme="http://webfuse.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java" scheme="http://webfuse.cn/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Token的权限认证服务</title>
+    <link href="http://webfuse.cn/2018/03/11/%E5%9F%BA%E4%BA%8EToken%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://webfuse.cn/2018/03/11/基于Token的权限认证服务/</id>
+    <published>2018-03-11T14:03:58.000Z</published>
+    <updated>2018-07-28T03:19:46.930Z</updated>
+    
+    <content type="html"><![CDATA[<p>在这两年接触的项目基本上是基于前后端分离、多种后端服务组合而成的，这有别于先前的“单体”的项目，而且我们还需要考虑外部应用接入的场景、用户-服务的鉴权、服务-服务的鉴权等多种鉴权场景。</p>
+<p>本方案基于客户端Token与网关结合的方式。所有的客户端请求都经过网关，网关将校验客户端发送上来的Token等信息，如果通过则转发给对应的服务，如果不通过则直接返回40X给客户端。</p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><img src="/2018/03/11/基于Token的权限认证服务/auth-arch.png" alt="auth-arch.png" title="">
+<ol>
+<li>获得authorize,用户/设备从UAA Service中获得authorize信息</li>
+<li>附加mac token,请求在访问服务时候附加上mac token</li>
+<li>Gateway进行认证，Gateway将收到的每个mac token发送给UAA Service进行校验</li>
+<li>每个服务只有权限去操作自己负责的那部分功能（待规划）</li>
+</ol>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><img src="/2018/03/11/基于Token的权限认证服务/auth-sequence.png" alt="auth-sequence.png" title="">
+<ol>
+<li>用户/客户端从UAA Service中获得Token</li>
+<li>如果UAA Service中无此用户/客户端,则抛出AuthorizationException异常并返回401</li>
+<li>如果UAA Service认证成功，返回对应的Token信息</li>
+<li>用户的请求数据，请求头Authorization中带上Token信息</li>
+<li>网关过滤所有的请求，携带Token、请求信息向UAA Service请求鉴权</li>
+<li>如果UAA Service鉴权失败，抛出AuthenticationException异常并返回403</li>
+<li>如果UAA Service鉴权成功，返回用户的权限等信息</li>
+<li>网关向业务发起请求（此时，不携带授权信息。因为鉴权等都在网关处理了）</li>
+<li>业务服务向微服务发起请求，同样也不携带授权信息</li>
+<li>返回结果给用户</li>
+</ol>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>根据开发阶段的鉴权、用户-服务的鉴权、服务-服务的鉴权等不同的场景，定义了三种方式的协议。</p>
+<h3 id="Debug-Token协议"><a href="#Debug-Token协议" class="headerlink" title="Debug Token协议"></a>Debug Token协议</h3><p>debug token适用于在开发测试环境调试API。</p>
+<h4 id="协议-1"><a href="#协议-1" class="headerlink" title="协议"></a>协议</h4><p>在Client发出api请求之前，必须将debug token的信息放在HTTP Header的Authorization里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization:DEBUG userid=&quot;123456&quot;,realm=&quot;&quot;</div></pre></td></tr></table></figure>
+<p>上面的代码中：</p>
+<blockquote>
+<p>userid为调试的用户</p>
+<p>realm为可选字段，预定为用户所在的领域(应用、行业或者机构）</p>
+</blockquote>
+<h4 id="示例（伪代码）"><a href="#示例（伪代码）" class="headerlink" title="示例（伪代码）"></a>示例（伪代码）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GET /v0.1/resources HTTP/1.1</div><div class="line">Host: a.dynamax.io</div><div class="line">Accept: application/json</div><div class="line">Authorization: DEBUG userid=&apos;&apos;,realm=&apos;&apos;</div></pre></td></tr></table></figure>
+<h3 id="Mac-Token协议"><a href="#Mac-Token协议" class="headerlink" title="Mac Token协议"></a>Mac Token协议</h3><p>mac token适用于不安全网络下的API授权</p>
+<h4 id="协议-2"><a href="#协议-2" class="headerlink" title="协议"></a>协议</h4><p>通过“登录接口”可以获得Token。mac_token的数据结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;user_id&quot;:&quot;&quot;, //用户标识</div><div class="line">    &quot;access_token&quot;:&quot;&quot;, //token标识</div><div class="line">    &quot;expires_at&quot;:&quot;&quot;,    //本token的过期时间</div><div class="line">    &quot;refresh_token&quot;:&quot;&quot;,   //用以续期</div><div class="line">    &quot;mac_key&quot;:&quot;&quot;,   //hmac的密钥</div><div class="line">    &quot;mac_algorithm&quot;:&quot;hmac-sha-256&quot;  //hmac算法的名称</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>hmac算法见：[[<a href="https://tools.ietf.org/html/rfc2104" target="_blank" rel="external">https://tools.ietf.org/html/rfc2104</a>]]</p>
+<p>在Client发出api请求之前，必须将mac token的信息放在HTTP Header的Authorization里面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization:MAC id=&quot;&quot;,nonce=&quot;&quot;,mac=&quot;&quot;</div></pre></td></tr></table></figure></p>
+<p>上面的代码中：</p>
+<blockquote>
+<p>id为mac_token.access_token</p>
+<p>nonce为 时间戳:随机码（客户端生成），有效时间+-5分钟</p>
+<p>mac为请求签名： mac=base64(hmac(mac_token.mac_key,mac_token.mac_algorithm,request_content))</p>
+<p>request_content = nonce + \n + http-method + \n + request-url + \n + host + \n </p>
+<p>http-method，请求的方法，大写，如：GET</p>
+<p>request-url，请求的地址（包含参数的部分，不包含域名部分），区分大小写，如/v0.1/databases</p>
+<p>host，为HTTP Header中的host，区分大小写，如dynamax.io</p>
+</blockquote>
+<h4 id="示例-伪代码）"><a href="#示例-伪代码）" class="headerlink" title="示例(伪代码）"></a>示例(伪代码）</h4><p>获得token</p>
+<p><strong>request</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">POST /v0.1/tokens HTTP/1.1</div><div class="line">Host: api.uaa.dynamax.io</div><div class="line">Accept: application/json</div><div class="line">Content-Type: application/json</div><div class="line">&#123;</div><div class="line">    &quot;username&quot;:&quot;330134&quot;,</div><div class="line">    &quot;password&quot;:&quot;******&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>reqponse</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 201 Created</div><div class="line">Content-Type: application/json;charset=UTF-8</div><div class="line">Cache-Control: no-store</div><div class="line">Pragma: no-Cache</div><div class="line">&#123;</div><div class="line">    &quot;user_id&quot;:&quot;&quot;,</div><div class="line">    &quot;access_token&quot;:&quot;&quot;,</div><div class="line">    &quot;expires_at&quot;:&quot;&quot;,</div><div class="line">    &quot;refresh_token&quot;:&quot;&quot;,</div><div class="line">    &quot;mac_key&quot;:&quot;&quot;,</div><div class="line">    &quot;mac_algorithm&quot;:&quot;&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="访问资源"><a href="#访问资源" class="headerlink" title="访问资源"></a>访问资源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GET /v0.1/resources HTTP/1.1</div><div class="line">Host: resources.dynamax.io</div><div class="line">Accept: application/json</div><div class="line">Authorization:MAC id=&quot;adFeww3Fw4VV09876&quot;,nonce=&quot;1234234345343:adfasd32&quot;,mac=&quot;SDFS8weadfa42234&quot;</div></pre></td></tr></table></figure>
+<h3 id="Bearer-Token协议"><a href="#Bearer-Token协议" class="headerlink" title="Bearer Token协议"></a>Bearer Token协议</h3><p>bearer token适用于安全网络下的api授权。也就是说，bearer适用于微服务之间的相互调用的api授权。</p>
+<h4 id="协议-3"><a href="#协议-3" class="headerlink" title="协议"></a>协议</h4><p>可以通过“bearer_token”的接口获得相应的bearer_token，数据结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">&quot;user_id&quot;:&quot;&quot;, //用户标识</div><div class="line">&quot;access_token&quot;:&quot;&quot; //token标识</div><div class="line">&quot;expires_at&quot;:&quot;&quot; //本token的过期时间</div><div class="line">&quot;refresh_token&quot;:&quot;&quot; //用以续期</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在Client发出api请求之前，必须将bearer token的信息放在HTTP Header的Authorization里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization:BEARER &quot;XXX123XXXXX&quot; user_id:&quot;&quot;</div></pre></td></tr></table></figure>
+<p>上面的代码中：</p>
+<blockquote>
+<p>“XXX123XXXXX”为bearer_token.access_token</p>
+<p>user_id可选，该值位获得bearer token对应的账号。该值用来传递用户信息到其他服务端，用来判断是否有权限。</p>
+</blockquote>
+<h2 id="待优化的点"><a href="#待优化的点" class="headerlink" title="待优化的点"></a>待优化的点</h2><ul>
+<li>怎么鉴定一个请求是否需要认证？白名单？</li>
+<li>各个业务服务以及微服务是否需要再次认证？会不会出现绕过网关的情况？</li>
+<li>所有的服务都通过网关，在UAA Service中进行鉴权，会不会造成UAA Service是个瓶颈点？</li>
+<li>是否能够很方便地扩展到OAuth2？</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在这两年接触的项目基本上是基于前后端分离、多种后端服务组合而成的，这有别于先前的“单体”的项目，而且我们还需要考虑外部应用接入的场景、用户-服务的鉴权、服务-服务的鉴权等多种鉴权场景。&lt;/p&gt;
+&lt;p&gt;本方案基于客户端Token与网关结合的方式。所有的客户端请求都经过网关，网
+    
+    </summary>
+    
+      <category term="UAA" scheme="http://webfuse.cn/categories/UAA/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="权限认证" scheme="http://webfuse.cn/tags/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RBAC实践</title>
+    <link href="http://webfuse.cn/2018/03/01/RBAC%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://webfuse.cn/2018/03/01/RBAC实践/</id>
+    <published>2018-03-01T14:34:42.000Z</published>
+    <updated>2018-07-28T03:19:46.912Z</updated>
+    
+    <content type="html"><![CDATA[<p>RBAC，即大家很熟悉的“基于角色的访问控制”。理论什么的这里就不讲了，重点介绍下一种基于RBAC的实践。</p>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><ul>
+<li>领域：Realm，角色的定义范围。</li>
+<li>角色：Role，一组权限的集合。角色必须定义在指定领域内</li>
+<li>资源：Resource，主要应用于前端UI元素可见性方面的权限管控</li>
+<li>操作：Action，主要应用于服务端api调用合法性方面的管控</li>
+<li>权限：Permission，一组“资源+操作”的组合，并具备一个用户易于理解的名称</li>
+</ul>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="角色-ROLE-INFO"><a href="#角色-ROLE-INFO" class="headerlink" title="角色 ROLE_INFO"></a>角色 ROLE_INFO</h3><pre><code>{
+    &quot;id&quot;:&quot;&quot;, // 角色id
+    &quot;tenant&quot;:&quot;&quot;, // 租户id
+    &quot;code&quot;:&quot;&quot;, // 角色代码
+    &quot;realm&quot;:&quot;&quot;, // 角色领域，global:应用内全局角色；app：app端角色；admin：管理端角色；web: web前端角色；
+    &quot;realm_id&quot;:&quot;&quot;, // 领域id，选填。
+    &quot;name&quot;:&quot;&quot;, // 角色名称
+    &quot;status&quot;:0, // 状态，0 启用，1 禁用
+    &quot;type&quot;:0, // 类型：0 正常角色，1 临时角色，2 默认角色
+    &quot;valid&quot;:1, // 2：未生效，1：生效
+    &quot;valid_time&quot;:&quot;&quot;, // 生效时间
+    &quot;invalid_time&quot;:&quot;&quot;, // 失效时间
+    &quot;remark&quot;:&quot;管理员&quot;， // 角色备注
+    &quot;permissions&quot;: // 分配的权限列表
+        [
+            PERMISSION_INFO
+        ]
+}
+</code></pre><h3 id="资源-RESOURCE-INFO"><a href="#资源-RESOURCE-INFO" class="headerlink" title="资源 RESOURCE_INFO"></a>资源 RESOURCE_INFO</h3><pre><code>{
+    &quot;id&quot;:&quot;&quot;, // 资源id
+    &quot;client&quot;:&quot;&quot;, // 客户端类型，取值：app，web，admin
+    &quot;code&quot;:&quot;&quot;, // 资源标识符，客户端控制用，全局唯一
+    &quot;tag&quot;:&quot;&quot;, // 资源标签
+    &quot;remark&quot;:&quot;&quot; // 资源名称，管理后台显示用
+}
+</code></pre><h3 id="权限-PERMISSION-INFO"><a href="#权限-PERMISSION-INFO" class="headerlink" title="权限 PERMISSION_INFO"></a>权限 PERMISSION_INFO</h3><pre><code>{
+    &quot;id&quot;:&quot;&quot;, // 权限id
+    &quot;name&quot;:&quot;&quot;, // 权限名称
+    &quot;code&quot;:&quot;&quot;, // 权限代码
+    &quot;status&quot;:0, // 状态，0 启用，1 禁用
+    &quot;remark&quot;:&quot;&quot;, // 权限备注
+    &quot;actions&quot;:[ // 权限对应的ACTION列表
+        ACTION_INFO,
+        ACTION_INFO,
+        ...
+    ],
+    &quot;resources&quot;:[ // 权限对应的资源列表
+        RESOURCE_INFO,
+        RESOURCE_INFO,
+        ...
+    ]
+}
+</code></pre><h3 id="操作-ACTION-INFO"><a href="#操作-ACTION-INFO" class="headerlink" title="操作 ACTION_INFO"></a>操作 ACTION_INFO</h3><pre><code>{
+    &quot;id&quot;:&quot;&quot;, // 操作id
+    &quot;code&quot;:&quot;&quot;, // 全局唯一:包名.类名.方法
+    &quot;biz_type&quot;:&quot;&quot;, // 二级服务需要填写此项
+    &quot;uri&quot;:&quot;&quot;, // Restful api，管理后台显示用
+    &quot;remark&quot;:&quot;&quot; // api名称，管理后台显示用
+}
+</code></pre><h2 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h2><h3 id="服务端权限校验流程"><a href="#服务端权限校验流程" class="headerlink" title="服务端权限校验流程"></a>服务端权限校验流程</h3><ol>
+<li>当前请求接口有@RequirePermission注解，进入鉴权流程。没有@RequirePermission注解，返回鉴权成功</li>
+<li>【当前请求接口的@RequirePermission内的权限列表】与【用户的拥有的权限列表】有交集，返回鉴权成功。无交集返回鉴权失败。</li>
+<li>RBAC服务器故障，导致角色数据无法获取时，返回鉴权失败，同时启动RBAC Server存活检测线程，存活检查按递增间隔进行检测。发现RBAC Server正常后，重新加载角色数据。</li>
+</ol>
+<h3 id="客户端权限校验流程"><a href="#客户端权限校验流程" class="headerlink" title="客户端权限校验流程"></a>客户端权限校验流程</h3><ol>
+<li>每个组件将自己的所有UI元素中涉及权限控制的资源做成【权限资源列表】，这些资源默认不可见。</li>
+<li>从RBAC获取当前登录用户的可见资源列表。</li>
+<li>当用户进入某个page时，获取【用户可见资源列表】与【权限资源列表】的交集，将交集的资源设置为可见。</li>
+<li>如果RBAC服务端无法连接，则【用户可见资源列表】为空，这些受控资源不可见。</li>
+</ol>
+<h3 id="缓存更新流程"><a href="#缓存更新流程" class="headerlink" title="缓存更新流程"></a>缓存更新流程</h3><ol>
+<li>服务端的角色缓存数据通过MQ订阅通知实现实时更新。</li>
+<li>客户端如果使用IM组件时，通过IM事件消息触发更新。如果未使用IM组件，采用定时到服务端检查版本变更的策略，如果数据有更新再去RBAC服务端拉取。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;RBAC，即大家很熟悉的“基于角色的访问控制”。理论什么的这里就不讲了，重点介绍下一种基于RBAC的实践。&lt;/p&gt;
+&lt;h2 id=&quot;名词解释&quot;&gt;&lt;a href=&quot;#名词解释&quot; class=&quot;headerlink&quot; title=&quot;名词解释&quot;&gt;&lt;/a&gt;名词解释&lt;/h2&gt;&lt;ul&gt;
+    
+    </summary>
+    
+      <category term="UAA" scheme="http://webfuse.cn/categories/UAA/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="RBAC" scheme="http://webfuse.cn/tags/RBAC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多租户设计</title>
+    <link href="http://webfuse.cn/2018/02/15/%E5%A4%9A%E7%A7%9F%E6%88%B7%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://webfuse.cn/2018/02/15/多租户设计/</id>
+    <published>2018-02-15T01:55:53.000Z</published>
+    <updated>2018-07-28T03:19:46.931Z</updated>
+    
+    <content type="html"><![CDATA[<p>多租户（Multi Tenancy/Tenant）是一种软件架构，其定义是：在一台服务器上运行单个应用实例，它为多个租户提供服务。</p>
+<p>多个租户在数据上既有共享又有隔离，常有的存储方式有以下三种：</p>
+<p>方案一：独立数据库<br>方案二：共享数据库，隔离数据架构<br>方案三：共享数据库，共享数据架构</p>
+<h2 id="独立数据库"><a href="#独立数据库" class="headerlink" title="独立数据库"></a>独立数据库</h2><p>独立数据库即一个租户一个数据库，这种方案的用户数据隔离级别最高，安全性最好，但成本较高。</p>
+<p>这种模式下，我们可以为不同的租户提供独立的数据库，针对不同用户的独特需求扩展方便，数据备份以及修复比较简单。但是这种方案增多了数据库的数量，维护成本和购置成本高。</p>
+<h2 id="共享数据库，隔离数据架构"><a href="#共享数据库，隔离数据架构" class="headerlink" title="共享数据库，隔离数据架构"></a>共享数据库，隔离数据架构</h2><p>共享数据库，隔离数据架构即多个或所有租户共享Database，但是每个租户一个Schema。</p>
+<p>该模式为安全性要求较高的租户提供了一定程度的逻辑数据隔离，并不是完全隔离；每个数据库可支持更多的租户数量。 </p>
+<p>但是该模式下，如果数据库出现故障，数据恢复比较困难，因为数据库的恢复会牵扯到其他租户的数据；如果需要跨租户统计数据，存在一定困难。</p>
+<h2 id="共享数据库，共享数据架构"><a href="#共享数据库，共享数据架构" class="headerlink" title="共享数据库，共享数据架构"></a>共享数据库，共享数据架构</h2><p>第三种方案，即租户共享同一个Database、同一个Schema，但在表中增加TenantID多租户的数据字段。这是共享程度最高、隔离级别最低的模式。 </p>
+<p>这种方案的维护和购置成本最低，允许每个数据库支持的租户数量最多。 </p>
+<p>但是这种隔离级别最低，安全性最低，需要在设计开发时加大对安全的开发量；同时数据备份和恢复最困难，需要逐表逐条备份和还原。 </p>
+<p>如果希望以最少的服务器为最多的租户提供服务，并且租户接受牺牲隔离级别换取降低成本，这种方案最适合。</p>
+<h2 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a>如何选择</h2><p>我们要如何选择这三种模式呢？衡量三种模式主要考虑的因素是隔离还是共享，还有成本。</p>
+<p>考虑到成本角度因素：隔离性越好，设计和实现的难度和成本越高，初始成本越高。共享性越好，同一运营成本下支持的用户越多，运营成本越低。</p>
+<p>安全因素：要考虑业务和客户的安全方面的要求。安全性要求越高，越要倾向于隔离。</p>
+<p>从租户数量上考虑：租户越多，应该越倾向于共享；如果每个租户存储的数据越多，应该越倾向于隔离；每个租户同时访问系统的用户数量越多，应该越倾向于隔离；如果针对每个用户都要提供一些附加服务，就应该越倾向于隔离。</p>
+<p>信息监管因素：要考虑政府，机关，企业，公司的安全和信息监管相关的一些政策和规定。</p>
+<p>技术储备：共享性越高，对技术的要求越高。</p>
+<hr>
+<p>参考：</p>
+<p><a href="http://www.cnblogs.com/junneyang/p/5212516.html" target="_blank" rel="external">【架构】如何设计支持多租户的数据库？</a></p>
+<p><a href="http://blog.csdn.net/yown/article/details/51288549" target="_blank" rel="external">SaaS多租户数据隔离的三种方案</a></p>
+<p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-dataMultitenant/index.html" target="_blank" rel="external">数据层的多租户浅谈</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;多租户（Multi Tenancy/Tenant）是一种软件架构，其定义是：在一台服务器上运行单个应用实例，它为多个租户提供服务。&lt;/p&gt;
+&lt;p&gt;多个租户在数据上既有共享又有隔离，常有的存储方式有以下三种：&lt;/p&gt;
+&lt;p&gt;方案一：独立数据库&lt;br&gt;方案二：共享数据库，隔离数
+    
+    </summary>
+    
+      <category term="UAA" scheme="http://webfuse.cn/categories/UAA/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="多租户" scheme="http://webfuse.cn/tags/%E5%A4%9A%E7%A7%9F%E6%88%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多种用户登录模式设计</title>
+    <link href="http://webfuse.cn/2018/02/14/%E5%A4%9A%E7%A7%8D%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://webfuse.cn/2018/02/14/多种用户登录模式设计/</id>
+    <published>2018-02-14T00:59:06.000Z</published>
+    <updated>2018-07-28T03:19:46.930Z</updated>
+    
+    <content type="html"><![CDATA[<p>在做Web开发的时候，用户登录时最基本的功能。通常情况下，我们直接使用“用户名+密码”的模式，直接在users表中建立用户名密码等字段来完成工作。但是，如果我们的要求是邮箱、手机号和接入第三方的登录都要支持呢？很明显，在这种情况下，基本的用户名密码登录是完成不了我们的要求的。</p>
+<p>在这种情况下，我们可以采用“拆表”的方法。这里所谓的拆表就是将一个用户表拆分成为几个表：user_info,user_auth,user_extra等表。user_info表中保存用户的基本信息，如user_id,username,nickname等；user_auth表用来保存用户的认证信息，如user_id,identity_type,identifier和certificate等；user_extra表是用户信息的扩展表，用户的一些扩展信息可以保存在该表中。</p>
+<p>表结果如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">-- 用户信息</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> user_info;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> user_info (</div><div class="line">  <span class="keyword">id</span> <span class="built_in">VARCHAR</span>(<span class="number">36</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> , <span class="comment">--ID</span></div><div class="line">  username <span class="built_in">VARCHAR</span>(<span class="number">45</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  <span class="comment">--用户名</span></div><div class="line">  nickname <span class="built_in">VARCHAR</span>(<span class="number">45</span>) <span class="literal">NULL</span>,  <span class="comment">--昵称</span></div><div class="line">  user_type <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,  <span class="comment">--1管理员用户 2普通用户  3虚拟用户</span></div><div class="line">  avatar <span class="built_in">VARCHAR</span>(<span class="number">100</span>) <span class="literal">NULL</span>, <span class="comment">--头像</span></div><div class="line">  register_source <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--注册来源：USER_NAME/PHONE/EMAIL/QQ/WECHAT/SINA_WEIBO/DOUBAN/GOOGLE/GITHUB/LINKEDIN/TWITTER/FACEBOOK</span></div><div class="line">  account_non_expired TINYINT <span class="literal">NULL</span>, <span class="comment">--用户是否过期</span></div><div class="line">  account_non_locked TINYINT <span class="literal">NULL</span>,  <span class="comment">--用户是否被锁</span></div><div class="line">  credentials_non_expired TINYINT <span class="literal">NULL</span>, <span class="comment">--证书是否存在</span></div><div class="line">  create_time DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(),</div><div class="line">  update_time DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(),</div><div class="line">  <span class="keyword">status</span> <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--状态，ENABLED（启用）,DISABLE（禁用）</span></div><div class="line">  enabled TINYINT <span class="keyword">DEFAULT</span> <span class="literal">TRUE</span></div><div class="line">);</div><div class="line"><span class="keyword">CREATE</span> PRIMARY <span class="keyword">KEY</span> <span class="keyword">ON</span> user_info (<span class="keyword">id</span>);</div><div class="line"></div><div class="line"><span class="comment">--用户扩展</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> user_extra;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> user_extra (</div><div class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span> AUTO_INCREMENT ,</div><div class="line">  user_id <span class="built_in">VARCHAR</span>(<span class="number">36</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></div><div class="line">);</div><div class="line"><span class="keyword">CREATE</span> PRIMARY <span class="keyword">KEY</span> <span class="keyword">ON</span> user_extra (user_id);</div><div class="line"></div><div class="line"><span class="comment">--用户认证</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> user_auth;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> user_auth (</div><div class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span> AUTO_INCREMENT ,</div><div class="line">  user_id <span class="built_in">VARCHAR</span>(<span class="number">36</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  identity_type <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--授权来源：USER_NAME/PHONE/EMAIL/QQ/WECHAT/SINA_WEIBO/DOUBAN/GOOGLE/GITHUB/LINKEDIN/TWITTER/FACEBOOK</span></div><div class="line">  identifier <span class="built_in">VARCHAR</span>(<span class="number">64</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  <span class="comment">--手机号/邮箱/用户名或第三方应用的唯一标识</span></div><div class="line">  certificate <span class="built_in">VARCHAR</span>(<span class="number">64</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--密码凭证(站内的保存密码，站外的不保存或保存token)</span></div><div class="line">  create_time DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(),</div><div class="line">  update_time DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(),</div><div class="line">  <span class="keyword">status</span> <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--状态，ENABLED（启用）,DISABLE（禁用）</span></div><div class="line">);</div></pre></td></tr></table></figure>
+<p>以上，如果我们需要为用户添加一种认证方式，可以在user_auth表中对应添加一条记录。比如，我们需要对接微博认证，那么就直接在user_auth表中添加一条identity_type=SINA_WEIBO的数据记录。我们在登录的时候，就可以直接使用user_auth表的identity_type,identifier和certificate进行认证，从而获得到user_id，然后可以拿user_id到user_info表和user_extra表中获得更多的用户数据。</p>
+<p>当然，这种方式也是有缺点的。最主要的缺点就是密码修改，当我们进行修改密码的时候，我们必须对手机号、邮箱以及用户名的所有的密码进行修改。还有一个缺点就是在登录时候要在程序中进行正则匹配，确定是哪种认证方式，那么匹配的顺序就很关键了。</p>
+<p>这个也只是一种参考的实现思路，具体的情况具体分析，我们可以根据实际情况进行必要的调整和修改。</p>
+<hr>
+<p>参考：</p>
+<p><a href="http://gglinux.com/2017/03/31/user/" target="_blank" rel="external">用户系统设计与实现</a></p>
+<p><a href="http://www.cnblogs.com/nuanxin/p/6215237.html" target="_blank" rel="external">浅谈数据库用户表结构设计，第三方登录</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在做Web开发的时候，用户登录时最基本的功能。通常情况下，我们直接使用“用户名+密码”的模式，直接在users表中建立用户名密码等字段来完成工作。但是，如果我们的要求是邮箱、手机号和接入第三方的登录都要支持呢？很明显，在这种情况下，基本的用户名密码登录是完成不了我们的要求的
+    
+    </summary>
+    
+      <category term="UAA" scheme="http://webfuse.cn/categories/UAA/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="用户登录" scheme="http://webfuse.cn/tags/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《写给大忙人看的JavaSE8》读书笔记</title>
+    <link href="http://webfuse.cn/2018/02/08/%E3%80%8A%E5%86%99%E7%BB%99%E5%A4%A7%E5%BF%99%E4%BA%BA%E7%9C%8B%E7%9A%84JavaSE8%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>http://webfuse.cn/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/</id>
+    <published>2018-02-08T15:08:32.000Z</published>
+    <updated>2018-07-28T03:19:46.917Z</updated>
+    
+    <content type="html"><![CDATA[<p>重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。</p>
+<pre><code>import java.io.IOException;
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.LongAdder;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Java8Demo {
+
+    /**
+    * 带有参数变量的表达式都被称为lambda表达式
+    * lambda表达式：基本型为 (形参列表)-&gt;{方法体}
+    * 方法引用： ::操作符将方法名和对象或类的名字分割开来
+    */
+    public void aboutLambda() {
+        Comparator&lt;String&gt; comp = (str1, str2) -&gt; 0;
+
+        new Thread(() -&gt; {
+            for (int i = 0; i &lt; 100; i++)
+                System.out.println(&quot;Lambda Expression&quot;);
+        }).start();
+
+        //函数式接口：对于只包含一个抽象方法的接口，你可以通过lambda表达式来创建该接口的对象。
+        Arrays.sort(new String[]{&quot;a&quot;, &quot;b&quot;}, comp);
+
+        //方法引用等同于提供方法参数的lambda表达式
+        Arrays.asList(&quot;&quot;, &quot;&quot;).stream().forEach(System.out::print);//情况1：对象::实例方法
+        Arrays.asList(1, 2).stream().map(Math::abs).collect(Collectors.toList());//情况2：类::静态方法
+        Arrays.sort(new String[]{&quot;&quot;, &quot;&quot;}, Comparator.comparingInt(String::length)); //情况3：类::实例方法。第一个参数会成为执行方法的对象.String::length 等于 (x)-&gt;x.length()
+        String[] arr = Arrays.asList(&quot;&quot;, &quot;&quot;).stream().toArray(String[]::new);   //情况4：类::new
+
+        //所有的lambda表达式都是延迟执行的
+    }
+
+
+    public void aboutStreamAPI() {
+        List&lt;String&gt; words = new ArrayList&lt;&gt;();
+        long count = words.parallelStream().filter(w -&gt; w.length() &gt; 12).count();
+
+        //Stream遵循“做什么，而不是怎么去做”的原则。
+        //在使用Stream时候，你会通过三个阶段来建立一个操作流水线：
+        //1-创建一个Stream
+        //2-在一个或多个步骤中，指定将初始Stream转换为另一个Stream的中间操作
+        //3-使用一个终止操作来产生一个结果。该操作会强制它之前的延迟操作立即执行。在这之后，该Stream操作就不会再被使用了。
+
+        Stream&lt;String&gt; wordStream = Stream.of(new String[]{});
+        Stream&lt;String&gt; song = Stream.of(&quot;&quot;, &quot;&quot;, &quot;&quot;);
+
+        Stream&lt;String&gt; echos = Stream.generate(() -&gt; &quot;Echo&quot;); //创建一个含有常亮值的Stream
+        Stream&lt;Double&gt; randoms = Stream.generate(Math::random); //创建一个含有随机数的Stream
+        //iterate方法接受一个“种子”的值和一个函数作为参数
+        Stream&lt;BigInteger&gt; integers = Stream.iterate(BigInteger.ZERO, n -&gt; n.add(BigInteger.ONE));
+
+
+        //流转换是指从一个流中读取数据，并将转换后的数据写入到另一个流中。
+        //filter方法的参数是一个Predicate&lt;T&gt;对象——即一个从T到boolean的函数。
+        //我们使用map方法对流中的值进行某种形式的转换，它会对每个元素应用一个函数，并将返回的值收集到一个新的流中。
+
+        //distinct方法会根据原始流中的元素返回一个具有相同顺序、抑制了重复元素的新流。
+
+        //聚合方法：如果你希望对元素求和，或者以其他方式将流中的元素组合为一个值
+        //    - count方法：返回流中元素的总数
+        //    - max方法：返回流中最大值
+        //    - min方法：返回流中最小值
+        //    - reduce方法： 提供聚合操作
+
+        //Optional&lt;T&gt;对象或者是对一个T类型对象的封装，或者表示不是任何对象。
+        // if(optionalValue.ifPresent()) optionalValue.get().someMethod();
+        // optionalValue.ifPresent(v-&gt;results::add);
+        // Optional&lt;Boolean&gt; added = optionalValue.map(results::add);   //返回一个值
+        // optionalValue.orElse(&quot;&quot;);
+        // optionalValue.orElseGet(()-&gt;System.out.print(&quot;....&quot;));
+        // optionalValue.orElseThrow(NoSuchElementException:new);
+        // 可以使用Optional.of(result)或者Optional.empty()来创建一个Optional对象
+        // ofNullable方法中，如果obj不为null,那么Optional.ofNullable(obj)会返回Optional.of(obj),否则会返回Optional.empty()。
+        //使用flatMap来组合可选函数。Optional&lt;U&gt; u =  s.f().flatMap(T::g);
+
+        //以下3个是等效的
+        HashSet&lt;String&gt; res = wordStream.collect(HashSet::new, HashSet::add, HashSet::addAll);
+        List&lt;String&gt; res1 = wordStream.collect(Collectors.toList());
+        Set&lt;String&gt; res2 = wordStream.collect(Collectors.toSet());
+
+        //将字符串连接起来
+        String str = wordStream.collect(Collectors.joining());
+
+        //将字符串连接起来，中间以,隔开
+        String str1 = wordStream.collect(Collectors.joining(&quot;, &quot;));
+
+        //使用(Int|Double|Long)SummaryStatistics来获得一个流的总和、平均值、最大值或最小值
+        IntSummaryStatistics summary = wordStream.collect(Collectors.summarizingInt(String::length));
+        double averageWordLength = summary.getAverage();
+        double maxWordLength = summary.getMax();
+
+        //将一个Stream对象中的元素收集到一个map中
+        //Map&lt;Integer,String&gt; idToName = peopleStream.collect(Collectors.toMap(Person::getId,Person::getName));
+
+        //上面的转换成Map中，如果存在相同的键异常，我们可以重写方法搞定。
+        Stream&lt;Locale&gt; locales = Stream.of(Locale.getAvailableLocales());
+        Map&lt;String, String&gt; languageNames = locales.collect(Collectors.toMap(
+                l -&gt; l.getDisplayLanguage(),
+                l -&gt; l.getDisplayLanguage(l),
+                (existingValue, newValue) -&gt; existingValue
+        ));
+
+
+        //groupingBy方法，对具有相同特性的值进行分组
+        //当分类函数式一个predicate函数（即返回一个布尔值的函数）时，流元素会被分为两组列表：一组是函数会返回true的元素，另一组返回false的元素。
+        //在这种情况下，使用partitioningBy会比groupingBy更有效率。
+
+    }
+
+    public void aboutTime() {
+
+        Instant start = Instant.now();
+        Instant end = Instant.now();
+        Duration timeElapsed = Duration.between(start, end);
+        timeElapsed.toMillis();
+        timeElapsed.toDays();
+        timeElapsed.plusDays(1).getSeconds();
+        start.plusMillis(1);
+
+        // 以下是来自廖雪峰的博客
+        // Java 8新增了LocalDate和LocalTime接口，为什么要搞一套全新的处理日期和时间的API？因为旧的java.util.Date实在是太难用了。
+        // java.util.Date月份从0开始，一月是0，十二月是11，变态吧！java.time.LocalDate月份和星期都改成了enum，就不可能再用错了。
+        // java.util.Date和SimpleDateFormatter都不是线程安全的，而LocalDate和LocalTime和最基本的String一样，是不变类型，不但线程安全，而且不能修改。
+        // java.util.Date是一个“万能接口”，它包含日期、时间，还有毫秒数，如果你只想用java.util.Date存储日期，或者只存储时间，那么，只有你知道哪些部分的数据是有用的，哪些部分的数据是不能用的。在新的Java 8中，日期和时间被明确划分为LocalDate和LocalTime，LocalDate无法包含时间，LocalTime无法包含日期。当然，LocalDateTime才能同时包含日期和时间。
+        // 新接口更好用的原因是考虑到了日期时间的操作，经常发生往前推或往后推几天的情况。用java.util.Date配合Calendar要写好多代码，而且一般的开发人员还不一定能写对。
+
+        // 取当前日期：
+        LocalDate today = LocalDate.now(); // -&gt; 2014-12-24
+        // 根据年月日取日期，12月就是12：
+        LocalDate crischristmas = LocalDate.of(2014, 12, 25); // -&gt; 2014-12-25
+        // 根据字符串取：
+        LocalDate endOfFeb = LocalDate.parse(&quot;2014-02-28&quot;); // 严格按照ISO yyyy-MM-dd验证，02写成2都不行，当然也有一个重载方法允许自己定义格式
+        LocalDate.parse(&quot;2014-02-29&quot;); // 无效日期无法通过：DateTimeParseException: Invalid date
+
+        // LocalTime只包含时间，以前用java.util.Date怎么才能只表示时间呢？答案是，假装忽略日期。
+        // LocalTime包含毫秒：
+        LocalTime now = LocalTime.now(); // 11:09:09.240
+
+        //你可能想清除毫秒数：
+        LocalTime now1 = LocalTime.now().withNano(0); // 11:09:09
+
+        //构造时间也很简单：
+        LocalTime zero = LocalTime.of(0, 0, 0); // 00:00:00
+        LocalTime mid = LocalTime.parse(&quot;12:00:00&quot;); // 12:00:00
+
+        //日期校正器
+        //TemporalAdjusters类提供了很多静态方法来进行常用的校正。你可以将一个校正放的结果传递给with方法。
+        LocalDate firstTuesday = LocalDate.of(2018, 2, 1).with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY)); //计算2月的第一个星期二
+
+        //实现自己的校验器
+        TemporalAdjuster NEXT_WORKDAY = TemporalAdjusters.ofDateAdjuster(w -&gt; {
+            LocalDate result = w;
+            do {
+                result = result.plusDays(1);
+            } while (result.getDayOfWeek().getValue() &gt;= 6);
+            return result;
+        });
+        LocalDate backToWork = LocalDate.now().with(NEXT_WORKDAY);
+
+        //格式化与解析
+        // String formatted =  DateTimeFormatter.ISO_DATE_TIME.format();
+    }
+
+
+    public void aboutConcurrency() {
+        //原子性 lambda
+        // ConcurrentHashMap
+        ConcurrentHashMap&lt;String, LongAdder&gt; map = new ConcurrentHashMap();
+        map.putIfAbsent(&quot;&quot;, new LongAdder());
+        map.get(&quot;&quot;).increment();
+
+        //批量数据操作有三类：
+        //1)search会对每个键和（或）值应用一个函数，直到函数返回一个非null的结果。然后search会终止并返回该函数的结果。
+        //2)reduce会通过提供的累积函数，将所有的键和（或）值组合起来。
+        //3)forEach会对所有的键和（或）值应用一个函数。
+
+        //在使用这几种操作时，你需要指定一个并行阈值。如果映射包含的元素数量超过了这个阈值，批量操作就以并行方式执行。
+        //如果你希望批量数据操作在一个线程中运行，请使用Long.MAX_VALUE作为阈值。
+        //如果你希望批量数据操作尽可能使用更多的线程，则应该使用1作为阈值。
+
+        Set&lt;String&gt; words = map.keySet();
+
+        //并行数组操作
+        //静态方法Arrays.parallelSort可以对原始类型数组或者对象数组进行排序。
+        try {
+            String contents = new String(Files.readAllBytes(Paths.get(&quot;&quot;)), StandardCharsets.UTF_8);
+            String[] words1 = contents.split(&quot;&quot;);
+            Arrays.parallelSort(words1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //可完成的Future
+        //Future&lt;T&gt;接口用来表示一个在将来某个时间点可用的、类型为T的值。
+    }
+
+    public void aboutOthers() {
+
+        String joined = String.join(&quot;/&quot;, &quot;usr&quot;, &quot;local&quot;, &quot;bin&quot;);
+        String ids = String.join(&quot;, &quot;, ZoneId.getAvailableZoneIds());
+
+        Objects.isNull(&quot;&quot;);
+        Objects.nonNull(&quot;&quot;);
+    }
+
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import java.io.IOException;
+import java.math.BigIntege
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://webfuse.cn/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="读书笔记" scheme="http://webfuse.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java" scheme="http://webfuse.cn/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ehcache缓存持久化</title>
+    <link href="http://webfuse.cn/2017/12/22/Ehcache%E7%BC%93%E5%AD%98%E6%8C%81%E4%B9%85%E5%8C%96/"/>
+    <id>http://webfuse.cn/2017/12/22/Ehcache缓存持久化/</id>
+    <published>2017-12-22T01:25:24.000Z</published>
+    <updated>2018-07-28T03:19:46.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为在项目中需要将Ehcache的缓存数据写入磁盘，搜索一些怎么样持久化Ehcache缓存的资料，根据获得的资料在开发过程中遇到蛮多的坑，逐一记录下来。</p>
+<h2 id="根据官网上的配置踩过的坑"><a href="#根据官网上的配置踩过的坑" class="headerlink" title="根据官网上的配置踩过的坑"></a>根据官网上的配置踩过的坑</h2><p>在Ehcache的官网上，有关于怎么配置持久化的说明。详情见： <a href="http://www.ehcache.org/generated/2.10.4/html/ehc-all/#page/Ehcache_Documentation_Set%2Fto-persist_configuring_persistance_and_restart.html%23" target="_blank" rel="external">Configuring Restartability and Persistence</a></p>
+<p>然后，我按照常规的逻辑添加了一下的配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span></span></div><div class="line">       <span class="attr">eternal</span>=<span class="string">"true"</span></div><div class="line">       <span class="attr">maxElementsInMemory</span>=<span class="string">"1"</span></div><div class="line">       <span class="attr">overflowToDisk</span>=<span class="string">"true"</span></div><div class="line">       <span class="attr">diskPersistent</span>=<span class="string">"true"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">persistence</span> <span class="attr">strategy</span>=<span class="string">"localRestartable"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>然后，报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Caused by: org.xml.sax.SAXException: null:17: Could not finish element &lt;persistence&gt;. Message was: net.sf.ehcache.config.InvalidConfigurationException: Cannot use both &lt;persistence ...&gt; and diskPersistent in a single cache configuration.</div></pre></td></tr></table></figure>
+<p>说明diskPersistent和persistence不能共存。修改配置后：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">persistence</span> <span class="attr">strategy</span>=<span class="string">"localRestartable"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>启动，报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Caused by: net.sf.ehcache.config.InvalidConfigurationException: There is one error in your configuration: </div><div class="line">	* Cache &apos;indexCache&apos; error: If your CacheManager has no maxBytesLocalHeap set, you need to either set maxEntriesLocalHeap or maxBytesLocalHeap at the Cache level</div></pre></td></tr></table></figure>
+<p>添加 maxEntriesLocalHeap 后如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span> <span class="attr">maxEntriesLocalHeap</span>=<span class="string">"1000"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">persistence</span> <span class="attr">strategy</span>=<span class="string">"localRestartable"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>还是报错:You must use an enterprise version of Ehcache to successfully enable enterprise persistence.</p>
+<p>原来需要用到BigMemory，但是BigMemory又是收费的。至此，第一次尝试失败。</p>
+<h2 id="根据网上资料踩过的坑"><a href="#根据网上资料踩过的坑" class="headerlink" title="根据网上资料踩过的坑"></a>根据网上资料踩过的坑</h2><p>资料显示：我们要在每次使用cache.put()后再调用cache.flush()，这样就能够将索引写入到磁盘。同时在配置中开启eternal（永久有效），overflowToDisk（磁盘缓存）， diskPersistent（持久化到磁盘）和<a href="http://blog.csdn.net/xiajun07061225/article/details/40211391" target="_blank" rel="external">预热机制</a>。</p>
+<p>然后还要在web.xml中加入ShutdownListener的监听，这样可以保证在正常关闭的时候缓存数据成功写入磁盘。</p>
+<p>所以有了以下配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span> <span class="attr">maxElementsInMemory</span>=<span class="string">"1"</span> <span class="attr">eternal</span>=<span class="string">"true"</span> <span class="attr">overflowToDisk</span>=<span class="string">"true"</span></span></div><div class="line">       <span class="attr">diskPersistent</span>=<span class="string">"true"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">bootstrapCacheLoaderFactory</span> <span class="attr">class</span>=<span class="string">"net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"</span></span></div><div class="line">                                 <span class="attr">properties</span>=<span class="string">"bootstrapAsynchronously=true"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> ServletListenerRegistrationBean&lt;ShutdownListener&gt; <span class="title">testListenerRegistration</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ServletListenerRegistrationBean&lt;&gt;(<span class="keyword">new</span> ShutdownListener());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>启动试验，发现只生成.data文件并没有生成.index文件。</p>
+<h2 id="跳出坑，解决问题"><a href="#跳出坑，解决问题" class="headerlink" title="跳出坑，解决问题"></a>跳出坑，解决问题</h2><p>跟踪调试代码，发现cache.flush()调用的是CacheStore中的flush。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">flush</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    <span class="keyword">if</span> (authoritativeTier <span class="keyword">instanceof</span> DiskStore &amp;&amp; cacheConfiguration != <span class="keyword">null</span> &amp;&amp; cacheConfiguration.isClearOnFlush()) &#123;</div><div class="line">        <span class="keyword">final</span> Lock lock = daLock.writeLock();</div><div class="line">        lock.lock();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            cachingTier.clear();</div><div class="line">            ((DiskStore)authoritativeTier).clearFaultedBit();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            lock.unlock();</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        authoritativeTier.flush();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>程序总是进入if条件中，并没有调用到<code>authoritativeTier.flush()</code>方法。</p>
+<p>修改配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span> <span class="attr">maxElementsInMemory</span>=<span class="string">"1"</span> <span class="attr">eternal</span>=<span class="string">"true"</span> <span class="attr">overflowToDisk</span>=<span class="string">"true"</span></span></div><div class="line">       <span class="attr">diskPersistent</span>=<span class="string">"true"</span> <span class="attr">clearOnFlush</span>=<span class="string">"false"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">bootstrapCacheLoaderFactory</span> <span class="attr">class</span>=<span class="string">"net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"</span></span></div><div class="line">                                 <span class="attr">properties</span>=<span class="string">"bootstrapAsynchronously=true"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>重新运行，OK。</p>
+<p>以上基于spring boot 1.5.4.RELEASE，ehcache的版本为2.10.4</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;因为在项目中需要将Ehcache的缓存数据写入磁盘，搜索一些怎么样持久化Ehcache缓存的资料，根据获得的资料在开发过程中遇到蛮多的坑，逐一记录下来。&lt;/p&gt;
+&lt;h2 id=&quot;根据官网上的配置踩过的坑&quot;&gt;&lt;a href=&quot;#根据官网上的配置踩过的坑&quot; class=&quot;hea
+    
+    </summary>
+    
+      <category term="缓存" scheme="http://webfuse.cn/categories/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="Ehcache" scheme="http://webfuse.cn/tags/Ehcache/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在SpringCloud Zuul中使用WebSockets</title>
+    <link href="http://webfuse.cn/2017/11/15/%E5%9C%A8SpringCloud%20Zuul%E4%B8%AD%E4%BD%BF%E7%94%A8WebSockets/"/>
+    <id>http://webfuse.cn/2017/11/15/在SpringCloud Zuul中使用WebSockets/</id>
+    <published>2017-11-15T01:46:38.000Z</published>
+    <updated>2018-07-28T03:19:46.929Z</updated>
+    
+    <content type="html"><![CDATA[<p>近期的项目中需要用到WebSocket，因为使用的是微服务架构，所以又直接使用了Spring Cloud的Zuul。然而，Zuul对WebSocket的支持不是那么友好，具体可以参考：<a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/163。" target="_blank" rel="external">https://github.com/spring-cloud/spring-cloud-netflix/issues/163。</a></p>
+<p>Spring已经给我们提供了一套<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket" target="_blank" rel="external">WebSockets的解决方案</a>。我们需要用到的有：Sock.js、STOMP、Spring Messaging以及Spring Integration。</p>
+<p><strong>Sock.js</strong></p>
+<p><a href="https://github.com/sockjs/sockjs-client" target="_blank" rel="external">Sock.js</a>是一个JavaScript代码库，提供WebSocket-like对象、跨浏览器的JavaScript的API。它在浏览器和web服务器之间创建了一个低延迟、全双工、跨域通信通道。在低版本的浏览器不支持WebSocket时，它可以使用其他协议来处理。</p>
+<p><strong>STOMP</strong></p>
+<p><a href="https://stomp.github.io/" target="_blank" rel="external">STOMP</a>是一种简单的（或流媒体）的消息传递协议。在多种语言、平台和代理之间提供简单和广泛的消息互操作性。</p>
+<p><strong>Spring组件</strong></p>
+<p>我们在项目中大量使用Spring组件，在这里我们使用到了Spring Messaging和Spring Integration。</p>
+<p>Spring Messaging和Spring Integration具体与SockJs、STOMP组合使用可以参考：</p>
+<p><a href="https://spring.io/guides/gs/messaging-stomp-websocket/" target="_blank" rel="external">https://spring.io/guides/gs/messaging-stomp-websocket/</a></p>
+<p><a href="http://assets.spring.io/wp/WebSocketBlogPost.html" target="_blank" rel="external">http://assets.spring.io/wp/WebSocketBlogPost.html</a></p>
+<p><strong>Zuul中的处理</strong></p>
+<p>在使用Zuul作为网关的时候，因为我们使用的是Sock.js，所以它可以算得上是支持了。但是为了能够更保险些，需要写一个Filter：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Component</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSocketFilter</span> <span class="keyword">extends</span> <span class="title">ZuulFilter</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">filterType</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"pre"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">filterOrder</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldFilter</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        RequestContext context = RequestContext.getCurrentContext();</div><div class="line">        HttpServletRequest request = context.getRequest();</div><div class="line">        String upgradeHeader = request.getHeader(<span class="string">"Upgrade"</span>);</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == upgradeHeader) &#123;</div><div class="line">            upgradeHeader = request.getHeader(<span class="string">"upgrade"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != upgradeHeader &amp;&amp; <span class="string">"websocket"</span>.equalsIgnoreCase(upgradeHeader)) &#123;</div><div class="line">            context.addZuulRequestHeader(<span class="string">"connection"</span>, <span class="string">"Upgrade"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Spring WebSockets默认的心跳时间是25s，为了能够不被认为是连接超时，我们需要在Zuul中设置比较长的超时时间。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attr">hystrix:</span></div><div class="line"><span class="attr">  command:</span></div><div class="line"><span class="attr">    default:</span></div><div class="line"><span class="attr">      execution:</span></div><div class="line"><span class="attr">        isolation:</span></div><div class="line"><span class="attr">          thread:</span></div><div class="line"><span class="attr">            timeoutInMilliseconds:</span> <span class="number">60000</span>  <span class="comment">#设置API网关中路由转发请求的HystrixCommand执行超时时间</span></div><div class="line"></div><div class="line"><span class="attr">ribbon:</span></div><div class="line"><span class="attr">  ConnectTimeout:</span> <span class="number">3000</span> <span class="comment">#设置路由转发请求的时候，创建请求连接的超时时间</span></div><div class="line"><span class="attr">  ReadTimeout:</span> <span class="number">60000</span>  <span class="comment">#用来设置路由转发请求的超时时间</span></div></pre></td></tr></table></figure>
+<p>以上，基本上是完成了Zuul与WebSockets之间的代理了。</p>
+<hr>
+
+<p>参考：</p>
+<p><a href="https://jmnarloch.wordpress.com/2015/11/11/spring-cloud-sock-js-stomp-zuul-no-websockets/" target="_blank" rel="external">https://jmnarloch.wordpress.com/2015/11/11/spring-cloud-sock-js-stomp-zuul-no-websockets/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;近期的项目中需要用到WebSocket，因为使用的是微服务架构，所以又直接使用了Spring Cloud的Zuul。然而，Zuul对WebSocket的支持不是那么友好，具体可以参考：&lt;a href=&quot;https://github.com/spring-cloud/spri
+    
+    </summary>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/categories/Spring-Cloud/"/>
+    
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/tags/Spring-Cloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Data MongoDB中的自定义级联</title>
+    <link href="http://webfuse.cn/2017/11/10/Spring%20Data%20MongoDB%E4%B8%AD%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BA%A7%E8%81%94/"/>
+    <id>http://webfuse.cn/2017/11/10/Spring Data MongoDB中的自定义级联/</id>
+    <published>2017-11-10T10:26:52.000Z</published>
+    <updated>2018-07-28T03:19:46.913Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在使用Spring Data操作MongoDB中：</p>
+<ul>
+<li>在保存一个实体的时候，如果被@DBRef标识的类只传入Id，保存后返回的结果并没有全部的引用类内容，只有Id。</li>
+<li>保存实体，不能保存引用实体。</li>
+</ul>
+<p>例如：我们有一个实体<code>Person</code>，有一个实体<code>EmailAddress</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Document</span>(collection = <span class="string">"test_person"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line"></div><div class="line">    <span class="meta">@DBRef</span></div><div class="line">    <span class="keyword">private</span> EmailAddress emailAddress;</div><div class="line"></div><div class="line">    ... getter setter 方法</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Document</span>(collection = <span class="string">"test_email"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmailAddress</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Id</span></div><div class="line">    <span class="keyword">private</span> String id;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String value;</div><div class="line"></div><div class="line">   ... getter setter 方法</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当我们调用保存方法的时候：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Person <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">    Person person = <span class="keyword">new</span> Person();</div><div class="line">    person.setName(<span class="string">"test"</span>);</div><div class="line"></div><div class="line">    EmailAddress emailAddress = <span class="keyword">new</span> EmailAddress();</div><div class="line">    emailAddress.setId(<span class="string">"5a05108d4dcc5dece03c9e69"</span>);</div><div class="line"></div><div class="line">    person.setEmailAddress(emailAddress);</div><div class="line"></div><div class="line">    testRepository.save(person);</div><div class="line">    <span class="keyword">return</span> person;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述的代码中，返回的person只有id，没有emailAddress的其他值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Person <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">    Person person = <span class="keyword">new</span> Person();</div><div class="line">    person.setName(<span class="string">"test"</span>);</div><div class="line"></div><div class="line">    EmailAddress emailAddress = <span class="keyword">new</span> EmailAddress();</div><div class="line">    emailAddress.setName(<span class="string">"afafa"</span>);</div><div class="line"></div><div class="line">    person.setEmailAddress(emailAddress);</div><div class="line"></div><div class="line">    testRepository.save(person);</div><div class="line">    <span class="keyword">return</span> person;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述的代码中，emailAddress不能被保存。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="生命周期事件"><a href="#生命周期事件" class="headerlink" title="生命周期事件"></a>生命周期事件</h3><p>Spring Data MongoDB中存在一些生命周期事件，如：onBeforeConvert, onBeforeSave, onAfterSave, onAfterLoad and onAfterConvert等。我们可以继承<code>AbstractMappingEventListener</code>，然后重写这些方法，即可以实现。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * MongoDB级联控制</div><div class="line"> * Created by guanzhenxing on 2017/11/9.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CascadeControlMongoEventListener</span> <span class="keyword">extends</span> <span class="title">AbstractMongoEventListener</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> MongoOperations mongoOperations;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAfterSave</span><span class="params">(AfterSaveEvent&lt;Object&gt; event)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onAfterSave(event);</div><div class="line">        Object source = event.getSource();</div><div class="line">        ReflectionUtils.doWithFields(source.getClass(), <span class="keyword">new</span> CascadeAfterSaveCallback(source, mongoOperations));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBeforeConvert</span><span class="params">(BeforeConvertEvent&lt;Object&gt; event)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onBeforeConvert(event);</div><div class="line">        Object source = event.getSource();</div><div class="line">        ReflectionUtils.doWithFields(source.getClass(), <span class="keyword">new</span> CascadeBeforeConvertCallback(source, mongoOperations));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 级联控制的回调</div><div class="line"> * Created by guanzhenxing on 2017/11/10.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CascadeAfterSaveCallback</span> <span class="keyword">implements</span> <span class="title">ReflectionUtils</span>.<span class="title">FieldCallback</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Object source;</div><div class="line">    <span class="keyword">private</span> MongoOperations mongoOperations;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CascadeAfterSaveCallback</span><span class="params">(<span class="keyword">final</span> Object source, <span class="keyword">final</span> MongoOperations mongoOperations)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.source = source;</div><div class="line">        <span class="keyword">this</span>.mongoOperations = mongoOperations;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doWith</span><span class="params">(<span class="keyword">final</span> Field field)</span> <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</div><div class="line">        ReflectionUtils.makeAccessible(field);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (field.isAnnotationPresent(DBRef.class)) &#123;</div><div class="line">            <span class="keyword">final</span> Object fieldValue = field.get(source);   <span class="comment">//获得值</span></div><div class="line">            <span class="keyword">if</span> (fieldValue != <span class="keyword">null</span>) &#123;</div><div class="line">                doCascadeLoad(field);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 级联查询</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> field</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doCascadeLoad</span><span class="params">(Field field)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</div><div class="line">        Object fieldValue = field.get(source);</div><div class="line">        List&lt;Field&gt; idFields = ReflectionUtil.getAnnotationField(fieldValue, Id.class); <span class="comment">//该方法是为了获得所有的被@Id注解的属性</span></div><div class="line">        <span class="keyword">if</span> (idFields.size() == <span class="number">1</span>) &#123; <span class="comment">//只处理一个Id</span></div><div class="line">            Object idValue = ReflectionUtil.getFieldValue(fieldValue, idFields.get(<span class="number">0</span>).getName());</div><div class="line">            Object value = mongoOperations.findById(idValue, fieldValue.getClass());    <span class="comment">//查询获得值</span></div><div class="line">            ReflectionUtil.setFieldValue(source, field.getName(), value);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CascadeBeforeConvertCallback</span> <span class="keyword">implements</span> <span class="title">ReflectionUtils</span>.<span class="title">FieldCallback</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">private</span> Object source;</div><div class="line">    <span class="keyword">private</span> MongoOperations mongoOperations;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CascadeBeforeConvertCallback</span><span class="params">(Object source, MongoOperations mongoOperations)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.source = source;</div><div class="line">        <span class="keyword">this</span>.mongoOperations = mongoOperations;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doWith</span><span class="params">(Field field)</span> <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</div><div class="line">        ReflectionUtils.makeAccessible(field);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (field.isAnnotationPresent(DBRef.class)) &#123;</div><div class="line">            <span class="keyword">final</span> Object fieldValue = field.get(source);   <span class="comment">//获得值</span></div><div class="line">            <span class="keyword">if</span> (fieldValue != <span class="keyword">null</span>) &#123;</div><div class="line">                doCascadeSave(field);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 级联保存</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> field</div><div class="line">     * <span class="doctag">@throws</span> IllegalAccessException</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doCascadeSave</span><span class="params">(Field field)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (field.isAnnotationPresent(CascadeSave.class)) &#123; <span class="comment">//如果有标识@CascadeSave注解</span></div><div class="line">            Object fieldValue = field.get(source);</div><div class="line">            List&lt;Field&gt; idFields = ReflectionUtil.getAnnotationField(fieldValue, Id.class);</div><div class="line">            <span class="keyword">if</span> (idFields.size() == <span class="number">1</span>) &#123;</div><div class="line">                mongoOperations.save(fieldValue);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="meta">@Target</span>(ElementType.FIELD)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> CascadeSave &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MongoConfig</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> CascadeControlMongoEventListener <span class="title">userCascadingMongoEventListener</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CascadeControlMongoEventListener();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上是核心代码。至此，我们就可以解决上述的问题了。</p>
+<p><hr><br>参考：<a href="http://www.baeldung.com/cascading-with-dbref-and-lifecycle-events-in-spring-data-mongodb" target="_blank" rel="external">http://www.baeldung.com/cascading-with-dbref-and-lifecycle-events-in-spring-data-mongodb</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在使用Spring Data操作MongoDB中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在保存一个实体的时候，如果被@DBRef标识的类只传入Id，保
+    
+    </summary>
+    
+      <category term="MongoDB" scheme="http://webfuse.cn/categories/MongoDB/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="MongoDB" scheme="http://webfuse.cn/tags/MongoDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>将一个JavaBean中的非空属性转到Map中</title>
+    <link href="http://webfuse.cn/2017/11/09/%E5%B0%86%E4%B8%80%E4%B8%AAJavaBean%E4%B8%AD%E7%9A%84%E9%9D%9E%E7%A9%BA%E5%B1%9E%E6%80%A7%E8%BD%AC%E5%88%B0Map%E4%B8%AD/"/>
+    <id>http://webfuse.cn/2017/11/09/将一个JavaBean中的非空属性转到Map中/</id>
+    <published>2017-11-09T08:44:42.000Z</published>
+    <updated>2018-07-28T03:19:46.937Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在写项目的时候遇到一个这样的一个需要：将JavaBean中非空属性转到一个Map中。stackoverflow出一个还算不错的回答，记录如下：</p>
+<p>stackoverflow地址：<a href="https://stackoverflow.com/questions/8524011/java-reflection-how-can-i-get-the-all-getter-methods-of-a-java-class-and-invoke" target="_blank" rel="external">https://stackoverflow.com/questions/8524011/java-reflection-how-can-i-get-the-all-getter-methods-of-a-java-class-and-invoke</a></p>
+<p>最佳答案（大概意思的翻译）：</p>
+<p>不要用正则表达式，使用<a href="https://docs.oracle.com/javase/6/docs/api/java/beans/Introspector.html" target="_blank" rel="external">Introspector</a>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(PropertyDescriptor propertyDescriptor :</div><div class="line">    Introspector.getBeanInfo(yourClass).getPropertyDescriptors())&#123;</div><div class="line"></div><div class="line">    <span class="comment">// propertyEditor.getReadMethod() exposes the getter</span></div><div class="line">    <span class="comment">// btw, this may be null if you have a write-only property</span></div><div class="line">    System.out.println(propertyDescriptor.getReadMethod());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通常情况下，我们不需要Object.class的属性，所以我们可以使用以下方法：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> Introspector.getBeanInfo(yourClass, stopClass)</div><div class="line"><span class="comment">// usually with Object.class as 2nd param</span></div><div class="line"><span class="comment">// the first class is inclusive, the second exclusive</span></div></pre></td></tr></table></figure>
+<p>我们还可以使用commons/beanutils的一些方法，如：<code>Map&lt;String, String&gt; properties = BeanUtils.describe(yourObject);</code>它会找到并执行所有的getter并将结果存储到Map中，而且BeanUtils.describe()在返回之前将所有的属性值转换为字符串。</p>
+<p>以下是一个用Java 8写的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">beanProperties</span><span class="params">(Object bean)</span> </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">return</span> Arrays.asList(</div><div class="line">         Introspector.getBeanInfo(bean.getClass(), Object.class)</div><div class="line">                     .getPropertyDescriptors()</div><div class="line">      )</div><div class="line">      .stream()</div><div class="line">      <span class="comment">// filter out properties with setters only</span></div><div class="line">      .filter(pd -&gt; Objects.nonNull(pd.getReadMethod()))</div><div class="line">      .collect(Collectors.toMap(</div><div class="line">        <span class="comment">// bean property name</span></div><div class="line">        PropertyDescriptor::getName,</div><div class="line">        pd -&gt; &#123; <span class="comment">// invoke method to get value</span></div><div class="line">            <span class="keyword">try</span> &#123; </div><div class="line">                <span class="keyword">return</span> pd.getReadMethod().invoke(bean);</div><div class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                <span class="comment">// replace this with better error handling</span></div><div class="line">               <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;));</div><div class="line">  &#125; <span class="keyword">catch</span> (IntrospectionException e) &#123;</div><div class="line">    <span class="comment">// and this, too</span></div><div class="line">    <span class="keyword">return</span> Collections.emptyMap();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上方法有一个缺点：Collectors.toMap()对于null的值会报错。所以，有了以下版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">beanProperties</span><span class="params">(Object bean)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        Arrays.asList(Introspector.getBeanInfo(bean.getClass(), Object.class)</div><div class="line">                                  .getPropertyDescriptors())</div><div class="line">              .stream()</div><div class="line">              <span class="comment">// filter out properties with setters only</span></div><div class="line">              .filter(pd -&gt; Objects.nonNull(pd.getReadMethod()))</div><div class="line">              .forEach(pd -&gt; &#123; <span class="comment">// invoke method to get value</span></div><div class="line">                  <span class="keyword">try</span> &#123;</div><div class="line">                      Object value = pd.getReadMethod().invoke(bean);</div><div class="line">                      <span class="keyword">if</span> (value != <span class="keyword">null</span>) &#123;</div><div class="line">                          map.put(pd.getName(), value);</div><div class="line">                      &#125;</div><div class="line">                  &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                      <span class="comment">// add proper error handling here</span></div><div class="line">                  &#125;</div><div class="line">              &#125;);</div><div class="line">        <span class="keyword">return</span> map;</div><div class="line">    &#125; <span class="keyword">catch</span> (IntrospectionException e) &#123;</div><div class="line">        <span class="comment">// and here, too</span></div><div class="line">        <span class="keyword">return</span> Collections.emptyMap();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Guava版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">guavaBeanProperties</span><span class="params">(Object bean)</span> </span>&#123;</div><div class="line">    Object NULL = <span class="keyword">new</span> Object();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">return</span> Maps.transformValues(</div><div class="line">                Arrays.stream(</div><div class="line">                        Introspector.getBeanInfo(bean.getClass(), Object.class)</div><div class="line">                                    .getPropertyDescriptors())</div><div class="line">                      .filter(pd -&gt; Objects.nonNull(pd.getReadMethod()))</div><div class="line">                      .collect(ImmutableMap::&lt;String, Object&gt;builder,</div><div class="line">                               (builder, pd) -&gt; &#123;</div><div class="line">                                   <span class="keyword">try</span> &#123;</div><div class="line">                                       Object result = pd.getReadMethod()</div><div class="line">                                                         .invoke(bean);</div><div class="line">                                       builder.put(pd.getName(),</div><div class="line">                                                   firstNonNull(result, NULL));</div><div class="line">                                   &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                                       <span class="keyword">throw</span> propagate(e);</div><div class="line">                                   &#125;</div><div class="line">                               &#125;,</div><div class="line">                               (left, right) -&gt; left.putAll(right.build()))</div><div class="line">                      .build(), v -&gt; v == NULL ? <span class="keyword">null</span> : v);</div><div class="line">    &#125; <span class="keyword">catch</span> (IntrospectionException e) &#123;</div><div class="line">        <span class="keyword">throw</span> propagate(e);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另外，还有一个JavaSlang的版本。基本上很少用这个，就不收集了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在写项目的时候遇到一个这样的一个需要：将JavaBean中非空属性转到一个Map中。stackoverflow出一个还算不错的回答，记录如下：&lt;/p&gt;
+&lt;p&gt;stackoverflow地址：&lt;a href=&quot;https://stackoverflow.com/quest
+    
+    </summary>
+    
+      <category term="Java" scheme="http://webfuse.cn/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="http://webfuse.cn/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在使用SpringBoot的时候遇到的一些小坑</title>
+    <link href="http://webfuse.cn/2017/10/28/%E5%9C%A8%E4%BD%BF%E7%94%A8SpringBoot%E7%9A%84%E6%97%B6%E5%80%99%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E5%9D%91/"/>
+    <id>http://webfuse.cn/2017/10/28/在使用SpringBoot的时候遇到的一些小坑/</id>
+    <published>2017-10-28T07:39:32.000Z</published>
+    <updated>2018-07-28T03:19:46.929Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="引入了spring-boot-starter-jdbc但是没有配置数据源"><a href="#引入了spring-boot-starter-jdbc但是没有配置数据源" class="headerlink" title="引入了spring-boot-starter-jdbc但是没有配置数据源"></a>引入了spring-boot-starter-jdbc但是没有配置数据源</h2><p>出现问题原因：在开发过程中把一些公关的东西封装成一个jar包，多个项目共同使用这个jar包（这个jar中包含数据处理的代码）。然而，有些项目没有用到数据处理，没有配置数据源。所以，在启动的时候会报错。</p>
+<p>解决方案：引入<code>@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})</code></p>
+<h2 id="使用RestTemplate访问restful服务的异常处理"><a href="#使用RestTemplate访问restful服务的异常处理" class="headerlink" title="使用RestTemplate访问restful服务的异常处理"></a>使用RestTemplate访问restful服务的异常处理</h2><p>问题描述：</p>
+<p>在使用RestTemplate访问restful接口的时候，如果接口抛出异常，默认情况下捕获的异常不符合自定义的异常规范。</p>
+<p>解决：</p>
+<p>RestTemplate默认使用的是<code>DefaultResponseErrorHandler</code>处理异常。如果我们需要定制自己的一处处理，可以编写定制化的处理器：</p>
+<p>如：</p>
+<pre><code>public class CustomResponseErrorHandler implements ResponseErrorHandler {
+
+    private ResponseErrorHandler errorHandler = new DefaultResponseErrorHandler();
+
+    @Override
+    public boolean hasError(ClientHttpResponse response) throws IOException {
+        return errorHandler.hasError(response);
+    }
+
+    @Override
+    public void handleError(ClientHttpResponse response) throws IOException {
+
+        String theString = IOUtils.toString(response.getBody());
+        Map&lt;String, String&gt; error = (Map&lt;String, String&gt;) JsonMapper.fromJsonString(theString, Map.class);
+        String errorCode = error.get(&quot;errorCode&quot;);
+        String message = error.get(&quot;message&quot;);
+
+        throw new RemoteCallException(errorCode, message, null);
+
+    }
+}
+</code></pre><p>然后</p>
+<pre><code>RestTemplate restTemplate = new RestTemplate();
+restTemplate.setErrorHandler(new CustomResponseErrorHandler());
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引入了spring-boot-starter-jdbc但是没有配置数据源&quot;&gt;&lt;a href=&quot;#引入了spring-boot-starter-jdbc但是没有配置数据源&quot; class=&quot;headerlink&quot; title=&quot;引入了spring-boot-start
+    
+    </summary>
+    
+      <category term="开发工具" scheme="http://webfuse.cn/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IntelliJ Idea取消Could not autowire. No beans of &#39;xxxx&#39; type found的错误提示</title>
+    <link href="http://webfuse.cn/2017/10/28/IntelliJ%20Idea%E5%8F%96%E6%B6%88Could%20not%20autowire.%20No%20beans%20of%20&#39;xxxx&#39;%20type%20found%E7%9A%84%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/"/>
+    <id>http://webfuse.cn/2017/10/28/IntelliJ Idea取消Could not autowire. No beans of &#39;xxxx&#39; type found的错误提示/</id>
+    <published>2017-10-28T07:17:47.000Z</published>
+    <updated>2018-07-28T03:19:46.909Z</updated>
+    
+    <content type="html"><![CDATA[<p>遇到的问题：</p>
+<p>在IntelliJ Idea使用Spring的@Autowired，有的时候遇到“Could not autowire. No beans of ‘xxxx’ type found”的标红提示。但是在程序的编译和运行时候都没有出现这个问题。</p>
+<p>解决：</p>
+<p>在出现该问题的地方加上<code>@SuppressWarnings(&quot;SpringJavaAutowiringInspection&quot;)</code>注解</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;遇到的问题：&lt;/p&gt;
+&lt;p&gt;在IntelliJ Idea使用Spring的@Autowired，有的时候遇到“Could not autowire. No beans of ‘xxxx’ type found”的标红提示。但是在程序的编译和运行时候都没有出现这个问题。&lt;/p
+    
+    </summary>
+    
+      <category term="开发工具" scheme="http://webfuse.cn/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在SpringBoot中集成MQTT</title>
+    <link href="http://webfuse.cn/2017/08/17/%E5%9C%A8SpringBoot%E4%B8%AD%E9%9B%86%E6%88%90MQTT/"/>
+    <id>http://webfuse.cn/2017/08/17/在SpringBoot中集成MQTT/</id>
+    <published>2017-08-17T10:06:53.000Z</published>
+    <updated>2018-07-28T03:19:46.929Z</updated>
+    
+    <content type="html"><![CDATA[<p>MQTT（ Message Queuing Telemetry Transport）是一个物联网传输协议，它被设计用于轻量级的发布/订阅式消息传输，旨在为低带宽和不稳定的网络环境中的物联网设备提供可靠的网络服务。在实际的开发中，我们通常会用到Spring，这里简单描述一下在SpringBoot中如何集成MQTT。</p>
+<p>在Spring的一系列文档中，已经有了对应的集成代码。见：</p>
+<ul>
+<li><a href="https://github.com/spring-projects/spring-integration-samples/blob/master/basic/mqtt/src/main/java/org/springframework/integration/samples/mqtt/Application.java" target="_blank" rel="external">spring-integration-samples</a></li>
+<li><a href="http://docs.spring.io/spring-integration/reference/html/mqtt.html" target="_blank" rel="external">Spring Integration MQTT Support</a></li>
+</ul>
+<h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-integration<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.integration<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-integration-stream<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.integration<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-integration-mqtt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="配置-mqttClientFactory"><a href="#配置-mqttClientFactory" class="headerlink" title="配置 mqttClientFactory"></a>配置 mqttClientFactory</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> MqttPahoClientFactory <span class="title">mqttClientFactory</span><span class="params">()</span> </span>&#123;</div><div class="line">    List&lt;String&gt; urls = mqttUrls().getUrls();</div><div class="line">    DefaultMqttPahoClientFactory factory = <span class="keyword">new</span> DefaultMqttPahoClientFactory();</div><div class="line">    factory.setServerURIs(<span class="string">"tcp:\\localhost:1883"</span>);</div><div class="line">    <span class="keyword">return</span> factory;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="配置消费者"><a href="#配置消费者" class="headerlink" title="配置消费者"></a>配置消费者</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> IntegrationFlow <span class="title">mqttInFlow</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> IntegrationFlows.from(mqttInbound())</div><div class="line">            .transform(p -&gt; p)</div><div class="line">            .handle(mqttService.handler())</div><div class="line">            .get();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> MessageProducerSupport <span class="title">mqttInbound</span><span class="params">()</span> </span>&#123;</div><div class="line">    MqttPahoMessageDrivenChannelAdapter adapter = <span class="keyword">new</span> MqttPahoMessageDrivenChannelAdapter(<span class="string">"customer"</span>,</div><div class="line">            mqttClientFactory(), <span class="string">"test-topic"</span>);</div><div class="line">    adapter.setConverter(<span class="keyword">new</span> DefaultPahoMessageConverter());</div><div class="line">    adapter.setQos(<span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> adapter;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="配置生产者"><a href="#配置生产者" class="headerlink" title="配置生产者"></a>配置生产者</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> IntegrationFlow <span class="title">mqttOutFlow</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> IntegrationFlows.from(outChannel())</div><div class="line">            .handle(mqttOutbound())</div><div class="line">            .get();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> MessageChannel <span class="title">outChannel</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DirectChannel();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> MessageHandler <span class="title">mqttOutbound</span><span class="params">()</span> </span>&#123;</div><div class="line">    MqttPahoMessageHandler messageHandler = <span class="keyword">new</span> MqttPahoMessageHandler(<span class="string">"publisher"</span>, mqttClientFactory());</div><div class="line">    messageHandler.setAsync(<span class="keyword">true</span>);</div><div class="line">    messageHandler.setDefaultTopic(<span class="string">"test-topic"</span>);</div><div class="line">    <span class="keyword">return</span> messageHandler;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@MessagingGateway</span>(defaultRequestChannel = <span class="string">"outChannel"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MessageWriter</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(String data)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>生产者的使用可以为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="function">MessageWriter messageWriter</span></div><div class="line"></div><div class="line"><span class="keyword">void</span> <span class="title">publish</span><span class="params">(String data)</span>&#123;</div><div class="line">    messageWriter.write(data)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="遇到的坑以及未解决的问题"><a href="#遇到的坑以及未解决的问题" class="headerlink" title="遇到的坑以及未解决的问题"></a>遇到的坑以及未解决的问题</h2><ul>
+<li>生产者和消费者的clientId一定一定不能一样</li>
+<li>未解决：多个topic和data的动态生产</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MQTT（ Message Queuing Telemetry Transport）是一个物联网传输协议，它被设计用于轻量级的发布/订阅式消息传输，旨在为低带宽和不稳定的网络环境中的物联网设备提供可靠的网络服务。在实际的开发中，我们通常会用到Spring，这里简单描述一下在
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://webfuse.cn/categories/SpringBoot/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
+    
+      <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring @Value—从yml文件中引入list</title>
+    <link href="http://webfuse.cn/2017/08/15/Spring%20@Value%E2%80%94%E4%BB%8Eyml%E6%96%87%E4%BB%B6%E4%B8%AD%E5%BC%95%E5%85%A5list/"/>
+    <id>http://webfuse.cn/2017/08/15/Spring @Value—从yml文件中引入list/</id>
+    <published>2017-08-15T15:04:13.000Z</published>
+    <updated>2018-07-28T03:19:46.912Z</updated>
+    
+    <content type="html"><![CDATA[<p>在SpringBoot中要引入yml配置文件中的数组，用常用的@Value是不可取的，我们必须另寻途径。详见以下代码：</p>
+<p>配置文件，其中mqtt是一个对象，urls是一个字符串数组，mappings是一个对象数组</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="attr">mqtt:</span></div><div class="line"><span class="attr">  urls:</span></div><div class="line"><span class="attr">  - tcp:</span><span class="string">//120.24.75.149:1883</span></div><div class="line"><span class="attr">  clientId:</span> <span class="string">mqtt-gateway</span></div><div class="line"><span class="attr">  completionTimeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">router:</span></div><div class="line"><span class="attr">  mappings:</span></div><div class="line"><span class="attr">  - topicFilter:</span> <span class="string">msg</span></div><div class="line"><span class="attr">    service:</span> <span class="string">sensors</span></div><div class="line"><span class="attr">  - topicFilter:</span> <span class="string">people</span></div><div class="line"><span class="attr">    service:</span> <span class="string">people</span></div></pre></td></tr></table></figure>
+<p>配置代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> cn.webfuse.valuedemo.configuration.properties.Mappings;</div><div class="line"><span class="keyword">import</span> cn.webfuse.valuedemo.configuration.properties.MqttUrls;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</div><div class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</div><div class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</div><div class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</div><div class="line"></div><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultConfiguration</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"mqtt"</span>)</div><div class="line">    <span class="function">MqttUrls <span class="title">mqttUrls</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MqttUrls();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"router"</span>)</div><div class="line">    <span class="function">Mappings <span class="title">mappings</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Mappings();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;mqtt.clientId&#125;"</span>)</div><div class="line">    String clientId;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述代码中用到的对象类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mapping</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String topicFilter;</div><div class="line">    <span class="keyword">private</span> String service;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTopicFilter</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> topicFilter;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTopicFilter</span><span class="params">(String topicFilter)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.topicFilter = topicFilter;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getService</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> service;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setService</span><span class="params">(String service)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.service = service;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mappings</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;Mapping&gt; mappings = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Mapping&gt; <span class="title">getMappings</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mappings;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMappings</span><span class="params">(List&lt;Mapping&gt; mappings)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.mappings = mappings;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MqttUrls</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;String&gt; urls = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getUrls</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.urls;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUrls</span><span class="params">(List&lt;String&gt; urls)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.urls = urls;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</div><div class="line"><span class="meta">@RestController</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    MqttUrls mqttUrls;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    Mappings mappings;</div><div class="line"></div><div class="line">    <span class="meta">@GetMapping</span>(value = <span class="string">"/urls/show"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">show</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> mqttUrls.getUrls();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/mappings/show"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Mapping&gt; <span class="title">showMappings</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mappings.getMappings();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在SpringBoot中要引入yml配置文件中的数组，用常用的@Value是不可取的，我们必须另寻途径。详见以下代码：&lt;/p&gt;
+&lt;p&gt;配置文件，其中mqtt是一个对象，urls是一个字符串数组，mappings是一个对象数组&lt;/p&gt;
+&lt;figure class=&quot;highl
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://webfuse.cn/categories/SpringBoot/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
+    
+      <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用Spring的AbstractRoutingDataSource解决多数据源的问题</title>
+    <link href="http://webfuse.cn/2017/08/10/%E5%88%A9%E7%94%A8Spring%E7%9A%84AbstractRoutingDataSource%E8%A7%A3%E5%86%B3%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>http://webfuse.cn/2017/08/10/利用Spring的AbstractRoutingDataSource解决多数据源的问题/</id>
+    <published>2017-08-10T14:56:02.000Z</published>
+    <updated>2018-07-28T03:19:46.925Z</updated>
+    
+    <content type="html"><![CDATA[<p>在互联网的服务端开发的时候，我们很经常要在一个项目中去调用不同的数据库。在这种情况下，必然要涉及到多数据源问题。那么，我们该如何解决多数据源问题呢？有没有一种方法来动态切换数据源呢？</p>
+<p>答案是有的。万能的Spring已经给了我们解决方案——利用AbstractRoutingDataSource。在<code>AbstractRoutingDataSource</code>类中，发现<code>getConnection()</code>方法，从名字上可以知道它是获得connection连接的。跟踪<code>getConnection()</code>方法，<code>determineTargetDataSource()</code>就这么进入我们的视线，继续下去，我们发现了重点——<code>determineCurrentLookupKey()</code>。<code>determineCurrentLookupKey</code>方法是一个抽象方法，它的返回值就是我们要用到的数据源dataSource的key，然后根据这个key从<code>resolvedDataSources</code>这个map中取出dataSource，如果找不到就使用默认的dataSource。</p>
+<p>知道了这些，我们就来用代码实现吧！以下的代码是基于Spring Boot，所以需要建立一个Spring Boot项目，然后引入spring-boot-starter-jdbc。项目中又有用到AOP，肯定的，我们必须引入spring-boot-starter-aop。</p>
+<p>接下来，我们需要建一个DynamicDataSource。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicDataSource</span> <span class="keyword">extends</span> <span class="title">AbstractRoutingDataSource</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">determineCurrentLookupKey</span><span class="params">()</span> </span>&#123;</div><div class="line">        String dataSourceName = DynamicDataSourceContextHolder.getDataSourceName();</div><div class="line">        <span class="keyword">return</span> dataSourceName;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>DynamicDataSource</code>继承了抽象类<code>AbstractRoutingDataSource</code>，实现了<code>determineCurrentLookupKey()</code>。在<code>DynamicDataSourceContextHolder</code>中，我们使用ThreadLocal维护<code>dataSouceName</code>这个变量。这样，每一个线程都可以独立改变自己的副本，而不会影响其他线程所对应的副本。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 动态数据源上下文</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicDataSourceContextHolder</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;String&gt; contextHolder = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; dataSourceNames = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setDataSourceName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        contextHolder.set(name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getDataSourceName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> contextHolder.get();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">clearDataSourceName</span><span class="params">()</span> </span>&#123;</div><div class="line">        contextHolder.remove();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">containsDataSource</span><span class="params">(String dataSourceName)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> dataSourceNames.contains(dataSourceName);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>OK，我们已经有了动态数据源DynamicDataSource，也有了DynamicDataSourceContextHolder，我们怎么使用呢？让我们看下<code>DataSourceConfig</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataSourceConfig</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span>(name = <span class="string">"primaryDataSource"</span>)</div><div class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource.primary"</span>)</div><div class="line">    <span class="meta">@Primary</span></div><div class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">primaryDataSource</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> DataSourceBuilder.create().build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span>(name = <span class="string">"secondaryDataSource"</span>)</div><div class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource.secondary"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">secondaryDataSource</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> DataSourceBuilder.create().build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="meta">@Qualifier</span>(<span class="string">"primaryDataSource"</span>)</div><div class="line">    <span class="keyword">private</span> DataSource primaryDataSource;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="meta">@Qualifier</span>(<span class="string">"secondaryDataSource"</span>)</div><div class="line">    <span class="keyword">private</span> DataSource secondaryDataSource;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> DynamicDataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        Map&lt;Object, Object&gt; targetDataSources = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        targetDataSources.put(<span class="string">"primaryDataSource"</span>, primaryDataSource);</div><div class="line">        targetDataSources.put(<span class="string">"secondaryDataSource"</span>, secondaryDataSource);</div><div class="line"></div><div class="line">        DynamicDataSourceContextHolder.dataSourceNames.add(<span class="string">"primaryDataSource"</span>);</div><div class="line">        DynamicDataSourceContextHolder.dataSourceNames.add(<span class="string">"secondaryDataSource"</span>);</div><div class="line"></div><div class="line">        DynamicDataSource dataSource = <span class="keyword">new</span> DynamicDataSource();</div><div class="line">        <span class="comment">//设置数据源映射</span></div><div class="line">        dataSource.setTargetDataSources(targetDataSources);</div><div class="line">        <span class="comment">//设置默认数据源，当无法映射到数据源时会使用默认数据源</span></div><div class="line">        dataSource.setDefaultTargetDataSource(primaryDataSource);</div><div class="line">        dataSource.afterPropertiesSet();</div><div class="line"></div><div class="line">        <span class="keyword">return</span> dataSource;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然，上面的<code>DataSourceConfig</code>还得搭配<code>application.properties</code>配置文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#</div><div class="line">spring.datasource.primary.jdbcUrl=jdbc:mysql://localhost/test1?useSSL=false</div><div class="line">spring.datasource.primary.username=root</div><div class="line">spring.datasource.primary.password=root</div><div class="line">spring.datasource.primary.driver-class-name=com.mysql.jdbc.Driver</div><div class="line">#</div><div class="line">spring.datasource.secondary.jdbcUrl=jdbc:mysql://localhost/test2?useSSL=false</div><div class="line">spring.datasource.secondary.username=root</div><div class="line">spring.datasource.secondary.password=root</div><div class="line">spring.datasource.secondary.driver-class-name=com.mysql.jdbc.Driver</div></pre></td></tr></table></figure>
+<p>到现在为止，我们已经配置了动态的数据源，将我们的多个数据源设置给了DynamicDataSource。这样，我们就可以在Service或者是Dao中使用<code>DynamicDataSourceContextHolder.setDataSourceName(&quot;primaryDataSource&quot;)</code>方法来动态切换数据源了。但是，这样的写法会不会感到很不爽呢？其实，我们可以在方法上使用注解来切换数据源。</p>
+<p>自定义一个注解TargetDataSource：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 在方法上使用，用于指定使用哪个数据源</div><div class="line"> */</div><div class="line"><span class="meta">@Target</span>(&#123;ElementType.METHOD, ElementType.TYPE&#125;)</div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="meta">@Documented</span></div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TargetDataSource &#123;</div><div class="line"></div><div class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样，我们就可以在Service上如以下使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@TargetDataSource</span>(value = <span class="string">"primaryDataSource"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Customer&gt; <span class="title">findAll</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//TODO</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@TargetDataSource</span>(value = <span class="string">"secondaryDataSource"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCustomer</span><span class="params">(String name, String email)</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很明显的，到目前为止还不能完成我们的切换需求。我们还需要一段代码，来实现动态调用<code>DynamicDataSourceContextHolder.setDataSourceName(&quot;xxx&quot;)</code>，比较好的实现就是AOP啦。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Aspect</span></div><div class="line"><span class="meta">@Component</span></div><div class="line"><span class="meta">@Order</span>(-<span class="number">1</span>)<span class="comment">// 保证该AOP在@Transactional之前执行</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicDataSourceChangeAspect</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(DynamicDataSourceChangeAspect.class);</div><div class="line"></div><div class="line">    <span class="meta">@Before</span>(<span class="string">"@annotation(targetDataSource)"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeDataSource</span><span class="params">(JoinPoint joinPoint, TargetDataSource targetDataSource)</span> </span>&#123;</div><div class="line">        String dsName = targetDataSource.value();</div><div class="line">        <span class="keyword">if</span> (!DynamicDataSourceContextHolder.containsDataSource(dsName)) &#123;</div><div class="line">            System.err.println(<span class="string">"数据源[&#123;&#125;]不存在，使用默认数据源 &gt; &#123;&#125;"</span> + targetDataSource.value() + joinPoint.getSignature());</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            DynamicDataSourceContextHolder.setDataSourceName(targetDataSource.value()); <span class="comment">//设置到动态数据源上下文中</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@After</span>(<span class="string">"@annotation(targetDataSource)"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreDataSource</span><span class="params">(JoinPoint point, TargetDataSource targetDataSource)</span> </span>&#123;</div><div class="line">        <span class="comment">//方法执行完毕之后，销毁当前数据源信息，进行垃圾回收。</span></div><div class="line">        DynamicDataSourceContextHolder.clearDataSourceName();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>到现在为止，我们就实现了动态切换数据源了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在互联网的服务端开发的时候，我们很经常要在一个项目中去调用不同的数据库。在这种情况下，必然要涉及到多数据源问题。那么，我们该如何解决多数据源问题呢？有没有一种方法来动态切换数据源呢？&lt;/p&gt;
+&lt;p&gt;答案是有的。万能的Spring已经给了我们解决方案——利用AbstractR
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot中ComponentScan的exclude</title>
+    <link href="http://webfuse.cn/2017/08/05/Spring%20Boot%E4%B8%ADComponentScan%E7%9A%84exclude/"/>
+    <id>http://webfuse.cn/2017/08/05/Spring Boot中ComponentScan的exclude/</id>
+    <published>2017-08-05T02:05:41.000Z</published>
+    <updated>2018-07-28T03:19:46.912Z</updated>
+    
+    <content type="html"><![CDATA[<p>在SpringBoot的组件自动扫描加载中怎么样去exclude classes/packages呢？我们可以使用<code>@ComponentScan</code>的<code>excludeFilters</code>来实现。</p>
+<h2 id="实现方法一"><a href="#实现方法一" class="headerlink" title="实现方法一"></a>实现方法一</h2><p>ExcludedService.java</p>
+<pre><code>package cn.webfuse.service.exclude;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class ExcludedService {
+
+    public ExcludedService() {
+        System.out.println(&quot;Instantiating &quot; + getClass().getSimpleName());
+    }
+}
+</code></pre><p>IncludedService.java</p>
+<pre><code>package cn.webfuse.service.include;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class IncludedService {
+
+    public IncludedService() {
+        System.out.println(&quot;Instantiating &quot; + getClass().getSimpleName());
+    }
+}
+</code></pre><p>Application.java</p>
+<pre><code>@SpringBootApplication
+@ComponentScan(
+        excludeFilters = @ComponentScan.Filter(
+                type = FilterType.REGEX,
+                pattern = &quot;cn.webfuse.service.exclude.*&quot;))
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre><p>运行只得到<code>IncludedService</code>的打印。</p>
+<h2 id="实现方法二"><a href="#实现方法二" class="headerlink" title="实现方法二"></a>实现方法二</h2><p>IgnoreDuringScan.java</p>
+<pre><code>package cn.webfuse.annotation;
+
+public @interface IgnoreDuringScan {
+}
+</code></pre><p>ExcludedConfig.java</p>
+<pre><code>package cn.webfuse.config.exclude;
+
+import cn.webfuse.annotation.IgnoreDuringScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@IgnoreDuringScan
+public class ExcludedConfig {
+
+    public ExcludedConfig() {
+        System.out.println(&quot;Instantiating &quot; + getClass().getSimpleName());
+    }
+}
+</code></pre><p>IncludedConfig.java</p>
+<pre><code>package cn.webfuse.config.include;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class IncludedConfig {
+    public IncludedConfig() {
+        System.out.println(&quot;Instantiating &quot; + getClass().getSimpleName());
+    }
+}
+</code></pre><p>Application.java</p>
+<pre><code>@SpringBootApplication
+@ComponentScan(excludeFilters = @ComponentScan.Filter(IgnoreDuringScan.class))
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在SpringBoot的组件自动扫描加载中怎么样去exclude classes/packages呢？我们可以使用&lt;code&gt;@ComponentScan&lt;/code&gt;的&lt;code&gt;excludeFilters&lt;/code&gt;来实现。&lt;/p&gt;
+&lt;h2 id=&quot;实现方法一&quot;&gt;&lt;
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://webfuse.cn/categories/SpringBoot/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
+    
+      <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>持续集成环境搭建</title>
+    <link href="http://webfuse.cn/2017/07/04/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://webfuse.cn/2017/07/04/持续集成环境搭建/</id>
+    <published>2017-07-04T10:13:09.000Z</published>
+    <updated>2018-07-28T03:19:46.937Z</updated>
+    
+    <content type="html"><![CDATA[<p>关于持续集成是什么，可以参考阮一峰老师的<a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="external">持续集成是什么？</a>以及网上的一些资料。</p>
+<h1 id="基本环境搭建"><a href="#基本环境搭建" class="headerlink" title="基本环境搭建"></a>基本环境搭建</h1><p>从安装最Mini的CentOS开始，我们需要解决如下事情。</p>
+<p>在CentOS中使用yum命令安装出现错误提示”could not retrieve mirrorlist <a href="http://mirrorlist.centos.org" target="_blank" rel="external">http://mirrorlist.centos.org</a> <em>*</em>” 这是因为DNS配置错误,我装的是Cent OS 6.4 Server，没有图形界面，这个版本默认安装后，配置文件中没有配置DNS。需要通过更改配置文件来解决。方法如下：在命令提示符中输入<code>vi  /etc/sysconfig/network-scripts/ifcfg-eth0</code>用vi 打开这个文件后，接下来会出现截图的内容, 其中要注意两个配置(按下面的值去设置)。</p>
+<pre><code>ONBOOT=yes
+MM_CONTROLLED=no
+</code></pre><p>安装一些常用的工具</p>
+<pre><code>yum install net-tools
+yum install wget
+yum install vim
+yum install git
+</code></pre><h2 id="搭建Java环境"><a href="#搭建Java环境" class="headerlink" title="搭建Java环境"></a>搭建Java环境</h2><p>步骤1：验证是否安装了Java。<code>java -version</code></p>
+<p>步骤2：下载JDK。运行以下：</p>
+<p><code>wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm&quot;</code></p>
+<p>步骤3：安装下载好的JDK。<code>rpm -ivh jdk-8u131-linux-x64.rpm</code></p>
+<p>步骤4：设置环境变量。运行<code>vim /etc/profile.d/java.sh</code>，然后写入以下语句：</p>
+<pre><code>#!/bin/bash
+JAVA_HOME=/usr/java/jdk1.8.0_131/
+PATH=$JAVA_HOME/bin:$PATH
+export PATH JAVA_HOME
+export CLASSPATH=.
+</code></pre><p>保存关闭，执行命令<code>chmod +x /etc/profile.d/java.sh</code>让它可以运行；最后执行命令<code>source /etc/profile.d/java.sh</code>让环境变量失效。</p>
+<p>步骤5：验证。<code>java -version</code>，<code>echo $JAVA_HOME</code></p>
+<h1 id="Jenkins搭建"><a href="#Jenkins搭建" class="headerlink" title="Jenkins搭建"></a>Jenkins搭建</h1><p>步骤1：添加yum repos,运行以下命令，</p>
+<pre><code>sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+</code></pre><p>步骤2：安装。<code>yum install jenkins</code>。</p>
+<p>步骤3：配置Jenkins文件。主要配置Jenkins的端口等，避免与其它软件冲突。主要方法如下：</p>
+<pre><code>$ sudo vim /etc/sysconfig/jenkins
+# 修改运行端口为9999，默认为8080
+JENKINS_PORT=&quot;8181&quot;
+</code></pre><p>  重启Jenkins。<code>sudo service jenkins start</code></p>
+<p>步骤4：开启防火墙。</p>
+<pre><code>firewall-cmd --zone=public --add-port=8081/tcp --permanent
+firewall-cmd --zone=public --add-service=http --permanent
+firewall-cmd --reload
+</code></pre><p>步骤5：安装插件以及配置全局参数。</p>
+<h1 id="GitLab搭建"><a href="#GitLab搭建" class="headerlink" title="GitLab搭建"></a>GitLab搭建</h1><p>参考<a href="https://about.gitlab.com/installation/#centos-6" target="_blank" rel="external">官方文档</a>进行安装。</p>
+<p>步骤1：安装必要的依赖</p>
+<pre><code>sudo yum install curl openssh-server openssh-clients postfix cronie
+sudo service postfix start
+sudo chkconfig postfix on
+sudo lokkit -s http -s ssh
+</code></pre><p>步骤2：下载</p>
+<pre><code>curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+sudo yum install gitlab-ce
+</code></pre><p>步骤3：配置与启动服务</p>
+<pre><code>sudo gitlab-ctl reconfigure
+</code></pre><p>步骤4：修改端口以及地址。</p>
+<pre><code>1）修改Nginx端口以及地址监听的操作如下：
+
+    在文件/etc/gitlab/gitlab.rb中修改：
+
+    nginx[&apos;listen_addresses&apos;] = [&quot;0.0.0.0&quot;, &quot;[::]&quot;] # listen on all IPv4 and IPv6 addresses
+    nginx[&apos;listen_port&apos;] = 8082
+
+2）修改地址：在文件/etc/gitlab/gitlab.rb中修改，external_url &apos;你想要的地址&apos;
+
+3）系统默认会用到8080端口作为启动时候的必须端口。
+   如果不想用8080端口的话，可以通过这样的操作：在/etc/gitlab/gitlab.rb中修改unicorn[&apos;port&apos;]=端口号
+
+4）运行sudo gitlab-ctl reconfigure
+</code></pre><p>步骤5：登录。第一次登录GitLab的用户名密码为root和5iveL!fe。首次登录后会强制用户修改密码。</p>
+<p>常用命令：</p>
+<pre><code>sudo gitlab-ctl start    # 启动所有 gitlab 组件；
+sudo gitlab-ctl stop        # 停止所有 gitlab 组件；
+sudo gitlab-ctl restart        # 重启所有 gitlab 组件；
+sudo gitlab-ctl status        # 查看服务状态；
+sudo gitlab-ctl reconfigure        # 启动服务；
+sudo vim /etc/gitlab/gitlab.rb        # 修改默认的配置文件；
+gitlab-rake gitlab:check SANITIZE=true --trace    # 检查gitlab；
+sudo gitlab-ctl tail        # 查看日志；
+</code></pre><h1 id="LDAP搭建"><a href="#LDAP搭建" class="headerlink" title="LDAP搭建"></a>LDAP搭建</h1><p>步骤1：安装</p>
+<pre><code>1）检查是否安装：rpm -qa | grep openldap
+
+2）安装：
+
+    yum install -y openldap openldap-clients openldap-servers migrationtools
+    cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
+    chown ldap. /var/lib/ldap/DB_CONFIG
+    systemctl start slapd
+    systemctl enable slapd
+
+3）验证端口：netstat -tlnp | grep slapd
+</code></pre><p>步骤2：设置 OpenLDAP 的管理员密码</p>
+<pre><code>1）生成处理以后的管理员密码：
+
+    [root@bogon ~]# slappasswd
+    New password:
+    Re-enter new password:
+    {SSHA}xxxxxxxxxxxxxxxxxxxxxxxx
+
+2）新建文件chrootpw.ldif。{SSHA}xxxxxxxxxxxxxxxxxxxxxxxx为你在第1小步的时候生成的密码。
+
+    dn: olcDatabase={0}config,cn=config
+    changetype: modify
+    add: olcRootPW
+    olcRootPW: {SSHA}xxxxxxxxxxxxxxxxxxxxxxxx
+
+3）执行ldapadd -Y EXTERNAL -H ldapi:/// -f chrootpw.ldif
+</code></pre><p>步骤3：导入基本的Schema</p>
+<pre><code>ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+</code></pre><p>步骤4：设置自己的Domain Name</p>
+<pre><code>1）首先要生成经处理后的目录管理者明文密码。
+
+    slappasswd
+    New password:
+    Re-enter new password:
+    {SSHA}xxxxxxxxxxxxxxxxxxxxxxxx
+
+2）新建文件。chdomain.ldif，并把以下内容写入文件。（需要把&quot;dc=***,dc=***&quot;替换成你自己的dc内容，需要把{SSHA}xxxxxxxxxxxxxxxxxxxxxxxx替换成刚才生成的密码）
+
+    dn: olcDatabase={1}monitor,cn=config
+    changetype: modify
+    replace: olcAccess
+    olcAccess: {0}to * by dn.base=&quot;gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth&quot;
+    read by dn.base=&quot;cn=Manager,dc=dynamax,dc=io&quot; read by * none
+
+    dn: olcDatabase={2}hdb,cn=config
+    changetype: modify
+    replace: olcSuffix
+    olcSuffix: dc=dynamax,dc=io
+
+    dn: olcDatabase={2}hdb,cn=config
+    changetype: modify
+    replace: olcRootDN
+    olcRootDN: cn=Manager,dc=dynamax,dc=io
+
+    dn: olcDatabase={2}hdb,cn=config
+    changetype: modify
+    add: olcRootPW
+    olcRootPW: {SSHA}xxxxxxxxxxxxxxxxxxxxxxxx
+
+    dn: olcDatabase={2}hdb,cn=config
+    changetype: modify
+    add: olcAccess
+    olcAccess: {0}to attrs=userPassword,shadowLastChange by
+    dn=&quot;cn=Manager,dc=dynamax,dc=io&quot; write by anonymous auth by self write by * none
+    olcAccess: {1}to dn.base=&quot;&quot; by * read
+    olcAccess: {2}to * by dn=&quot;cn=Manager,dc=dynamax,dc=io&quot; write by * read
+
+3）执行：ldapmodify -Y EXTERNAL -H ldapi:/// -f chdomain.ldif
+
+4）再新建文件：basedomain.ldif，并将以下内容写入。并将一些dc替换成你自己的
+
+    dn: dc=dynamax,dc=io
+    objectClass: top
+    objectClass: dcObject
+    objectclass: organization
+    o: Dynamax
+    dc: Dynamax
+
+    dn: cn=Manager,dc=dynamax,dc=io
+    objectClass: organizationalRole
+    cn: Manager
+    description: Directory Manager
+
+    dn: ou=people,dc=dynamax,dc=io
+    objectClass: organizationalUnit
+    ou: people
+
+    dn: ou=groups,dc=dynamax,dc=io
+    objectClass: organizationalUnit
+    ou: groups
+
+5）执行语句：ldapadd -x -D cn=Manager,dc=dynamax,dc=io -W -f basedomain.ldif （注意dc之类的替换）
+</code></pre><p>步骤5：允许防火墙访问 LDAP 服务</p>
+<pre><code>firewall-cmd --add-service=ldap --permanent
+firewall-cmd --reload
+</code></pre><p>步骤6：查询。<code>ldapsearch -x -b &quot;dc=dynamax,dc=io&quot; -H ldap://192.168.118.130</code></p>
+<p>步骤7：安装客户端。选择有：phpLDAPadmin等。</p>
+<h1 id="Nexus搭建"><a href="#Nexus搭建" class="headerlink" title="Nexus搭建"></a>Nexus搭建</h1><p>Nexus现在为Nexus Repository Manager OSS 3.x。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载安装包：<code>wget https://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.4.0-02-unix.tar.gz</code></p>
+<p>解压（我这边是解压到/usr/local中）:<code>sudo tar -zxvf nexus-3.4.0-02-unix.tar.gz</code></p>
+<p>创建链接：<code>sudo ln -s nexus-3.4.0-02 nexus</code></p>
+<p>创建nexus用户：<code>sudo useradd nexus</code></p>
+<p>授权：</p>
+<pre><code>sudo chown -R nexus:nexus /usr/local/nexus
+sudo chown -R nexus:nexus /usr/local/sonatype-work/
+</code></pre><p>修改运行用户：</p>
+<pre><code>sudo vi /usr/local/nexus/bin/nexus.rc
+
+# 修改一下内容
+run_as_user=&quot;nexus&quot;
+</code></pre><p>修改端口号：<br>    修改文件/usr/local/nexus/etc/nexus-default.properties中的application-port为你想要的端口号。</p>
+<p>启动服务：在/usr/local/nexus/bin的目录下运行./nexus run &amp;</p>
+<p>注册为服务：</p>
+<pre><code>vi /etc/systemd/system/nexus.service
+
+添加如下内容：
+
+[Unit]
+Description=nexus service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/local/nexus/bin/nexus start
+ExecStop=/usr/local/nexus/bin/nexus stop
+User=nexus
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>安装并启动服务：</p>
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl enable nexus.service
+sudo systemctl start nexus.service
+</code></pre><p>查看服务：</p>
+<pre><code>sudo systemctl status nexus.service
+</code></pre><p>添加防火墙规则</p>
+<h1 id="Jenkins配置LDAP认证登录"><a href="#Jenkins配置LDAP认证登录" class="headerlink" title="Jenkins配置LDAP认证登录"></a>Jenkins配置LDAP认证登录</h1><p>简单介绍在Jenkins中使用LDAP进行认证的话需要哪些配置。</p>
+<h2 id="配置LDAP"><a href="#配置LDAP" class="headerlink" title="配置LDAP"></a>配置LDAP</h2><p>在“系统管理 ”-&gt;“Configure Global Security”中，访问控制选择LDAP。为了预防能在万一配置不成功的情况下依然可以进行配置，可以先勾选上授权策略中的“ 任何用户可以做任何事(没有任何限制)”。</p>
+<p>如下图配置LDAP：</p>
+<img src="/2017/07/04/持续集成环境搭建/jenkins_ldap_conf.png" alt="jenkins_ldap_conf.png" title="">
+<p>配置详解：</p>
+<ul>
+<li>Server：配置LDAP的服务器地址</li>
+<li>root DN：配置根DN</li>
+<li>User search base：配置用户开始查找的DN</li>
+<li>User search filter：用户搜索过滤器，其实就是用户的登录标识</li>
+<li>Group search base：配置用户的组查找的DN</li>
+<li>Group search filter：组搜索过滤器，其实就是组名的标识</li>
+<li>Manager DN：LDAP服务器的管理账号</li>
+<li>Manager Password：LDAP服务器的管理密码</li>
+</ul>
+<p>然后点击“Test LDAP settings”，然后输入用户名密码（注意，这边的用户名为uid的值）。查看是否LDAP的配置是正确的。</p>
+<p>然后使用LDAP中的账号登录Jenkins。</p>
+<h2 id="授权策略"><a href="#授权策略" class="headerlink" title="授权策略"></a>授权策略</h2><p>在LDAP中，我们新建2个Group（dev1和dev2），dev1组包含用户user1，dev2组包含用户user2。<br>也就是：</p>
+<pre><code>dn: ou=Group,dc=dynamax,dc=io
+objectClass: organizationalUnit
+ou: Group
+
+dn: cn=dev1,ou=Group,dc=dynamax,dc=io
+objectClass: posixGroup
+objectClass: top
+cn: dev1
+memberUid: user1
+gidNumber: 15107
+
+dn: cn=dev2,ou=Group,dc=dynamax,dc=io
+objectClass: posixGroup
+objectClass: top
+cn: dev2
+memberUid: user2
+gidNumber: 32679
+</code></pre><p>在Jenkins中的配置如下：</p>
+<img src="/2017/07/04/持续集成环境搭建/jenkins_ldap_auth.png" alt="jenkins_ldap_auth.png" title="">
+<p><span style="color:red">注意：上图中红色框内的为选勾内容，蓝色框中的为必选内容。</span></p>
+<h2 id="项目授权策略"><a href="#项目授权策略" class="headerlink" title="项目授权策略"></a>项目授权策略</h2><p>使用admin登录系统。新建2个job（dev1_job和dev2_job）。</p>
+<img src="/2017/07/04/持续集成环境搭建/jenkins_ldap_jobs.png" alt="jenkins_ldap_jobs.png" title="">
+<p>如上图所示，点击“配置 ”按钮，对项目（任务）进行设置。</p>
+<p>如下图所示，dev1_job配置用户组为dev1，dev2_job配置用户组为dev2。</p>
+<img src="/2017/07/04/持续集成环境搭建/jenkins_ldap_job_auth.png" alt="jenkins_ldap_job_auth.png" title="">
+<p><span style="color:red">值得注意的是“ Block inheritance of global authorization matrix”一定要勾选。</span></p>
+<p>然后，用user1和user2登录Jenkins验证是否完成配置。</p>
+<h1 id="GitLab配置LDAP认证登录"><a href="#GitLab配置LDAP认证登录" class="headerlink" title="GitLab配置LDAP认证登录"></a>GitLab配置LDAP认证登录</h1><p>关于GitLab中搭配LDAP权限的操作可以参考GitLab的文档。</p>
+<p>下面的内容是一些简单的配置，为了就是省去看英文文档的麻烦。</p>
+<p>在 <code>/etc/gitlab/gitlab.rb</code> 或者 <code>/home/git/gitlab/config/gitlab.yml</code> 中添加以下内容：</p>
+<pre><code>gitlab_rails[&apos;ldap_enabled&apos;] = true
+gitlab_rails[&apos;ldap_servers&apos;] = YAML.load &lt;&lt;-EOS # remember to close this block with &apos;EOS&apos; below
+main: # &apos;main&apos; is the GitLab &apos;provider ID&apos; of this LDAP server
+label: &apos;LDAP&apos;
+host: &apos;192.168.118.129&apos;
+port: 389
+uid: &apos;uid&apos;
+method: &apos;plain&apos; # &quot;tls&quot; or &quot;ssl&quot; or &quot;plain&quot;
+allow_username_or_email_login: true
+bind_dn: &apos;cn=Manager,dc=dynamax,dc=io&apos;
+password: &apos;gzhx0211&apos;
+active_directory: false
+base: &apos;ou=People,dc=dynamax,dc=io&apos;
+user_filter: &apos;&apos;
+EOS
+</code></pre><p>然后运行以下命令让配置生效。<br><code>gitlab-ctl reconfigure</code></p>
+<p>OK，这样以后你就可以使用LDAP的用户登录了。接下来问题来了，怎么分配角色呢？貌似CE版本没有提供，不过我们可以使用程序进行开发。</p>
+<h1 id="Nexus配置LDAP认证登录"><a href="#Nexus配置LDAP认证登录" class="headerlink" title="Nexus配置LDAP认证登录"></a>Nexus配置LDAP认证登录</h1><p>在安装Nexus 3.3.2-02以后，默认的用户名为admin，密码为admin123。用admin登录Nexus。</p>
+<p>在“Security”-&gt;”LDAP”中配置LDAP的信息。</p>
+<h2 id="配置连接"><a href="#配置连接" class="headerlink" title="配置连接"></a>配置连接</h2><img src="/2017/07/04/持续集成环境搭建/nexus_ldap_connect.png" alt="nexus_ldap_connect.png" title="">
+<p>点击“ Verify connection”如果连接成功则在屏幕的右上角弹出一个绿色的提示。</p>
+<h2 id="配置用户"><a href="#配置用户" class="headerlink" title="配置用户"></a>配置用户</h2><p>如下图显示：</p>
+<img src="/2017/07/04/持续集成环境搭建/nexus_ldap_user.png" alt="nexus_ldap_user.png" title="">
+<h2 id="配置角色"><a href="#配置角色" class="headerlink" title="配置角色"></a>配置角色</h2><p>如下图所示：</p>
+<img src="/2017/07/04/持续集成环境搭建/nexus_ldap_role.png" alt="nexus_ldap_role.png" title="">
+<p>至此，CI需要的基本上就搭建OK了。剩下的Sonar和Jira等下次再搭建。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于持续集成是什么，可以参考阮一峰老师的&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;持续集成是什么？&lt;
+    
+    </summary>
+    
+      <category term="运维" scheme="http://webfuse.cn/categories/%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="运维" scheme="http://webfuse.cn/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="持续集成" scheme="http://webfuse.cn/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>十年</title>
+    <link href="http://webfuse.cn/2017/06/23/%E5%8D%81%E5%B9%B4/"/>
+    <id>http://webfuse.cn/2017/06/23/十年/</id>
+    <published>2017-06-23T05:15:07.000Z</published>
+    <updated>2018-07-28T03:19:46.926Z</updated>
+    
+    <content type="html"><![CDATA[<p>有感于最近发生的一些事情，于在临海的动车上写下此篇文字。</p>
+<p>今天，24号。十年前的今天应该是我高考成绩出来的时候。很清晰地记得，那天很早的时候就去山上的果园修剪火龙果的枝桠，妹妹在家帮我用电话查询成绩以后告知了爸爸。那个成绩，我很意外，但又是在意料之中。随后的查卷啊之类的，现在想想也是蛮多余的。那个时候的我应该就是个鸵鸟吧，遇到危险就把头低低地埋着，自以为那是躲避危险的好办法。自那以后，一股不自信就在心中油然而生，直到现在还依旧存在！没有选择复读，直接去上了一所专科学校。所以，昨天在看到2017年的高考线的时候，我真的不知道该说什么。说自己早生了十年？说现在的孩子运气真好？</p>
+<p>昨天，也就是23号。我从大公司离职了。很矛盾地走了，有一丝舍不得，有一丝庆幸，也有一丝迷茫！2015年入职网龙的时候，我抱着很大的希望，希望能接触到架构方面的东西。但现实给了我很大的打击，没有项目，一切的一切都是内部预演，技术就是在sdp平台上进行开发。而且，很长时间我还做做着前端的事情。不过，不能否认的是在网龙的2年让我的简历稍微好看些，而且前端技术也接触到了，工资也还可以，我不亏！事不紧张、钱还可以、厦门公司的时间还算自由、公司大、稳定，这些都是很多人眼中好工作的标签吧！这样的好工作就像冷水煮青蛙一样，等到一定的程度，青蛙也就无能力跳出那个足以毁掉它的容器。也许，我这样说真的有很大的夸张；也许，他们又会是在公司上市后的富翁；也许，青蛙也是蛮幸福的事情。谁知道呢？职业的危机感让我觉得不能再这么下去了，所以选择了离开。</p>
+<p>那天和金龙说，我用了7年的时间达到了一些毕业生的薪资水平；金龙说，他们以前比我们努力！可是从懂事以来的日子，我自己不够努力么？我每天都在努力地学习着，努力地做事着。为什么还是这样呢？我想我错了。我的那个努力不叫努力，应该叫刷存在感！首先是专心问题。做作业的时候专心了吗？看书的时候专心了吗？敲代码的时候专心了吗？不专心，也就是没有效率；没有效率，就意味着花费比别人更多的时间，而且结果还没有他人好。然后就是坚持。做一件事我坚持了么？追一个女孩我坚持了么？健身运动我坚持了么？学习英语我坚持了么？没有！没有一件是持之以恒的坚持，是三天打鱼两天晒网的行动，是以一些失败就放弃的结果！第三是心态。从读书时代的似懂非懂就是懂的态度，到现在的实用就好何必原理态度；丰富的计划贫瘠的实施，过分地追求所谓的完美；浅尝辄止，不求甚解！</p>
+<p>努力真的不是一个普通的词。我想很多人都知道自己的毛病吧！也有很多人想改正自己的毛病吧！突然想到一句话，能改的叫上进，不能改的叫个性。计划时间表，奖励制度，惩罚制度，这三个是我能想到的解决方法。因地制宜因时制宜的计划，完成以后给自己奖励，不完成给自己惩罚。这样也许能让自己看上去更有意思些！不知道，身边也没有人监督自己，真的得找一个女朋友了！变得更优秀吧！也许，一切真的没有那么糟…</p>
+<p>列车从连江站开出了。调整心态，去迎接接下来的事情吧！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有感于最近发生的一些事情，于在临海的动车上写下此篇文字。&lt;/p&gt;
+&lt;p&gt;今天，24号。十年前的今天应该是我高考成绩出来的时候。很清晰地记得，那天很早的时候就去山上的果园修剪火龙果的枝桠，妹妹在家帮我用电话查询成绩以后告知了爸爸。那个成绩，我很意外，但又是在意料之中。随后的查
+    
+    </summary>
+    
+      <category term="未分类" scheme="http://webfuse.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
+    
+    
+      <category term="生活" scheme="http://webfuse.cn/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="杂念" scheme="http://webfuse.cn/tags/%E6%9D%82%E5%BF%B5/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,889 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="以太坊,区块链," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="以太坊以太坊（Ethereum）是一个建立在区块链技术之上， 去中心化应用平台。它允许任何人在平台中建立和使用通过区块链技术运行的去中心化应用。与比特币相比，以太坊属于区块链2.0的范畴。 从平台角度来看，以太坊类似于苹果或者安卓的应用商店；从技术角度来说，以太坊类似于一个区块链操作系统。 下图是以太坊的组成：  所以，可以理解为：“以太坊=区块链+智能合约”。开发者在以太坊上可以开发任意的应用，">
+<meta name="keywords" content="以太坊,区块链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以太坊学习摘要">
+<meta property="og:url" content="http://webfuse.cn/2018/08/24/以太坊学习摘要/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="以太坊以太坊（Ethereum）是一个建立在区块链技术之上， 去中心化应用平台。它允许任何人在平台中建立和使用通过区块链技术运行的去中心化应用。与比特币相比，以太坊属于区块链2.0的范畴。 从平台角度来看，以太坊类似于苹果或者安卓的应用商店；从技术角度来说，以太坊类似于一个区块链操作系统。 下图是以太坊的组成：  所以，可以理解为：“以太坊=区块链+智能合约”。开发者在以太坊上可以开发任意的应用，">
+<meta property="og:image" content="http://webfuse.cn/2018/08/24/以太坊学习摘要/以太坊组成.png">
+<meta property="og:updated_time" content="2018-08-24T16:26:56.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="以太坊学习摘要">
+<meta name="twitter:description" content="以太坊以太坊（Ethereum）是一个建立在区块链技术之上， 去中心化应用平台。它允许任何人在平台中建立和使用通过区块链技术运行的去中心化应用。与比特币相比，以太坊属于区块链2.0的范畴。 从平台角度来看，以太坊类似于苹果或者安卓的应用商店；从技术角度来说，以太坊类似于一个区块链操作系统。 下图是以太坊的组成：  所以，可以理解为：“以太坊=区块链+智能合约”。开发者在以太坊上可以开发任意的应用，">
+<meta name="twitter:image" content="http://webfuse.cn/2018/08/24/以太坊学习摘要/以太坊组成.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 以太坊学习摘要 | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                以太坊学习摘要
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-08-24T22:05:11+08:00" content="2018-08-24">
+              2018-08-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/区块链/" itemprop="url" rel="index">
+                    <span itemprop="name">区块链</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/08/24/以太坊学习摘要/" class="leancloud_visitors" data-flag-title="以太坊学习摘要">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="以太坊"><a href="#以太坊" class="headerlink" title="以太坊"></a>以太坊</h2><p>以太坊（Ethereum）是一个建立在区块链技术之上， 去中心化应用平台。它允许任何人在平台中建立和使用通过区块链技术运行的去中心化应用。与比特币相比，以太坊属于区块链2.0的范畴。</p>
+<p>从平台角度来看，以太坊类似于苹果或者安卓的应用商店；从技术角度来说，以太坊类似于一个区块链操作系统。</p>
+<p>下图是以太坊的组成：</p>
+<img src="/2018/08/24/以太坊学习摘要/以太坊组成.png" alt="以太坊组成.png" title="">
+<p>所以，可以理解为：“以太坊=区块链+智能合约”。开发者在以太坊上可以开发任意的应用，实现任意的智能合约。以太坊的虚拟机和智能合约扩展了外部应用程序在区块链技术上的应用。另外，以太坊中的智能合约是运行在虚拟机（也就是EVM，Ethereum Virtual Machine，以太坊虚拟机）上的。</p>
+<h2 id="智能合约"><a href="#智能合约" class="headerlink" title="智能合约"></a>智能合约</h2><p>智能合约就是以太坊上的程序，它是代码和数据（状态）的集合。所以，不管什么样功能的合约，站在技术的角度上来讲，就是通过执行一组程序改变了一些值。</p>
+<p>我们不但可以实现数字货币，还可以实现众筹合约、担保合约、融资租赁合约、期货合约以及各种金融与非金融的订单合约。</p>
+<p>在以太坊中，每个合约都有一个唯一的地址来标识它自己（由创建者的哈希地址和曾经发送过的交易的数量推算出来）。客户端可以与这个地址进行交互，可以发送ether，调用函数，查询当前的状态等。</p>
+<p>有三种常见的智能合约语言，这些语言可以被编译成智能合约运行在以太坊虚拟矿机上。它们是：</p>
+<ul>
+<li>Solidity：和Javascript语言类似。这是目前最受欢迎的和功能丰富的智能合约脚本语言。</li>
+<li>Serpent：和Python语言类似，在以太坊历史的早期受欢迎。</li>
+<li>LLL (Lisp Like Language)：和Lisp类似，只有在早期使用。它大概是最难用的。</li>
+</ul>
+<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>状态可以理解为以太坊中的某些内容发生变化。</p>
+<p>对于区块链账本，这里的变化可以指一笔转账，也可以是合约的某个规则被激活等，总之就是数据动了，以太坊中将变化的过程称为<strong>状态转变函数</strong></p>
+<p>在以太坊系统中，状态是由被称为“账户”的对象和在两个账户之间转移价值和信息的状态转换构成的。</p>
+<blockquote>
+<p>以太坊的每个区块头中都包含了指向三棵树（状态树、交易树、数据树）的指针。</p>
+</blockquote>
+<h2 id="账户"><a href="#账户" class="headerlink" title="账户"></a>账户</h2><p>以太坊具有账户的概念。在以太坊中有两类的账户：外部账户 和 合约账户。</p>
+<h3 id="外部账户"><a href="#外部账户" class="headerlink" title="外部账户"></a>外部账户</h3><p>外部账户（EOA，Externally Owned Account）,它就是一个一般账户的概念。外部账户是由一对秘钥定义的，一个私钥一个公钥，公钥的后20位作为地址。</p>
+<p>外部账户没有关联任何的代码。</p>
+<h3 id="合约账户"><a href="#合约账户" class="headerlink" title="合约账户"></a>合约账户</h3><p>智能合约的部署是指把合约字节码发布到区块链上，并使用一个特定的地址来标示这个合约，这个地址称为合约账户。合约账户是可编程的，可以执行图灵完备的计算任务，合约账户之间可以传递消息。</p>
+<h3 id="区别和联系"><a href="#区别和联系" class="headerlink" title="区别和联系"></a>区别和联系</h3><p>合约账户的地址是通过合约创建者的地址和该地址发出过的交易数量计算得到的。</p>
+<p>一个外部账户可以通过创建和用自己的私钥来对交易进行签名，来发送消息给另一个外部账户或合约账户。</p>
+<p>在两个外部账户之间传送消息是价值转移的过程。但从外部账户到合约账户的消息会激活合约账户的代码，允许它执行各种动作（比如转移代币，写入内部存储，挖出一个新代币，执行一些运算，创建一个新的合约等等）。</p>
+<p>只有当外部账户发出指令时，合同账户才会执行相应的操作。</p>
+<h3 id="账户的结构"><a href="#账户的结构" class="headerlink" title="账户的结构"></a>账户的结构</h3><p>以太坊中的账户包含以下4个部分：</p>
+<ul>
+<li>随机数（Nonce）。用于确定每笔交易智能被处理一次的计数器，也就是每个账户的交易计数，用于防止重放攻击。当某个账户发送一笔交易时，根据已生成的交易数来累加这个数字。</li>
+<li>账户目前的以太币余额（Balance）。</li>
+<li>账户的存储（Root），它是一个哈希值，指向的是一棵patricia trie（帕夏尔前缀树）。默认为空</li>
+<li>账户的合约代码（CodeHash），只有合约账户才有，否则为空。</li>
+</ul>
+<h2 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h2><p>以太坊中的交易就是状态的转换过程。</p>
+<p>交易在以太坊中是在签名的数据包，这个数据包中存储了从外部账户发送的消息。所谓的交易就是一个消息，这个消息被发送者签名了。</p>
+<h3 id="交易类型："><a href="#交易类型：" class="headerlink" title="交易类型："></a>交易类型：</h3><ul>
+<li>转账交易。也就是从一个账户往另一个账户转账发以太币。</li>
+<li>合约创建交易。也就是创建一个合约，因为创建合约也要消耗以太坊。</li>
+<li>合约执行交易。在以太坊中，执行合约也算一种交易。</li>
+</ul>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
+<li>AccountNonce：表明交易的发送者已经发送过的交易数，与账户中定义的随机数对应。</li>
+<li>Price和GasLimit：用来抵抗拒绝服务攻击。就是为了让交易的执行带上成本，每进行一次交易都要支付一定的手续费，GasLimit是交易执行所需的计算量，Price是单价，两者的乘积就是手续费。如果交易在执行的过程中实际所需的消耗超出了Gas限制就会出错回滚，如果存在多余的Gas就会退还多余部分。</li>
+<li>Recipient：接收方的地址。</li>
+<li>Amount：发送的以太坊金额，单位wei。</li>
+<li>Payload：交易携带的数据，根据不同的交易类型有不同的用法。</li>
+<li>V、R、S：交易的签名数字。</li>
+</ul>
+<blockquote>
+<p>以太坊的区块头中有交易信息。</p>
+</blockquote>
+<h3 id="计量单位"><a href="#计量单位" class="headerlink" title="计量单位"></a>计量单位</h3><p>最小单位是wei。1 ether = 1000 000 000 000 000 000 wei。</p>
+<blockquote>
+<p>kwei = 1000wei</p>
+<p>mwei = 1000kwei</p>
+<p>gwei = 1000mwei</p>
+<p>szabo = 1000gwei</p>
+<p>finney = 1000szabo</p>
+<p>ether = 1000finney</p>
+</blockquote>
+<h2 id="收据"><a href="#收据" class="headerlink" title="收据"></a>收据</h2><p>在以太坊中，收据是指每条交易执行所影响的数据条，在以太坊的区块头中存储了收据树的根哈希值。</p>
+<p>收据实际上是一个数据的统计记录，记录了执行后的特征数据。</p>
+<p>数据结构如下：</p>
+<ul>
+<li>PostState： 状态树的根哈希。通过这个字段使得收据可以直接访问都状态数据。</li>
+<li>CumulativeGasUsed：累计的Gas消耗，包含关联的本条交易以及之前的交易所消耗的Gas之和，或者说是指所在区域的Gas消耗之和。</li>
+<li>TxHash：交易事务的哈希值。</li>
+<li>ContractAddress：合约地址，如果是普通的转账交易则为空。</li>
+<li>GasUsed：本条交易消耗的Gas。</li>
+</ul>
+<h2 id="Gas"><a href="#Gas" class="headerlink" title="Gas"></a>Gas</h2><p>在以太坊中Gas可以理解为在以太坊平台上执行程序需要付出的成本或者手续费。</p>
+<p>Gas是通过以太坊中合约的执行计算量来决定的，这个计算量可以简单理解为是算力的消耗，执行一次SHA3哈希计算会消耗20个Gas，执行一次普通的转账交易就要消耗21000个Gas。</p>
+<p>以太币总额 = 消耗的Gas ✖️ Gas单价。</p>
+<h2 id="以太坊客户端"><a href="#以太坊客户端" class="headerlink" title="以太坊客户端"></a>以太坊客户端</h2><p>以太坊客户端，其实我们可以把它理解为一个开发者工具，它提供账户管理、挖矿、转账、智能合约的部署和执行等等功能。</p>
+<p>go-ethereum是官方的Go语言客户端。可用于挖矿、组件私有链、管理账号、部署智能合约等。它提供了一个交互式命令控制台，通过命令控制台中包含了以太坊的各种功能（API）。</p>
+<p>除go-ethereum外，官方还提供了cpp-ethereum，基于C++写的。</p>
+<h2 id="以太坊网络"><a href="#以太坊网络" class="headerlink" title="以太坊网络"></a>以太坊网络</h2><p>我们可以把以太网络分为3种：主网、测试网络和私有网络。</p>
+<ul>
+<li>生产环境网络（主网）: 以太坊的生产网络顾名思义，也就是产生真正有价值的 的以太币的网络。</li>
+<li>测试网络: 以太坊的测试网络也是官方提供的，顾名思义就是专供用户来开发、调试和测试的。上面的合约执行不消耗真实的以太币。官方提供的为：Rinkeby</li>
+<li>私有网络：以太坊的私有网络，顾名思义就是由用户自己创建的私有网络。</li>
+</ul>
+<h2 id="以太币"><a href="#以太币" class="headerlink" title="以太币"></a>以太币</h2><p>以太币每年的产量则是固定的。</p>
+<p>以太币的数量以这种形式存在：Pre-mine（矿前） + Block rewards（区块奖励） + Uncle rewards（叔块奖励） + Uncle referencing rewards（叔块引用奖励）</p>
+<ul>
+<li>矿前：2014年7月/8月间，为众筹大约发行了7200万以太币。这些币有的时候被称之为“矿前”。众筹阶段之后，以太币每年的产量被限制在7200万以太币的25%（每年以太币的矿产量，不高于1800万，除了一次性为crowdsale而发行的7200万以太币）</li>
+<li>区块奖励：每产生一个新区块就会产生5个新以太币。每年有225万个区块被挖出来，每个区块5个以太币，也就是每年会产出1130万个以太币。</li>
+<li>叔块奖励：有些区块被挖得稍晚一些，因此不能称为主区块链的组成部分，以太币称它们为“ uncles”，并且在之后的区块中，可以引用它们。如果uncles在之后的区块链中作为叔块被引用，每个叔块会为挖矿者产出大约4.375个以太币（5个以太币奖励的8分之7）.这被称之为叔块奖励。</li>
+<li>叔块引用奖励：矿工每引用一个叔块，就得到了大约0.15个以太币（最多引用两个叔块）。</li>
+</ul>
+<hr>
+<p>引用：</p>
+<ul>
+<li>《白话区块链》</li>
+<li><a href="https://github.com/ethereum/wiki/wiki/%5B%E4%B8%AD%E6%96%87%5D-%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%99%BD%E7%9A%AE%E4%B9%A6" target="_blank" rel="external">以太坊白皮书</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24012669" target="_blank" rel="external">一个基础的以太坊介绍</a></li>
+<li><a href="https://learnblockchain.cn/2017/11/20/whatiseth/" target="_blank" rel="external">以太坊是什么 - 以太坊开发入门指南</a></li>
+<li><a href="http://me.tryblockchain.org/getting-up-to-speed-on-ethereum.html" target="_blank" rel="external">以太坊开发入门，完整入门篇</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/以太坊/" rel="tag">#以太坊</a>
+          
+            <a href="/tags/区块链/" rel="tag">#区块链</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/25/离职前夕的随想/" rel="next" title="离职前夕的随想">
+                <i class="fa fa-chevron-left"></i> 离职前夕的随想
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#以太坊"><span class="nav-number">1.</span> <span class="nav-text">以太坊</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#智能合约"><span class="nav-number">2.</span> <span class="nav-text">智能合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态"><span class="nav-number">3.</span> <span class="nav-text">状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#账户"><span class="nav-number">4.</span> <span class="nav-text">账户</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部账户"><span class="nav-number">4.1.</span> <span class="nav-text">外部账户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合约账户"><span class="nav-number">4.2.</span> <span class="nav-text">合约账户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别和联系"><span class="nav-number">4.3.</span> <span class="nav-text">区别和联系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#账户的结构"><span class="nav-number">4.4.</span> <span class="nav-text">账户的结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交易"><span class="nav-number">5.</span> <span class="nav-text">交易</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交易类型："><span class="nav-number">5.1.</span> <span class="nav-text">交易类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据结构"><span class="nav-number">5.2.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计量单位"><span class="nav-number">5.3.</span> <span class="nav-text">计量单位</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收据"><span class="nav-number">6.</span> <span class="nav-text">收据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gas"><span class="nav-number">7.</span> <span class="nav-text">Gas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以太坊客户端"><span class="nav-number">8.</span> <span class="nav-text">以太坊客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以太坊网络"><span class="nav-number">9.</span> <span class="nav-text">以太坊网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以太币"><span class="nav-number">10.</span> <span class="nav-text">以太币</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>

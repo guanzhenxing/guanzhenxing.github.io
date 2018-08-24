@@ -1,0 +1,1113 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Groovy," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在Groovy中，可以随时打开一个类。也就是说，可以动态地向类中添加方法，允许它们在运行时改变行为。能够修改类的行为，是元编程和Groovy元对象协议（MOP）的核心。 Groovy的MOP支持以下3种技术注入行为：  分类（Category） ExpandoMetaClass Mixin  使用分类Groovy的分类提供了一种可控的方法注入方式——方法注入的作用可以限定在一个代码块内。分类（ca">
+<meta name="keywords" content="Groovy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MOP方法注入">
+<meta property="og:url" content="http://webfuse.cn/2016/08/17/MOP方法注入/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="在Groovy中，可以随时打开一个类。也就是说，可以动态地向类中添加方法，允许它们在运行时改变行为。能够修改类的行为，是元编程和Groovy元对象协议（MOP）的核心。 Groovy的MOP支持以下3种技术注入行为：  分类（Category） ExpandoMetaClass Mixin  使用分类Groovy的分类提供了一种可控的方法注入方式——方法注入的作用可以限定在一个代码块内。分类（ca">
+<meta property="og:updated_time" content="2018-07-28T03:19:46.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MOP方法注入">
+<meta name="twitter:description" content="在Groovy中，可以随时打开一个类。也就是说，可以动态地向类中添加方法，允许它们在运行时改变行为。能够修改类的行为，是元编程和Groovy元对象协议（MOP）的核心。 Groovy的MOP支持以下3种技术注入行为：  分类（Category） ExpandoMetaClass Mixin  使用分类Groovy的分类提供了一种可控的方法注入方式——方法注入的作用可以限定在一个代码块内。分类（ca">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: undefined,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> MOP方法注入 | WebFuse </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">WebFuse</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MOP方法注入
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T21:41:12+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Groovy/" itemprop="url" rel="index">
+                    <span itemprop="name">Groovy</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/17/MOP方法注入/" class="leancloud_visitors" data-flag-title="MOP方法注入">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o"></i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在Groovy中，可以随时打开一个类。也就是说，可以动态地向类中添加方法，允许它们在运行时改变行为。能够修改类的行为，是元编程和Groovy元对象协议（MOP）的核心。</p>
+<p>Groovy的MOP支持以下3种技术注入行为：</p>
+<ul>
+<li>分类（Category）</li>
+<li>ExpandoMetaClass</li>
+<li>Mixin</li>
+</ul>
+<h1 id="使用分类"><a href="#使用分类" class="headerlink" title="使用分类"></a>使用分类</h1><p>Groovy的分类提供了一种可控的方法注入方式——方法注入的作用可以限定在一个代码块内。分类（category）是一种能够修改类的MetaClass的对象，而且这种修改仅在代码块的作用域和执行线程内有效，退出代码块时，一切恢复原状。分类可以嵌套，也可以在一个代码块内应用多个分类。</p>
+<p>要使用为对象添加的新的方法，只需要调用一个特殊的方法——use()。use方法接受两个参数：一个分类，一个闭包代码块。注入的方法就在该代码块内生效。</p>
+<pre><code>class StringUtil {
+    def static toSSN(self) {    //如果只想限制为String类型，则可以定义为toSSN(String self)
+        if (self.size() == 9) {
+            &quot;${self[0..2]}-${self[3..4]}-${self[5..8]}&quot;
+        }
+    }
+}
+
+use(StringUtil){
+    println &quot;123456789&quot;.toSSN()
+    println new StringBuffer(&quot;987654321&quot;).toSSN()
+}
+
+try{
+    println &quot;123456789&quot;.toSSN()
+}catch (Exception e){
+    println e
+}
+</code></pre><p>其中，StringUtil就是分类。self参数会被指派为目标实例。注意toSSN方法的定义，它是<strong>静态</strong>的。<em>Groovy的分类注入的方法是静态的，而且至少接受一个参数，第一个参数指向的是方法调用的目标。要注入的方法所需要的参数都放在后面。</em></p>
+<pre><code>@Category(String)
+class StringUtilAnnotated {
+    def toSSN() {
+        if (size() == 9) {
+            &quot;${this[0..2]}-${this[3..4]}-${this[5..8]}&quot;
+        }
+    }
+}
+use(StringUtilAnnotated) {
+    println &quot;123456789&quot;.toSSN()
+}
+</code></pre><p>另一种可供选择的Groovy分类语法。这样，Groovy编译器就可以帮我们去转换为最开始的那个代码定义了。然而，这样的写法会限定方法只能使用参数中指定的类型，除非我们用指定参数类型为Object。</p>
+<pre><code>//参数为闭包
+class FindUtil{
+    def static extractOnly(String self,closure){
+        def result = &apos;&apos;
+        self.each{
+            if(closure(it)){result += it}
+        }
+        result
+    }
+
+    def static toSSN(self){
+        if (self.size() == 9) {
+            &quot;${self[0..3]}-${self[4..5]}-${self[6..8]}&quot;
+        }
+    }
+}
+use(FindUtil){
+    println &quot;121254123&quot;.extractOnly{
+        it == &apos;4&apos; || it == &apos;5&apos;
+    }
+}
+
+//use的参数可以为一个分类，或由一个分类组成的列表
+use(StringUtil,FindUtil){
+    str = &apos;123456789&apos;
+    println str.toSSN() //存在相同的命名，use参数列表中的最后一个分类优先级最高
+    println str.extractOnly{it == &apos;8&apos; || it==&apos;1&apos;}
+}
+
+//拦截已有的方法，并取代。（可以理解为重载）
+class Helper{
+    def static toString(String self){
+        def method = self.metaClass.methods.find{it.name == &apos;toString&apos;}
+        &apos;!!&apos; + method.invoke(self,null) + &apos;!!&apos;
+    }
+}
+use(Helper){
+    println &apos;hello&apos;.toString()
+}
+</code></pre><p><strong>分类的限制：</strong>其作用限定在use()块内，所以也就限定于执行线程。因此注入的方法也是有限制的。注入的方法只能在use块内调用。多次进入和退出这个块时有代价的。每次进入时，Groovy都必须检查静态方法，并将其加入到新作用域的一个方法列表中。在块的最后还要清理该作用域。</p>
+<p><strong>什么情况下使用：</strong>调用不太频繁，而且想要分类这种可控的方法注入所提供的隔离性。</p>
+<h1 id="使用ExpandoMetaClass"><a href="#使用ExpandoMetaClass" class="headerlink" title="使用ExpandoMetaClass"></a>使用ExpandoMetaClass</h1><p>通过向类MetaClass添加方法可以实现向类中注入方法。这种注入方法是全局可用的。</p>
+<pre><code>Integer.metaClass.daysFromNow = { -&gt;
+    Calendar today = Calendar.instance
+    today.add(Calendar.DAY_OF_MONTH,delegate)
+    today.time
+}
+println 5.daysFromNow()
+</code></pre><p>以上代码用了一个闭包实现了daysFromNow()，然后将其引入到Integer的MetaClass中。如果想要引入的是一个属性XXX，那么我们需要一个getXXX()方法，如：</p>
+<pre><code>Integer.metaClass.getDaysFromNow={ -&gt;
+    Calendar today = Calendar.instance
+    today.add(Calendar.DAY_OF_MONTH,delegate)
+    today.time
+}
+println 5.daysFromNow
+</code></pre><p>如果我们需要将一个方法注入到多个类中呢？</p>
+<pre><code>daysFromNow = { -&gt;
+    Calendar today = Calendar.instance
+    today.add(Calendar.DAY_OF_MONTH, (int)delegate)
+    today.time
+}
+Integer.metaClass.daysFromNow = daysFromNow
+Long.metaClass.daysFromNow = daysFromNow
+
+println 6.daysFromNow()
+println 6L.daysFromNow()
+</code></pre><p>这样，我们就可以向多个类中注入同一个方法了。同时，我们还可以向基类中注入方法，那么它的子类就直接拥有了该方法：</p>
+<pre><code>Number.metaClass.someMethod = {-&gt;
+    println &quot;someMethod called&quot;
+}
+2.someMethod()
+2L.someMethod()
+</code></pre><p>如果向类中<strong>注入静态方法</strong>，只需要将其加入到MetaClass的static属性中：</p>
+<pre><code>Integer.metaClass.&apos;static&apos;.isEven = {val -&gt; val % 2 == 0}
+println &apos;Is 2 even? &apos;+ Integer.isEven(2)
+println &apos;Is 3 even? &apos;+ Integer.isEven(3)
+</code></pre><p>通过定义一个名为constructor的特殊属性可以<strong>加入构造器</strong>。因为我们是要添加一个构造器，而不是替换一个现有的，所以使用了&lt;&lt;操作符。注意：使用&lt;&lt;来覆盖现有的构造器或方法，Groovy会报错。</p>
+<pre><code>Integer.metaClass.constructor &lt;&lt; { Calendar calendar -&gt;
+    new Integer(calendar.get(Calendar.DAY_OF_YEAR))
+}
+println new Integer(Calendar.instance)
+</code></pre><p>如果向替换掉构造器，可以使用<code>=</code>。在被覆盖的构造器内仍然可以使用反射调用原来的实现。</p>
+<pre><code>Integer.metaClass.constructor = { int val -&gt;
+    println &quot;Intercepting constructor call&quot;
+    constructor = Integer.class.getConstructor(Integer.TYPE)
+    constructor.newInstance(val)
+}
+println new Integer(4)
+println new Integer(Calendar.instance)
+</code></pre><p>如果想要添加一堆的方法，ClassName.metaClass.method={…}的语法设置会让我们写起来很费劲。Groovy提供了一种可以将这些方法分组的方式，组织成一种叫作ExpandoMetaClass DSL的方便语法。</p>
+<pre><code>Integer.metaClass {
+    daysFromNow = { -&gt;
+        Calendar today = Calendar.instance
+        today.add(Calendar.DAY_OF_MONTH, delegate)
+        today.time
+    }
+
+    getDaysFromNow = { -&gt;
+        Calendar today = Calendar.instance
+        today.add(Calendar.DAY_OF_MONTH, delegate)
+        today.time
+    }
+
+    &apos;static&apos; {
+        isEven = { val -&gt; val % 2 == 0 }
+    }
+
+    constructor = { Calendar calendar -&gt;
+        new Integer(calendar.get(Calendar.DAY_OF_YEAR))
+    }
+
+    constructor = {int val -&gt;
+        println &quot;Intercepting constructor call&quot;
+        constructor = Integer.class.getConstructor(Integer.TYPE)
+        constructor.newInstance(val)
+    }
+}
+
+println new Integer(4)
+println new Integer(Calendar.instance)
+println &apos;Is 2 even? &apos;+ Integer.isEven(2)
+println &apos;Is 3 even? &apos;+ Integer.isEven(3)
+println 5.daysFromNow
+println  5.daysFromNow()
+</code></pre><p>注意这里的加入构造器使用<code>=</code></p>
+<p>使用ExpandoMetaClass注入的方法只能在Groovy代码内使用，不能从编译过的Java代码中调用，也不能从Java代码中通过方式来使用。</p>
+<h1 id="向具体的实例中注入方法"><a href="#向具体的实例中注入方法" class="headerlink" title="向具体的实例中注入方法"></a>向具体的实例中注入方法</h1><p>如果我们只想为某个实例注入方法，可以采用以下的方式：</p>
+<pre><code>class Person{
+    def play(){
+        println &apos;playing...&apos;
+    }
+}
+
+def emc = new ExpandoMetaClass(Person)
+emc.sing = {-&gt;
+    &apos;oh baby baby...&apos;
+}
+emc.initialize()
+
+def jack = new Person()
+def paul = new Person()
+
+jack.metaClass = emc
+println  jack.sing()
+
+try{
+    paul.sing()
+}catch (ex){
+    println ex
+}
+</code></pre><p>Groovy提供了一种方便的方式来从实例中去掉这些注入的方法——只需要将metaClass属性设置为null。</p>
+<pre><code>jack.metaClass = null
+try{
+    jack.sing()
+}catch (ex){
+    println ex
+}
+</code></pre><p>一种简单的方式：</p>
+<pre><code>class Person{
+    def play(){
+        println&apos;playing&apos;
+    }
+}
+
+def jack = new Person()
+def paul = new Person()
+
+jack.metaClass.sing = {-&gt;
+    &apos;oh baby baby...&apos;
+}
+println jack.sing()
+
+jack.metaClass = null
+try{
+    jack.sing()
+}catch (ex){
+    println ex
+}
+</code></pre><p>再来一组语法糖：</p>
+<pre><code>jack.metaClass{
+    sing = {-&gt;
+        &apos;oh baby baby...&apos;
+    }
+    dance = {-&gt;
+        &apos;start the music...&apos;
+    }
+}
+</code></pre><h1 id="使用Mixin注入方法"><a href="#使用Mixin注入方法" class="headerlink" title="使用Mixin注入方法"></a>使用Mixin注入方法</h1><p>Groovy的Mixin是一种运行时的能力，可以将多个类中的实现引入进来或混入。</p>
+<p>如果将一个类混入到另一个类中，Groovy会在内存中把这些类的类实例链接起来。当调用一个方法时，Groovy首先将调用路由到混入的类中，如果该方法存在于这个类中，则在此处理。否则由主类处理。可以将多个类混入到一个类中，最后加入的Mixin优先级最高。</p>
+<pre><code>class Friend{
+    def listen(){
+        &quot;$name is listening as a friend&quot;
+    }
+}
+
+@Mixin(Friend)
+class Human{
+    String firstName
+    String lastName
+    String getName(){
+        &quot;$firstName $lastName&quot;
+    }
+}
+
+john = new Human(firstName: &quot;John&quot;,lastName: &quot;Smith&quot;)
+println john.listen()
+</code></pre><p>@Mixinz注解会将作为参数提供的类中的方法添加到被注解的类中。注解本身限制了这种方式只能由类提供者本身使用。</p>
+<p>向已有的类中提供注入的语法：</p>
+<pre><code>class Dog{
+    String name
+}
+Dog.mixin(Friend)
+
+buddy = new Dog(name: &quot;Buddy&quot;)
+println buddy.listen()
+
+//对某个实例注入
+class Cat{
+    String name
+}
+socks = new Cat(name:&quot;Socks&quot;)
+socks.metaClass.mixin(Friend)    //对该实例mixin
+println socks.listen()
+</code></pre><h1 id="在类中使用多个Mixin"><a href="#在类中使用多个Mixin" class="headerlink" title="在类中使用多个Mixin"></a>在类中使用多个Mixin</h1><p>当混入多个类时，所有这些类的方法在目标类中都是可用的。当作为Mixin的两个或多个类中存在名字相同、参数签名也相同的方法时，最后加入到Mixin中的方法会隐藏掉已经注入的方法。</p>
+<pre><code>abstract class Writer {
+    abstract void write(String message)
+}
+
+class StringWriter extends Writer {
+    def target = new StringBuffer()
+
+    @Override
+    void write(String message) {
+        target.append(message)
+    }
+
+
+    @Override
+    public String toString() {
+        return target.toString();
+    }
+
+}
+def writeStuff(writer){
+    writer.write(&quot;This is stupid&quot;)
+    println writer
+}
+
+def create(theWriter,Object[] filters =[]){
+    def instance = theWriter.newInstance()
+    filters.each {filter -&gt; instance.metaClass.mixin(filter)}
+    instance
+}
+
+class UppercaseFilter{
+    void write(String message){
+        def allUpper = message.toUpperCase()
+        invokeOnPreviousMixin(metaClass,&quot;write&quot;,allUpper)
+    }
+}
+
+Object.metaClass.invokeOnPreviousMixin = {
+    MetaClass currentMixinMetaClass,String method,Object[] args -&gt;
+        def previousMixin = delegate.getClass()
+        for(mixin in mixedIn.mixinClasses){
+            if(mixin.mixinClass.theClass == currentMixinMetaClass.delegate.theClass){
+                break;
+            }
+            previousMixin = mixin.mixinClass.theClass
+        }
+        mixedIn[previousMixin].&quot;$method&quot;(*args)
+}
+
+class ProfanityFilter{
+    void write(String message){
+        def filtered = message.replaceAll(&apos;stupid&apos;,&apos;s*****&apos;)
+        invokeOnPreviousMixin(metaClass,&quot;write&quot;,filtered)
+    }
+}
+
+writeStuff(create(StringWriter,UppercaseFilter))
+writeStuff(create(StringWriter,ProfanityFilter))
+writeStuff(create(StringWriter,UppercaseFilter,ProfanityFilter))
+writeStuff(create(StringWriter,ProfanityFilter,UppercaseFilter))
+</code></pre><p>混入的顺序相当重要。方法调用会向链条中的左侧传递。</p>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Groovy/" rel="tag">#Groovy</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/17/在Node-js中使用jQuery/" rel="next" title="在Node.js中使用jQuery">
+                <i class="fa fa-chevron-left"></i> 在Node.js中使用jQuery
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/22/grails备忘录（一）/" rel="prev" title="grails备忘录（一）">
+                grails备忘录（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Hing Kwan" />
+          <p class="site-author-name" itemprop="name">Hing Kwan</p>
+          <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">47</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/guanzhenxing" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/guanzhenxing" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用分类"><span class="nav-number">1.</span> <span class="nav-text">使用分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用ExpandoMetaClass"><span class="nav-number">2.</span> <span class="nav-text">使用ExpandoMetaClass</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#向具体的实例中注入方法"><span class="nav-number">3.</span> <span class="nav-text">向具体的实例中注入方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Mixin注入方法"><span class="nav-number">4.</span> <span class="nav-text">使用Mixin注入方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在类中使用多个Mixin"><span class="nav-number">5.</span> <span class="nav-text">在类中使用多个Mixin</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+<div>
+  <a style="margin:0 0 0 250px"  href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备16028891号</a>
+</div>
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz", "rc29GpKebiB6uiwFRFXE7lO6");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
