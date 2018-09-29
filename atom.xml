@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2018-09-03T15:28:55.804Z</updated>
+  <updated>2018-09-29T01:29:10.958Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,6 +14,370 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringFramework常用的注解说明</title>
+    <link href="http://webfuse.cn/2018/09/28/SpringFramework%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3%E8%AF%B4%E6%98%8E/"/>
+    <id>http://webfuse.cn/2018/09/28/SpringFramework常用的注解说明/</id>
+    <published>2018-09-28T10:59:34.000Z</published>
+    <updated>2018-09-29T01:29:10.958Z</updated>
+    
+    <content type="html"><![CDATA[<p>在进行SpringBoot开发的时候经常要用到注解，有的时候很容易忘记某个注解的意思，现将一些常用的注解说明归纳如下：</p>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Required</td>
+<td>@Required注解检查。但它只检查属性是否已经设置而不会测试属性是否非空。@Required只能设置在setter方法上</td>
+</tr>
+<tr>
+<td>@Autowired</td>
+<td>Spring提供的注入工具【由Spring的依赖注入工具（BeanPostProcessor、BeanFactoryPostProcessor）自动注入】</td>
+</tr>
+<tr>
+<td>@Qualifier</td>
+<td>如果需要byName（byName就是通过id去标识）注入，增加@Qualifier注释。一般在候选Bean数目不为1时应该加@Qualifier注释。</td>
+</tr>
+<tr>
+<td>@Configuration</td>
+<td>在用于指定配置信息的类上加上 @Configuration 注解，以明确指出该类是 Bean 配置的信息源。</td>
+</tr>
+<tr>
+<td>@ComponentScan</td>
+<td>@ComponentScan告诉Spring 哪个packages 的用注解标识的类 会被spring自动扫描并且装入bean容器</td>
+</tr>
+<tr>
+<td>@Bean</td>
+<td>@Bean注解用于告诉方法，产生一个Bean对象，然后这个Bean对象交给Spring管理。产生这个Bean对象的方法Spring只会调用一次，随后这个Spring将会将这个Bean对象放在自己的IOC容器中。</td>
+</tr>
+<tr>
+<td>@Lazy</td>
+<td>如果我们想要 Spring 在启动的时候延迟加载 bean，即在调用某个 bean 的时候再去初始化，那么就可以使用 @Lazy 注解。</td>
+</tr>
+<tr>
+<td>@Value</td>
+<td>使用@Value注解，可以直接将属性值注入到beans中。</td>
+</tr>
+<tr>
+<td>@Resource</td>
+<td>@Resource用法与@Autowired 用法 用法相似，也是做依赖注入的，从容器中自动获取bean。</td>
+</tr>
+<tr>
+<td>@Inject</td>
+<td>这是jsr330中的规范，通过‘AutowiredAnnotationBeanPostProcessor’ 类实现的依赖注入。</td>
+</tr>
+<tr>
+<td>@PropertySource</td>
+<td>指定文件地址。提供了一种方便的、声明性的机制，用于向Spring的环境添加PropertySource。与@configuration类一起使用。</td>
+</tr>
+<tr>
+<td>@PostConstruct</td>
+<td>标注在方法上，该方法在构造函数执行完成之后执行。</td>
+</tr>
+<tr>
+<td>@PreDestroy</td>
+<td>标注在方法上，该方法在对象销毁之前执行。</td>
+</tr>
+<tr>
+<td>@ActiveProfiles</td>
+<td>用来声明活动的profile–@ActiveProfiles(“prod”(这个prod定义在配置类中))</td>
+</tr>
+<tr>
+<td>@Profile</td>
+<td>表示当一个或多个指定的文件是活动的时，一个组件是有资格注册的。使用@Profile注解类或者方法，达到在不同情况下选择实例化不同的Bean。@Profile(“dev”)表示为dev时实例化。</td>
+</tr>
+<tr>
+<td>@Component</td>
+<td>表示一个带注释的类是一个“组件”，成为Spring管理的Bean。当使用基于注解的配置和类路径扫描时，这些类被视为自动检测的候选对象。同时@Component还是一个元注解。</td>
+</tr>
+<tr>
+<td>@Controller</td>
+<td>组合注解（组合了@Component注解），应用在MVC层（控制层）,DispatcherServlet会自动扫描注解了此注解的类，然后将web请求映射到注解了@RequestMapping的方法上。</td>
+</tr>
+<tr>
+<td>@Service</td>
+<td>组合注解（组合了@Component注解），应用在service层（业务逻辑层）</td>
+</tr>
+<tr>
+<td>@Reponsitory</td>
+<td>组合注解（组合了@Component注解），应用在dao层（数据访问层）</td>
+</tr>
+<tr>
+<td>@RestController</td>
+<td>@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。</td>
+</tr>
+<tr>
+<td>@ResponseBody</td>
+<td>将返回值放在response体内。返回的是数据而不是页面</td>
+</tr>
+<tr>
+<td>@RequestBody</td>
+<td>允许request的参数在request体中，而不是在直接链接在地址的后面。此注解放置在参数前。</td>
+</tr>
+<tr>
+<td>@PathVariable</td>
+<td>放置在参数前，用来接受路径参数。</td>
+</tr>
+<tr>
+<td>@ModelAttribute</td>
+<td>将键值对添加到全局，所有注解了@RequestMapping的方法可获得次键值对（就是在请求到达之前，往model里addAttribute一对name-value而已）。</td>
+</tr>
+<tr>
+<td>@RequestAttribute</td>
+<td>注解<code>@RequestAttribute</code>可以被用于访问由过滤器或拦截器创建的、预先存在的请求属性</td>
+</tr>
+<tr>
+<td>@RequestHeader</td>
+<td>获得指定的请求中的Header信息</td>
+</tr>
+<tr>
+<td>@RequestParam</td>
+<td>请求参数绑定</td>
+</tr>
+<tr>
+<td>@ResponseStatus</td>
+<td>带有@ResponseStatus注解的异常类会被ResponseStatusExceptionResolver 解析。可以实现自定义的一些异常,同时在页面上进行显示。</td>
+</tr>
+<tr>
+<td>@CookieValue</td>
+<td>用来获取Cookie中的值</td>
+</tr>
+<tr>
+<td>@CrossOrigin</td>
+<td>@CrossOrigin是用来处理跨域请求的注解</td>
+</tr>
+<tr>
+<td>@RequestMapping</td>
+<td>用来映射web请求（访问路径和参数），处理类和方法的。可以注解在类和方法上，注解在方法上的@RequestMapping路径会继承注解在类上的路径。同时支持Serlvet的request和response作为参数，也支持对request和response的媒体类型进行配置。其中有value(路径)，produces(定义返回的媒体类型和字符集)，method(指定请求方式)等属性。</td>
+</tr>
+<tr>
+<td>@GetMapping</td>
+<td>GET请求</td>
+</tr>
+<tr>
+<td>@PostMapping</td>
+<td>POST请求</td>
+</tr>
+<tr>
+<td>@PutMapping</td>
+<td>PUT请求</td>
+</tr>
+<tr>
+<td>@PatchMapping</td>
+<td>PATCH请求</td>
+</tr>
+<tr>
+<td>@DeleteMapping</td>
+<td>DELETE请求</td>
+</tr>
+<tr>
+<td>@ExceptionHandler</td>
+<td>用在方法上定义全局处理，通过他的value属性可以过滤拦截的条件：@ExceptionHandler(value=Exception.class)–表示拦截所有的Exception。</td>
+</tr>
+<tr>
+<td>@ControllerAdvice</td>
+<td>用在类上，声明一个控制器建言，它也组合了@Component注解，会自动注册为Spring的Bean</td>
+</tr>
+<tr>
+<td>@InitBinder</td>
+<td>通过@InitBinder注解定制WebDataBinder（用在方法上，方法有一个WebDataBinder作为参数，用WebDataBinder在方法内定制数据绑定，例如可以忽略request传过来的参数Id等）。</td>
+</tr>
+<tr>
+<td>@SessionAttribute</td>
+<td>@SessionAttribute作用于处理器类上，用于在多个请求之间传递参数，类似于Session的Attribute，但不完全一样，一般来说@SessionAttribute设置的参数只用于暂时的传递，而不是长期的保存，长期保存的数据还是要放到Session中。</td>
+</tr>
+<tr>
+<td>@SessionAttributes</td>
+<td>@sessionattributes注解应用到Controller上面，可以将Model中的属性同步到session当中。</td>
+</tr>
+<tr>
+<td>@Aspect</td>
+<td>声明一个切面（就是说这是一个额外功能）</td>
+</tr>
+<tr>
+<td>@After</td>
+<td>后置建言（advice），在原方法前执行。</td>
+</tr>
+<tr>
+<td>@Before</td>
+<td>前置建言（advice），在原方法后执行。</td>
+</tr>
+<tr>
+<td>@Around</td>
+<td>环绕建言（advice），在原方法执行前执行，在原方法执行后再执行（@Around可以实现其他两种advice）</td>
+</tr>
+<tr>
+<td>@PointCut</td>
+<td>声明切点，即定义拦截规则，确定有哪些方法会被切入</td>
+</tr>
+<tr>
+<td>@EnableAspectJAutoProxy</td>
+<td>开启Spring对AspectJ的支持</td>
+</tr>
+<tr>
+<td>@SpingBootApplication</td>
+<td>SpringBoot的核心注解，主要目的是开启自动配置。它也是一个组合注解，主要组合了@Configurer，@EnableAutoConfiguration（核心）和@ComponentScan。可以通过@SpringBootApplication(exclude={想要关闭的自动配置的类名.class})来关闭特定的自动配置。</td>
+</tr>
+<tr>
+<td>@Async</td>
+<td>注解在方法上标示这是一个异步方法，在类上标示这个类所有的方法都是异步方法。</td>
+</tr>
+<tr>
+<td>@EnableAsync</td>
+<td>开启异步任务支持。注解在配置类上。</td>
+</tr>
+<tr>
+<td>@Scheduled</td>
+<td>注解在方法上，声明该方法是计划任务。支持多种类型的计划任务：cron,fixDelay,fixRate</td>
+</tr>
+<tr>
+<td>@EnableScheduling</td>
+<td>注解在配置类上，开启对计划任务的支持。</td>
+</tr>
+<tr>
+<td>@EnableAutoConfiguration</td>
+<td>此注释自动载入应用程序所需的所有Bean——这依赖于Spring Boot在类路径中的查找。该注解组合了@Import注解，@Import注解导入了EnableAutoCofigurationImportSelector类，它使用SpringFactoriesLoader.loaderFactoryNames方法来扫描具有META-INF/spring.factories文件的jar包。而spring.factories里声明了有哪些自动配置。</td>
+</tr>
+<tr>
+<td>@WebAppConfiguration</td>
+<td>一般用在测试上，注解在类上，用来声明加载的ApplicationContext是一个WebApplicationContext。他的属性指定的是Web资源的位置，默认为src/main/webapp,我们可以修改为：@WebAppConfiguration(“src/main/resources”)。</td>
+</tr>
+<tr>
+<td>@Cacheable</td>
+<td>声明数据缓存</td>
+</tr>
+<tr>
+<td>@EnableWebMvc</td>
+<td>用在配置类上，开启SpringMvc的Mvc的一些默认配置：如ViewResolver，MessageConverter等。同时在自己定制SpringMvc的相关配置时需要做到两点：1.配置类继承WebMvcConfigurerAdapter类<br>2.就是必须使用这个@EnableWebMvc注解。</td>
+</tr>
+<tr>
+<td>@BeforeTransaction</td>
+<td>@BeforeTransaction在事务之前执行</td>
+</tr>
+<tr>
+<td>@AfterTransaction</td>
+<td>@AfterTransaction在事务之后执行</td>
+</tr>
+<tr>
+<td>@Transactional</td>
+<td>声明事务（一般默认配置即可满足要求，当然也可以自定义）</td>
+</tr>
+<tr>
+<td>@ImportResource</td>
+<td>虽然Spring提倡零配置，但是还是提供了对xml文件的支持，这个注解就是用来加载xml配置的。</td>
+</tr>
+<tr>
+<td>@ConfigurationProperties</td>
+<td>将properties属性与一个Bean及其属性相关联，从而实现类型安全的配置。</td>
+</tr>
+<tr>
+<td>@Conditional</td>
+<td>根据满足某一特定条件创建特定的Bean</td>
+</tr>
+<tr>
+<td>@ConditionalOnBean</td>
+<td>条件注解。当容器里有指定Bean的条件下。</td>
+</tr>
+<tr>
+<td>@ConditionalOnClass</td>
+<td>条件注解。当类路径下有指定的类的条件下。</td>
+</tr>
+<tr>
+<td>@ConditionalOnExpression</td>
+<td>条件注解。基于SpEL表达式作为判断条件。</td>
+</tr>
+<tr>
+<td>@ConditionalOnJava</td>
+<td>条件注解。基于JVM版本作为判断条件。</td>
+</tr>
+<tr>
+<td>@ConditionalOnJndi</td>
+<td>条件注解。在JNDI存在的条件下查找指定的位置。</td>
+</tr>
+<tr>
+<td>@ConditionalOnMissingBean</td>
+<td>条件注解。当容器里没有指定Bean的情况下。</td>
+</tr>
+<tr>
+<td>@ConditionalOnMissingClass</td>
+<td>条件注解。当类路径下没有指定的类的情况下。</td>
+</tr>
+<tr>
+<td>@ConditionalOnNotWebApplication</td>
+<td>条件注解。当前项目不是web项目的条件下。</td>
+</tr>
+<tr>
+<td>@ConditionalOnResource</td>
+<td>条件注解。类路径是否有指定的值。</td>
+</tr>
+<tr>
+<td>@ConditionalOnSingleCandidate</td>
+<td>条件注解。当指定Bean在容器中只有一个，后者虽然有多个但是指定首选的Bean。</td>
+</tr>
+<tr>
+<td>@ConditionalOnWebApplication</td>
+<td>条件注解。当前项目是web项目的情况下。</td>
+</tr>
+<tr>
+<td>@EnableConfigurationProperties</td>
+<td>注解在类上，声明开启属性注入，使用@Autowired注入。</td>
+</tr>
+<tr>
+<td>@AutoConfigureAfter</td>
+<td>在指定的自动配置类之后再配置。</td>
+</tr>
+<tr>
+<td>@AutoConfigureBefore</td>
+<td>在指定的自动配置类之前进行配置。</td>
+</tr>
+<tr>
+<td>@RunWith</td>
+<td>这个是Junit的注解，springboot集成了junit。一般在测试类里使用。</td>
+</tr>
+<tr>
+<td>@ContextConfiguration</td>
+<td>用来加载配置ApplicationContext，其中classes属性用来加载配置</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>参考：</p>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_37490221/article/details/78406810" target="_blank" rel="external">Spring 注解大全与详解</a></li>
+<li><a href="https://skyao.gitbooks.io/learning-spring-boot/content/" target="_blank" rel="external">Spring Boot学习笔记</a></li>
+<li><a href="https://springframework.guru/spring-framework-annotations/" target="_blank" rel="external">SPRING FRAMEWORK ANNOTATIONS</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在进行SpringBoot开发的时候经常要用到注解，有的时候很容易忘记某个注解的意思，现将一些常用的注解说明归纳如下：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;注解&lt;/th&gt;
+&lt;th&gt;解释&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://webfuse.cn/categories/SpringBoot/"/>
+    
+    
+      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
+    
+      <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
+    
+  </entry>
   
   <entry>
     <title>区块链技术概览</title>
@@ -1330,316 +1694,6 @@ public class Application {
       <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
     
       <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>持续集成环境搭建</title>
-    <link href="http://webfuse.cn/2017/07/04/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    <id>http://webfuse.cn/2017/07/04/持续集成环境搭建/</id>
-    <published>2017-07-04T10:13:09.000Z</published>
-    <updated>2018-07-28T03:19:46.937Z</updated>
-    
-    <content type="html"><![CDATA[<p>关于持续集成是什么，可以参考阮一峰老师的<a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="external">持续集成是什么？</a>以及网上的一些资料。</p>
-<h1 id="基本环境搭建"><a href="#基本环境搭建" class="headerlink" title="基本环境搭建"></a>基本环境搭建</h1><p>从安装最Mini的CentOS开始，我们需要解决如下事情。</p>
-<p>在CentOS中使用yum命令安装出现错误提示”could not retrieve mirrorlist <a href="http://mirrorlist.centos.org" target="_blank" rel="external">http://mirrorlist.centos.org</a> <em>*</em>” 这是因为DNS配置错误,我装的是Cent OS 6.4 Server，没有图形界面，这个版本默认安装后，配置文件中没有配置DNS。需要通过更改配置文件来解决。方法如下：在命令提示符中输入<code>vi  /etc/sysconfig/network-scripts/ifcfg-eth0</code>用vi 打开这个文件后，接下来会出现截图的内容, 其中要注意两个配置(按下面的值去设置)。</p>
-<pre><code>ONBOOT=yes
-MM_CONTROLLED=no
-</code></pre><p>安装一些常用的工具</p>
-<pre><code>yum install net-tools
-yum install wget
-yum install vim
-yum install git
-</code></pre><h2 id="搭建Java环境"><a href="#搭建Java环境" class="headerlink" title="搭建Java环境"></a>搭建Java环境</h2><p>步骤1：验证是否安装了Java。<code>java -version</code></p>
-<p>步骤2：下载JDK。运行以下：</p>
-<p><code>wget --no-cookies --no-check-certificate --header &quot;Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie&quot; &quot;http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm&quot;</code></p>
-<p>步骤3：安装下载好的JDK。<code>rpm -ivh jdk-8u131-linux-x64.rpm</code></p>
-<p>步骤4：设置环境变量。运行<code>vim /etc/profile.d/java.sh</code>，然后写入以下语句：</p>
-<pre><code>#!/bin/bash
-JAVA_HOME=/usr/java/jdk1.8.0_131/
-PATH=$JAVA_HOME/bin:$PATH
-export PATH JAVA_HOME
-export CLASSPATH=.
-</code></pre><p>保存关闭，执行命令<code>chmod +x /etc/profile.d/java.sh</code>让它可以运行；最后执行命令<code>source /etc/profile.d/java.sh</code>让环境变量失效。</p>
-<p>步骤5：验证。<code>java -version</code>，<code>echo $JAVA_HOME</code></p>
-<h1 id="Jenkins搭建"><a href="#Jenkins搭建" class="headerlink" title="Jenkins搭建"></a>Jenkins搭建</h1><p>步骤1：添加yum repos,运行以下命令，</p>
-<pre><code>sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-</code></pre><p>步骤2：安装。<code>yum install jenkins</code>。</p>
-<p>步骤3：配置Jenkins文件。主要配置Jenkins的端口等，避免与其它软件冲突。主要方法如下：</p>
-<pre><code>$ sudo vim /etc/sysconfig/jenkins
-# 修改运行端口为9999，默认为8080
-JENKINS_PORT=&quot;8181&quot;
-</code></pre><p>  重启Jenkins。<code>sudo service jenkins start</code></p>
-<p>步骤4：开启防火墙。</p>
-<pre><code>firewall-cmd --zone=public --add-port=8081/tcp --permanent
-firewall-cmd --zone=public --add-service=http --permanent
-firewall-cmd --reload
-</code></pre><p>步骤5：安装插件以及配置全局参数。</p>
-<h1 id="GitLab搭建"><a href="#GitLab搭建" class="headerlink" title="GitLab搭建"></a>GitLab搭建</h1><p>参考<a href="https://about.gitlab.com/installation/#centos-6" target="_blank" rel="external">官方文档</a>进行安装。</p>
-<p>步骤1：安装必要的依赖</p>
-<pre><code>sudo yum install curl openssh-server openssh-clients postfix cronie
-sudo service postfix start
-sudo chkconfig postfix on
-sudo lokkit -s http -s ssh
-</code></pre><p>步骤2：下载</p>
-<pre><code>curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
-sudo yum install gitlab-ce
-</code></pre><p>步骤3：配置与启动服务</p>
-<pre><code>sudo gitlab-ctl reconfigure
-</code></pre><p>步骤4：修改端口以及地址。</p>
-<pre><code>1）修改Nginx端口以及地址监听的操作如下：
-
-    在文件/etc/gitlab/gitlab.rb中修改：
-
-    nginx[&apos;listen_addresses&apos;] = [&quot;0.0.0.0&quot;, &quot;[::]&quot;] # listen on all IPv4 and IPv6 addresses
-    nginx[&apos;listen_port&apos;] = 8082
-
-2）修改地址：在文件/etc/gitlab/gitlab.rb中修改，external_url &apos;你想要的地址&apos;
-
-3）系统默认会用到8080端口作为启动时候的必须端口。
-   如果不想用8080端口的话，可以通过这样的操作：在/etc/gitlab/gitlab.rb中修改unicorn[&apos;port&apos;]=端口号
-
-4）运行sudo gitlab-ctl reconfigure
-</code></pre><p>步骤5：登录。第一次登录GitLab的用户名密码为root和5iveL!fe。首次登录后会强制用户修改密码。</p>
-<p>常用命令：</p>
-<pre><code>sudo gitlab-ctl start    # 启动所有 gitlab 组件；
-sudo gitlab-ctl stop        # 停止所有 gitlab 组件；
-sudo gitlab-ctl restart        # 重启所有 gitlab 组件；
-sudo gitlab-ctl status        # 查看服务状态；
-sudo gitlab-ctl reconfigure        # 启动服务；
-sudo vim /etc/gitlab/gitlab.rb        # 修改默认的配置文件；
-gitlab-rake gitlab:check SANITIZE=true --trace    # 检查gitlab；
-sudo gitlab-ctl tail        # 查看日志；
-</code></pre><h1 id="LDAP搭建"><a href="#LDAP搭建" class="headerlink" title="LDAP搭建"></a>LDAP搭建</h1><p>步骤1：安装</p>
-<pre><code>1）检查是否安装：rpm -qa | grep openldap
-
-2）安装：
-
-    yum install -y openldap openldap-clients openldap-servers migrationtools
-    cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
-    chown ldap. /var/lib/ldap/DB_CONFIG
-    systemctl start slapd
-    systemctl enable slapd
-
-3）验证端口：netstat -tlnp | grep slapd
-</code></pre><p>步骤2：设置 OpenLDAP 的管理员密码</p>
-<pre><code>1）生成处理以后的管理员密码：
-
-    [root@bogon ~]# slappasswd
-    New password:
-    Re-enter new password:
-    {SSHA}xxxxxxxxxxxxxxxxxxxxxxxx
-
-2）新建文件chrootpw.ldif。{SSHA}xxxxxxxxxxxxxxxxxxxxxxxx为你在第1小步的时候生成的密码。
-
-    dn: olcDatabase={0}config,cn=config
-    changetype: modify
-    add: olcRootPW
-    olcRootPW: {SSHA}xxxxxxxxxxxxxxxxxxxxxxxx
-
-3）执行ldapadd -Y EXTERNAL -H ldapi:/// -f chrootpw.ldif
-</code></pre><p>步骤3：导入基本的Schema</p>
-<pre><code>ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
-ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
-ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
-</code></pre><p>步骤4：设置自己的Domain Name</p>
-<pre><code>1）首先要生成经处理后的目录管理者明文密码。
-
-    slappasswd
-    New password:
-    Re-enter new password:
-    {SSHA}xxxxxxxxxxxxxxxxxxxxxxxx
-
-2）新建文件。chdomain.ldif，并把以下内容写入文件。（需要把&quot;dc=***,dc=***&quot;替换成你自己的dc内容，需要把{SSHA}xxxxxxxxxxxxxxxxxxxxxxxx替换成刚才生成的密码）
-
-    dn: olcDatabase={1}monitor,cn=config
-    changetype: modify
-    replace: olcAccess
-    olcAccess: {0}to * by dn.base=&quot;gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth&quot;
-    read by dn.base=&quot;cn=Manager,dc=dynamax,dc=io&quot; read by * none
-
-    dn: olcDatabase={2}hdb,cn=config
-    changetype: modify
-    replace: olcSuffix
-    olcSuffix: dc=dynamax,dc=io
-
-    dn: olcDatabase={2}hdb,cn=config
-    changetype: modify
-    replace: olcRootDN
-    olcRootDN: cn=Manager,dc=dynamax,dc=io
-
-    dn: olcDatabase={2}hdb,cn=config
-    changetype: modify
-    add: olcRootPW
-    olcRootPW: {SSHA}xxxxxxxxxxxxxxxxxxxxxxxx
-
-    dn: olcDatabase={2}hdb,cn=config
-    changetype: modify
-    add: olcAccess
-    olcAccess: {0}to attrs=userPassword,shadowLastChange by
-    dn=&quot;cn=Manager,dc=dynamax,dc=io&quot; write by anonymous auth by self write by * none
-    olcAccess: {1}to dn.base=&quot;&quot; by * read
-    olcAccess: {2}to * by dn=&quot;cn=Manager,dc=dynamax,dc=io&quot; write by * read
-
-3）执行：ldapmodify -Y EXTERNAL -H ldapi:/// -f chdomain.ldif
-
-4）再新建文件：basedomain.ldif，并将以下内容写入。并将一些dc替换成你自己的
-
-    dn: dc=dynamax,dc=io
-    objectClass: top
-    objectClass: dcObject
-    objectclass: organization
-    o: Dynamax
-    dc: Dynamax
-
-    dn: cn=Manager,dc=dynamax,dc=io
-    objectClass: organizationalRole
-    cn: Manager
-    description: Directory Manager
-
-    dn: ou=people,dc=dynamax,dc=io
-    objectClass: organizationalUnit
-    ou: people
-
-    dn: ou=groups,dc=dynamax,dc=io
-    objectClass: organizationalUnit
-    ou: groups
-
-5）执行语句：ldapadd -x -D cn=Manager,dc=dynamax,dc=io -W -f basedomain.ldif （注意dc之类的替换）
-</code></pre><p>步骤5：允许防火墙访问 LDAP 服务</p>
-<pre><code>firewall-cmd --add-service=ldap --permanent
-firewall-cmd --reload
-</code></pre><p>步骤6：查询。<code>ldapsearch -x -b &quot;dc=dynamax,dc=io&quot; -H ldap://192.168.118.130</code></p>
-<p>步骤7：安装客户端。选择有：phpLDAPadmin等。</p>
-<h1 id="Nexus搭建"><a href="#Nexus搭建" class="headerlink" title="Nexus搭建"></a>Nexus搭建</h1><p>Nexus现在为Nexus Repository Manager OSS 3.x。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载安装包：<code>wget https://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.4.0-02-unix.tar.gz</code></p>
-<p>解压（我这边是解压到/usr/local中）:<code>sudo tar -zxvf nexus-3.4.0-02-unix.tar.gz</code></p>
-<p>创建链接：<code>sudo ln -s nexus-3.4.0-02 nexus</code></p>
-<p>创建nexus用户：<code>sudo useradd nexus</code></p>
-<p>授权：</p>
-<pre><code>sudo chown -R nexus:nexus /usr/local/nexus
-sudo chown -R nexus:nexus /usr/local/sonatype-work/
-</code></pre><p>修改运行用户：</p>
-<pre><code>sudo vi /usr/local/nexus/bin/nexus.rc
-
-# 修改一下内容
-run_as_user=&quot;nexus&quot;
-</code></pre><p>修改端口号：<br>    修改文件/usr/local/nexus/etc/nexus-default.properties中的application-port为你想要的端口号。</p>
-<p>启动服务：在/usr/local/nexus/bin的目录下运行./nexus run &amp;</p>
-<p>注册为服务：</p>
-<pre><code>vi /etc/systemd/system/nexus.service
-
-添加如下内容：
-
-[Unit]
-Description=nexus service
-After=network.target
-
-[Service]
-Type=forking
-ExecStart=/usr/local/nexus/bin/nexus start
-ExecStop=/usr/local/nexus/bin/nexus stop
-User=nexus
-Restart=on-abort
-
-[Install]
-WantedBy=multi-user.target
-</code></pre><p>安装并启动服务：</p>
-<pre><code>sudo systemctl daemon-reload
-sudo systemctl enable nexus.service
-sudo systemctl start nexus.service
-</code></pre><p>查看服务：</p>
-<pre><code>sudo systemctl status nexus.service
-</code></pre><p>添加防火墙规则</p>
-<h1 id="Jenkins配置LDAP认证登录"><a href="#Jenkins配置LDAP认证登录" class="headerlink" title="Jenkins配置LDAP认证登录"></a>Jenkins配置LDAP认证登录</h1><p>简单介绍在Jenkins中使用LDAP进行认证的话需要哪些配置。</p>
-<h2 id="配置LDAP"><a href="#配置LDAP" class="headerlink" title="配置LDAP"></a>配置LDAP</h2><p>在“系统管理 ”-&gt;“Configure Global Security”中，访问控制选择LDAP。为了预防能在万一配置不成功的情况下依然可以进行配置，可以先勾选上授权策略中的“ 任何用户可以做任何事(没有任何限制)”。</p>
-<p>如下图配置LDAP：</p>
-<img src="/2017/07/04/持续集成环境搭建/jenkins_ldap_conf.png" alt="jenkins_ldap_conf.png" title="">
-<p>配置详解：</p>
-<ul>
-<li>Server：配置LDAP的服务器地址</li>
-<li>root DN：配置根DN</li>
-<li>User search base：配置用户开始查找的DN</li>
-<li>User search filter：用户搜索过滤器，其实就是用户的登录标识</li>
-<li>Group search base：配置用户的组查找的DN</li>
-<li>Group search filter：组搜索过滤器，其实就是组名的标识</li>
-<li>Manager DN：LDAP服务器的管理账号</li>
-<li>Manager Password：LDAP服务器的管理密码</li>
-</ul>
-<p>然后点击“Test LDAP settings”，然后输入用户名密码（注意，这边的用户名为uid的值）。查看是否LDAP的配置是正确的。</p>
-<p>然后使用LDAP中的账号登录Jenkins。</p>
-<h2 id="授权策略"><a href="#授权策略" class="headerlink" title="授权策略"></a>授权策略</h2><p>在LDAP中，我们新建2个Group（dev1和dev2），dev1组包含用户user1，dev2组包含用户user2。<br>也就是：</p>
-<pre><code>dn: ou=Group,dc=dynamax,dc=io
-objectClass: organizationalUnit
-ou: Group
-
-dn: cn=dev1,ou=Group,dc=dynamax,dc=io
-objectClass: posixGroup
-objectClass: top
-cn: dev1
-memberUid: user1
-gidNumber: 15107
-
-dn: cn=dev2,ou=Group,dc=dynamax,dc=io
-objectClass: posixGroup
-objectClass: top
-cn: dev2
-memberUid: user2
-gidNumber: 32679
-</code></pre><p>在Jenkins中的配置如下：</p>
-<img src="/2017/07/04/持续集成环境搭建/jenkins_ldap_auth.png" alt="jenkins_ldap_auth.png" title="">
-<p><span style="color:red">注意：上图中红色框内的为选勾内容，蓝色框中的为必选内容。</span></p>
-<h2 id="项目授权策略"><a href="#项目授权策略" class="headerlink" title="项目授权策略"></a>项目授权策略</h2><p>使用admin登录系统。新建2个job（dev1_job和dev2_job）。</p>
-<img src="/2017/07/04/持续集成环境搭建/jenkins_ldap_jobs.png" alt="jenkins_ldap_jobs.png" title="">
-<p>如上图所示，点击“配置 ”按钮，对项目（任务）进行设置。</p>
-<p>如下图所示，dev1_job配置用户组为dev1，dev2_job配置用户组为dev2。</p>
-<img src="/2017/07/04/持续集成环境搭建/jenkins_ldap_job_auth.png" alt="jenkins_ldap_job_auth.png" title="">
-<p><span style="color:red">值得注意的是“ Block inheritance of global authorization matrix”一定要勾选。</span></p>
-<p>然后，用user1和user2登录Jenkins验证是否完成配置。</p>
-<h1 id="GitLab配置LDAP认证登录"><a href="#GitLab配置LDAP认证登录" class="headerlink" title="GitLab配置LDAP认证登录"></a>GitLab配置LDAP认证登录</h1><p>关于GitLab中搭配LDAP权限的操作可以参考GitLab的文档。</p>
-<p>下面的内容是一些简单的配置，为了就是省去看英文文档的麻烦。</p>
-<p>在 <code>/etc/gitlab/gitlab.rb</code> 或者 <code>/home/git/gitlab/config/gitlab.yml</code> 中添加以下内容：</p>
-<pre><code>gitlab_rails[&apos;ldap_enabled&apos;] = true
-gitlab_rails[&apos;ldap_servers&apos;] = YAML.load &lt;&lt;-EOS # remember to close this block with &apos;EOS&apos; below
-main: # &apos;main&apos; is the GitLab &apos;provider ID&apos; of this LDAP server
-label: &apos;LDAP&apos;
-host: &apos;192.168.118.129&apos;
-port: 389
-uid: &apos;uid&apos;
-method: &apos;plain&apos; # &quot;tls&quot; or &quot;ssl&quot; or &quot;plain&quot;
-allow_username_or_email_login: true
-bind_dn: &apos;cn=Manager,dc=dynamax,dc=io&apos;
-password: &apos;gzhx0211&apos;
-active_directory: false
-base: &apos;ou=People,dc=dynamax,dc=io&apos;
-user_filter: &apos;&apos;
-EOS
-</code></pre><p>然后运行以下命令让配置生效。<br><code>gitlab-ctl reconfigure</code></p>
-<p>OK，这样以后你就可以使用LDAP的用户登录了。接下来问题来了，怎么分配角色呢？貌似CE版本没有提供，不过我们可以使用程序进行开发。</p>
-<h1 id="Nexus配置LDAP认证登录"><a href="#Nexus配置LDAP认证登录" class="headerlink" title="Nexus配置LDAP认证登录"></a>Nexus配置LDAP认证登录</h1><p>在安装Nexus 3.3.2-02以后，默认的用户名为admin，密码为admin123。用admin登录Nexus。</p>
-<p>在“Security”-&gt;”LDAP”中配置LDAP的信息。</p>
-<h2 id="配置连接"><a href="#配置连接" class="headerlink" title="配置连接"></a>配置连接</h2><img src="/2017/07/04/持续集成环境搭建/nexus_ldap_connect.png" alt="nexus_ldap_connect.png" title="">
-<p>点击“ Verify connection”如果连接成功则在屏幕的右上角弹出一个绿色的提示。</p>
-<h2 id="配置用户"><a href="#配置用户" class="headerlink" title="配置用户"></a>配置用户</h2><p>如下图显示：</p>
-<img src="/2017/07/04/持续集成环境搭建/nexus_ldap_user.png" alt="nexus_ldap_user.png" title="">
-<h2 id="配置角色"><a href="#配置角色" class="headerlink" title="配置角色"></a>配置角色</h2><p>如下图所示：</p>
-<img src="/2017/07/04/持续集成环境搭建/nexus_ldap_role.png" alt="nexus_ldap_role.png" title="">
-<p>至此，CI需要的基本上就搭建OK了。剩下的Sonar和Jira等下次再搭建。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;关于持续集成是什么，可以参考阮一峰老师的&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;持续集成是什么？&lt;
-    
-    </summary>
-    
-      <category term="运维" scheme="http://webfuse.cn/categories/%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="运维" scheme="http://webfuse.cn/tags/%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="持续集成" scheme="http://webfuse.cn/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/"/>
     
   </entry>
   
