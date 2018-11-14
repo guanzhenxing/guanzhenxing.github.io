@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2018-09-29T01:29:10.958Z</updated>
+  <updated>2018-11-14T01:48:41.416Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker基本命令</title>
+    <link href="http://webfuse.cn/2018/11/14/Docker%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
+    <id>http://webfuse.cn/2018/11/14/Docker基本命令/</id>
+    <published>2018-11-14T01:47:06.000Z</published>
+    <updated>2018-11-14T01:48:41.416Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Docker基本命令"><a href="#Docker基本命令" class="headerlink" title="Docker基本命令"></a>Docker基本命令</h1><p>Docker命令分为两大类：客户端命令和服务端命令。前者主要是操作接口，后者用来启动Docker daemon。</p>
+<p>客户端命令基本格式：<code>docker [OPTIONS] COMMAND [arg...]</code></p>
+<p>服务端命令基本格式：<code>docker daemon  [OPTIONS]</code></p>
+<h2 id="Docker客户端命令帮助"><a href="#Docker客户端命令帮助" class="headerlink" title="Docker客户端命令帮助"></a>Docker客户端命令帮助</h2><p>执行 <code>docker --help</code>命令可以列出Docker的使用帮助，具体如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">Usage: docker [OPTIONS] COMMAND</div><div class="line"></div><div class="line">A self-sufficient runtime for containers</div><div class="line"></div><div class="line">Options:</div><div class="line">      --config string      设置docker客户端的配置文件地址</div><div class="line">  -D, --debug              开启调试模式，true|false</div><div class="line">  -H, --host list          需要连接的虚拟机的接口</div><div class="line">  -l, --log-level string   设置日志的等级</div><div class="line">      --tls                是否使用TLS协议（安全传输层协议），true | false</div><div class="line">      --tlscacert string   tls CA签名的可信证书文件路径 </div><div class="line">      --tlscert string     TLS可信证书文件路径 </div><div class="line">      --tlskey string      TLS秘钥文件路径 </div><div class="line">      --tlsverify          是否启用TLS校验 true|false</div><div class="line">  -v, --version            输出版本信息并退出</div><div class="line"></div><div class="line">管理命令:</div><div class="line">  checkpoint  管理检查点</div><div class="line">  config      管理集群中的配置信息</div><div class="line">  container   管理容器</div><div class="line">  image       管理镜像</div><div class="line">  network     管理容器的网络，包括查看、创建、删除、挂载、卸载等</div><div class="line">  node        管理Docker的集群结点，包括查看、更新、删除、提升/取消管理节点等</div><div class="line">  plugin      管理插件</div><div class="line">  secret      管理Docker敏感数据</div><div class="line">  service     管理Docker服务，包括创建、更新、删除等</div><div class="line">  stack       管理Docker堆栈</div><div class="line">  swarm       管理docker集群，包括创建、加入、退出、更新等</div><div class="line">  system      管理Docker</div><div class="line">  trust       管理Docker镜像的信任问题</div><div class="line">  volume      管理docker的数据容器，包括查看、创建、删除等</div><div class="line"></div><div class="line">命令:</div><div class="line">  attach      添加到一个正在运行的容器</div><div class="line">  build       通过dockerfile创建一个镜像</div><div class="line">  commit      从容器的变更中生成一个新镜像</div><div class="line">  cp          在容器和宿主文件系统中复制文件和文件夹</div><div class="line">  create      创建一个新的容器(只创建不允许)</div><div class="line">  deploy      部署新堆栈或更新现有堆栈</div><div class="line">  diff        在容器中进行文件对比</div><div class="line">  events      获取服务器的实时事件</div><div class="line">  exec        在容器中运行命令</div><div class="line">  export      将一个容器的文件以tar压缩包的形式导出</div><div class="line">  history     显示镜像的历史记录</div><div class="line">  images      显示镜像列表</div><div class="line">  import      从本地文件中导入镜像</div><div class="line">  info        显示系统层的信息</div><div class="line">  inspect     显示更底层的容器、镜像和任务信息</div><div class="line">  kill        杀掉一个或多个正在运行的容器</div><div class="line">  load        加载容器</div><div class="line">  login       登录到一个镜像仓库</div><div class="line">  logout      退出镜像仓库</div><div class="line">  logs        获取容器的日志</div><div class="line">  pause       停止容器的进程</div><div class="line">  port        显示出容器的所有端口</div><div class="line">  ps          显示容器列表</div><div class="line">  pull        从镜像仓库中拉取一个镜像</div><div class="line">  push        将一个镜像推送到一个镜像仓库</div><div class="line">  rename      重命名一个容器</div><div class="line">  restart     重新启动容器</div><div class="line">  rm          移除容器</div><div class="line">  rmi         移除镜像</div><div class="line">  run         在容器中运行命令</div><div class="line">  save        将容器保存为一个压缩包</div><div class="line">  search      在docker hub中搜索镜像</div><div class="line">  start       启动容器</div><div class="line">  stats       显示实时的容器状态</div><div class="line">  stop        停止容器</div><div class="line">  tag         给镜像加标签</div><div class="line">  top         显示容器正在运行的进程</div><div class="line">  unpause     恢复容器中的所有进程</div><div class="line">  update      更新容器中的配置</div><div class="line">  version     显示docker的版本信息</div><div class="line">  wait        阻塞进程一直到容器被停止</div><div class="line"></div><div class="line">Run &apos;docker COMMAND --help&apos; for more information on a command.</div></pre></td></tr></table></figure>
+<p>参考：</p>
+<p><a href="https://blog.csdn.net/itguangit/article/details/80246071" target="_blank" rel="external">docker常用命令总结</a></p>
+<p><a href="https://segmentfault.com/a/1190000012063374" target="_blank" rel="external">Docker常用命令</a></p>
+<p><a href="https://www.cnblogs.com/hcduguo/p/5150807.html" target="_blank" rel="external">Docker常用命令大全</a></p>
+<p><a href="https://docker_practice.gitee.io/" target="_blank" rel="external">Docker从入门到实践</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Docker基本命令&quot;&gt;&lt;a href=&quot;#Docker基本命令&quot; class=&quot;headerlink&quot; title=&quot;Docker基本命令&quot;&gt;&lt;/a&gt;Docker基本命令&lt;/h1&gt;&lt;p&gt;Docker命令分为两大类：客户端命令和服务端命令。前者主要是操作接口，后者
+    
+    </summary>
+    
+      <category term="读书笔记" scheme="http://webfuse.cn/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Docker" scheme="http://webfuse.cn/tags/Docker/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringFramework常用的注解说明</title>
@@ -1590,110 +1622,6 @@ restTemplate.setErrorHandler(new CustomResponseErrorHandler());
       <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
     
       <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot中ComponentScan的exclude</title>
-    <link href="http://webfuse.cn/2017/08/05/Spring%20Boot%E4%B8%ADComponentScan%E7%9A%84exclude/"/>
-    <id>http://webfuse.cn/2017/08/05/Spring Boot中ComponentScan的exclude/</id>
-    <published>2017-08-05T02:05:41.000Z</published>
-    <updated>2018-07-28T03:19:46.912Z</updated>
-    
-    <content type="html"><![CDATA[<p>在SpringBoot的组件自动扫描加载中怎么样去exclude classes/packages呢？我们可以使用<code>@ComponentScan</code>的<code>excludeFilters</code>来实现。</p>
-<h2 id="实现方法一"><a href="#实现方法一" class="headerlink" title="实现方法一"></a>实现方法一</h2><p>ExcludedService.java</p>
-<pre><code>package cn.webfuse.service.exclude;
-
-import org.springframework.stereotype.Service;
-
-@Service
-public class ExcludedService {
-
-    public ExcludedService() {
-        System.out.println(&quot;Instantiating &quot; + getClass().getSimpleName());
-    }
-}
-</code></pre><p>IncludedService.java</p>
-<pre><code>package cn.webfuse.service.include;
-
-import org.springframework.stereotype.Service;
-
-@Service
-public class IncludedService {
-
-    public IncludedService() {
-        System.out.println(&quot;Instantiating &quot; + getClass().getSimpleName());
-    }
-}
-</code></pre><p>Application.java</p>
-<pre><code>@SpringBootApplication
-@ComponentScan(
-        excludeFilters = @ComponentScan.Filter(
-                type = FilterType.REGEX,
-                pattern = &quot;cn.webfuse.service.exclude.*&quot;))
-public class Application {
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-}
-</code></pre><p>运行只得到<code>IncludedService</code>的打印。</p>
-<h2 id="实现方法二"><a href="#实现方法二" class="headerlink" title="实现方法二"></a>实现方法二</h2><p>IgnoreDuringScan.java</p>
-<pre><code>package cn.webfuse.annotation;
-
-public @interface IgnoreDuringScan {
-}
-</code></pre><p>ExcludedConfig.java</p>
-<pre><code>package cn.webfuse.config.exclude;
-
-import cn.webfuse.annotation.IgnoreDuringScan;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-@IgnoreDuringScan
-public class ExcludedConfig {
-
-    public ExcludedConfig() {
-        System.out.println(&quot;Instantiating &quot; + getClass().getSimpleName());
-    }
-}
-</code></pre><p>IncludedConfig.java</p>
-<pre><code>package cn.webfuse.config.include;
-
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-public class IncludedConfig {
-    public IncludedConfig() {
-        System.out.println(&quot;Instantiating &quot; + getClass().getSimpleName());
-    }
-}
-</code></pre><p>Application.java</p>
-<pre><code>@SpringBootApplication
-@ComponentScan(excludeFilters = @ComponentScan.Filter(IgnoreDuringScan.class))
-public class Application {
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在SpringBoot的组件自动扫描加载中怎么样去exclude classes/packages呢？我们可以使用&lt;code&gt;@ComponentScan&lt;/code&gt;的&lt;code&gt;excludeFilters&lt;/code&gt;来实现。&lt;/p&gt;
-&lt;h2 id=&quot;实现方法一&quot;&gt;&lt;
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://webfuse.cn/categories/SpringBoot/"/>
-    
-    
-      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
-    
-      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
-    
-      <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
     
   </entry>
   
