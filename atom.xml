@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2018-11-14T01:48:41.416Z</updated>
+  <updated>2018-12-14T07:18:39.588Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《精通比特币》第二版</title>
+    <link href="http://webfuse.cn/2018/12/14/%E3%80%8A%E7%B2%BE%E9%80%9A%E6%AF%94%E7%89%B9%E5%B8%81%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%89%88/"/>
+    <id>http://webfuse.cn/2018/12/14/《精通比特币》第二版/</id>
+    <published>2018-12-14T06:33:06.000Z</published>
+    <updated>2018-12-14T07:18:39.588Z</updated>
+    
+    <content type="html"><![CDATA[<p>为了方便查阅，将<a href="https://github.com/tianmingyun/MasterBitcoin2CN" target="_blank" rel="external">精通比特币</a>整理到这边。</p>
+<p>目录如下：</p>
+<ul>
+<li><a href="/books/MasterBitcoin2CN/README.html">Introduction</a></li>
+<li><a href="/books/MasterBitcoin2CN/cn-preface.html">中文版序言</a></li>
+<li><a href="/books/MasterBitcoin2CN/trans-preface.html">译者序</a></li>
+<li><a href="/books/MasterBitcoin2CN/preface.html">序言</a></li>
+<li><a href="/books/MasterBitcoin2CN/second_edition_changes.html">第二版更新内容</a></li>
+<li><a href="/books/MasterBitcoin2CN/glossary.html">词汇表</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch01.html">第一章介绍</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch02.html">第二章比特币原理</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch03.html">第三章比特币核心</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch04.html">第四章密钥和地址</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch05.html">第五章钱包</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch06.html">第六章交易</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch07.html">第七章高级交易和脚本</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch08.html">第八章比特币网络</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch09.html">第九章区块链</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch10.html">第十章挖矿和共识</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch11.html">第十一章比特币安全</a></li>
+<li><a href="/books/MasterBitcoin2CN/ch12.html">第十二章比特币应用</a></li>
+<li><a href="/books/MasterBitcoin2CN/appdx-bips.html">附录1：比特币改进提案（BIP）</a></li>
+<li><a href="/books/MasterBitcoin2CN/appdx-bitcore.html">附录2：Bitcore</a></li>
+<li><a href="/books/MasterBitcoin2CN/appdx-bx.html">附录3：Bitcoin Explorer（bx）命令</a></li>
+<li><a href="/books/MasterBitcoin2CN/fappdx-pycoin.md">附录4：pycoin库、实用密钥程序ku和交易程序tx</a></li>
+<li><a href="/books/MasterBitcoin2CN/appdx-scriptops.html">附录5 交易脚本的操作符、常量和符号</a></li>
+<li><a href="/books/MasterBitcoin2CN/appdx-bitcoinwhitepaper.html">附录6 比特币白皮书</a></li>
+<li><a href="/books/MasterBitcoin2CN/appdx-segwit.html">附录7 隔离见证</a></li>
+<li><a href="/books/MasterBitcoin2CN/appdx-colored_coins.html">附录8 染色币</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为了方便查阅，将&lt;a href=&quot;https://github.com/tianmingyun/MasterBitcoin2CN&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;精通比特币&lt;/a&gt;整理到这边。&lt;/p&gt;
+&lt;p&gt;目录如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;l
+    
+    </summary>
+    
+      <category term="区块链" scheme="http://webfuse.cn/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="http://webfuse.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="BTC" scheme="http://webfuse.cn/tags/BTC/"/>
+    
+  </entry>
   
   <entry>
     <title>Docker基本命令</title>
@@ -1578,50 +1635,6 @@ restTemplate.setErrorHandler(new CustomResponseErrorHandler());
       <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
     
       <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用Spring的AbstractRoutingDataSource解决多数据源的问题</title>
-    <link href="http://webfuse.cn/2017/08/10/%E5%88%A9%E7%94%A8Spring%E7%9A%84AbstractRoutingDataSource%E8%A7%A3%E5%86%B3%E5%A4%9A%E6%95%B0%E6%8D%AE%E6%BA%90%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-    <id>http://webfuse.cn/2017/08/10/利用Spring的AbstractRoutingDataSource解决多数据源的问题/</id>
-    <published>2017-08-10T14:56:02.000Z</published>
-    <updated>2018-07-28T03:19:46.925Z</updated>
-    
-    <content type="html"><![CDATA[<p>在互联网的服务端开发的时候，我们很经常要在一个项目中去调用不同的数据库。在这种情况下，必然要涉及到多数据源问题。那么，我们该如何解决多数据源问题呢？有没有一种方法来动态切换数据源呢？</p>
-<p>答案是有的。万能的Spring已经给了我们解决方案——利用AbstractRoutingDataSource。在<code>AbstractRoutingDataSource</code>类中，发现<code>getConnection()</code>方法，从名字上可以知道它是获得connection连接的。跟踪<code>getConnection()</code>方法，<code>determineTargetDataSource()</code>就这么进入我们的视线，继续下去，我们发现了重点——<code>determineCurrentLookupKey()</code>。<code>determineCurrentLookupKey</code>方法是一个抽象方法，它的返回值就是我们要用到的数据源dataSource的key，然后根据这个key从<code>resolvedDataSources</code>这个map中取出dataSource，如果找不到就使用默认的dataSource。</p>
-<p>知道了这些，我们就来用代码实现吧！以下的代码是基于Spring Boot，所以需要建立一个Spring Boot项目，然后引入spring-boot-starter-jdbc。项目中又有用到AOP，肯定的，我们必须引入spring-boot-starter-aop。</p>
-<p>接下来，我们需要建一个DynamicDataSource。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicDataSource</span> <span class="keyword">extends</span> <span class="title">AbstractRoutingDataSource</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">determineCurrentLookupKey</span><span class="params">()</span> </span>&#123;</div><div class="line">        String dataSourceName = DynamicDataSourceContextHolder.getDataSourceName();</div><div class="line">        <span class="keyword">return</span> dataSourceName;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>DynamicDataSource</code>继承了抽象类<code>AbstractRoutingDataSource</code>，实现了<code>determineCurrentLookupKey()</code>。在<code>DynamicDataSourceContextHolder</code>中，我们使用ThreadLocal维护<code>dataSouceName</code>这个变量。这样，每一个线程都可以独立改变自己的副本，而不会影响其他线程所对应的副本。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 动态数据源上下文</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicDataSourceContextHolder</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;String&gt; contextHolder = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; dataSourceNames = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setDataSourceName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        contextHolder.set(name);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getDataSourceName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> contextHolder.get();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">clearDataSourceName</span><span class="params">()</span> </span>&#123;</div><div class="line">        contextHolder.remove();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">containsDataSource</span><span class="params">(String dataSourceName)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> dataSourceNames.contains(dataSourceName);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>OK，我们已经有了动态数据源DynamicDataSource，也有了DynamicDataSourceContextHolder，我们怎么使用呢？让我们看下<code>DataSourceConfig</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataSourceConfig</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span>(name = <span class="string">"primaryDataSource"</span>)</div><div class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource.primary"</span>)</div><div class="line">    <span class="meta">@Primary</span></div><div class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">primaryDataSource</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> DataSourceBuilder.create().build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span>(name = <span class="string">"secondaryDataSource"</span>)</div><div class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource.secondary"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">secondaryDataSource</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> DataSourceBuilder.create().build();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="meta">@Qualifier</span>(<span class="string">"primaryDataSource"</span>)</div><div class="line">    <span class="keyword">private</span> DataSource primaryDataSource;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="meta">@Qualifier</span>(<span class="string">"secondaryDataSource"</span>)</div><div class="line">    <span class="keyword">private</span> DataSource secondaryDataSource;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> DynamicDataSource <span class="title">dataSource</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        Map&lt;Object, Object&gt; targetDataSources = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        targetDataSources.put(<span class="string">"primaryDataSource"</span>, primaryDataSource);</div><div class="line">        targetDataSources.put(<span class="string">"secondaryDataSource"</span>, secondaryDataSource);</div><div class="line"></div><div class="line">        DynamicDataSourceContextHolder.dataSourceNames.add(<span class="string">"primaryDataSource"</span>);</div><div class="line">        DynamicDataSourceContextHolder.dataSourceNames.add(<span class="string">"secondaryDataSource"</span>);</div><div class="line"></div><div class="line">        DynamicDataSource dataSource = <span class="keyword">new</span> DynamicDataSource();</div><div class="line">        <span class="comment">//设置数据源映射</span></div><div class="line">        dataSource.setTargetDataSources(targetDataSources);</div><div class="line">        <span class="comment">//设置默认数据源，当无法映射到数据源时会使用默认数据源</span></div><div class="line">        dataSource.setDefaultTargetDataSource(primaryDataSource);</div><div class="line">        dataSource.afterPropertiesSet();</div><div class="line"></div><div class="line">        <span class="keyword">return</span> dataSource;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当然，上面的<code>DataSourceConfig</code>还得搭配<code>application.properties</code>配置文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#</div><div class="line">spring.datasource.primary.jdbcUrl=jdbc:mysql://localhost/test1?useSSL=false</div><div class="line">spring.datasource.primary.username=root</div><div class="line">spring.datasource.primary.password=root</div><div class="line">spring.datasource.primary.driver-class-name=com.mysql.jdbc.Driver</div><div class="line">#</div><div class="line">spring.datasource.secondary.jdbcUrl=jdbc:mysql://localhost/test2?useSSL=false</div><div class="line">spring.datasource.secondary.username=root</div><div class="line">spring.datasource.secondary.password=root</div><div class="line">spring.datasource.secondary.driver-class-name=com.mysql.jdbc.Driver</div></pre></td></tr></table></figure>
-<p>到现在为止，我们已经配置了动态的数据源，将我们的多个数据源设置给了DynamicDataSource。这样，我们就可以在Service或者是Dao中使用<code>DynamicDataSourceContextHolder.setDataSourceName(&quot;primaryDataSource&quot;)</code>方法来动态切换数据源了。但是，这样的写法会不会感到很不爽呢？其实，我们可以在方法上使用注解来切换数据源。</p>
-<p>自定义一个注解TargetDataSource：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 在方法上使用，用于指定使用哪个数据源</div><div class="line"> */</div><div class="line"><span class="meta">@Target</span>(&#123;ElementType.METHOD, ElementType.TYPE&#125;)</div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="meta">@Documented</span></div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> TargetDataSource &#123;</div><div class="line"></div><div class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样，我们就可以在Service上如以下使用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@TargetDataSource</span>(value = <span class="string">"primaryDataSource"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> List&lt;Customer&gt; <span class="title">findAll</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">//TODO</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@TargetDataSource</span>(value = <span class="string">"secondaryDataSource"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addCustomer</span><span class="params">(String name, String email)</span> </span>&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>很明显的，到目前为止还不能完成我们的切换需求。我们还需要一段代码，来实现动态调用<code>DynamicDataSourceContextHolder.setDataSourceName(&quot;xxx&quot;)</code>，比较好的实现就是AOP啦。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Aspect</span></div><div class="line"><span class="meta">@Component</span></div><div class="line"><span class="meta">@Order</span>(-<span class="number">1</span>)<span class="comment">// 保证该AOP在@Transactional之前执行</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicDataSourceChangeAspect</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger = LoggerFactory.getLogger(DynamicDataSourceChangeAspect.class);</div><div class="line"></div><div class="line">    <span class="meta">@Before</span>(<span class="string">"@annotation(targetDataSource)"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeDataSource</span><span class="params">(JoinPoint joinPoint, TargetDataSource targetDataSource)</span> </span>&#123;</div><div class="line">        String dsName = targetDataSource.value();</div><div class="line">        <span class="keyword">if</span> (!DynamicDataSourceContextHolder.containsDataSource(dsName)) &#123;</div><div class="line">            System.err.println(<span class="string">"数据源[&#123;&#125;]不存在，使用默认数据源 &gt; &#123;&#125;"</span> + targetDataSource.value() + joinPoint.getSignature());</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            DynamicDataSourceContextHolder.setDataSourceName(targetDataSource.value()); <span class="comment">//设置到动态数据源上下文中</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@After</span>(<span class="string">"@annotation(targetDataSource)"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreDataSource</span><span class="params">(JoinPoint point, TargetDataSource targetDataSource)</span> </span>&#123;</div><div class="line">        <span class="comment">//方法执行完毕之后，销毁当前数据源信息，进行垃圾回收。</span></div><div class="line">        DynamicDataSourceContextHolder.clearDataSourceName();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>到现在为止，我们就实现了动态切换数据源了。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在互联网的服务端开发的时候，我们很经常要在一个项目中去调用不同的数据库。在这种情况下，必然要涉及到多数据源问题。那么，我们该如何解决多数据源问题呢？有没有一种方法来动态切换数据源呢？&lt;/p&gt;
-&lt;p&gt;答案是有的。万能的Spring已经给了我们解决方案——利用AbstractR
-    
-    </summary>
-    
-      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
-    
-    
-      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
-    
-      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
     
   </entry>
   
