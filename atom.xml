@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2018-12-14T07:18:39.588Z</updated>
+  <updated>2018-12-18T09:40:57.779Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,6 +14,84 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于Docker搭建以太坊私有网络</title>
+    <link href="http://webfuse.cn/2018/12/18/%E5%9F%BA%E4%BA%8EDocker%E6%90%AD%E5%BB%BA%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%A7%81%E6%9C%89%E7%BD%91%E7%BB%9C/"/>
+    <id>http://webfuse.cn/2018/12/18/基于Docker搭建以太坊私有网络/</id>
+    <published>2018-12-18T09:37:38.000Z</published>
+    <updated>2018-12-18T09:40:57.779Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Running-in-Docker"><a href="#Running-in-Docker" class="headerlink" title="Running in Docker"></a>Running in Docker</h2><p>参考<a href="https://github.com/ethereum/go-ethereum/wiki/Running-in-Docker" target="_blank" rel="external">官方的Running in Docker</a>，具体的解释如下：</p>
+<h3 id="运行节点"><a href="#运行节点" class="headerlink" title="运行节点"></a>运行节点</h3><p>拉取镜像：</p>
+<p><code>docker pull ethereum/client-go</code></p>
+<p>启动一个节点：</p>
+<p><code>docker run -it -p 30303:30303 ethereum/client-go</code></p>
+<p>启动一个节点并在8545上运行JSON-RPC接口：</p>
+<p><code>docker run -it -p 8545:8545 -p 30303:30303 ethereum/client-go --rpc --rpcaddr &quot;0.0.0.0&quot;</code></p>
+<p>注意：“0.0.0.0”参数会在8545接口上接收所有主机发送的请求，公共网络慎用！</p>
+<p>使用javascript控制台进行交互操作，可运行下命令启动节点：</p>
+<p><code>docker run -it -p 30303:30303 ethereum/client-go console</code></p>
+<h3 id="指定区块链数据存储位置"><a href="#指定区块链数据存储位置" class="headerlink" title="指定区块链数据存储位置"></a>指定区块链数据存储位置</h3><p><code>docker run -it -p 30303:30303 -v /path/on/host:/root/.ethereum ethereum/client-go</code></p>
+<p>-v参数指定了存储的路径。上面的命令会将/root/.ethereum挂载到本地路径/path/on/host下面。这样，容器启动以后，数据的实际存储路径就在/path/on/host下。</p>
+<h3 id="使用启动的节点"><a href="#使用启动的节点" class="headerlink" title="使用启动的节点"></a>使用启动的节点</h3><p>运行上面的命令后，节点会自动去拉取主网的区块数据。我们可以连接到运行的容器中去执行各个操作。</p>
+<p>运行<code>docker ps -a</code>查看容器实例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">~ docker ps -a</div><div class="line">CONTAINER ID        IMAGE                COMMAND             CREATED             STATUS                     PORTS               NAMES</div><div class="line">3791b8c1df57        ethereum/client-go   &quot;geth&quot;              19 minutes ago      Exited (0) 6 minutes ago                       eloquent_wiles</div></pre></td></tr></table></figure>
+<p>执行命令<code>docker exec -it eloquent_wiles /bin/sh</code>，其中eloquent_wiles是容器的名字。这样，它就连接到了现在运行的容器了。</p>
+<p>示例操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">/ # geth attach</div><div class="line">WARN [12-18|07:49:15.868] Sanitizing cache to Go&apos;s GC limits       provided=1024 updated=666</div><div class="line">Welcome to the Geth JavaScript console!</div><div class="line"></div><div class="line">instance: Geth/v1.8.19-unstable-9a000601/linux-amd64/go1.11.2</div><div class="line"> modules: admin:1.0 debug:1.0 eth:1.0 ethash:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0</div><div class="line"></div><div class="line">&gt; eth.syncing</div><div class="line">&#123;</div><div class="line">  currentBlock: 11504,</div><div class="line">  highestBlock: 6907887,</div><div class="line">  knownStates: 40307,</div><div class="line">  pulledStates: 17241,</div><div class="line">  startingBlock: 725</div><div class="line">&#125;</div><div class="line">&gt; eth.blockNumber</div><div class="line">0</div><div class="line">&gt; net.peerCount</div><div class="line">2</div><div class="line">&gt; eth.syncing</div><div class="line">&#123;</div><div class="line">  currentBlock: 27043,</div><div class="line">  highestBlock: 6907887,</div><div class="line">  knownStates: 61031,</div><div class="line">  pulledStates: 40281,</div><div class="line">  startingBlock: 725</div><div class="line">&#125;</div><div class="line">&gt; exit</div></pre></td></tr></table></figure>
+<p>默认情况下，当节点启动时会在 datadir 指定的目录之下，生成一个名字为 geth.ipc 的文件，当程序关闭时此文件随之消失。可以使用–ipcpath参数修改掉路径。可以配合 attach 命令来进入与 geth 节点进行 js 交互的窗口。基本命令为：<code>/geth attach rpc:/path/on/host/geth.ipc</code></p>
+<p>关于eth.blockNumber返回0的原因可以查看：</p>
+<ul>
+<li><a href="https://github.com/ethereum/go-ethereum/issues/14338" target="_blank" rel="external">eth.blockNumber is 0 while syncing #14338</a></li>
+<li><a href="https://github.com/ethereum/go-ethereum/issues/16147" target="_blank" rel="external">eth.getBlock(“latest”).number is always 0 #16147</a></li>
+</ul>
+<h3 id="个性化Docker启动命令"><a href="#个性化Docker启动命令" class="headerlink" title="个性化Docker启动命令"></a>个性化Docker启动命令</h3><p>先来一条执行的命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it -d --name ethereum-node -p 8545:8545 -p 30303:30303 --network eth-network --ip 192.168.0.34 -v /path/on/host:/root/.ethereum ethereum/client-go --rinkeby --rpc --rpcaddr &quot;0.0.0.0&quot; --rpcapi &quot;admin,debug,eth,miner,net,personal,shh,txpool,web3,db&quot; --nodiscover --networkid 15 --fast --cache=512 --dev console 3&gt;&gt;eth.log&quot;</div></pre></td></tr></table></figure>
+<h4 id="Docker参数"><a href="#Docker参数" class="headerlink" title="Docker参数"></a>Docker参数</h4><p>-it：交互式运行模式，-i 标准输入给容器，-t 分配一个虚拟终端</p>
+<p>-d：以守护进程方式运行（后台）</p>
+<p>-p：指定端口号</p>
+<p>-P：随机分配端口号</p>
+<p>–name：指定容器名称</p>
+<p>–network：指定网络连接</p>
+<p>–ip：分配ip地址</p>
+<h4 id="Ethereum参数"><a href="#Ethereum参数" class="headerlink" title="Ethereum参数"></a>Ethereum参数</h4><p>–rinkeby：运行rinkeby网络，不设置默认为主网。</p>
+<p>–rpc：启用HTTP-RPC服务</p>
+<p>–rpcaddr：HTTP-RPC服务监听接口（默认：localhost）</p>
+<p>–rpcapi：HTTP-RPC接口提供的api（默认：eth、net、web3）</p>
+<p>–fast：快速同步模式启动Geth</p>
+<p>–cache=512：内存容量分配</p>
+<p>–dev：开发模式</p>
+<p>–nodiscover：关闭节点自动发现，允许手动连接</p>
+<p>–networkid：设置隔离网络（主网络id为1）</p>
+<p>–verbosity 日志等级：0=silent, 1=error, 2=warn, 3=info, 4=debug, 5=detail (default: 3)</p>
+<p>console：进入JavaScript控制台</p>
+<p>更多的参数可以见下节。</p>
+<h2 id="geth命令"><a href="#geth命令" class="headerlink" title="geth命令"></a>geth命令</h2><p>geth的命令可以在客户端运行<code>geth -help</code>或者在<a href="https://github.com/ethereum/go-ethereum/wiki/Command-Line-Options" target="_blank" rel="external">Command Line Options</a>中查看。</p>
+<p>中文资料可以参考：<a href="https://learnblockchain.cn/2017/11/29/geth_cmd_options/" target="_blank" rel="external">以太坊客户端Geth命令用法-参数详解</a></p>
+<h2 id="实战经验"><a href="#实战经验" class="headerlink" title="实战经验"></a>实战经验</h2><ul>
+<li>关于数据目录。启动时一定要指定一个足够大硬盘的路径，不建议使用默认路径，此路径在后面使用的过程中会频繁用到，如果私钥文件没有单独存储，那么也将存储在此目录下。</li>
+<li>keystore 目录下的文件一定要慎重保管，一旦丢失将永远丢失对应地址上的资产，它们和创建账户时设置的密码一一匹配。</li>
+<li>在真实生产环境中 rpcapi 的 personal、admin 等级别较高的操作权限慎重开启，一旦使用不当会导致系统安全问题。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Running-in-Docker&quot;&gt;&lt;a href=&quot;#Running-in-Docker&quot; class=&quot;headerlink&quot; title=&quot;Running in Docker&quot;&gt;&lt;/a&gt;Running in Docker&lt;/h2&gt;&lt;p&gt;参考&lt;a href=
+    
+    </summary>
+    
+      <category term="区块链" scheme="http://webfuse.cn/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="Docker" scheme="http://webfuse.cn/tags/Docker/"/>
+    
+      <category term="区块链" scheme="http://webfuse.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="以太坊" scheme="http://webfuse.cn/tags/%E4%BB%A5%E5%A4%AA%E5%9D%8A/"/>
+    
+  </entry>
   
   <entry>
     <title>《精通比特币》第二版</title>
@@ -1586,44 +1664,6 @@ restTemplate.setErrorHandler(new CustomResponseErrorHandler());
     <summary type="html">
     
       &lt;p&gt;MQTT（ Message Queuing Telemetry Transport）是一个物联网传输协议，它被设计用于轻量级的发布/订阅式消息传输，旨在为低带宽和不稳定的网络环境中的物联网设备提供可靠的网络服务。在实际的开发中，我们通常会用到Spring，这里简单描述一下在
-    
-    </summary>
-    
-      <category term="SpringBoot" scheme="http://webfuse.cn/categories/SpringBoot/"/>
-    
-    
-      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
-    
-      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
-    
-      <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring @Value—从yml文件中引入list</title>
-    <link href="http://webfuse.cn/2017/08/15/Spring%20@Value%E2%80%94%E4%BB%8Eyml%E6%96%87%E4%BB%B6%E4%B8%AD%E5%BC%95%E5%85%A5list/"/>
-    <id>http://webfuse.cn/2017/08/15/Spring @Value—从yml文件中引入list/</id>
-    <published>2017-08-15T15:04:13.000Z</published>
-    <updated>2018-07-28T03:19:46.912Z</updated>
-    
-    <content type="html"><![CDATA[<p>在SpringBoot中要引入yml配置文件中的数组，用常用的@Value是不可取的，我们必须另寻途径。详见以下代码：</p>
-<p>配置文件，其中mqtt是一个对象，urls是一个字符串数组，mappings是一个对象数组</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="attr">mqtt:</span></div><div class="line"><span class="attr">  urls:</span></div><div class="line"><span class="attr">  - tcp:</span><span class="string">//120.24.75.149:1883</span></div><div class="line"><span class="attr">  clientId:</span> <span class="string">mqtt-gateway</span></div><div class="line"><span class="attr">  completionTimeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">router:</span></div><div class="line"><span class="attr">  mappings:</span></div><div class="line"><span class="attr">  - topicFilter:</span> <span class="string">msg</span></div><div class="line"><span class="attr">    service:</span> <span class="string">sensors</span></div><div class="line"><span class="attr">  - topicFilter:</span> <span class="string">people</span></div><div class="line"><span class="attr">    service:</span> <span class="string">people</span></div></pre></td></tr></table></figure>
-<p>配置代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> cn.webfuse.valuedemo.configuration.properties.Mappings;</div><div class="line"><span class="keyword">import</span> cn.webfuse.valuedemo.configuration.properties.MqttUrls;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</div><div class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</div><div class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</div><div class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</div><div class="line"></div><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultConfiguration</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"mqtt"</span>)</div><div class="line">    <span class="function">MqttUrls <span class="title">mqttUrls</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MqttUrls();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"router"</span>)</div><div class="line">    <span class="function">Mappings <span class="title">mappings</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Mappings();</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;mqtt.clientId&#125;"</span>)</div><div class="line">    String clientId;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上述代码中用到的对象类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mapping</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String topicFilter;</div><div class="line">    <span class="keyword">private</span> String service;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getTopicFilter</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> topicFilter;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTopicFilter</span><span class="params">(String topicFilter)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.topicFilter = topicFilter;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getService</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> service;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setService</span><span class="params">(String service)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.service = service;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mappings</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;Mapping&gt; mappings = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Mapping&gt; <span class="title">getMappings</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mappings;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMappings</span><span class="params">(List&lt;Mapping&gt; mappings)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.mappings = mappings;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MqttUrls</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;String&gt; urls = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getUrls</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.urls;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUrls</span><span class="params">(List&lt;String&gt; urls)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.urls = urls;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/"</span>)</div><div class="line"><span class="meta">@RestController</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    MqttUrls mqttUrls;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    Mappings mappings;</div><div class="line"></div><div class="line">    <span class="meta">@GetMapping</span>(value = <span class="string">"/urls/show"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">show</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> mqttUrls.getUrls();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/mappings/show"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;Mapping&gt; <span class="title">showMappings</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> mappings.getMappings();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在SpringBoot中要引入yml配置文件中的数组，用常用的@Value是不可取的，我们必须另寻途径。详见以下代码：&lt;/p&gt;
-&lt;p&gt;配置文件，其中mqtt是一个对象，urls是一个字符串数组，mappings是一个对象数组&lt;/p&gt;
-&lt;figure class=&quot;highl
     
     </summary>
     
