@@ -141,6 +141,16 @@
 
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
 
 
 
@@ -439,17 +449,6 @@
           
 
           
-          
-             <span id="/2016/04/30/Spring Ioc容器的依赖注入/" class="leancloud_visitors" data-flag-title="Spring Ioc容器的依赖注入">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -1517,72 +1516,6 @@ private Object resolveReference(Object argName, RuntimeBeanReference ref) {
 
 
   
-
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function ({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
-            
-            .done(function () {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
-            })
-            
-            .fail(function ({ responseJSON }) {
-                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-            })
-          } else {
-            
-              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
-                .done(function () {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(1);
-                })
-                .fail(function () {
-                  console.log('Failed to create');
-                });
-            
-          }
-        })
-      .fail(function ({ responseJSON }) {
-        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
-      });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "JzgjPwxEDrfQiuodfFb79B1Y-gzGzoHsz",
-                'X-LC-Key': "rc29GpKebiB6uiwFRFXE7lO6",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          addCount(Counter);
-          
-        })
-    });
-  </script>
-
-
 
   
 
