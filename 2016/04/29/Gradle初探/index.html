@@ -101,7 +101,7 @@
 
 
   <meta name="description" content="Gradle是什么Gradle 是一款基于 Groovy 语言的构建工具。它通过使用Groovy定义的DSL克服了Maven中使用XML繁冗以及不灵活的缺点的同时还保持了 Maven的优点。 安装Gradle 在安装Gradle之前必须先安装1.6以上的JDK或JRE，并设置好环境变量。 下载 最新的Gradle安装包 解压下载好的安装包 设置环境变量GRADLE_HOME和PATH。如：GRAD">
-<meta name="keywords" content="实战,Gradle">
+<meta name="keywords" content="Gradle,实战">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gradle初探">
 <meta property="og:url" content="http://webfuse.cn/2016/04/29/Gradle初探/index.html">
@@ -585,9 +585,9 @@ gradle task的名称 执行task
       
         <div class="post-tags">
           
-            <a href="/tags/实战/" rel="tag"># 实战</a>
-          
             <a href="/tags/Gradle/" rel="tag"># Gradle</a>
+          
+            <a href="/tags/实战/" rel="tag"># 实战</a>
           
         </div>
       
@@ -1415,10 +1415,12 @@ gradle task的名称 执行task
           if (results.length > 0) {
             var counter = results[0];
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text(counter.time + 1);
-            
             Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
             
             .fail(function ({ responseJSON }) {
                 console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
