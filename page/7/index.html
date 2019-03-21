@@ -393,7 +393,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2018/02/14/多种用户登录模式设计/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2018/03/11/基于Token的权限认证服务/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -413,7 +413,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/02/14/多种用户登录模式设计/" class="post-title-link" itemprop="url">多种用户登录模式设计</a>
+                <a href="/2018/03/11/基于Token的权限认证服务/" class="post-title-link" itemprop="url">基于Token的权限认证服务</a>
               
             
           </h1>
@@ -438,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2018-02-14 08:59:06" itemprop="dateCreated datePublished" datetime="2018-02-14T08:59:06+08:00">2018-02-14</time>
+              <time title="创建时间：2018-03-11 22:03:58" itemprop="dateCreated datePublished" datetime="2018-03-11T22:03:58+08:00">2018-03-11</time>
             
 
             
@@ -486,7 +486,7 @@
 
           
           
-             <span id="/2018/02/14/多种用户登录模式设计/" class="leancloud_visitors" data-flag-title="多种用户登录模式设计">
+             <span id="/2018/03/11/基于Token的权限认证服务/" class="leancloud_visitors" data-flag-title="基于Token的权限认证服务">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -520,14 +520,14 @@
         
           
             <p>
-              在做Web开发的时候，用户登录时最基本的功能。通常情况下，我们直接使用“用户名+密码”的模式，直接在users表中建立用户名密码等字段来完成工作。但是，如果我们的要求是邮箱、手机号和接入第三方的登录都要支持呢？很明显，在这种情况下，基本的用户名密码登录是完成不了我们的要求的。
-在这种情况下，我们可以
+              在这两年接触的项目基本上是基于前后端分离、多种后端服务组合而成的，这有别于先前的“单体”的项目，而且我们还需要考虑外部应用接入的场景、用户-服务的鉴权、服务-服务的鉴权等多种鉴权场景。
+本方案基于客户端Token与网关结合的方式。所有的客户端请求都经过网关，网关将校验客户端发送上来的Token等信息
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2018/02/14/多种用户登录模式设计/#more" rel="contents">
+              <a class="btn" href="/2018/03/11/基于Token的权限认证服务/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -587,7 +587,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2018/03/01/RBAC实践/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -607,7 +607,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/" class="post-title-link" itemprop="url">《写给大忙人看的JavaSE8》读书笔记</a>
+                <a href="/2018/03/01/RBAC实践/" class="post-title-link" itemprop="url">RBAC实践</a>
               
             
           </h1>
@@ -632,7 +632,7 @@
                 
               
 
-              <time title="创建时间：2018-02-08 23:08:32" itemprop="dateCreated datePublished" datetime="2018-02-08T23:08:32+08:00">2018-02-08</time>
+              <time title="创建时间：2018-03-01 22:34:42" itemprop="dateCreated datePublished" datetime="2018-03-01T22:34:42+08:00">2018-03-01</time>
             
 
             
@@ -666,7 +666,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/UAA/" itemprop="url" rel="index"><span itemprop="name">UAA</span></a></span>
 
                 
                 
@@ -680,7 +680,7 @@
 
           
           
-             <span id="/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/" class="leancloud_visitors" data-flag-title="《写给大忙人看的JavaSE8》读书笔记">
+             <span id="/2018/03/01/RBAC实践/" class="leancloud_visitors" data-flag-title="RBAC实践">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -714,16 +714,18 @@
         
           
             <p>
-              重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。
-import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.charset.S
+              RBAC，即大家很熟悉的“基于角色的访问控制”。理论什么的这里就不讲了，重点介绍下一种基于RBAC的实践。
+名词解释
+领域：Realm，角色的定义范围。
+角色：Role，一组权限的集合。角色必须定义在指定领域内
+资源：Resource，主要应用于前端UI元素可见性方面的权限管控
+操作：Action，
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/#more" rel="contents">
+              <a class="btn" href="/2018/03/01/RBAC实践/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -772,7 +774,7 @@ import java.nio.charset.S
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -815,7 +817,7 @@ import java.nio.charset.S
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -975,7 +977,11 @@ import java.nio.charset.S
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1662,7 +1668,7 @@ import java.nio.charset.S
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("多种用户登录模式设计");titles.push("《写给大忙人看的JavaSE8》读书笔记");' //if you have a better way to get titles of posts, please change it
+        var postsstr = 'titles.push("基于Token的权限认证服务");titles.push("RBAC实践");' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {

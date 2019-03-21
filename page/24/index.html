@@ -393,7 +393,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/08/22/grails备忘录（一）/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/09/12/MOP方法合成/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -413,7 +413,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/08/22/grails备忘录（一）/" class="post-title-link" itemprop="url">grails备忘录（一）</a>
+                <a href="/2016/09/12/MOP方法合成/" class="post-title-link" itemprop="url">MOP方法合成</a>
               
             
           </h1>
@@ -438,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2016-08-22 23:02:12" itemprop="dateCreated datePublished" datetime="2016-08-22T23:02:12+08:00">2016-08-22</time>
+              <time title="创建时间：2016-09-12 21:25:01" itemprop="dateCreated datePublished" datetime="2016-09-12T21:25:01+08:00">2016-09-12</time>
             
 
             
@@ -486,7 +486,7 @@
 
           
           
-             <span id="/2016/08/22/grails备忘录（一）/" class="leancloud_visitors" data-flag-title="grails备忘录（一）">
+             <span id="/2016/09/12/MOP方法合成/" class="leancloud_visitors" data-flag-title="MOP方法合成">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -520,15 +520,14 @@
         
           
             <p>
-              Grails是一套用于快速Web应用开发的开源框架，它基于Groovy编程语言，并构建于Spring、Hibernate和其它标准Java框架之上，从而为大家带来一套能实现超高生产力的一站式框架。
-Grails命令首先看一个例子，用命令创建项目：
-grails create-app hellowor
+              方法注入（method injection）：编写代码时知道想要添加到一个或多个类中的方法的名字。利用方法注入，可以动态地向类中添加行为。也可以向任意数目的类中注入一组实现某一特定功能的可复用方法。可以通过使用分类，使用ExpandoMetaClass或Groovy的Mixin工具来注入方法。
+方法
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/08/22/grails备忘录（一）/#more" rel="contents">
+              <a class="btn" href="/2016/09/12/MOP方法合成/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -588,7 +587,7 @@ grails create-app hellowor
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/08/17/MOP方法注入/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/09/02/对Spring MVC做单元测试/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -608,7 +607,7 @@ grails create-app hellowor
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/08/17/MOP方法注入/" class="post-title-link" itemprop="url">MOP方法注入</a>
+                <a href="/2016/09/02/对Spring MVC做单元测试/" class="post-title-link" itemprop="url">对Spring MVC做单元测试</a>
               
             
           </h1>
@@ -633,7 +632,7 @@ grails create-app hellowor
                 
               
 
-              <time title="创建时间：2016-08-17 21:41:12" itemprop="dateCreated datePublished" datetime="2016-08-17T21:41:12+08:00">2016-08-17</time>
+              <time title="创建时间：2016-09-02 15:27:11" itemprop="dateCreated datePublished" datetime="2016-09-02T15:27:11+08:00">2016-09-02</time>
             
 
             
@@ -667,7 +666,7 @@ grails create-app hellowor
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Groovy/" itemprop="url" rel="index"><span itemprop="name">Groovy</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
 
                 
                 
@@ -681,7 +680,7 @@ grails create-app hellowor
 
           
           
-             <span id="/2016/08/17/MOP方法注入/" class="leancloud_visitors" data-flag-title="MOP方法注入">
+             <span id="/2016/09/02/对Spring MVC做单元测试/" class="leancloud_visitors" data-flag-title="对Spring MVC做单元测试">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -715,20 +714,15 @@ grails create-app hellowor
         
           
             <p>
-              在Groovy中，可以随时打开一个类。也就是说，可以动态地向类中添加方法，允许它们在运行时改变行为。能够修改类的行为，是元编程和Groovy元对象协议（MOP）的核心。
-Groovy的MOP支持以下3种技术注入行为：
-
-分类（Category）
-ExpandoMetaClass
-Mixin
-
-使用分
+              简单介绍在工作用到的对Controller进行单元测试。其实，在编写单元测试的时候还是遇到了一些问题没有解决（基于公司封装的框架，不能用最新的包 (⊙﹏⊙)b）。先记录下主要的代码，其他问题慢慢解决。
+所需要基本的依赖包&lt;dependency&gt;
+    &lt;groupId&gt;or
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/08/17/MOP方法注入/#more" rel="contents">
+              <a class="btn" href="/2016/09/02/对Spring MVC做单元测试/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -777,7 +771,7 @@ Mixin
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/23/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/25/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/23/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/25/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -820,7 +814,7 @@ Mixin
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -980,7 +974,11 @@ Mixin
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1667,7 +1665,7 @@ Mixin
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("grails备忘录（一）");titles.push("MOP方法注入");' //if you have a better way to get titles of posts, please change it
+        var postsstr = 'titles.push("MOP方法合成");titles.push("对Spring MVC做单元测试");' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {

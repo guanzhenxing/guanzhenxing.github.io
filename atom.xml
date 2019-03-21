@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2019-01-20T08:54:33.485Z</updated>
+  <updated>2019-03-21T13:57:13.791Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,6 +14,237 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>达世币从入门到XX</title>
+    <link href="http://webfuse.cn/2019/03/21/%E8%BE%BE%E4%B8%96%E5%B8%81%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0XX/"/>
+    <id>http://webfuse.cn/2019/03/21/达世币从入门到XX/</id>
+    <published>2019-03-21T13:55:50.000Z</published>
+    <updated>2019-03-21T13:57:13.791Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是达世币"><a href="#什么是达世币" class="headerlink" title="什么是达世币"></a>什么是达世币</h2><p><a href="https://www.dash.org/" target="_blank" rel="external">达世币（DASH）</a>：一个支持即时交，专注于保护隐私的数字货币。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>DASH是以比特币为基础，它的代码是fork了bitcoin的。</p>
+<h3 id="比特币遇到的问题"><a href="#比特币遇到的问题" class="headerlink" title="比特币遇到的问题"></a>比特币遇到的问题</h3><ul>
+<li>确认时间长</li>
+<li>只提供低层次的隐私保护</li>
+<li>ASIC矿机导致的中心化问题</li>
+<li>矿池（存在51%攻击的可能）</li>
+</ul>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li>使用InstantSend进行即时交易</li>
+<li>PrivateSend（匿名发送）服务</li>
+<li>X11算法</li>
+<li>推出一个拥有两层（矿工和Masternode）的奖励性网络</li>
+</ul>
+<h3 id="即时交易"><a href="#即时交易" class="headerlink" title="即时交易"></a>即时交易</h3><p>InstantSend系统可以先将款项锁在交易中。当主节点网络能够达成共识，便能自动确认交易，否则则经由正常挖矿的渠道以确认交易。如果交易与过往交易发生冲突，交易将被拒绝。</p>
+<h3 id="X11算法"><a href="#X11算法" class="headerlink" title="X11算法"></a>X11算法</h3><p>X11由11轮SHA3算法组成，每轮哈希计算的结果都被提交到区块链的下一轮计算去。使用多轮算法，可以减少专门为数字货币挖矿设计的ASIC使用的概率。</p>
+<p>这些算法是：blake、bmw、groestl、jh、keccak、skein、luffa、cubehash、shavite、simd、echo</p>
+<h3 id="匿名支付"><a href="#匿名支付" class="headerlink" title="匿名支付"></a>匿名支付</h3><p>PrivateSend是一个基于CoinJoin的硬币混合服务。它将多方的资金合并在一起对外发送。匿名支付的交易都会取整数，所以所有的交易输入都会被使用。任何超出部分都会被用于交易手续费。</p>
+<p>原理：</p>
+<ol>
+<li>主节点接收到混币请求。</li>
+<li>当有另外2个人请求参与混币的时候，主节点将进行混币（每轮的混币限制为1000DASH，面额是0.01达世币，0.1达世币，1达世币和10达世币）。</li>
+<li>主节点将币混在一起，并给这三个用户的钱包指令，让它们把这些现在已经转化了的币回付给自己。你的钱包将这些面额直接付给自己，但是地址已经改变（称为变更地址）。</li>
+<li>多轮以上流程。</li>
+</ol>
+<h3 id="主节点"><a href="#主节点" class="headerlink" title="主节点"></a>主节点</h3><ul>
+<li>主节点拥有者必须持有1000个达世币，经电子签名后向网络广播后认证。</li>
+<li>45%的区块奖励被分配支付给主节点网络。</li>
+<li>使用特定的确定算法创建主节点的伪随机排序。</li>
+<li>没有一人能控制整个主节点网络。<ul>
+<li>非信任制的Quorum(法定人数)。</li>
+<li>服务量证明机制。</li>
+</ul>
+</li>
+<li>PrivateSend（匿名发送）和 InstantSend（即时支付）服务。</li>
+</ul>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>代币符号：DASH</li>
+<li>原始块产生于2014年1月18日，东部时间晚11点</li>
+<li>区块时间2.6分钟, 区块大小2MB, 约56笔交易每秒</li>
+<li>每年区块奖励减产率7.14%</li>
+<li>总发行量在17.74M到18.92M之间</li>
+<li>激励机制：矿工45%、主节点45%、达世自治组织10%</li>
+</ul>
+<h3 id="钱包"><a href="#钱包" class="headerlink" title="钱包"></a>钱包</h3><ul>
+<li>Dash Core钱包</li>
+<li>达世币轻钱包</li>
+<li>达世币移动端钱包（安卓、iOS）</li>
+<li>达世币Copay钱包（商家钱包）</li>
+<li>冷钱包（纸钱包、硬件钱包）</li>
+<li>其他钱包（网页钱包、短信钱包、第三方钱包）</li>
+</ul>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><h4 id="主网"><a href="#主网" class="headerlink" title="主网"></a>主网</h4><ul>
+<li><a href="https://www.coinexplorer.net/DASH" target="_blank" rel="external">Dash CoinExplorer</a></li>
+<li><a href="https://dashblockexplorer.com/" target="_blank" rel="external">Dashblockexplorer</a></li>
+<li><a href="https://bitinfocharts.com/dash/explorer/" target="_blank" rel="external">BitInfoCharts</a></li>
+<li><a href="https://explorer.dash.org/chain/Dash" target="_blank" rel="external">DashExplorer</a></li>
+</ul>
+<h4 id="测试网络"><a href="#测试网络" class="headerlink" title="测试网络"></a>测试网络</h4><ul>
+<li><a href="https://test.explorer.dash.org" target="_blank" rel="external">https://test.explorer.dash.org</a> - by flare</li>
+<li><a href="https://test.insight.dash.siampm.com" target="_blank" rel="external">https://test.insight.dash.siampm.com</a> - by thelazier</li>
+<li><a href="https://test.explorer.dashninja.pl" target="_blank" rel="external">https://test.explorer.dashninja.pl</a> - by elbereth</li>
+<li><a href="http://test.insight.masternode.io:3001" target="_blank" rel="external">http://test.insight.masternode.io:3001</a> - by coingun</li>
+<li><a href="http://insight.test.dash.crowdnode.io" target="_blank" rel="external">http://insight.test.dash.crowdnode.io</a></li>
+<li><a href="https://testnet-insight.dashevo.org/insight" target="_blank" rel="external">https://testnet-insight.dashevo.org/insight</a></li>
+</ul>
+<h2 id="开发者"><a href="#开发者" class="headerlink" title="开发者"></a>开发者</h2><h3 id="Dash-Core钱包"><a href="#Dash-Core钱包" class="headerlink" title="Dash Core钱包"></a>Dash Core钱包</h3><p>Dash Core钱包由达世币官方全权发行，支持达世币的所有功能，包括即时支付和匿名支付，以及远程过程调用RPC控制台和管理功能。</p>
+<p>源码地址：<a href="https://github.com/dashpay/dash" target="_blank" rel="external">https://github.com/dashpay/dash</a></p>
+<h4 id="源码编译"><a href="#源码编译" class="headerlink" title="源码编译"></a>源码编译</h4><p>基于Docker进行编译。</p>
+<p>拉取Ubuntu镜像：<code>docker pull ubuntu</code></p>
+<p>运行Ubuntu镜像：<code>docker run -it --name dash_ubuntu ubuntu</code></p>
+<p>对Ubuntu进行一些基础安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">apt-get update &amp;&amp; apt-get install -y sudo &amp;&amp; rm -rf /var/lib/apt/lists/*</div><div class="line">sudo apt-get update</div><div class="line">apt-get install vim</div><div class="line">apt-get install software-properties-common</div></pre></td></tr></table></figure>
+<p>参考<a href="https://docs.dash.org/zh_CN/stable/developers/compiling.html" target="_blank" rel="external">编译Dash Core - Linux</a>编译代码。</p>
+<p>用docker的commit命令，打成image后的结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">~ docker images</div><div class="line"></div><div class="line">REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">dash-ubuntu                                    latest              203426ab7b55        18 hours ago        3.38GB</div><div class="line">ubuntu                                         latest              93fd78260bd1        4 weeks ago         86.2MB</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Tips: 这里是生成了docker的镜像，生产环境中可以直接使用官方打好的二进制文件。</p>
+</blockquote>
+<h4 id="命令和参数"><a href="#命令和参数" class="headerlink" title="命令和参数"></a>命令和参数</h4><h5 id="启动dash服务"><a href="#启动dash服务" class="headerlink" title="启动dash服务"></a>启动dash服务</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">root@7bbd91172345:~# dashd --daemon --testnet --server --rest --rpcuser=waterblock --rpcpassword=waterblock</div><div class="line">Dash Core server starting</div></pre></td></tr></table></figure>
+<p>这样，就启动了一个测试网络，并设置了rpc的用户名密码。这里的用户名密码必须设置，不然运行不了<code>dash-cli</code>。</p>
+<h5 id="dash-cli"><a href="#dash-cli" class="headerlink" title="dash-cli"></a>dash-cli</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">root@7bbd91172345:~# dash-cli --rpcuser=waterblock --rpcpassword=waterblock --testnet help</div><div class="line">== Addressindex ==</div><div class="line">getaddressbalance</div><div class="line">getaddressdeltas</div><div class="line">getaddressmempool</div><div class="line">getaddresstxids</div><div class="line">getaddressutxos</div><div class="line"></div><div class="line">== Blockchain ==</div><div class="line">getbestblockhash</div><div class="line">getblock &quot;blockhash&quot; ( verbose )</div><div class="line">getblockchaininfo</div><div class="line">getblockcount</div><div class="line">getblockhash height</div><div class="line">getblockhashes timestamp</div><div class="line">.....</div></pre></td></tr></table></figure>
+<p>这样就获得帮助命令。</p>
+<p>dash-cli的一些示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">dash-cli --rpcuser=waterblock --rpcpassword=waterblock --testnet getblockchaininfo</div><div class="line">dash-cli --rpcuser=waterblock --rpcpassword=waterblock --testnet getblockcount</div><div class="line">dash-cli --rpcuser=waterblock --rpcpassword=waterblock --testnet stop</div></pre></td></tr></table></figure>
+<p>这里，运行dash-cli命令必须添加<code>--rpcuser=waterblock --rpcpassword=waterblock --testnet</code>，除非在<code>dash.conf</code>配置了。</p>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root@7bbd91172345:~/.dashcore# cat dash.conf</div><div class="line">rpcuser=waterblock</div><div class="line">rpcpassword=onecafe@123</div></pre></td></tr></table></figure></p>
+<p>参考官方的文档：<a href="https://docs.dash.org/zh_CN/stable/wallets/dashcore/cmd-rpc.html#command-line-arguments" target="_blank" rel="external">命令和参数</a></p>
+<h3 id="Dashd-for-Docker"><a href="#Dashd-for-Docker" class="headerlink" title="Dashd for Docker"></a>Dashd for Docker</h3><p>Dash Core官方提供了Docker镜像。</p>
+<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><p>拉取docker镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull dashpay/dashd</div></pre></td></tr></table></figure></p>
+<p>创建Docker数据卷，用来保存区块链的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker volume create --name=dashd-data</div></pre></td></tr></table></figure></p>
+<p>运行镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker run -v dashd-data:/dash --name=dashd-node -d \</div><div class="line">    -p 9999:9999 \</div><div class="line">    -p 127.0.0.1:9998:9998 \</div><div class="line">    dashpay/dashd</div></pre></td></tr></table></figure></p>
+<p>验证正在运行的容器，dashd节点正在下载区块链<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps</div></pre></td></tr></table></figure></p>
+<p>查看输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker logs -f dashd-node</div></pre></td></tr></table></figure></p>
+<p>进入运行中的容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker exec -it dashd-node bash -l</div></pre></td></tr></table></figure></p>
+<p>执行dash-cli命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dash-cli getinfo</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>Tips: 不知道是否是网络的原因还是啥的，运行20多分钟后才开始同步节点。</p>
+</blockquote>
+<h3 id="运行测试网络"><a href="#运行测试网络" class="headerlink" title="运行测试网络"></a>运行测试网络</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">docker run -v dashd-data:/dash --name=dashd-node -d \</div><div class="line">  --env TESTNET=1 \</div><div class="line">  -p 9999:9999 \</div><div class="line">  -p 127.0.0.1:9998:9998 \</div><div class="line">  dashpay/dashd</div></pre></td></tr></table></figure>
+<h3 id="区块的同步"><a href="#区块的同步" class="headerlink" title="区块的同步"></a>区块的同步</h3><p>为什么会有这个模块？因为很久才开始同步区块（主网和测试网络都一样），久到我都开始怀疑人生了……</p>
+<p>主网的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">2018-12-20 08:18:53 Pre-allocating up to position 0x100000 in rev00000.dat</div><div class="line">2018-12-20 08:18:53 UpdateTip: new best=000007d91d1254d60e2dd1ae580383070a4ddffa4c64c2eeb4a2f9ecc0414343 height=1 version=0x00000002 log2_work=21.00002201 tx=2 date=&apos;2014-01-19 03:54:41&apos; progress=0.000000 cache=0.0MiB(1txo)</div><div class="line">2018-12-20 08:18:53 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 08:18:53 UpdateTip: new best=00000bafcc571ece7c5c436f887547ef41b574e10ef7cc6937873a74ef1efeae height=2 version=0x00000002 log2_work=21.58498451 tx=3 date=&apos;2014-01-19 03:54:46&apos; progress=0.000000 cache=0.0MiB(2txo)</div><div class="line">2018-12-20 08:18:53 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 08:18:53 UpdateTip: new best=00000269705556d97bc6d2e1a02c9b9031b2415192ed1ef820f384ce0d8de0ff height=3 version=0x00000002 log2_work=22.00002201 tx=4 date=&apos;2014-01-19 03:55:01&apos; progress=0.000001 cache=0.0MiB(3txo)</div><div class="line">2018-12-20 08:18:53 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 08:18:53 UpdateTip: new best=000006fce46cbe25996ed9a11092622cccdc37bd423992f44d2165b7e89b67e4 height=4 version=0x00000002 log2_work=22.32195011 tx=5 date=&apos;2014-01-19 03:55:10&apos; progress=0.000001 cache=0.0MiB(4txo)</div><div class="line">2018-12-20 08:18:53 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 08:18:53 UpdateTip: new best=0000097f56152f7f68faaccc0426725e0b6c507170432d48b685403637ba10a2 height=5 version=0x00000002 log2_work=22.58498451 tx=6 date=&apos;2014-01-19 03:55:13&apos; progress=0.000001 cache=0.0MiB(5txo)</div><div class="line">2018-12-20 08:18:53 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 08:18:53 UpdateTip: new best=00000c1fa7a288cc75fe47ee2ca5f249b2cfc83e7ddbf1657e18ab183f88b668 height=6 version=0x00000002 log2_work=22.80737694 tx=7 date=&apos;2014-01-19 03:55:22&apos; progress=0.000001 cache=0.0MiB(6txo)</div><div class="line">2018-12-20 08:18:53 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 08:18:53 UpdateTip: new best=00000fba5440df1090d1b37dc42581b5abb909a0b89b4b6da6245236e6ccf434 height=7 version=0x00000002 log2_work=23.00002201 tx=8 date=&apos;2014-01-19 03:55:23&apos; progress=0.000001 cache=0.0MiB(7txo)</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>测试网络的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">2018-12-20 09:09:40 Pre-allocating up to position 0x100000 in rev00000.dat</div><div class="line">2018-12-20 09:09:40 UpdateTip: new best=0000047d24635e347be3aaaeb66c26be94901a2f962feccd4f95090191f208c1 height=1 version=0x00000002 log2_work=21.00001169 tx=2 date=&apos;2014-04-28 19:19:31&apos; progress=0.000000 cache=0.0MiB(1txo)</div><div class="line">2018-12-20 09:09:40 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 09:09:40 UpdateTip: new best=00000c6264fab4ba2d23990396f42a76aa4822f03cbc7634b79f4dfea36fccc2 height=2 version=0x00000002 log2_work=21.58497764 tx=3 date=&apos;2014-04-28 19:19:32&apos; progress=0.000001 cache=0.0MiB(2txo)</div><div class="line">2018-12-20 09:09:40 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 09:09:40 UpdateTip: new best=0000057d5c945acbe476bc17bbbaeb2fc1c1b18673e7582c48ac04af61f4d811 height=3 version=0x00000002 log2_work=22.00001685 tx=4 date=&apos;2014-04-28 19:19:34&apos; progress=0.000001 cache=0.0MiB(3txo)</div><div class="line">2018-12-20 09:09:40 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 09:09:40 UpdateTip: new best=000002258bd58bf4cdcde282abc030437c103dbb12d2a7dbc978d07bcf386b42 height=4 version=0x00000002 log2_work=22.32194598 tx=5 date=&apos;2014-04-28 19:19:42&apos; progress=0.000001 cache=0.0MiB(4txo)</div><div class="line">2018-12-20 09:09:40 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 09:09:40 UpdateTip: new best=00000b1406007f9148c4c173e2314437a315b79b5b79e73ed534a2e8b18a43fc height=5 version=0x00000002 log2_work=22.58498107 tx=6 date=&apos;2014-04-28 19:19:44&apos; progress=0.000001 cache=0.0MiB(5txo)</div><div class="line">2018-12-20 09:09:40 ProcessNewBlock : ACCEPTED</div><div class="line">2018-12-20 09:09:40 UpdateTip: new best=00000d93de4b31ec550d324876ee7c502a073911972d26c2c990b94d9d5b5a44 height=6 version=0x00000002 log2_work=22.80737399 tx=7 date=&apos;2014-04-28 19:19:47&apos; progress=0.000001 cache=0.0MiB(6txo)</div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure></p>
+<h2 id="参考与学习"><a href="#参考与学习" class="headerlink" title="参考与学习"></a>参考与学习</h2><ul>
+<li><a href="https://docs.dash.org" target="_blank" rel="external">Dash Docs</a></li>
+<li><a href="https://dash-docs.github.io/en/" target="_blank" rel="external">Developer Documentation</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;什么是达世币&quot;&gt;&lt;a href=&quot;#什么是达世币&quot; class=&quot;headerlink&quot; title=&quot;什么是达世币&quot;&gt;&lt;/a&gt;什么是达世币&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.dash.org/&quot; target=&quot;_blank&quot; rel=&quot;e
+    
+    </summary>
+    
+      <category term="区块链" scheme="http://webfuse.cn/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="http://webfuse.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="匿名币" scheme="http://webfuse.cn/tags/%E5%8C%BF%E5%90%8D%E5%B8%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Docker容器构建Bitcoin</title>
+    <link href="http://webfuse.cn/2019/03/21/%E4%BD%BF%E7%94%A8Docker%E5%AE%B9%E5%99%A8%E6%9E%84%E5%BB%BABitcoin/"/>
+    <id>http://webfuse.cn/2019/03/21/使用Docker容器构建Bitcoin/</id>
+    <published>2019-03-21T13:53:32.000Z</published>
+    <updated>2019-03-21T13:56:42.695Z</updated>
+    
+    <content type="html"><![CDATA[<p>虽然说Bitcoin Core有<a href="https://bitcoin.org/zh_CN/download" target="_blank" rel="external">编译好的客户端</a>。但如果能自己编译下源码，感觉也还是不错的。所以就有了以下的图文：</p>
+<h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ul>
+<li>已经安装好Docker</li>
+<li>能够科学上网</li>
+</ul>
+<h2 id="构建Bitcoin客户端"><a href="#构建Bitcoin客户端" class="headerlink" title="构建Bitcoin客户端"></a>构建Bitcoin客户端</h2><p>从源码构建bitcoin客户端，我们分为以下几步：</p>
+<ul>
+<li>选择一个Linux，并安装系统依赖库</li>
+<li>从github下载代码库，并切换最新的版本</li>
+<li>运行autogen.sh脚本</li>
+<li>运行configure脚本</li>
+<li>运行make和make install</li>
+<li>验证bitcoin安装成功</li>
+</ul>
+<p>所以，我们的Dockerfile如下：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 基于alpine linux构建</span></div><div class="line"><span class="keyword">FROM</span> alpine</div><div class="line"></div><div class="line"><span class="comment"># 安装安装系统依赖库</span></div><div class="line"><span class="keyword">RUN</span> apk update &amp;&amp; apk add git \ </div><div class="line">                          make \</div><div class="line">                          file \</div><div class="line">                          autoconf \</div><div class="line">                          automake \ </div><div class="line">                          build-base \</div><div class="line">                          libtool \</div><div class="line">                          db-c++ \</div><div class="line">                          db-dev \</div><div class="line">                          boost-system \</div><div class="line">                          boost-program_options \</div><div class="line">                          boost-filesystem \ </div><div class="line">                          boost-dev \ </div><div class="line">                          libressl-dev \ </div><div class="line">                          libevent-dev</div><div class="line"></div><div class="line"><span class="comment"># 下载源码，并切换到最新的分支</span></div><div class="line"><span class="keyword">RUN</span> git clone https://github.com/bitcoin/bitcoin --branch v0.17.0.1 --single-branch</div><div class="line"></div><div class="line"><span class="comment"># 运行autogen.sh脚本 以及 运行configure脚本 以及 运行make和make install</span></div><div class="line"><span class="keyword">RUN</span> (cd bitcoin  &amp;&amp; ./autogen.sh &amp;&amp; \</div><div class="line">                      ./configure --disable-tests \</div><div class="line">                      --disable-bench --disable-static  \</div><div class="line">                      --without-gui --disable-zmq \ </div><div class="line">                      --with-incompatible-bdb \</div><div class="line">                      CFLAGS=<span class="string">'-w'</span> CXXFLAGS=<span class="string">'-w'</span> &amp;&amp; \</div><div class="line">                      make -j <span class="number">4</span> &amp;&amp; \</div><div class="line">                      strip src/bitcoind &amp;&amp; \</div><div class="line">                      strip src/bitcoin-cli &amp;&amp; \</div><div class="line">                      strip src/bitcoin-tx &amp;&amp; \</div><div class="line">                      make install )</div></pre></td></tr></table></figure>
+<p>运行<br><code>docker build -f bitcoin.dockerfile -t bitcoin-alpine .</code>构建一个docker镜像。</p>
+<p>在成功构建镜像后，通过命令运行镜像<code>docker run -it bitcoin-alpine-bin</code>。</p>
+<p>bitcoind 默认的安装位置是/usr/local/bin。你可以通过询问系统下面2个可执行文件的路径，来确认bitcoin是否安装成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">/ #  which bitcoind</div><div class="line">/usr/local/bin/bitcoind</div><div class="line"></div><div class="line">/ # which bitcoin-cli</div><div class="line">/usr/local/bin/bitcoin-cli</div></pre></td></tr></table></figure>
+<p>然后，在运行的容器中运行bitcoin的后台程序：</p>
+<p><code>bitcoind -server=1 -rest=1 -regtest -txindex=1 -daemon</code></p>
+<p>通过运行<code>bitcoin-cli -regtest getblockchaininfo</code>，<code>bitcoin-cli -regtest getnetworkinfo</code>，<code>bitcoin-cli -regtest getwalletinfo</code>可以获得到相关的状态信息。</p>
+<p>其中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- getblockchaininfo: blocks, difficulty, chain</div><div class="line">- getnetworkinfo: version, protocolversion, timeoffset, connections, proxy, relayfee, warnings</div><div class="line">- getwalletinfo: balance, keypoololdest, keypoolsize, paytxfee, unlocked_until, walletversion</div></pre></td></tr></table></figure>
+<hr>
+<p>参考：</p>
+<ul>
+<li><a href="https://leftasexercise.com/2018/04/12/building-a-bitcoin-container-with-docker/" target="_blank" rel="external">https://leftasexercise.com/2018/04/12/building-a-bitcoin-container-with-docker/</a></li>
+<li><a href="https://www.codeooze.com/blockchain/bitcoind-running-in-docker/" target="_blank" rel="external">https://www.codeooze.com/blockchain/bitcoind-running-in-docker/</a></li>
+<li><a href="http://blog.fens.me/bitcoin-install/" target="_blank" rel="external">http://blog.fens.me/bitcoin-install/</a></li>
+<li><a href="https://github.com/alexfoster/bitcoin-dockerfile/blob/master/Dockerfile" target="_blank" rel="external">https://github.com/alexfoster/bitcoin-dockerfile/blob/master/Dockerfile</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;虽然说Bitcoin Core有&lt;a href=&quot;https://bitcoin.org/zh_CN/download&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;编译好的客户端&lt;/a&gt;。但如果能自己编译下源码，感觉也还是不错的。所以就有了以下的图文：&lt;
+    
+    </summary>
+    
+      <category term="区块链" scheme="http://webfuse.cn/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="Docker" scheme="http://webfuse.cn/tags/Docker/"/>
+    
+      <category term="区块链" scheme="http://webfuse.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="比特币" scheme="http://webfuse.cn/tags/%E6%AF%94%E7%89%B9%E5%B8%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>基于Docker搭建比特币测试网络</title>
+    <link href="http://webfuse.cn/2019/03/21/%E5%9F%BA%E4%BA%8EDocker%E6%90%AD%E5%BB%BA%E6%AF%94%E7%89%B9%E5%B8%81%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C/"/>
+    <id>http://webfuse.cn/2019/03/21/基于Docker搭建比特币测试网络/</id>
+    <published>2019-03-21T13:50:00.000Z</published>
+    <updated>2019-03-21T13:56:46.022Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="搭建比特币测试网络"><a href="#搭建比特币测试网络" class="headerlink" title="搭建比特币测试网络"></a>搭建比特币测试网络</h2><h3 id="下载比特币测试网络镜像"><a href="#下载比特币测试网络镜像" class="headerlink" title="下载比特币测试网络镜像"></a>下载比特币测试网络镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~  docker pull freewill/bitcoin-testnet-box</div></pre></td></tr></table></figure>
+<p>运行<code>docker images</code>查看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">REPOSITORY                           TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">freewil/bitcoin-testnet-box          latest              4dac47b76f09        4 months ago        262MB</div></pre></td></tr></table></figure>
+<h3 id="运行Docker镜像"><a href="#运行Docker镜像" class="headerlink" title="运行Docker镜像"></a>运行Docker镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -t -i -p 19001:19001 -p 19011:19011 freewil/bitcoin-testnet-box</div></pre></td></tr></table></figure>
+<p>上述命令中的19001 和 19011是配置给两个节点提供RPC服务的端口。</p>
+<h3 id="启动比特币测试网络"><a href="#启动比特币测试网络" class="headerlink" title="启动比特币测试网络"></a>启动比特币测试网络</h3><p>运行<code>make start</code>命令启动。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tester@84fdf4019179 ~/bitcoin-testnet-box$ make start</div><div class="line">bitcoind -datadir=1  -daemon</div><div class="line">Bitcoin server starting</div><div class="line">bitcoind -datadir=2  -daemon</div><div class="line">Bitcoin server starting</div></pre></td></tr></table></figure>
+<h3 id="查看节点信息"><a href="#查看节点信息" class="headerlink" title="查看节点信息"></a>查看节点信息</h3><p>使用<code>make getinfo</code>命令获得节点信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">tester@84fdf4019179 ~/bitcoin-testnet-box$ make getinfo</div><div class="line">bitcoin-cli -datadir=1  -getinfo</div><div class="line">&#123;</div><div class="line">  &quot;version&quot;: 160200,</div><div class="line">  &quot;protocolversion&quot;: 70015,</div><div class="line">  &quot;walletversion&quot;: 159900,</div><div class="line">  &quot;balance&quot;: 0.00000000,</div><div class="line">  &quot;blocks&quot;: 0,</div><div class="line">  &quot;timeoffset&quot;: 0,</div><div class="line">  &quot;connections&quot;: 1,</div><div class="line">  &quot;proxy&quot;: &quot;&quot;,</div><div class="line">  &quot;difficulty&quot;: 4.656542373906925e-10,</div><div class="line">  &quot;testnet&quot;: false,</div><div class="line">  &quot;keypoololdest&quot;: 1544519547,</div><div class="line">  &quot;keypoolsize&quot;: 1000,</div><div class="line">  &quot;paytxfee&quot;: 0.00000000,</div><div class="line">  &quot;relayfee&quot;: 0.00001000,</div><div class="line">  &quot;warnings&quot;: &quot;&quot;</div><div class="line">&#125;</div><div class="line">bitcoin-cli -datadir=2  -getinfo</div><div class="line">&#123;</div><div class="line">  &quot;version&quot;: 160200,</div><div class="line">  &quot;protocolversion&quot;: 70015,</div><div class="line">  &quot;walletversion&quot;: 159900,</div><div class="line">  &quot;balance&quot;: 0.00000000,</div><div class="line">  &quot;blocks&quot;: 0,</div><div class="line">  &quot;timeoffset&quot;: 0,</div><div class="line">  &quot;connections&quot;: 1,</div><div class="line">  &quot;proxy&quot;: &quot;&quot;,</div><div class="line">  &quot;difficulty&quot;: 4.656542373906925e-10,</div><div class="line">  &quot;testnet&quot;: false,</div><div class="line">  &quot;keypoololdest&quot;: 1544519547,</div><div class="line">  &quot;keypoolsize&quot;: 1000,</div><div class="line">  &quot;paytxfee&quot;: 0.00000000,</div><div class="line">  &quot;relayfee&quot;: 0.00001000,</div><div class="line">  &quot;warnings&quot;: &quot;&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="初始化和测试区块链数据"><a href="#初始化和测试区块链数据" class="headerlink" title="初始化和测试区块链数据"></a>初始化和测试区块链数据</h2><h3 id="产生区块"><a href="#产生区块" class="headerlink" title="产生区块"></a>产生区块</h3><p>使用<code>make generate</code>命令产生一个区块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">tester@84fdf4019179 ~/bitcoin-testnet-box$ make generate</div><div class="line">bitcoin-cli -datadir=1  generate 1</div><div class="line">[</div><div class="line">  &quot;793a86b807ac6595529bfcbd58118fe09706aa64e736fd9448f63cb7d38a9eb1&quot;</div><div class="line">]</div></pre></td></tr></table></figure>
+<p>使用<code>make generate BLOCKS=数量</code>命令批量产生区块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">tester@84fdf4019179 ~/bitcoin-testnet-box$ make generate BLOCKS=10</div><div class="line">bitcoin-cli -datadir=1  generate 10</div><div class="line">[</div><div class="line">  &quot;3a9d94273198bee2c448fcdeb2925a8e2685adc8f239f77fc64ce8b6f637b9aa&quot;,</div><div class="line">  &quot;3bd20765fa0162e1a17b2051c5b5711bfb271b25c88238f42a4351301d9e5ce6&quot;,</div><div class="line">  &quot;308e612999026677733ffd2954833e58d456e663e982037880f455ee5932c59c&quot;,</div><div class="line">  &quot;0b62ecc7990ac6770848655f10d4277d89df4ef1092fb7e25c0b2aa87a2bcbec&quot;,</div><div class="line">  &quot;5de9fbe62f7dc499568b41300610e3aa8b489a61375b3fa26717f65eab85392a&quot;,</div><div class="line">  &quot;14a000cae88c1bd881c06ba24a7a31364ff369578912e5a5abcf4023a0a28557&quot;,</div><div class="line">  &quot;414b9361debb64366cdf61b1acf5211e17b5f4f978ae5bfcad1aac916503e8a9&quot;,</div><div class="line">  &quot;75d1176835a12cf09cd51663fd7bd40e8e4fef15b392bf7e6ff94188398da041&quot;,</div><div class="line">  &quot;3d71ee9885fc9586013ce1c2954e197d726b25981c6977195e184fa90cdfa71d&quot;,</div><div class="line">  &quot;149dfcdc4cdfcbeeaf432bab90deca9a7b2b3935d359366ce652b071d6b72bb4&quot;</div><div class="line">]</div></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/yzpbright/article/details/81004202" target="_blank" rel="external">https://blog.csdn.net/yzpbright/article/details/81004202</a></p>
+<p><a href="https://www.codeooze.com/blockchain/bitcoind-running-in-docker/" target="_blank" rel="external">https://www.codeooze.com/blockchain/bitcoind-running-in-docker/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;搭建比特币测试网络&quot;&gt;&lt;a href=&quot;#搭建比特币测试网络&quot; class=&quot;headerlink&quot; title=&quot;搭建比特币测试网络&quot;&gt;&lt;/a&gt;搭建比特币测试网络&lt;/h2&gt;&lt;h3 id=&quot;下载比特币测试网络镜像&quot;&gt;&lt;a href=&quot;#下载比特币测试网络镜像&quot; c
+    
+    </summary>
+    
+      <category term="区块链" scheme="http://webfuse.cn/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="Docker" scheme="http://webfuse.cn/tags/Docker/"/>
+    
+      <category term="区块链" scheme="http://webfuse.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="比特币" scheme="http://webfuse.cn/tags/%E6%AF%94%E7%89%B9%E5%B8%81/"/>
+    
+  </entry>
   
   <entry>
     <title>WebMvcConfigurationSupport和WebMvcConfigurer</title>
@@ -1576,128 +1807,6 @@ import java.math.BigIntege
       <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
     
       <category term="MongoDB" scheme="http://webfuse.cn/tags/MongoDB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>将一个JavaBean中的非空属性转到Map中</title>
-    <link href="http://webfuse.cn/2017/11/09/%E5%B0%86%E4%B8%80%E4%B8%AAJavaBean%E4%B8%AD%E7%9A%84%E9%9D%9E%E7%A9%BA%E5%B1%9E%E6%80%A7%E8%BD%AC%E5%88%B0Map%E4%B8%AD/"/>
-    <id>http://webfuse.cn/2017/11/09/将一个JavaBean中的非空属性转到Map中/</id>
-    <published>2017-11-09T08:44:42.000Z</published>
-    <updated>2018-07-28T03:19:46.937Z</updated>
-    
-    <content type="html"><![CDATA[<p>最近在写项目的时候遇到一个这样的一个需要：将JavaBean中非空属性转到一个Map中。stackoverflow出一个还算不错的回答，记录如下：</p>
-<p>stackoverflow地址：<a href="https://stackoverflow.com/questions/8524011/java-reflection-how-can-i-get-the-all-getter-methods-of-a-java-class-and-invoke" target="_blank" rel="external">https://stackoverflow.com/questions/8524011/java-reflection-how-can-i-get-the-all-getter-methods-of-a-java-class-and-invoke</a></p>
-<p>最佳答案（大概意思的翻译）：</p>
-<p>不要用正则表达式，使用<a href="https://docs.oracle.com/javase/6/docs/api/java/beans/Introspector.html" target="_blank" rel="external">Introspector</a>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(PropertyDescriptor propertyDescriptor :</div><div class="line">    Introspector.getBeanInfo(yourClass).getPropertyDescriptors())&#123;</div><div class="line"></div><div class="line">    <span class="comment">// propertyEditor.getReadMethod() exposes the getter</span></div><div class="line">    <span class="comment">// btw, this may be null if you have a write-only property</span></div><div class="line">    System.out.println(propertyDescriptor.getReadMethod());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>通常情况下，我们不需要Object.class的属性，所以我们可以使用以下方法：</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> Introspector.getBeanInfo(yourClass, stopClass)</div><div class="line"><span class="comment">// usually with Object.class as 2nd param</span></div><div class="line"><span class="comment">// the first class is inclusive, the second exclusive</span></div></pre></td></tr></table></figure>
-<p>我们还可以使用commons/beanutils的一些方法，如：<code>Map&lt;String, String&gt; properties = BeanUtils.describe(yourObject);</code>它会找到并执行所有的getter并将结果存储到Map中，而且BeanUtils.describe()在返回之前将所有的属性值转换为字符串。</p>
-<p>以下是一个用Java 8写的方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">beanProperties</span><span class="params">(Object bean)</span> </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">return</span> Arrays.asList(</div><div class="line">         Introspector.getBeanInfo(bean.getClass(), Object.class)</div><div class="line">                     .getPropertyDescriptors()</div><div class="line">      )</div><div class="line">      .stream()</div><div class="line">      <span class="comment">// filter out properties with setters only</span></div><div class="line">      .filter(pd -&gt; Objects.nonNull(pd.getReadMethod()))</div><div class="line">      .collect(Collectors.toMap(</div><div class="line">        <span class="comment">// bean property name</span></div><div class="line">        PropertyDescriptor::getName,</div><div class="line">        pd -&gt; &#123; <span class="comment">// invoke method to get value</span></div><div class="line">            <span class="keyword">try</span> &#123; </div><div class="line">                <span class="keyword">return</span> pd.getReadMethod().invoke(bean);</div><div class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                <span class="comment">// replace this with better error handling</span></div><div class="line">               <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;));</div><div class="line">  &#125; <span class="keyword">catch</span> (IntrospectionException e) &#123;</div><div class="line">    <span class="comment">// and this, too</span></div><div class="line">    <span class="keyword">return</span> Collections.emptyMap();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以上方法有一个缺点：Collectors.toMap()对于null的值会报错。所以，有了以下版本：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">beanProperties</span><span class="params">(Object bean)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        Arrays.asList(Introspector.getBeanInfo(bean.getClass(), Object.class)</div><div class="line">                                  .getPropertyDescriptors())</div><div class="line">              .stream()</div><div class="line">              <span class="comment">// filter out properties with setters only</span></div><div class="line">              .filter(pd -&gt; Objects.nonNull(pd.getReadMethod()))</div><div class="line">              .forEach(pd -&gt; &#123; <span class="comment">// invoke method to get value</span></div><div class="line">                  <span class="keyword">try</span> &#123;</div><div class="line">                      Object value = pd.getReadMethod().invoke(bean);</div><div class="line">                      <span class="keyword">if</span> (value != <span class="keyword">null</span>) &#123;</div><div class="line">                          map.put(pd.getName(), value);</div><div class="line">                      &#125;</div><div class="line">                  &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                      <span class="comment">// add proper error handling here</span></div><div class="line">                  &#125;</div><div class="line">              &#125;);</div><div class="line">        <span class="keyword">return</span> map;</div><div class="line">    &#125; <span class="keyword">catch</span> (IntrospectionException e) &#123;</div><div class="line">        <span class="comment">// and here, too</span></div><div class="line">        <span class="keyword">return</span> Collections.emptyMap();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Guava版本：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">guavaBeanProperties</span><span class="params">(Object bean)</span> </span>&#123;</div><div class="line">    Object NULL = <span class="keyword">new</span> Object();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">return</span> Maps.transformValues(</div><div class="line">                Arrays.stream(</div><div class="line">                        Introspector.getBeanInfo(bean.getClass(), Object.class)</div><div class="line">                                    .getPropertyDescriptors())</div><div class="line">                      .filter(pd -&gt; Objects.nonNull(pd.getReadMethod()))</div><div class="line">                      .collect(ImmutableMap::&lt;String, Object&gt;builder,</div><div class="line">                               (builder, pd) -&gt; &#123;</div><div class="line">                                   <span class="keyword">try</span> &#123;</div><div class="line">                                       Object result = pd.getReadMethod()</div><div class="line">                                                         .invoke(bean);</div><div class="line">                                       builder.put(pd.getName(),</div><div class="line">                                                   firstNonNull(result, NULL));</div><div class="line">                                   &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                                       <span class="keyword">throw</span> propagate(e);</div><div class="line">                                   &#125;</div><div class="line">                               &#125;,</div><div class="line">                               (left, right) -&gt; left.putAll(right.build()))</div><div class="line">                      .build(), v -&gt; v == NULL ? <span class="keyword">null</span> : v);</div><div class="line">    &#125; <span class="keyword">catch</span> (IntrospectionException e) &#123;</div><div class="line">        <span class="keyword">throw</span> propagate(e);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>另外，还有一个JavaSlang的版本。基本上很少用这个，就不收集了。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近在写项目的时候遇到一个这样的一个需要：将JavaBean中非空属性转到一个Map中。stackoverflow出一个还算不错的回答，记录如下：&lt;/p&gt;
-&lt;p&gt;stackoverflow地址：&lt;a href=&quot;https://stackoverflow.com/quest
-    
-    </summary>
-    
-      <category term="Java" scheme="http://webfuse.cn/categories/Java/"/>
-    
-    
-      <category term="Java" scheme="http://webfuse.cn/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在使用SpringBoot的时候遇到的一些小坑</title>
-    <link href="http://webfuse.cn/2017/10/28/%E5%9C%A8%E4%BD%BF%E7%94%A8SpringBoot%E7%9A%84%E6%97%B6%E5%80%99%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E5%9D%91/"/>
-    <id>http://webfuse.cn/2017/10/28/在使用SpringBoot的时候遇到的一些小坑/</id>
-    <published>2017-10-28T07:39:32.000Z</published>
-    <updated>2018-07-28T03:19:46.929Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="引入了spring-boot-starter-jdbc但是没有配置数据源"><a href="#引入了spring-boot-starter-jdbc但是没有配置数据源" class="headerlink" title="引入了spring-boot-starter-jdbc但是没有配置数据源"></a>引入了spring-boot-starter-jdbc但是没有配置数据源</h2><p>出现问题原因：在开发过程中把一些公关的东西封装成一个jar包，多个项目共同使用这个jar包（这个jar中包含数据处理的代码）。然而，有些项目没有用到数据处理，没有配置数据源。所以，在启动的时候会报错。</p>
-<p>解决方案：引入<code>@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})</code></p>
-<h2 id="使用RestTemplate访问restful服务的异常处理"><a href="#使用RestTemplate访问restful服务的异常处理" class="headerlink" title="使用RestTemplate访问restful服务的异常处理"></a>使用RestTemplate访问restful服务的异常处理</h2><p>问题描述：</p>
-<p>在使用RestTemplate访问restful接口的时候，如果接口抛出异常，默认情况下捕获的异常不符合自定义的异常规范。</p>
-<p>解决：</p>
-<p>RestTemplate默认使用的是<code>DefaultResponseErrorHandler</code>处理异常。如果我们需要定制自己的一处处理，可以编写定制化的处理器：</p>
-<p>如：</p>
-<pre><code>public class CustomResponseErrorHandler implements ResponseErrorHandler {
-
-    private ResponseErrorHandler errorHandler = new DefaultResponseErrorHandler();
-
-    @Override
-    public boolean hasError(ClientHttpResponse response) throws IOException {
-        return errorHandler.hasError(response);
-    }
-
-    @Override
-    public void handleError(ClientHttpResponse response) throws IOException {
-
-        String theString = IOUtils.toString(response.getBody());
-        Map&lt;String, String&gt; error = (Map&lt;String, String&gt;) JsonMapper.fromJsonString(theString, Map.class);
-        String errorCode = error.get(&quot;errorCode&quot;);
-        String message = error.get(&quot;message&quot;);
-
-        throw new RemoteCallException(errorCode, message, null);
-
-    }
-}
-</code></pre><p>然后</p>
-<pre><code>RestTemplate restTemplate = new RestTemplate();
-restTemplate.setErrorHandler(new CustomResponseErrorHandler());
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;引入了spring-boot-starter-jdbc但是没有配置数据源&quot;&gt;&lt;a href=&quot;#引入了spring-boot-starter-jdbc但是没有配置数据源&quot; class=&quot;headerlink&quot; title=&quot;引入了spring-boot-start
-    
-    </summary>
-    
-      <category term="开发工具" scheme="http://webfuse.cn/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
-    
-      <category term="Spring Boot" scheme="http://webfuse.cn/tags/Spring-Boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IntelliJ Idea取消Could not autowire. No beans of &#39;xxxx&#39; type found的错误提示</title>
-    <link href="http://webfuse.cn/2017/10/28/IntelliJ%20Idea%E5%8F%96%E6%B6%88Could%20not%20autowire.%20No%20beans%20of%20&#39;xxxx&#39;%20type%20found%E7%9A%84%E9%94%99%E8%AF%AF%E6%8F%90%E7%A4%BA/"/>
-    <id>http://webfuse.cn/2017/10/28/IntelliJ Idea取消Could not autowire. No beans of &#39;xxxx&#39; type found的错误提示/</id>
-    <published>2017-10-28T07:17:47.000Z</published>
-    <updated>2018-07-28T03:19:46.909Z</updated>
-    
-    <content type="html"><![CDATA[<p>遇到的问题：</p>
-<p>在IntelliJ Idea使用Spring的@Autowired，有的时候遇到“Could not autowire. No beans of ‘xxxx’ type found”的标红提示。但是在程序的编译和运行时候都没有出现这个问题。</p>
-<p>解决：</p>
-<p>在出现该问题的地方加上<code>@SuppressWarnings(&quot;SpringJavaAutowiringInspection&quot;)</code>注解</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;遇到的问题：&lt;/p&gt;
-&lt;p&gt;在IntelliJ Idea使用Spring的@Autowired，有的时候遇到“Could not autowire. No beans of ‘xxxx’ type found”的标红提示。但是在程序的编译和运行时候都没有出现这个问题。&lt;/p
-    
-    </summary>
-    
-      <category term="开发工具" scheme="http://webfuse.cn/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
-    
-      <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
     
   </entry>
   

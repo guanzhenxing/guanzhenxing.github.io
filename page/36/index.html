@@ -393,7 +393,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/04/26/怎样将props传递给-this-props-children/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/04/30/Spring Ioc容器的依赖注入/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -413,7 +413,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/04/26/怎样将props传递给-this-props-children/" class="post-title-link" itemprop="url">怎样将props传递给{this.props.children}</a>
+                <a href="/2016/04/30/Spring Ioc容器的依赖注入/" class="post-title-link" itemprop="url">Spring Ioc容器的依赖注入</a>
               
             
           </h1>
@@ -438,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2016-04-26 14:15:29" itemprop="dateCreated datePublished" datetime="2016-04-26T14:15:29+08:00">2016-04-26</time>
+              <time title="创建时间：2016-04-30 16:11:04" itemprop="dateCreated datePublished" datetime="2016-04-30T16:11:04+08:00">2016-04-30</time>
             
 
             
@@ -472,7 +472,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
 
                 
                 
@@ -486,7 +486,7 @@
 
           
           
-             <span id="/2016/04/26/怎样将props传递给-this-props-children/" class="leancloud_visitors" data-flag-title="怎样将props传递给{this.props.children}">
+             <span id="/2016/04/30/Spring Ioc容器的依赖注入/" class="leancloud_visitors" data-flag-title="Spring Ioc容器的依赖注入">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -520,17 +520,15 @@
         
           
             <p>
-              在ReactJs中this.props.children是一个特殊的存在，它表示组件的所有节点。
-this.props.children的值存在三种可能性：
-
-如果当前组件没有子节点，this.props.children为undefined；
-如果当前组件只有一个子节点，this.props.ch
+              前面的《Spring IoC容器的初始化过程》介绍了IoC容器的初始化过程。
+SpringIoC容器的初始化过程完成的主要工作是在IoC容器中建立BeanDefinition数据映射。IoC容器的依赖注入的过程是在用户第一次向IoC容器索要Bean时触发的。
+当我们调用getBean()时，我们实际
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/04/26/怎样将props传递给-this-props-children/#more" rel="contents">
+              <a class="btn" href="/2016/04/30/Spring Ioc容器的依赖注入/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -590,7 +588,7 @@ this.props.children的值存在三种可能性：
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/04/25/Web服务器会做些什么/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/04/30/Spring IoC容器的初始化过程/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -610,7 +608,7 @@ this.props.children的值存在三种可能性：
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/04/25/Web服务器会做些什么/" class="post-title-link" itemprop="url">Web服务器会做些什么</a>
+                <a href="/2016/04/30/Spring IoC容器的初始化过程/" class="post-title-link" itemprop="url">Spring IoC容器的初始化过程</a>
               
             
           </h1>
@@ -635,7 +633,7 @@ this.props.children的值存在三种可能性：
                 
               
 
-              <time title="创建时间：2016-04-25 23:03:17" itemprop="dateCreated datePublished" datetime="2016-04-25T23:03:17+08:00">2016-04-25</time>
+              <time title="创建时间：2016-04-30 01:11:57" itemprop="dateCreated datePublished" datetime="2016-04-30T01:11:57+08:00">2016-04-30</time>
             
 
             
@@ -683,7 +681,7 @@ this.props.children的值存在三种可能性：
 
           
           
-             <span id="/2016/04/25/Web服务器会做些什么/" class="leancloud_visitors" data-flag-title="Web服务器会做些什么">
+             <span id="/2016/04/30/Spring IoC容器的初始化过程/" class="leancloud_visitors" data-flag-title="Spring IoC容器的初始化过程">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -717,19 +715,15 @@ this.props.children的值存在三种可能性：
         
           
             <p>
-              不管是在日常的开发、发布Web程序还是浏览网页，我们都离不开Web服务器。《Http权威指南》的5.3节介绍了Web服务器会做些什么，特意做了此读书笔记。
-如下图所示：
-
-
-建立连接——接受客户端连接，或者如果不希望与这个客户端建立连接，就将其关闭。
-接收请求——从网络中读取一条HTTP请求报文。
-
+              Spring IoC容器的初始化包括BeanDefinition的Resource定位、载入和注册这三个基本的过程。IoC容器的初始化过程不包含Bean依赖注入的实现。Bean依赖的注入一般会发生在第一次通过getBean向容器索取Bean的时候。
+先看以下代码：
+ApplicationContex
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/04/25/Web服务器会做些什么/#more" rel="contents">
+              <a class="btn" href="/2016/04/30/Spring IoC容器的初始化过程/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -778,7 +772,7 @@ this.props.children的值存在三种可能性：
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/35/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/37/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/35/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/37/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -821,7 +815,7 @@ this.props.children的值存在三种可能性：
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -981,7 +975,11 @@ this.props.children的值存在三种可能性：
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1668,7 +1666,7 @@ this.props.children的值存在三种可能性：
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("怎样将props传递给{this.props.children}");titles.push("Web服务器会做些什么");' //if you have a better way to get titles of posts, please change it
+        var postsstr = 'titles.push("Spring Ioc容器的依赖注入");titles.push("Spring IoC容器的初始化过程");' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {

@@ -393,7 +393,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/07/26/Groovy入门/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/08/15/Groovy中的拦截方法/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -413,7 +413,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/07/26/Groovy入门/" class="post-title-link" itemprop="url">Groovy入门</a>
+                <a href="/2016/08/15/Groovy中的拦截方法/" class="post-title-link" itemprop="url">Groovy中的拦截方法</a>
               
             
           </h1>
@@ -438,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2016-07-26 21:34:31" itemprop="dateCreated datePublished" datetime="2016-07-26T21:34:31+08:00">2016-07-26</time>
+              <time title="创建时间：2016-08-15 21:52:51" itemprop="dateCreated datePublished" datetime="2016-08-15T21:52:51+08:00">2016-08-15</time>
             
 
             
@@ -486,7 +486,7 @@
 
           
           
-             <span id="/2016/07/26/Groovy入门/" class="leancloud_visitors" data-flag-title="Groovy入门">
+             <span id="/2016/08/15/Groovy中的拦截方法/" class="leancloud_visitors" data-flag-title="Groovy中的拦截方法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -520,16 +520,18 @@
         
           
             <p>
-              安装以及简单使用安装到Groovy官网下载安装包。（本人使用的是windows，故以windows为例）
+              在Groovy中可以很轻松地实现AOP。这里有两种方法可以实现AOP：
 
-按照安装程序指引操作。
-设置GROOVY_HOME环境变量和Groovy路径。GROOVY_HOME设置为安装目录（C:\Groovy\Groovy-2.4.7），Path中添加%GROOVY
+使用GroovyInterceptable拦截方法
+使用MetaClass拦截方法
+
+使用GroovyInterceptable拦截方法如果一个Groovy对象实现了GroovyInterceptable接口，那么当调用该对象
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/07/26/Groovy入门/#more" rel="contents">
+              <a class="btn" href="/2016/08/15/Groovy中的拦截方法/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -589,7 +591,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/07/20/Visual Studio Code常用快捷键/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/08/11/简单使用babel/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -609,7 +611,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2016/07/20/Visual Studio Code常用快捷键/" class="post-title-link" itemprop="url">Visual Studio Code常用快捷键</a>
+                <a href="/2016/08/11/简单使用babel/" class="post-title-link" itemprop="url">简单使用babel</a>
               
             
           </h1>
@@ -634,7 +636,7 @@
                 
               
 
-              <time title="创建时间：2016-07-20 10:03:25" itemprop="dateCreated datePublished" datetime="2016-07-20T10:03:25+08:00">2016-07-20</time>
+              <time title="创建时间：2016-08-11 21:11:08" itemprop="dateCreated datePublished" datetime="2016-08-11T21:11:08+08:00">2016-08-11</time>
             
 
             
@@ -668,7 +670,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开发工具/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
 
                 
                 
@@ -682,7 +684,7 @@
 
           
           
-             <span id="/2016/07/20/Visual Studio Code常用快捷键/" class="leancloud_visitors" data-flag-title="Visual Studio Code常用快捷键">
+             <span id="/2016/08/11/简单使用babel/" class="leancloud_visitors" data-flag-title="简单使用babel">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -716,15 +718,19 @@
         
           
             <p>
-              命令模式（Command Palette）通过F1或者Ctrl+Shift+P打开主命令面板。在主命令面板中可以执行VSCode的任何一条命令。Command Palette是VSCode中最有用的模式，在这里你可以安装组件也可以查看快捷键等。
+              这篇文章的前提是读者知道什么是ES6以及为什么我们需要用到babel。本文的行文思路是怎么搭建一个es6+babel的开发环境。
+基本使用创建工程目录
+创建一个文件夹，命名为use-babel
+使用npm init初始化目录
+创建babel的配置文件.babelrc，该文件用来设置转码规则和插件
 
-在主面板模式下按backspace可以进入Ctrl+
+
               ...
             </p>
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/2016/07/20/Visual Studio Code常用快捷键/#more" rel="contents">
+              <a class="btn" href="/2016/08/11/简单使用babel/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -773,7 +779,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/26/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/28/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/26/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="extend next" rel="next" href="/page/28/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -816,7 +822,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">74</span>
+                    <span class="site-state-item-count">77</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -976,7 +982,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">46</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1663,7 +1673,7 @@
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("Groovy入门");titles.push("Visual Studio Code常用快捷键");' //if you have a better way to get titles of posts, please change it
+        var postsstr = 'titles.push("Groovy中的拦截方法");titles.push("简单使用babel");' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {
