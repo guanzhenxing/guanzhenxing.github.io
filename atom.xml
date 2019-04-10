@@ -389,7 +389,7 @@
     <link href="http://webfuse.cn/2019/01/20/WebMvcConfigurationSupport%E5%92%8CWebMvcConfigurer/"/>
     <id>http://webfuse.cn/2019/01/20/WebMvcConfigurationSupport和WebMvcConfigurer/</id>
     <published>2019-01-20T07:41:33.000Z</published>
-    <updated>2019-04-10T01:40:21.060Z</updated>
+    <updated>2019-04-10T05:43:32.269Z</updated>
     
     <content type="html"><![CDATA[<p>SpringBoot帮我们做了很多的事情，但是有的时候会有自定义的Handler，Interceptor，ViewResolver，MessageConverter等，该怎么配置呢？为什么继承了WebMvcConfigurationSupport后有些配置会不生效呢？WebMvcConfigurer又是什么呢？</p>
 <h2 id="WebMvcConfigurationSupport"><a href="#WebMvcConfigurationSupport" class="headerlink" title="WebMvcConfigurationSupport"></a>WebMvcConfigurationSupport</h2><p>我们继承WebMvcConfigurationSupport可以自定义SpringMvc的配置。</p>
@@ -441,7 +441,9 @@
     
     </summary>
     
-      <category term="Spring Boot" scheme="http://webfuse.cn/categories/Spring-Boot/"/>
+      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
+    
+      <category term="Spring Boot" scheme="http://webfuse.cn/categories/Spring/Spring-Boot/"/>
     
     
       <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
@@ -622,7 +624,7 @@
     <link href="http://webfuse.cn/2018/09/28/SpringFramework%E5%B8%B8%E7%94%A8%E7%9A%84%E6%B3%A8%E8%A7%A3%E8%AF%B4%E6%98%8E/"/>
     <id>http://webfuse.cn/2018/09/28/SpringFramework常用的注解说明/</id>
     <published>2018-09-28T10:59:34.000Z</published>
-    <updated>2019-04-10T01:40:43.978Z</updated>
+    <updated>2019-04-10T05:43:24.055Z</updated>
     
     <content type="html"><![CDATA[<p>在进行SpringBoot开发的时候经常要用到注解，有的时候很容易忘记某个注解的意思，现将一些常用的注解说明归纳如下：</p>
 <table>
@@ -972,7 +974,9 @@
     
     </summary>
     
-      <category term="Spring Boot" scheme="http://webfuse.cn/categories/Spring-Boot/"/>
+      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
+    
+      <category term="Spring Boot" scheme="http://webfuse.cn/categories/Spring/Spring-Boot/"/>
     
     
       <category term="Spring" scheme="http://webfuse.cn/tags/Spring/"/>
@@ -1863,7 +1867,7 @@ import java.math.BigIntege
     <link href="http://webfuse.cn/2017/11/15/%E5%9C%A8SpringCloud%20Zuul%E4%B8%AD%E4%BD%BF%E7%94%A8WebSockets/"/>
     <id>http://webfuse.cn/2017/11/15/在SpringCloud Zuul中使用WebSockets/</id>
     <published>2017-11-15T01:46:38.000Z</published>
-    <updated>2018-07-28T03:19:46.929Z</updated>
+    <updated>2019-04-10T05:44:03.108Z</updated>
     
     <content type="html"><![CDATA[<p>近期的项目中需要用到WebSocket，因为使用的是微服务架构，所以又直接使用了Spring Cloud的Zuul。然而，Zuul对WebSocket的支持不是那么友好，具体可以参考：<a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/163。" target="_blank" rel="external">https://github.com/spring-cloud/spring-cloud-netflix/issues/163。</a></p>
 <p>Spring已经给我们提供了一套<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket" target="_blank" rel="external">WebSockets的解决方案</a>。我们需要用到的有：Sock.js、STOMP、Spring Messaging以及Spring Integration。</p>
@@ -1894,7 +1898,9 @@ import java.math.BigIntege
     
     </summary>
     
-      <category term="Spring Cloud" scheme="http://webfuse.cn/categories/Spring-Cloud/"/>
+      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/categories/Spring/Spring-Cloud/"/>
     
     
       <category term="Spring Cloud" scheme="http://webfuse.cn/tags/Spring-Cloud/"/>
