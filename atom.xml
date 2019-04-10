@@ -1533,7 +1533,7 @@
     <link href="http://webfuse.cn/2018/02/14/%E5%A4%9A%E7%A7%8D%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E6%A8%A1%E5%BC%8F%E8%AE%BE%E8%AE%A1/"/>
     <id>http://webfuse.cn/2018/02/14/多种用户登录模式设计/</id>
     <published>2018-02-14T00:59:06.000Z</published>
-    <updated>2018-07-28T03:19:46.930Z</updated>
+    <updated>2019-04-10T02:43:10.265Z</updated>
     
     <content type="html"><![CDATA[<p>在做Web开发的时候，用户登录时最基本的功能。通常情况下，我们直接使用“用户名+密码”的模式，直接在users表中建立用户名密码等字段来完成工作。但是，如果我们的要求是邮箱、手机号和接入第三方的登录都要支持呢？很明显，在这种情况下，基本的用户名密码登录是完成不了我们的要求的。</p>
 <p>在这种情况下，我们可以采用“拆表”的方法。这里所谓的拆表就是将一个用户表拆分成为几个表：user_info,user_auth,user_extra等表。user_info表中保存用户的基本信息，如user_id,username,nickname等；user_auth表用来保存用户的认证信息，如user_id,identity_type,identifier和certificate等；user_extra表是用户信息的扩展表，用户的一些扩展信息可以保存在该表中。</p>
@@ -1559,7 +1559,7 @@
     
       <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
     
-      <category term="用户登录" scheme="http://webfuse.cn/tags/%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95/"/>
+      <category term="权限认证" scheme="http://webfuse.cn/tags/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/"/>
     
   </entry>
   
