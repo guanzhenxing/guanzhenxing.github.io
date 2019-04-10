@@ -103,7 +103,7 @@
   <meta name="description" content="Make it work, make it right, make it fast">
 <meta property="og:type" content="website">
 <meta property="og:title" content="WebFuse">
-<meta property="og:url" content="http://webfuse.cn/tags/多租户/index.html">
+<meta property="og:url" content="http://webfuse.cn/categories/Docker/index.html">
 <meta property="og:site_name" content="WebFuse">
 <meta property="og:description" content="Make it work, make it right, make it fast">
 <meta name="twitter:card" content="summary">
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://webfuse.cn/tags/多租户/"/>
+  <link rel="canonical" href="http://webfuse.cn/categories/Docker/"/>
 
 
 
@@ -127,7 +127,7 @@
   };
 </script>
 
-  <title>标签: 多租户 | WebFuse</title>
+  <title>分类: Docker | WebFuse</title>
   
 
 
@@ -265,7 +265,7 @@
         
         
           
-          <li class="menu-item menu-item-categories">
+          <li class="menu-item menu-item-categories menu-item-active">
 
     
     
@@ -282,7 +282,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -401,11 +401,11 @@
   
   
   
-  <div class="post-block tag">
+  <div class="post-block category">
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>多租户<small>标签</small>
+        <h1>Docker<small>分类</small>
         </h1>
       </div>
 
@@ -417,9 +417,9 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2018/02/15/多租户设计/" itemprop="url">
+          <a class="post-title-link" href="/2018/11/14/Docker基本命令/" itemprop="url">
             
-              <span itemprop="name">多租户设计</span>
+              <span itemprop="name">Docker基本命令</span>
             
           </a>
         
@@ -427,9 +427,37 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-15T09:55:53+08:00"
-              content="2018-02-15" >
-          02-15
+              datetime="2018-11-14T09:47:06+08:00"
+              content="2018-11-14" >
+          11-14
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+      
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2017/03/06/Docker简单入门/" itemprop="url">
+            
+              <span itemprop="name">Docker简单入门</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-03-06T21:41:24+08:00"
+              content="2017-03-06" >
+          03-06
         </time>
       </div>
 
@@ -446,6 +474,7 @@
   
 
   
+
 
 
           </div>
@@ -537,7 +566,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -652,7 +685,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1327,8 +1360,8 @@
       //https://hexo.io/docs/variables.html
       var isPost = ''.length > 0
       var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = '多租户'.length > 0
+      var isCategory = 'Docker'.length > 0
+      var isTag = ''.length > 0
 
       if (isPost) { //is article page
         var title = ''
@@ -1339,7 +1372,7 @@
       else if (!isArchive && !isCategory && !isTag) { //is index page
         var titles = [] //array to titles
 
-        var postsstr = 'titles.push("多租户设计");' //if you have a better way to get titles of posts, please change it
+        var postsstr = 'titles.push("Docker基本命令");titles.push("Docker简单入门");' //if you have a better way to get titles of posts, please change it
         eval(postsstr)
 
         var promises = titles.map(function (title) {
