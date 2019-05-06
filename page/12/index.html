@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,15 +30,9 @@
 
 
 
-  <meta name="google-site-verification" content="TSVApdOPJJ3_-stNp_HWhi0yV7De9ZNH0ajM8Ra9Zk4"/>
 
 
 
-
-
-
-
-  <meta name="baidu-site-verification" content="rt0dJarBwI"/>
 
 
 
@@ -52,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -76,9 +70,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://webfuse.cn/page/12/"/>
 
 
@@ -133,25 +130,7 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131682260-1');
-  </script>
 
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -262,96 +241,17 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
 
       
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
       
     </ul>
   
 
   
+    
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
@@ -371,12 +271,202 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2017/11/10/Spring Data MongoDB中的自定义级联/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/11/10/Spring Data MongoDB中的自定义级联/" class="post-title-link" itemprop="url">Spring Data MongoDB中的自定义级联</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-10 18:26:52" itemprop="dateCreated datePublished" datetime="2017-11-10T18:26:52+08:00">2017-11-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-10 13:43:11" itemprop="dateModified" datetime="2019-04-10T13:43:11+08:00">2019-04-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在使用Spring Data操作MongoDB中：</p>
+<ul>
+<li>在保存一个实体的时候，如果被@DBRef标识的类只传入Id，保存后返回的结果并没有全部的引用类内容，只有Id。</li>
+<li>保存实体，不能保存引用实体。</li>
+</ul>
+<p>例如：我们有一个实体<code>Person</code>，有一个实体<code>EmailAddress</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Document</span>(collection = <span class="string">"test_person"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line"></div><div class="line">    <span class="meta">@DBRef</span></div><div class="line">    <span class="keyword">private</span> EmailAddress emailAddress;</div><div class="line"></div><div class="line">    ... getter setter 方法</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Document</span>(collection = <span class="string">"test_email"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmailAddress</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Id</span></div><div class="line">    <span class="keyword">private</span> String id;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String value;</div><div class="line"></div><div class="line">   ... getter setter 方法</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当我们调用保存方法的时候：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Person <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">    Person person = <span class="keyword">new</span> Person();</div><div class="line">    person.setName(<span class="string">"test"</span>);</div><div class="line"></div><div class="line">    EmailAddress emailAddress = <span class="keyword">new</span> EmailAddress();</div><div class="line">    emailAddress.setId(<span class="string">"5a05108d4dcc5dece03c9e69"</span>);</div><div class="line"></div><div class="line">    person.setEmailAddress(emailAddress);</div><div class="line"></div><div class="line">    testRepository.save(person);</div><div class="line">    <span class="keyword">return</span> person;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述的代码中，返回的person只有id，没有emailAddress的其他值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> Person <span class="title">test</span><span class="params">()</span> </span>&#123;</div><div class="line">    Person person = <span class="keyword">new</span> Person();</div><div class="line">    person.setName(<span class="string">"test"</span>);</div><div class="line"></div><div class="line">    EmailAddress emailAddress = <span class="keyword">new</span> EmailAddress();</div><div class="line">    emailAddress.setName(<span class="string">"afafa"</span>);</div><div class="line"></div><div class="line">    person.setEmailAddress(emailAddress);</div><div class="line"></div><div class="line">    testRepository.save(person);</div><div class="line">    <span class="keyword">return</span> person;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述的代码中，emailAddress不能被保存。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="生命周期事件"><a href="#生命周期事件" class="headerlink" title="生命周期事件"></a>生命周期事件</h3><p>Spring Data MongoDB中存在一些生命周期事件，如：onBeforeConvert, onBeforeSave, onAfterSave, onAfterLoad and onAfterConvert等。我们可以继承<code>AbstractMappingEventListener</code>，然后重写这些方法，即可以实现。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * MongoDB级联控制</div><div class="line"> * Created by guanzhenxing on 2017/11/9.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CascadeControlMongoEventListener</span> <span class="keyword">extends</span> <span class="title">AbstractMongoEventListener</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> MongoOperations mongoOperations;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAfterSave</span><span class="params">(AfterSaveEvent&lt;Object&gt; event)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onAfterSave(event);</div><div class="line">        Object source = event.getSource();</div><div class="line">        ReflectionUtils.doWithFields(source.getClass(), <span class="keyword">new</span> CascadeAfterSaveCallback(source, mongoOperations));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBeforeConvert</span><span class="params">(BeforeConvertEvent&lt;Object&gt; event)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onBeforeConvert(event);</div><div class="line">        Object source = event.getSource();</div><div class="line">        ReflectionUtils.doWithFields(source.getClass(), <span class="keyword">new</span> CascadeBeforeConvertCallback(source, mongoOperations));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 级联控制的回调</div><div class="line"> * Created by guanzhenxing on 2017/11/10.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CascadeAfterSaveCallback</span> <span class="keyword">implements</span> <span class="title">ReflectionUtils</span>.<span class="title">FieldCallback</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Object source;</div><div class="line">    <span class="keyword">private</span> MongoOperations mongoOperations;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CascadeAfterSaveCallback</span><span class="params">(<span class="keyword">final</span> Object source, <span class="keyword">final</span> MongoOperations mongoOperations)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.source = source;</div><div class="line">        <span class="keyword">this</span>.mongoOperations = mongoOperations;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doWith</span><span class="params">(<span class="keyword">final</span> Field field)</span> <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</div><div class="line">        ReflectionUtils.makeAccessible(field);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (field.isAnnotationPresent(DBRef.class)) &#123;</div><div class="line">            <span class="keyword">final</span> Object fieldValue = field.get(source);   <span class="comment">//获得值</span></div><div class="line">            <span class="keyword">if</span> (fieldValue != <span class="keyword">null</span>) &#123;</div><div class="line">                doCascadeLoad(field);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 级联查询</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> field</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doCascadeLoad</span><span class="params">(Field field)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</div><div class="line">        Object fieldValue = field.get(source);</div><div class="line">        List&lt;Field&gt; idFields = ReflectionUtil.getAnnotationField(fieldValue, Id.class); <span class="comment">//该方法是为了获得所有的被@Id注解的属性</span></div><div class="line">        <span class="keyword">if</span> (idFields.size() == <span class="number">1</span>) &#123; <span class="comment">//只处理一个Id</span></div><div class="line">            Object idValue = ReflectionUtil.getFieldValue(fieldValue, idFields.get(<span class="number">0</span>).getName());</div><div class="line">            Object value = mongoOperations.findById(idValue, fieldValue.getClass());    <span class="comment">//查询获得值</span></div><div class="line">            ReflectionUtil.setFieldValue(source, field.getName(), value);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CascadeBeforeConvertCallback</span> <span class="keyword">implements</span> <span class="title">ReflectionUtils</span>.<span class="title">FieldCallback</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">private</span> Object source;</div><div class="line">    <span class="keyword">private</span> MongoOperations mongoOperations;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CascadeBeforeConvertCallback</span><span class="params">(Object source, MongoOperations mongoOperations)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.source = source;</div><div class="line">        <span class="keyword">this</span>.mongoOperations = mongoOperations;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doWith</span><span class="params">(Field field)</span> <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</div><div class="line">        ReflectionUtils.makeAccessible(field);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (field.isAnnotationPresent(DBRef.class)) &#123;</div><div class="line">            <span class="keyword">final</span> Object fieldValue = field.get(source);   <span class="comment">//获得值</span></div><div class="line">            <span class="keyword">if</span> (fieldValue != <span class="keyword">null</span>) &#123;</div><div class="line">                doCascadeSave(field);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 级联保存</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> field</div><div class="line">     * <span class="doctag">@throws</span> IllegalAccessException</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doCascadeSave</span><span class="params">(Field field)</span> <span class="keyword">throws</span> IllegalAccessException </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (field.isAnnotationPresent(CascadeSave.class)) &#123; <span class="comment">//如果有标识@CascadeSave注解</span></div><div class="line">            Object fieldValue = field.get(source);</div><div class="line">            List&lt;Field&gt; idFields = ReflectionUtil.getAnnotationField(fieldValue, Id.class);</div><div class="line">            <span class="keyword">if</span> (idFields.size() == <span class="number">1</span>) &#123;</div><div class="line">                mongoOperations.save(fieldValue);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="meta">@Target</span>(ElementType.FIELD)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> CascadeSave &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MongoConfig</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> CascadeControlMongoEventListener <span class="title">userCascadingMongoEventListener</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CascadeControlMongoEventListener();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上是核心代码。至此，我们就可以解决上述的问题了。</p>
+<p><hr><br>参考：<a href="http://www.baeldung.com/cascading-with-dbref-and-lifecycle-events-in-spring-data-mongodb" target="_blank" rel="external">http://www.baeldung.com/cascading-with-dbref-and-lifecycle-events-in-spring-data-mongodb</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -461,7 +551,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -482,20 +572,10 @@
 
           
             
+            
           
 
           
-          
-             <span id="/2017/11/09/将一个JavaBean中的非空属性转到Map中/" class="leancloud_visitors" data-flag-title="将一个JavaBean中的非空属性转到Map中">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -519,221 +599,23 @@
       
         
           
-            <p>
-              最近在写项目的时候遇到一个这样的一个需要：将JavaBean中非空属性转到一个Map中。stackoverflow出一个还算不错的回答，记录如下：
-stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflection-
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/11/09/将一个JavaBean中的非空属性转到Map中/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2017/10/28/在使用SpringBoot的时候遇到的一些小坑/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
-      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebFuse"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/10/28/在使用SpringBoot的时候遇到的一些小坑/" class="post-title-link" itemprop="url">在使用SpringBoot的时候遇到的一些小坑</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-10-28 15:39:32" itemprop="dateCreated datePublished" datetime="2017-10-28T15:39:32+08:00">2017-10-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-10 13:44:27" itemprop="dateModified" datetime="2019-04-10T13:44:27+08:00">2019-04-10</time>
-              
-            
-          </span>
+            <p>最近在写项目的时候遇到一个这样的一个需要：将JavaBean中非空属性转到一个Map中。stackoverflow出一个还算不错的回答，记录如下：</p>
+<p>stackoverflow地址：<a href="https://stackoverflow.com/questions/8524011/java-reflection-how-can-i-get-the-all-getter-methods-of-a-java-class-and-invoke" target="_blank" rel="external">https://stackoverflow.com/questions/8524011/java-reflection-how-can-i-get-the-all-getter-methods-of-a-java-class-and-invoke</a></p>
+<p>最佳答案（大概意思的翻译）：</p>
+<p>不要用正则表达式，使用<a href="https://docs.oracle.com/javase/6/docs/api/java/beans/Introspector.html" target="_blank" rel="external">Introspector</a>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(PropertyDescriptor propertyDescriptor :</div><div class="line">    Introspector.getBeanInfo(yourClass).getPropertyDescriptors())&#123;</div><div class="line"></div><div class="line">    <span class="comment">// propertyEditor.getReadMethod() exposes the getter</span></div><div class="line">    <span class="comment">// btw, this may be null if you have a write-only property</span></div><div class="line">    System.out.println(propertyDescriptor.getReadMethod());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通常情况下，我们不需要Object.class的属性，所以我们可以使用以下方法：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> Introspector.getBeanInfo(yourClass, stopClass)</div><div class="line"><span class="comment">// usually with Object.class as 2nd param</span></div><div class="line"><span class="comment">// the first class is inclusive, the second exclusive</span></div></pre></td></tr></table></figure>
+<p>我们还可以使用commons/beanutils的一些方法，如：<code>Map&lt;String, String&gt; properties = BeanUtils.describe(yourObject);</code>它会找到并执行所有的getter并将结果存储到Map中，而且BeanUtils.describe()在返回之前将所有的属性值转换为字符串。</p>
+<p>以下是一个用Java 8写的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">beanProperties</span><span class="params">(Object bean)</span> </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">return</span> Arrays.asList(</div><div class="line">         Introspector.getBeanInfo(bean.getClass(), Object.class)</div><div class="line">                     .getPropertyDescriptors()</div><div class="line">      )</div><div class="line">      .stream()</div><div class="line">      <span class="comment">// filter out properties with setters only</span></div><div class="line">      .filter(pd -&gt; Objects.nonNull(pd.getReadMethod()))</div><div class="line">      .collect(Collectors.toMap(</div><div class="line">        <span class="comment">// bean property name</span></div><div class="line">        PropertyDescriptor::getName,</div><div class="line">        pd -&gt; &#123; <span class="comment">// invoke method to get value</span></div><div class="line">            <span class="keyword">try</span> &#123; </div><div class="line">                <span class="keyword">return</span> pd.getReadMethod().invoke(bean);</div><div class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                <span class="comment">// replace this with better error handling</span></div><div class="line">               <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;));</div><div class="line">  &#125; <span class="keyword">catch</span> (IntrospectionException e) &#123;</div><div class="line">    <span class="comment">// and this, too</span></div><div class="line">    <span class="keyword">return</span> Collections.emptyMap();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上方法有一个缺点：Collectors.toMap()对于null的值会报错。所以，有了以下版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">beanProperties</span><span class="params">(Object bean)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        Map&lt;String, Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">        Arrays.asList(Introspector.getBeanInfo(bean.getClass(), Object.class)</div><div class="line">                                  .getPropertyDescriptors())</div><div class="line">              .stream()</div><div class="line">              <span class="comment">// filter out properties with setters only</span></div><div class="line">              .filter(pd -&gt; Objects.nonNull(pd.getReadMethod()))</div><div class="line">              .forEach(pd -&gt; &#123; <span class="comment">// invoke method to get value</span></div><div class="line">                  <span class="keyword">try</span> &#123;</div><div class="line">                      Object value = pd.getReadMethod().invoke(bean);</div><div class="line">                      <span class="keyword">if</span> (value != <span class="keyword">null</span>) &#123;</div><div class="line">                          map.put(pd.getName(), value);</div><div class="line">                      &#125;</div><div class="line">                  &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                      <span class="comment">// add proper error handling here</span></div><div class="line">                  &#125;</div><div class="line">              &#125;);</div><div class="line">        <span class="keyword">return</span> map;</div><div class="line">    &#125; <span class="keyword">catch</span> (IntrospectionException e) &#123;</div><div class="line">        <span class="comment">// and here, too</span></div><div class="line">        <span class="keyword">return</span> Collections.emptyMap();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Guava版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title">guavaBeanProperties</span><span class="params">(Object bean)</span> </span>&#123;</div><div class="line">    Object NULL = <span class="keyword">new</span> Object();</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">return</span> Maps.transformValues(</div><div class="line">                Arrays.stream(</div><div class="line">                        Introspector.getBeanInfo(bean.getClass(), Object.class)</div><div class="line">                                    .getPropertyDescriptors())</div><div class="line">                      .filter(pd -&gt; Objects.nonNull(pd.getReadMethod()))</div><div class="line">                      .collect(ImmutableMap::&lt;String, Object&gt;builder,</div><div class="line">                               (builder, pd) -&gt; &#123;</div><div class="line">                                   <span class="keyword">try</span> &#123;</div><div class="line">                                       Object result = pd.getReadMethod()</div><div class="line">                                                         .invoke(bean);</div><div class="line">                                       builder.put(pd.getName(),</div><div class="line">                                                   firstNonNull(result, NULL));</div><div class="line">                                   &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">                                       <span class="keyword">throw</span> propagate(e);</div><div class="line">                                   &#125;</div><div class="line">                               &#125;,</div><div class="line">                               (left, right) -&gt; left.putAll(right.build()))</div><div class="line">                      .build(), v -&gt; v == NULL ? <span class="keyword">null</span> : v);</div><div class="line">    &#125; <span class="keyword">catch</span> (IntrospectionException e) &#123;</div><div class="line">        <span class="keyword">throw</span> propagate(e);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>另外，还有一个JavaSlang的版本。基本上很少用这个，就不收集了。</p>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/Spring-Boot/" itemprop="url" rel="index"><span itemprop="name">Spring Boot</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/10/28/在使用SpringBoot的时候遇到的一些小坑/" class="leancloud_visitors" data-flag-title="在使用SpringBoot的时候遇到的一些小坑">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              引入了spring-boot-starter-jdbc但是没有配置数据源出现问题原因：在开发过程中把一些公关的东西封装成一个jar包，多个项目共同使用这个jar包（这个jar中包含数据处理的代码）。然而，有些项目没有用到数据处理，没有配置数据源。所以，在启动的时候会报错。
-解决方案：引入@Enabl
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/10/28/在使用SpringBoot的时候遇到的一些小坑/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -798,7 +680,6 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -810,7 +691,7 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Hing Kwan</p>
-              <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
           
@@ -820,7 +701,7 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -830,7 +711,11 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -883,7 +768,11 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -982,9 +871,7 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1002,31 +889,7 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-            </div>
+
           
 
           
@@ -1048,6 +911,7 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
 
     </div>
   </aside>
+  
 
 
         
@@ -1056,7 +920,7 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1076,7 +940,7 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
@@ -1154,9 +1018,9 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
   
 
 
-  <script src="/js/src/utils.js?v=6.7.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=6.7.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1164,9 +1028,7 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
   
 
 
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
@@ -1175,7 +1037,16 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
   
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -1183,512 +1054,12 @@ stackoverflow地址：https://stackoverflow.com/questions/8524011/java-reflectio
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
 
   
 
   
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz",
-                'X-LC-Key': "RfYJ7E2mHXj4yux2OnSLoxdr",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
-          
-        })
-    });
-  </script>
-
-
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
-  <script>
-    (function () {
-
-      firebase.initializeApp({
-        apiKey: 'AIzaSyBOoFO6OomXzAe3yA8kpYOVxxTrbgoBMM8',
-        projectId: 'webfusecn-ada77'
-      })
-
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
-
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
-            }
-          }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
-              }
-            }
-          }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('阅读次数 ' + count))
-          )
-        }
-      }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = ''
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = 'titles.push("将一个JavaBean中的非空属性转到Map中");titles.push("在使用SpringBoot的时候遇到的一些小坑");' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
-  </script>
-
 
   
 

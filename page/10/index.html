@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,15 +30,9 @@
 
 
 
-  <meta name="google-site-verification" content="TSVApdOPJJ3_-stNp_HWhi0yV7De9ZNH0ajM8Ra9Zk4"/>
 
 
 
-
-
-
-
-  <meta name="baidu-site-verification" content="rt0dJarBwI"/>
 
 
 
@@ -52,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -76,9 +70,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://webfuse.cn/page/10/"/>
 
 
@@ -133,25 +130,7 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131682260-1');
-  </script>
 
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -262,96 +241,17 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
 
       
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
       
     </ul>
   
 
   
+    
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
@@ -371,12 +271,192 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2018/02/14/多种用户登录模式设计/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/02/14/多种用户登录模式设计/" class="post-title-link" itemprop="url">多种用户登录模式设计</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-14 08:59:06" itemprop="dateCreated datePublished" datetime="2018-02-14T08:59:06+08:00">2018-02-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-10 10:43:10" itemprop="dateModified" datetime="2019-04-10T10:43:10+08:00">2019-04-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/UAA/" itemprop="url" rel="index"><span itemprop="name">UAA</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在做Web开发的时候，用户登录时最基本的功能。通常情况下，我们直接使用“用户名+密码”的模式，直接在users表中建立用户名密码等字段来完成工作。但是，如果我们的要求是邮箱、手机号和接入第三方的登录都要支持呢？很明显，在这种情况下，基本的用户名密码登录是完成不了我们的要求的。</p>
+<p>在这种情况下，我们可以采用“拆表”的方法。这里所谓的拆表就是将一个用户表拆分成为几个表：user_info,user_auth,user_extra等表。user_info表中保存用户的基本信息，如user_id,username,nickname等；user_auth表用来保存用户的认证信息，如user_id,identity_type,identifier和certificate等；user_extra表是用户信息的扩展表，用户的一些扩展信息可以保存在该表中。</p>
+<p>表结果如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">-- 用户信息</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> user_info;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> user_info (</div><div class="line">  <span class="keyword">id</span> <span class="built_in">VARCHAR</span>(<span class="number">36</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> , <span class="comment">--ID</span></div><div class="line">  username <span class="built_in">VARCHAR</span>(<span class="number">45</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  <span class="comment">--用户名</span></div><div class="line">  nickname <span class="built_in">VARCHAR</span>(<span class="number">45</span>) <span class="literal">NULL</span>,  <span class="comment">--昵称</span></div><div class="line">  user_type <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,  <span class="comment">--1管理员用户 2普通用户  3虚拟用户</span></div><div class="line">  avatar <span class="built_in">VARCHAR</span>(<span class="number">100</span>) <span class="literal">NULL</span>, <span class="comment">--头像</span></div><div class="line">  register_source <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--注册来源：USER_NAME/PHONE/EMAIL/QQ/WECHAT/SINA_WEIBO/DOUBAN/GOOGLE/GITHUB/LINKEDIN/TWITTER/FACEBOOK</span></div><div class="line">  account_non_expired TINYINT <span class="literal">NULL</span>, <span class="comment">--用户是否过期</span></div><div class="line">  account_non_locked TINYINT <span class="literal">NULL</span>,  <span class="comment">--用户是否被锁</span></div><div class="line">  credentials_non_expired TINYINT <span class="literal">NULL</span>, <span class="comment">--证书是否存在</span></div><div class="line">  create_time DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(),</div><div class="line">  update_time DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(),</div><div class="line">  <span class="keyword">status</span> <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--状态，ENABLED（启用）,DISABLE（禁用）</span></div><div class="line">  enabled TINYINT <span class="keyword">DEFAULT</span> <span class="literal">TRUE</span></div><div class="line">);</div><div class="line"><span class="keyword">CREATE</span> PRIMARY <span class="keyword">KEY</span> <span class="keyword">ON</span> user_info (<span class="keyword">id</span>);</div><div class="line"></div><div class="line"><span class="comment">--用户扩展</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> user_extra;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> user_extra (</div><div class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span> AUTO_INCREMENT ,</div><div class="line">  user_id <span class="built_in">VARCHAR</span>(<span class="number">36</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></div><div class="line">);</div><div class="line"><span class="keyword">CREATE</span> PRIMARY <span class="keyword">KEY</span> <span class="keyword">ON</span> user_extra (user_id);</div><div class="line"></div><div class="line"><span class="comment">--用户认证</span></div><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> user_auth;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> user_auth (</div><div class="line">  <span class="keyword">id</span> <span class="built_in">BIGINT</span> AUTO_INCREMENT ,</div><div class="line">  user_id <span class="built_in">VARCHAR</span>(<span class="number">36</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</div><div class="line">  identity_type <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--授权来源：USER_NAME/PHONE/EMAIL/QQ/WECHAT/SINA_WEIBO/DOUBAN/GOOGLE/GITHUB/LINKEDIN/TWITTER/FACEBOOK</span></div><div class="line">  identifier <span class="built_in">VARCHAR</span>(<span class="number">64</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,  <span class="comment">--手机号/邮箱/用户名或第三方应用的唯一标识</span></div><div class="line">  certificate <span class="built_in">VARCHAR</span>(<span class="number">64</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--密码凭证(站内的保存密码，站外的不保存或保存token)</span></div><div class="line">  create_time DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(),</div><div class="line">  update_time DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">CURRENT_TIMESTAMP</span>(),</div><div class="line">  <span class="keyword">status</span> <span class="built_in">VARCHAR</span>(<span class="number">16</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="comment">--状态，ENABLED（启用）,DISABLE（禁用）</span></div><div class="line">);</div></pre></td></tr></table></figure>
+<p>以上，如果我们需要为用户添加一种认证方式，可以在user_auth表中对应添加一条记录。比如，我们需要对接微博认证，那么就直接在user_auth表中添加一条identity_type=SINA_WEIBO的数据记录。我们在登录的时候，就可以直接使用user_auth表的identity_type,identifier和certificate进行认证，从而获得到user_id，然后可以拿user_id到user_info表和user_extra表中获得更多的用户数据。</p>
+<p>当然，这种方式也是有缺点的。最主要的缺点就是密码修改，当我们进行修改密码的时候，我们必须对手机号、邮箱以及用户名的所有的密码进行修改。还有一个缺点就是在登录时候要在程序中进行正则匹配，确定是哪种认证方式，那么匹配的顺序就很关键了。</p>
+<p>这个也只是一种参考的实现思路，具体的情况具体分析，我们可以根据实际情况进行必要的调整和修改。</p>
+<hr>
+<p>参考：</p>
+<p><a href="http://gglinux.com/2017/03/31/user/" target="_blank" rel="external">用户系统设计与实现</a></p>
+<p><a href="http://www.cnblogs.com/nuanxin/p/6215237.html" target="_blank" rel="external">浅谈数据库用户表结构设计，第三方登录</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -461,7 +541,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -482,20 +562,10 @@
 
           
             
+            
           
 
           
-          
-             <span id="/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/" class="leancloud_visitors" data-flag-title="《写给大忙人看的JavaSE8》读书笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -519,216 +589,225 @@
       
         
           
-            <p>
-              重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。
-import java.io.IOException;
+            <p>重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。</p>
+<pre><code>import java.io.IOException;
 import java.math.BigInteger;
-import java.nio.charset.S
-              ...
-            </p>
-          <!--noindex-->
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.LongAdder;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class Java8Demo {
+
+    /**
+    * 带有参数变量的表达式都被称为lambda表达式
+    * lambda表达式：基本型为 (形参列表)-&gt;{方法体}
+    * 方法引用： ::操作符将方法名和对象或类的名字分割开来
+    */
+    public void aboutLambda() {
+        Comparator&lt;String&gt; comp = (str1, str2) -&gt; 0;
+
+        new Thread(() -&gt; {
+            for (int i = 0; i &lt; 100; i++)
+                System.out.println(&quot;Lambda Expression&quot;);
+        }).start();
+
+        //函数式接口：对于只包含一个抽象方法的接口，你可以通过lambda表达式来创建该接口的对象。
+        Arrays.sort(new String[]{&quot;a&quot;, &quot;b&quot;}, comp);
+
+        //方法引用等同于提供方法参数的lambda表达式
+        Arrays.asList(&quot;&quot;, &quot;&quot;).stream().forEach(System.out::print);//情况1：对象::实例方法
+        Arrays.asList(1, 2).stream().map(Math::abs).collect(Collectors.toList());//情况2：类::静态方法
+        Arrays.sort(new String[]{&quot;&quot;, &quot;&quot;}, Comparator.comparingInt(String::length)); //情况3：类::实例方法。第一个参数会成为执行方法的对象.String::length 等于 (x)-&gt;x.length()
+        String[] arr = Arrays.asList(&quot;&quot;, &quot;&quot;).stream().toArray(String[]::new);   //情况4：类::new
+
+        //所有的lambda表达式都是延迟执行的
+    }
+
+
+    public void aboutStreamAPI() {
+        List&lt;String&gt; words = new ArrayList&lt;&gt;();
+        long count = words.parallelStream().filter(w -&gt; w.length() &gt; 12).count();
+
+        //Stream遵循“做什么，而不是怎么去做”的原则。
+        //在使用Stream时候，你会通过三个阶段来建立一个操作流水线：
+        //1-创建一个Stream
+        //2-在一个或多个步骤中，指定将初始Stream转换为另一个Stream的中间操作
+        //3-使用一个终止操作来产生一个结果。该操作会强制它之前的延迟操作立即执行。在这之后，该Stream操作就不会再被使用了。
+
+        Stream&lt;String&gt; wordStream = Stream.of(new String[]{});
+        Stream&lt;String&gt; song = Stream.of(&quot;&quot;, &quot;&quot;, &quot;&quot;);
+
+        Stream&lt;String&gt; echos = Stream.generate(() -&gt; &quot;Echo&quot;); //创建一个含有常亮值的Stream
+        Stream&lt;Double&gt; randoms = Stream.generate(Math::random); //创建一个含有随机数的Stream
+        //iterate方法接受一个“种子”的值和一个函数作为参数
+        Stream&lt;BigInteger&gt; integers = Stream.iterate(BigInteger.ZERO, n -&gt; n.add(BigInteger.ONE));
+
+
+        //流转换是指从一个流中读取数据，并将转换后的数据写入到另一个流中。
+        //filter方法的参数是一个Predicate&lt;T&gt;对象——即一个从T到boolean的函数。
+        //我们使用map方法对流中的值进行某种形式的转换，它会对每个元素应用一个函数，并将返回的值收集到一个新的流中。
+
+        //distinct方法会根据原始流中的元素返回一个具有相同顺序、抑制了重复元素的新流。
+
+        //聚合方法：如果你希望对元素求和，或者以其他方式将流中的元素组合为一个值
+        //    - count方法：返回流中元素的总数
+        //    - max方法：返回流中最大值
+        //    - min方法：返回流中最小值
+        //    - reduce方法： 提供聚合操作
+
+        //Optional&lt;T&gt;对象或者是对一个T类型对象的封装，或者表示不是任何对象。
+        // if(optionalValue.ifPresent()) optionalValue.get().someMethod();
+        // optionalValue.ifPresent(v-&gt;results::add);
+        // Optional&lt;Boolean&gt; added = optionalValue.map(results::add);   //返回一个值
+        // optionalValue.orElse(&quot;&quot;);
+        // optionalValue.orElseGet(()-&gt;System.out.print(&quot;....&quot;));
+        // optionalValue.orElseThrow(NoSuchElementException:new);
+        // 可以使用Optional.of(result)或者Optional.empty()来创建一个Optional对象
+        // ofNullable方法中，如果obj不为null,那么Optional.ofNullable(obj)会返回Optional.of(obj),否则会返回Optional.empty()。
+        //使用flatMap来组合可选函数。Optional&lt;U&gt; u =  s.f().flatMap(T::g);
+
+        //以下3个是等效的
+        HashSet&lt;String&gt; res = wordStream.collect(HashSet::new, HashSet::add, HashSet::addAll);
+        List&lt;String&gt; res1 = wordStream.collect(Collectors.toList());
+        Set&lt;String&gt; res2 = wordStream.collect(Collectors.toSet());
+
+        //将字符串连接起来
+        String str = wordStream.collect(Collectors.joining());
+
+        //将字符串连接起来，中间以,隔开
+        String str1 = wordStream.collect(Collectors.joining(&quot;, &quot;));
+
+        //使用(Int|Double|Long)SummaryStatistics来获得一个流的总和、平均值、最大值或最小值
+        IntSummaryStatistics summary = wordStream.collect(Collectors.summarizingInt(String::length));
+        double averageWordLength = summary.getAverage();
+        double maxWordLength = summary.getMax();
+
+        //将一个Stream对象中的元素收集到一个map中
+        //Map&lt;Integer,String&gt; idToName = peopleStream.collect(Collectors.toMap(Person::getId,Person::getName));
+
+        //上面的转换成Map中，如果存在相同的键异常，我们可以重写方法搞定。
+        Stream&lt;Locale&gt; locales = Stream.of(Locale.getAvailableLocales());
+        Map&lt;String, String&gt; languageNames = locales.collect(Collectors.toMap(
+                l -&gt; l.getDisplayLanguage(),
+                l -&gt; l.getDisplayLanguage(l),
+                (existingValue, newValue) -&gt; existingValue
+        ));
+
+
+        //groupingBy方法，对具有相同特性的值进行分组
+        //当分类函数式一个predicate函数（即返回一个布尔值的函数）时，流元素会被分为两组列表：一组是函数会返回true的元素，另一组返回false的元素。
+        //在这种情况下，使用partitioningBy会比groupingBy更有效率。
+
+    }
+
+    public void aboutTime() {
+
+        Instant start = Instant.now();
+        Instant end = Instant.now();
+        Duration timeElapsed = Duration.between(start, end);
+        timeElapsed.toMillis();
+        timeElapsed.toDays();
+        timeElapsed.plusDays(1).getSeconds();
+        start.plusMillis(1);
+
+        // 以下是来自廖雪峰的博客
+        // Java 8新增了LocalDate和LocalTime接口，为什么要搞一套全新的处理日期和时间的API？因为旧的java.util.Date实在是太难用了。
+        // java.util.Date月份从0开始，一月是0，十二月是11，变态吧！java.time.LocalDate月份和星期都改成了enum，就不可能再用错了。
+        // java.util.Date和SimpleDateFormatter都不是线程安全的，而LocalDate和LocalTime和最基本的String一样，是不变类型，不但线程安全，而且不能修改。
+        // java.util.Date是一个“万能接口”，它包含日期、时间，还有毫秒数，如果你只想用java.util.Date存储日期，或者只存储时间，那么，只有你知道哪些部分的数据是有用的，哪些部分的数据是不能用的。在新的Java 8中，日期和时间被明确划分为LocalDate和LocalTime，LocalDate无法包含时间，LocalTime无法包含日期。当然，LocalDateTime才能同时包含日期和时间。
+        // 新接口更好用的原因是考虑到了日期时间的操作，经常发生往前推或往后推几天的情况。用java.util.Date配合Calendar要写好多代码，而且一般的开发人员还不一定能写对。
+
+        // 取当前日期：
+        LocalDate today = LocalDate.now(); // -&gt; 2014-12-24
+        // 根据年月日取日期，12月就是12：
+        LocalDate crischristmas = LocalDate.of(2014, 12, 25); // -&gt; 2014-12-25
+        // 根据字符串取：
+        LocalDate endOfFeb = LocalDate.parse(&quot;2014-02-28&quot;); // 严格按照ISO yyyy-MM-dd验证，02写成2都不行，当然也有一个重载方法允许自己定义格式
+        LocalDate.parse(&quot;2014-02-29&quot;); // 无效日期无法通过：DateTimeParseException: Invalid date
+
+        // LocalTime只包含时间，以前用java.util.Date怎么才能只表示时间呢？答案是，假装忽略日期。
+        // LocalTime包含毫秒：
+        LocalTime now = LocalTime.now(); // 11:09:09.240
+
+        //你可能想清除毫秒数：
+        LocalTime now1 = LocalTime.now().withNano(0); // 11:09:09
+
+        //构造时间也很简单：
+        LocalTime zero = LocalTime.of(0, 0, 0); // 00:00:00
+        LocalTime mid = LocalTime.parse(&quot;12:00:00&quot;); // 12:00:00
+
+        //日期校正器
+        //TemporalAdjusters类提供了很多静态方法来进行常用的校正。你可以将一个校正放的结果传递给with方法。
+        LocalDate firstTuesday = LocalDate.of(2018, 2, 1).with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY)); //计算2月的第一个星期二
+
+        //实现自己的校验器
+        TemporalAdjuster NEXT_WORKDAY = TemporalAdjusters.ofDateAdjuster(w -&gt; {
+            LocalDate result = w;
+            do {
+                result = result.plusDays(1);
+            } while (result.getDayOfWeek().getValue() &gt;= 6);
+            return result;
+        });
+        LocalDate backToWork = LocalDate.now().with(NEXT_WORKDAY);
+
+        //格式化与解析
+        // String formatted =  DateTimeFormatter.ISO_DATE_TIME.format();
+    }
+
+
+    public void aboutConcurrency() {
+        //原子性 lambda
+        // ConcurrentHashMap
+        ConcurrentHashMap&lt;String, LongAdder&gt; map = new ConcurrentHashMap();
+        map.putIfAbsent(&quot;&quot;, new LongAdder());
+        map.get(&quot;&quot;).increment();
+
+        //批量数据操作有三类：
+        //1)search会对每个键和（或）值应用一个函数，直到函数返回一个非null的结果。然后search会终止并返回该函数的结果。
+        //2)reduce会通过提供的累积函数，将所有的键和（或）值组合起来。
+        //3)forEach会对所有的键和（或）值应用一个函数。
+
+        //在使用这几种操作时，你需要指定一个并行阈值。如果映射包含的元素数量超过了这个阈值，批量操作就以并行方式执行。
+        //如果你希望批量数据操作在一个线程中运行，请使用Long.MAX_VALUE作为阈值。
+        //如果你希望批量数据操作尽可能使用更多的线程，则应该使用1作为阈值。
+
+        Set&lt;String&gt; words = map.keySet();
+
+        //并行数组操作
+        //静态方法Arrays.parallelSort可以对原始类型数组或者对象数组进行排序。
+        try {
+            String contents = new String(Files.readAllBytes(Paths.get(&quot;&quot;)), StandardCharsets.UTF_8);
+            String[] words1 = contents.split(&quot;&quot;);
+            Arrays.parallelSort(words1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //可完成的Future
+        //Future&lt;T&gt;接口用来表示一个在将来某个时间点可用的、类型为T的值。
+    }
+
+    public void aboutOthers() {
+
+        String joined = String.join(&quot;/&quot;, &quot;usr&quot;, &quot;local&quot;, &quot;bin&quot;);
+        String ids = String.join(&quot;, &quot;, ZoneId.getAvailableZoneIds());
+
+        Objects.isNull(&quot;&quot;);
+        Objects.nonNull(&quot;&quot;);
+    }
+
+}
+</code></pre>
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2017/12/22/Ehcache缓存持久化/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
-      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebFuse"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/12/22/Ehcache缓存持久化/" class="post-title-link" itemprop="url">Ehcache缓存持久化</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-12-22 09:25:24" itemprop="dateCreated datePublished" datetime="2017-12-22T09:25:24+08:00">2017-12-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/缓存/" itemprop="url" rel="index"><span itemprop="name">缓存</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/12/22/Ehcache缓存持久化/" class="leancloud_visitors" data-flag-title="Ehcache缓存持久化">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              因为在项目中需要将Ehcache的缓存数据写入磁盘，搜索一些怎么样持久化Ehcache缓存的资料，根据获得的资料在开发过程中遇到蛮多的坑，逐一记录下来。
-根据官网上的配置踩过的坑在Ehcache的官网上，有关于怎么配置持久化的说明。详情见： Configuring Restartability an
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/12/22/Ehcache缓存持久化/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -793,7 +872,6 @@ import java.nio.charset.S
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -805,7 +883,7 @@ import java.nio.charset.S
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Hing Kwan</p>
-              <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
           
@@ -815,7 +893,7 @@ import java.nio.charset.S
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -825,7 +903,11 @@ import java.nio.charset.S
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -878,7 +960,11 @@ import java.nio.charset.S
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -977,9 +1063,7 @@ import java.nio.charset.S
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -997,31 +1081,7 @@ import java.nio.charset.S
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-            </div>
+
           
 
           
@@ -1043,6 +1103,7 @@ import java.nio.charset.S
 
     </div>
   </aside>
+  
 
 
         
@@ -1051,7 +1112,7 @@ import java.nio.charset.S
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1071,7 +1132,7 @@ import java.nio.charset.S
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
@@ -1149,9 +1210,9 @@ import java.nio.charset.S
   
 
 
-  <script src="/js/src/utils.js?v=6.7.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=6.7.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1159,9 +1220,7 @@ import java.nio.charset.S
   
 
 
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
@@ -1170,7 +1229,16 @@ import java.nio.charset.S
   
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -1178,512 +1246,12 @@ import java.nio.charset.S
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
 
   
 
   
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz",
-                'X-LC-Key': "RfYJ7E2mHXj4yux2OnSLoxdr",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
-          
-        })
-    });
-  </script>
-
-
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
-  <script>
-    (function () {
-
-      firebase.initializeApp({
-        apiKey: 'AIzaSyBOoFO6OomXzAe3yA8kpYOVxxTrbgoBMM8',
-        projectId: 'webfusecn-ada77'
-      })
-
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
-
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
-            }
-          }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
-              }
-            }
-          }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('阅读次数 ' + count))
-          )
-        }
-      }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = ''
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = 'titles.push("《写给大忙人看的JavaSE8》读书笔记");titles.push("Ehcache缓存持久化");' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
-  </script>
-
 
   
 

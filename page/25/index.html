@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,15 +30,9 @@
 
 
 
-  <meta name="google-site-verification" content="TSVApdOPJJ3_-stNp_HWhi0yV7De9ZNH0ajM8Ra9Zk4"/>
 
 
 
-
-
-
-
-  <meta name="baidu-site-verification" content="rt0dJarBwI"/>
 
 
 
@@ -52,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -76,9 +70,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://webfuse.cn/page/25/"/>
 
 
@@ -133,25 +130,7 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131682260-1');
-  </script>
 
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -262,96 +241,17 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
 
       
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
       
     </ul>
   
 
   
+    
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
@@ -371,12 +271,348 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/09/24/PouchDB简单入门/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/09/24/PouchDB简单入门/" class="post-title-link" itemprop="url">PouchDB简单入门</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-24 11:40:28" itemprop="dateCreated datePublished" datetime="2016-09-24T11:40:28+08:00">2016-09-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PouchDB/" itemprop="url" rel="index"><span itemprop="name">PouchDB</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>PouchDB是一款数据库。它可以在浏览器里面存储你的本地信息，所以适合于基于浏览器的可离线存储方案。PouchDB实际上是一个JavaScript库。</p>
+<h1 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h1><p>可以参考<a href="https://pouchdb.com/getting-started.html" target="_blank" rel="external">Getting Started Guide</a>入门PouchDB。</p>
+<h2 id="安装PouchDB与使用"><a href="#安装PouchDB与使用" class="headerlink" title="安装PouchDB与使用"></a>安装PouchDB与使用</h2><pre><code>安装：`npm install pouchdb --save`
+
+使用：`var PouchDB = require(&apos;pouchdb&apos;);`
+</code></pre><h2 id="简单操作"><a href="#简单操作" class="headerlink" title="简单操作"></a>简单操作</h2><h3 id="新增与修改数据"><a href="#新增与修改数据" class="headerlink" title="新增与修改数据"></a>新增与修改数据</h3><p><code>db.put({},function callback(err,result){})</code>。新的数据中每一条都要有一个唯一的主键<code>_id</code>，在提交的数据里，如果存在与数据库中相同的<code>_id</code>，PouchDB就将更新该数据，否者就创建一条新数据。使用<code>db.post</code>可以提交没有<code>_id</code>的数据。回调函数callback中：如果err为非空，说明插入数据失败；如果err为空，则表示插入成功，result里返回成功后数据<code>_id</code>和<code>_rev</code>，<code>_rev</code>代表这条数据的版本号。</p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p><code>db.remove()</code>。删除数据的时候，我们需要同时提供<code>_id</code>和<code>_rev</code>项。我们使用<code>remove()</code>的时候，并没有真正删除掉文档，它只是被添加了一个<code>_deleted</code>标志，值为true。以下3种写法都可以删除数据：</p>
+<pre><code>db.get(&apos;mittens&apos;).then(function (doc) {
+  return db.remove(doc);
+});
+
+db.get(&apos;mydoc&apos;).then(function (doc) {
+  return db.remove(doc._id, doc._rev);
+});
+
+db.get(&apos;mydoc&apos;).then(function (doc) {
+  doc._deleted = true;
+  return db.put(doc);
+});
+</code></pre><h3 id="查询数据"><a href="#查询数据" class="headerlink" title="查询数据"></a>查询数据</h3><p><code>db.get(_id)</code>获得指定的数据</p>
+<h3 id="在浏览器中查看PouchDB"><a href="#在浏览器中查看PouchDB" class="headerlink" title="在浏览器中查看PouchDB"></a>在浏览器中查看PouchDB</h3><p>通过<a href="https://chrome.google.com/webstore/detail/pouchdb-inspector/hbhhpaojmpfimakffndmpmpndcmonkfa" target="_blank" rel="external">PouchDB Inspector</a>，它是用于在Chrome中查看PouchDB的插件。</p>
+<p>通过浏览器中的IndexedDB/WebSQL查看。</p>
+<h3 id="debug模式"><a href="#debug模式" class="headerlink" title="debug模式"></a>debug模式</h3><p>开启debug模式：<code>PouchDB.debug.enable(&#39;*&#39;)</code><br>关闭debug模式：<code>PouchDB.debug.disable()</code></p>
+<h3 id="删除本地数据库"><a href="#删除本地数据库" class="headerlink" title="删除本地数据库"></a>删除本地数据库</h3><p>在Chrome中，通过使用<a href="https://chrome.google.com/webstore/detail/clearbrowserdata/apehfighfmpoieeniallefdeibodgmmb" target="_blank" rel="external">ClearBrowserData extension</a>插件删除</p>
+<p>在Firefox中，通过使用<a href="https://addons.mozilla.org/en-US/firefox/addon/clear-recent-history/" target="_blank" rel="external">Clear Recent History+ add-on</a>插件删除</p>
+<p>在Safari中，通过 Safari → Clear History and Website Data 删除</p>
+<p>通过代码：<code>db.destroy()</code>，返回的是一个Promise</p>
+<h1 id="理解revisions-rev"><a href="#理解revisions-rev" class="headerlink" title="理解revisions(_rev)"></a>理解revisions(_rev)</h1><p>字段<code>_rev</code>是一个版本标志。它是在新增或者修改的时候生成的一个随机数。在PouchDB中，更新数据的时候必须要有<code>_rev</code>字段作为条件。如：</p>
+<pre><code>var doc = {
+  &apos;_id&apos;: &apos;mittens&apos;,
+  &apos;_rev&apos;: &apos;1-7df5244f3d6cf5d5b260b9c641f9c604&apos;,
+  &apos;name&apos;: &apos;Mittens&apos;,
+  &apos;occupation&apos;: &apos;kitten&apos;,
+  &apos;age&apos;: 4,
+  &apos;hobbies&apos;: [
+    &apos;playing with balls of yarn&apos;,
+    &apos;chasing laser pointers&apos;,
+    &quot;lookin&apos; hella cute&quot;
+  ]
+}
+</code></pre><p>如果没有<code>_rev</code>字段，更新的时候就会报错。</p>
+<pre><code>{
+    status: 409,
+    name: &apos;conflict&apos;,
+    message: &apos;Documentupdateconflict&apos;,
+    error: true
+}
+</code></pre><p>为什么我们一定需要<code>_rev</code>呢？因为使用<code>_rev</code>可以更好地进行同步工作</p>
+<h1 id="Asynchronous-Code"><a href="#Asynchronous-Code" class="headerlink" title="Asynchronous Code"></a>Asynchronous Code</h1><p>PouchDB提供了一个完全异步API。</p>
+<p>callback形式：</p>
+<pre><code>db.get(&apos;mittens&apos;, function (error, doc) {
+  if (error) {
+    // oh noes! we got an error
+  } else {
+    // okay, doc contains our document
+  }
+});
+</code></pre><p>Promise形式：</p>
+<pre><code>db.get(&apos;mittens&apos;).then(function (doc) {
+  // okay, doc contains our document
+}).catch(function (err) {
+  // oh noes! we got an error
+});
+</code></pre><h1 id="批量操作"><a href="#批量操作" class="headerlink" title="批量操作"></a>批量操作</h1><p>可以使用bulkDocs()和allDocs()进行批量操作</p>
+<h2 id="使用bulkDocs-一次性操作多个doc"><a href="#使用bulkDocs-一次性操作多个doc" class="headerlink" title="使用bulkDocs()一次性操作多个doc"></a>使用bulkDocs()一次性操作多个doc</h2><pre><code>db.bulkDocs([
+  {
+    _id: &apos;mittens&apos;,
+    occupation: &apos;kitten&apos;,
+    cuteness: 9.0
+  },
+  {
+    _id: &apos;katie&apos;,
+    occupation: &apos;kitten&apos;,
+    cuteness: 7.0
+  },
+  {
+    _id: &apos;felix&apos;,
+    occupation: &apos;kitten&apos;,
+    cuteness: 8.0
+  }
+])
+</code></pre><p>使用<code>bulkDocs()</code>可以在一次请求中进行处理操作。我们也可以使用<code>bulkDocs()</code>批量修改或者批量删除，每个对象中都包含<code>_rev</code>和<code>_deleted</code>即可。</p>
+<p>因为PouchDB并不支持事务。所以在bulkDocs()中，一个操作失败了，并不能确保所有的操作都失败。</p>
+<h2 id="使用allDocs-一次性读取多个doc"><a href="#使用allDocs-一次性读取多个doc" class="headerlink" title="使用allDocs()一次性读取多个doc"></a>使用allDocs()一次性读取多个doc</h2><p>我们使用allDocs()返回的数据是按照<code>_id</code>排序的。</p>
+<pre><code>db.allDocs({include_docs: true}).then(res =&gt; {
+    console.log(JSON.stringify(res))
+})
+</code></pre><p>如果我们没有传入<code>include_docs: true</code>只会返回基本的id、key和value.rev。</p>
+<p>在allDocs()中，你可以进行排序、过滤等操作。可以通过阅读<a href="https://pouchdb.com/2014/04/14/pagination-strategies-with-pouchdb.html" target="_blank" rel="external">“Pagination strategies with PouchDB”</a>获悉如何进行分页操作。</p>
+<h1 id="附件操作"><a href="#附件操作" class="headerlink" title="附件操作"></a>附件操作</h1><p>PouchDB支持附件操作</p>
+<h2 id="如何存储附件"><a href="#如何存储附件" class="headerlink" title="如何存储附件"></a>如何存储附件</h2><p>可以使用base64-encoded格式或者Blob进行存储附件。</p>
+<p>存储一个附件：</p>
+<pre><code>db.put({
+  _id: &apos;mydoc&apos;,
+  _attachments: {
+    &apos;myattachment.txt&apos;: {
+      content_type: &apos;text/plain&apos;,
+      data: &apos;aGVsbG8gd29ybGQ=&apos;
+    }
+  }
+})
+</code></pre><p>以上代码中，<code>myattachment.txt</code>是文件名；<code>content_type</code>是格式；<code>aGVsbG8gd29ybGQ=</code>是base64编码后的数据。</p>
+<p>我们如何读取附件呢？</p>
+<pre><code>db.get(&apos;mydoc&apos;).then(data =&gt; {
+    console.log(data)
+})
+</code></pre><p>使用以上代码时，PouchDB只会附件的基本信息，返回：</p>
+<pre><code>{
+    _attachments: {
+        myattachment.txt: {
+            content_type: &quot;text/plain&quot;,
+            digest: &quot;md5-XrY7u+Ae7tCTyyK7j1rNww==&quot;,
+            length: 11,
+            revpos: 1,
+            stub: true
+        }
+    },
+    _id: &quot;mydoc&quot;,
+    _rev: &quot;1-a2308e4759440419de42048838ed86d3&quot;
+}
+</code></pre><p>要获得附件内容，我们必须得在查询中添加参数：<code>attachments: true</code>。</p>
+<pre><code>db.get(&apos;mydoc&apos;, {attachments: true}).then(data =&gt; {
+    console.log(data)
+})
+</code></pre><h2 id="图片附件"><a href="#图片附件" class="headerlink" title="图片附件"></a>图片附件</h2><pre><code>db.put({
+    _id: &apos;meowth&apos;,
+    _attachments: {
+      &apos;meowth.png&apos;: {
+        content_type: &apos;image/png&apos;,
+        data: &apos;iVBORw0KGgoAAAANSUhEUgAAACgAAAAkCAIAAAB0Xu9BAAAABGdBTUEAALGPC/xhBQAAAuNJREFUWEetmD1WHDEQhDdxRMYlnBFyBIccgdQhKVcgJeQMpE5JSTd2uqnvIGpVUqmm9TPrffD0eLMzUn+qVnXPwiFd/PP6eLh47v7EaazbmxsOxjhTT88z9hV7GoNF1cUCvN7TTPv/gf/+uQPm862MWTL6fff4HfDx4S79/oVAlAUwqOmYR0rnazuFnhfOy/ErMKkcBFOr1vOjUi2MFn4nuMil6OPh5eGANLhW3y6u3aH7ijEDCxgCvzFmimvc95TekZLyMSeJC68Bkw0kqUy1K87FlpGZqsGFCyqEtQNDdFUtFctTiuhnPKNysid/WFEFLE2O102XJdEE+8IgeuGsjeJyGHm/xHvQ3JtKVsGGp85g9rK6xMHtvHO9+WACYjk5vkVM6XQ6OZubCJvTfPicYPeHO2AKFl5NuF5UK1VDUbeLxh2BcRGKTQE3irHm3+vPj6cfCod50Eqv5QxtwBQUGhZhbrGVuRia1B4MNp6edwBxld2sl1splfHCwfsvCZfrCQyWmX10djjOlWJSSy3VQlS6LmfrgNvaieRWx1LZ6s9co+P0DLsy3OdLU3lWRclQsVcHJBcUQ0k9/WVVrmpRzYQzpgAdQcAXxZzUnFX3proannrYH+Vq6KkLi+UkarH09mC8YPr2RMWOlEqFkQClsykGEv7CqCUbXcG8+SaGvJ4a8d4y6epND+pEhxoN0vWUu5ntXlFb5/JT7JfJJqoTdy9u9qc7ax3xJRHqJLADWEl23cFWl4K9fvoaCJ2BHpmJ3s3z+O0U/DmzdMjB9alWZtg4e3yxzPa7lUR7nkvxLHO9+tvJX3mtSDpwX8GajB283I8R8a7D2MhUZr1iNWdny256yYLd52DwRYBtRMvE7rsmtxIUE+zLKQCDO4jlxB6CZ8M17GhuY+XTE8vNhQiIiSE82ZsGwk1pht4ZSpT0YVpon6EvevOXXH8JxVR78QzNuamupW/7UB7wO/+7sG5V4ekXb4cL5Lyv+4IAAAAASUVORK5CYII=&apos;
+      }
+    }
+  }).then(function () {
+    return db.getAttachment(&apos;meowth&apos;, &apos;meowth.png&apos;)
+  }).then(function (blob) {
+    var url = URL.createObjectURL(blob)
+    var img = document.createElement(&apos;img&apos;)
+    img.src = url
+    document.body.appendChild(img)
+  }).catch(function (err) {
+    console.log(err)
+  })
+</code></pre><p>上面代码中，我们使用URL.createObjectURL()，将Blob转换成URL。</p>
+<p>上面代码更值得让我们注意的是，使用了<code>db.getAttachment</code>方法。该方法返回一个Blob，而不是返回base64编码的String。不过我们可以在base64和blob直接互转。</p>
+<h2 id="直接存储二进制数据"><a href="#直接存储二进制数据" class="headerlink" title="直接存储二进制数据"></a>直接存储二进制数据</h2><p>可以直接使用<code>putAttachment()</code>方法，如果已经存在附件则该方法将覆盖已存在的附件，如果不存在附件则创建一个新的附件。</p>
+<p><em>在NodeJS中，PouchDB返回的Blobs被Buffers代替。同样的，在PouchDB中，NodeJS的Buffers被Blobs替代。</em></p>
+<h2 id="附件上传"><a href="#附件上传" class="headerlink" title="附件上传"></a>附件上传</h2><p>可以使用H5的<code>File</code>API上传附件，也可以使用<code>&lt;input type=&quot;file&quot;&gt;</code>进行附件上传，而且它们的元素已经是Blob。以下是一个简单的例子：</p>
+<pre><code>&lt;input type=&quot;file&quot;&gt;
+
+var input = document.querySelector(&apos;input&apos;);
+input.addEventListener(&apos;change&apos;, function () {
+  var file = input.files[0]; // file is a Blob
+
+  db.put({
+    _id: &apos;mydoc&apos;,
+    _attachments: {
+      filename: {
+        type: file.type,
+        data: file
+      }
+    }
+  }).catch(function (err) {
+    console.log(err);
+  });
+});
+</code></pre><h2 id="Base64-vs-Blobs-Buffers"><a href="#Base64-vs-Blobs-Buffers" class="headerlink" title="Base64 vs Blobs/Buffers"></a>Base64 vs Blobs/Buffers</h2><p>PouchDB将根据Base64格式的数据或者Blobs/Buffers数据选择最佳的存储结构。</p>
+<p>根据<a href="https://pouchdb.com/guides/attachments.html#base64-vs-blobs-buffers" target="_blank" rel="external">官方例子的代码</a>，我们可以在使用put()保存Blobs，也可以使用putAttachment()保存Base64。getAttachment()方法总是返回Blobs。在各个查询方法中，都可以传入选项<code>{attachments: true}</code>，返回Base64；传入参数<code>{binary: true}</code>返回二进制。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -461,7 +697,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -482,20 +718,10 @@
 
           
             
+            
           
 
           
-          
-             <span id="/2016/09/12/MOP方法合成/" class="leancloud_visitors" data-flag-title="MOP方法合成">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -519,215 +745,136 @@
       
         
           
-            <p>
-              方法注入（method injection）：编写代码时知道想要添加到一个或多个类中的方法的名字。利用方法注入，可以动态地向类中添加行为。也可以向任意数目的类中注入一组实现某一特定功能的可复用方法。可以通过使用分类，使用ExpandoMetaClass或Groovy的Mixin工具来注入方法。
-方法
-              ...
-            </p>
-          <!--noindex-->
+            <p>方法注入（method injection）：编写代码时知道想要添加到一个或多个类中的方法的名字。利用方法注入，可以动态地向类中添加行为。也可以向任意数目的类中注入一组实现某一特定功能的可复用方法。可以通过使用分类，使用ExpandoMetaClass或Groovy的Mixin工具来注入方法。</p>
+<p>方法合成（method synthesis）：想在调用时动态地确定方法的行为。Groovy的invokeMethod()、methodMissing()和GroovyInterceptable对于方法合成非常有用。</p>
+<p>合成的方法可能直到调用时才会作为独立的方法存在。</p>
+<h1 id="使用methodMissing合成方法"><a href="#使用methodMissing合成方法" class="headerlink" title="使用methodMissing合成方法"></a>使用methodMissing合成方法</h1><pre><code>class Person {
+    def work() { &quot;working...&quot; }
+
+    def plays = [&apos;Tennis&apos;, &apos;VolleyBall&apos;, &apos;BasketBall&apos;]
+
+    def methodMissing(String name, args) {
+        println &quot;methodMissing called for $name&quot;
+        def methodInList = plays.find { it == name.split(&apos;play&apos;)[1] }
+        if (methodInList) {
+            def impl = { Object[] vargs -&gt; &quot;playing ${name.split(&apos;play&apos;)[1]}...&quot; }
+            Person instance = this
+            instance.metaClass.&quot;$name&quot; = impl
+            impl(args)
+        } else {
+            throw new MissingMethodException(name, Person.class, args)
+        }
+    }
+}
+
+jack = new Person()
+
+println jack.work()
+println jack.playTennis()
+println jack.playVolleyBall()
+println jack.playBasketBall()
+println jack.playTennis()
+
+try {
+    jack.playPolitics()
+} catch (Exception e) {
+    println &quot;Error: &quot; + e
+}
+</code></pre><p>对于实现了GroovyInterceptable的对象，调用该对象上的任何方法，都会调用到invokeMethod()。所以，又可以用以下方式：</p>
+<pre><code>class Person implements GroovyInterceptable {
+    def work() { &quot;working...&quot; }
+    def plays = [&apos;Tennis&apos;, &apos;VolleyBall&apos;, &apos;BasketBall&apos;]
+    def invokeMethod(String name, args) {
+        println &quot;intercepting call for $name&quot;
+        def method = metaClass.getMetaMethod(name, args)
+        if (method) {
+            method.invoke(this, args)
+        } else {
+            metaClass.invokeMethod(this, name, args)
+        }
+    }
+
+    def methodMissing(String name, args) {
+        println &quot;methodMissing called for $name&quot;
+        def methodInList = plays.find { it == name.split(&apos;play&apos;)[1] }
+        if (methodInList) {
+            def impl = {
+                Object[] vargs -&gt; &quot;playing ${name.split(&apos;play&apos;)[1]}...&quot;
+            }
+            Person instance = this
+            instance.metaClass.&quot;$name&quot; = impl
+            impl(args)
+        } else {
+            throw new MissingMethodException(name, Person.class, args)
+        }
+    }
+}
+</code></pre><h1 id="使用ExpandoMetaClass合成方法"><a href="#使用ExpandoMetaClass合成方法" class="headerlink" title="使用ExpandoMetaClass合成方法"></a>使用ExpandoMetaClass合成方法</h1><p>在我们无法对源码进行修改的时候，我们也就无法使用methodMissing进行合成方法。这时，我们可以使用ExpandoMetaClass合成方法。</p>
+<pre><code>class Person {
+    def work() { &quot;working...&quot; }
+}
+
+Person.metaClass.methodMissing = { String name, args -&gt;
+    def plays = [&apos;Tennis&apos;, &apos;VolleyBall&apos;, &apos;BasketBall&apos;]
+
+    println &quot;methodMissing called for $name&quot;
+    def methodInList = plays.find { it == name.split(&apos;play&apos;)[1] }
+
+    if (methodInList) {
+        def impl = { Object[] vargs -&gt;
+            &quot;playing ${name.split(&apos;play&apos;)[1]}...&quot;
+        }
+        Person.metaClass.&quot;$name&quot; = impl
+        impl(args)
+    } else {
+        throw new MissingMethodException(name, Person.class, args)
+    }
+}
+
+jack = new Person()
+
+println jack.work()
+println jack.playTennis()
+println jack.playTennis()
+try {
+    jack.playPolitics()
+} catch (Exception e) {
+    println &quot;Error: &quot; + e
+}
+</code></pre><p>为代码添加上invokeMethod拦截方法：</p>
+<pre><code>Person.metaClass.invokeMethod = { String name, args -&gt;
+    println &quot;intercepting call for ${name}&quot;
+    def method = Person.metaClass.getMetaMethod(name,args)
+    if(method){
+        method.invoke(delegate,args)
+    }else{
+        Person.metaClass.invokeMissingMethod(delegate, name, args)
+    }
+}
+</code></pre><h1 id="为具体的实例合成方法"><a href="#为具体的实例合成方法" class="headerlink" title="为具体的实例合成方法"></a>为具体的实例合成方法</h1><pre><code>class Person{}
+
+def emc = new ExpandoMetaClass(Person)
+emc.methodMissing = {String name,args -&gt;
+    &quot;I&apos;m Jack of all trades... I can $name&quot;
+}
+emc.initialize()
+
+def jack = new Person()
+def paul = new Person()
+
+jack.metaClass = emc
+
+println jack.sing()
+println jack.dance()
+println jack.juggle()
+
+try{
+    paul.sing()
+}catch (Exception e){
+    println e
+}
+</code></pre>
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/09/12/MOP方法合成/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/09/02/对Spring MVC做单元测试/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
-      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebFuse"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/09/02/对Spring MVC做单元测试/" class="post-title-link" itemprop="url">对Spring MVC做单元测试</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-09-02 15:27:11" itemprop="dateCreated datePublished" datetime="2016-09-02T15:27:11+08:00">2016-09-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/09/02/对Spring MVC做单元测试/" class="leancloud_visitors" data-flag-title="对Spring MVC做单元测试">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              简单介绍在工作用到的对Controller进行单元测试。其实，在编写单元测试的时候还是遇到了一些问题没有解决（基于公司封装的框架，不能用最新的包 (⊙﹏⊙)b）。先记录下主要的代码，其他问题慢慢解决。
-所需要基本的依赖包&lt;dependency&gt;
-    &lt;groupId&gt;or
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/09/02/对Spring MVC做单元测试/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -792,7 +939,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -804,7 +950,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Hing Kwan</p>
-              <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
           
@@ -814,7 +960,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -824,7 +970,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -877,7 +1027,11 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -976,9 +1130,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -996,31 +1148,7 @@
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-            </div>
+
           
 
           
@@ -1042,6 +1170,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -1050,7 +1179,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1070,7 +1199,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
@@ -1148,9 +1277,9 @@
   
 
 
-  <script src="/js/src/utils.js?v=6.7.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=6.7.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1158,9 +1287,7 @@
   
 
 
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
@@ -1169,7 +1296,16 @@
   
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -1177,512 +1313,12 @@
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
 
   
 
   
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz",
-                'X-LC-Key': "RfYJ7E2mHXj4yux2OnSLoxdr",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
-          
-        })
-    });
-  </script>
-
-
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
-  <script>
-    (function () {
-
-      firebase.initializeApp({
-        apiKey: 'AIzaSyBOoFO6OomXzAe3yA8kpYOVxxTrbgoBMM8',
-        projectId: 'webfusecn-ada77'
-      })
-
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
-
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
-            }
-          }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
-              }
-            }
-          }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('阅读次数 ' + count))
-          )
-        }
-      }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = ''
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = 'titles.push("MOP方法合成");titles.push("对Spring MVC做单元测试");' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
-  </script>
-
 
   
 

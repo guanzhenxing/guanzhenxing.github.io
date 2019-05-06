@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,15 +30,9 @@
 
 
 
-  <meta name="google-site-verification" content="TSVApdOPJJ3_-stNp_HWhi0yV7De9ZNH0ajM8Ra9Zk4"/>
 
 
 
-
-
-
-
-  <meta name="baidu-site-verification" content="rt0dJarBwI"/>
 
 
 
@@ -52,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -76,9 +70,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://webfuse.cn/page/22/"/>
 
 
@@ -133,25 +130,7 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131682260-1');
-  </script>
 
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -262,96 +241,17 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
 
       
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
       
     </ul>
   
 
   
+    
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
@@ -371,12 +271,296 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/12/09/代码之外的软技能/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/12/09/代码之外的软技能/" class="post-title-link" itemprop="url">代码之外的软技能</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-09 22:47:25" itemprop="dateCreated datePublished" datetime="2016-12-09T22:47:25+08:00">2016-12-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是一篇《软技能-代码之外的生存指南》的读书笔记。在书到手的两个礼拜中除了在给书写上自己的名字意外，没有翻开过一页。最近的一个多礼拜没有碰代码，没有读书，想着趁着这个周末回老家应该没有被其他事情打扰，好好地看看。然后，文档记之。</p>
+<h3 id="优秀的软件开发人员的定义"><a href="#优秀的软件开发人员的定义" class="headerlink" title="优秀的软件开发人员的定义"></a>优秀的软件开发人员的定义</h3><p>并不是说要精于编码之道，善于解决缺陷，通晓单元测试。而是，那些能够把控自己的职业生涯、达成目标、享受生活的人。</p>
+<h3 id="我们入职以来可能犯的最大的错误"><a href="#我们入职以来可能犯的最大的错误" class="headerlink" title="我们入职以来可能犯的最大的错误"></a>我们入职以来可能犯的最大的错误</h3><p><strong>我们入职以来犯的最大的错误：</strong>没有把自己的软件开发事业当作一桩生意来看待。而是习惯于领取固定的工资，然后觉得给别人打工。<br><strong>我们要做的第一要务：</strong>转变心态，从被一纸“卖身契”束缚的仆人转变为一名拥有自己生意的商人。<br><strong>我们能够提供的服务：</strong>创建软件。<br>仅有服务或者产品是不够的。<strong>我们还应该做到：</strong>1）专注于你正在提供的怎么样的服务，以及如何营销这项服务；2）想方设法提升你的服务；3）思考你可以专注为哪一特定的客户或者行业提供特定的服务；4）集中精力成为一名专家，专门为某一特定类型的客户提供专业的整体服务。<br>那么，我们可以试着回答以下问题：</p>
+<ul>
+<li>有一家企业，拥有某个产品或服务。他们讲如何推广这一产品或服务从而可以做到卓尔不凡？</li>
+<li>如果只能用一句话来描述你能够为潜在雇主或客户提供怎样的特定服务，这句话是什么？</li>
+</ul>
+<h3 id="你的目标是什么"><a href="#你的目标是什么" class="headerlink" title="你的目标是什么"></a>你的目标是什么</h3><p>很多时候，我们都不知道自己的目标是什么。<br>怎么做呢？</p>
+<ul>
+<li>设置一个大目标。</li>
+<li>建立能帮你达成这个大目标的小目标。</li>
+</ul>
+<p>大目标不一定要非常具体，只要能够具体到给你提供清晰的方向即可，能够让你自己知道在向它前进还是离它越来越远。<br>应该定期追踪并更新自己设定的目标，必要时套调整。我们可以定期核定自己的目标，这有助于在必要时进行调整，让你对自己负责。<em> 可以在每周末为下一周设定目标之前检查上周设定的目标。这同样适用于每月、每季和每年。</em> </p>
+<h3 id="人际交往能力"><a href="#人际交往能力" class="headerlink" title="人际交往能力"></a>人际交往能力</h3><p>在软件开发领域，我们大多时候是和人打交道而非与计算机打交道。我们所写的软件首先是给人用的，其次才是让计算机可以理解。<strong> 作为一名软件开发人员，你的工作就是与人打交道。 </strong></p>
+<p><strong>每个人都希望感到自己很重要：</strong>以自己为核心，每个人都希望自己很重要。这是人类最深邃、最致命的欲望之一，也是社会和生活中取得伟大成就的主要动机。如果你希望人们接受你的想法，并认可其中的价值，首先你最好先主动给他人相同的礼遇。如果你不能保全他人的自尊，那么你永远也不可能赢得他的心。<br><strong>永远不要批评：</strong>奖励积极行为要比惩罚消息行为有效得多。<br><strong>换位思考：</strong>停止用“我”和“我想要什么”来思考，你应当开始思考对他人而言什么才最重要，什么才是他们需要的。<br><strong>避免争吵：</strong>我们要不惜一切代价避免争吵。</p>
+<h3 id="破解面试之道"><a href="#破解面试之道" class="headerlink" title="破解面试之道"></a>破解面试之道</h3><p>与主流的观念相反，大多数面试官决定雇佣某个人其实是基于各种各样的非技术因素。“破解”面试的要诀就是在面试开始之前就思考应对面试的策略。</p>
+<h3 id="就业选择：列出你的选择"><a href="#就业选择：列出你的选择" class="headerlink" title="就业选择：列出你的选择"></a>就业选择：列出你的选择</h3><p>选择1：雇员<br>选择2：独立咨询师<br>选择3：创业者。软件开发创业者使用自己的软件技能开发自己的产品、拓展自己的业务。</p>
+<h3 id="你是哪类软件开发人员"><a href="#你是哪类软件开发人员" class="headerlink" title="你是哪类软件开发人员"></a>你是哪类软件开发人员</h3><p>用“Java开发人员”等分工太宽泛。我们必须专业化，专业化的规则是：专业化程度越深，潜在的机会就越少，但获得这些机会的可能性越大。<br>专业领域：Web开发栈、嵌入式系统、特定的操作系统、移动开发、框架、软件系统</p>
+<h3 id="公司与公司是不一样的"><a href="#公司与公司是不一样的" class="headerlink" title="公司与公司是不一样的"></a>公司与公司是不一样的</h3><p><strong>小公司和创业公司：</strong>它们都有着非常独特的“创业心态”，表现为：关注快速增长，竭尽所能让公司盈利，或者达成其他一些迫切目标。选择为小公司或者初创公司工作的一个更好的理由是，你喜欢那种快节奏的，令人兴奋的工作环境，也希望构建伟大的产品并见证它的成长。<br><strong>中等规模的公司：</strong>角色定义明确，缓慢而稳健的做事风格通常能占得先机。<br><strong>大公司：</strong>完备的流程和规范，培训机会多，大型有影响力的项目。</p>
+<p>软件开发公司和拥有软件开发人员的公司是有区别的。与雇佣软件开发人员但核心业务并非软件的公司相比，软件开发公司会使用更前沿的技术和工具。雇佣软件开发人员的公司不太会给软件开发人员足够的尊重和发展空间。</p>
+<h3 id="攀升晋升阶梯"><a href="#攀升晋升阶梯" class="headerlink" title="攀升晋升阶梯"></a>攀升晋升阶梯</h3><p><strong>承担责任：</strong>在任何公司中能让你脱颖而出的最重要法宝就是承担更多的责任。有时候你不得不去主动寻找机会，去负责一项任务，或者牵头一个项目。只要深入挖掘，你总能找到一些被忽略的业务领域去发挥自己的聪明才智。没有人愿意涉足的领域是寻找机会最好的地方。另一种间接承担责任的方式是成为团队中其他人的导师，自愿帮助新人加速成长，为任何有需要的人提供帮助。<br><strong>引人注目：</strong>每天记录自己的活动日志；提供演讲或培训；发表意见；保证“曝光度”。<br><strong>自学：</strong>不断增加自己的技能和只是；同时不要忘记分享。<br><strong>成为问题的解决者：</strong>你要成为那个永远能为各种问题找到解决方案的人，要成为勇于执行这些解决方案以获得成果的人。<br><strong>关于政治：</strong>你应该对所在组织的政治气候保持警觉。尽管不能完全避开政治，但至少应该知道会发生什么，哪种人需要避开，哪种人永远不要有交集。</p>
+<h3 id="成为专业人士"><a href="#成为专业人士" class="headerlink" title="成为专业人士"></a>成为专业人士</h3><p>专业人士会遵守自己的原则；专注于正确完成工作；不惧怕承认自己错了，不会文过饰非；持续稳定；勇于承担责任。</p>
+<h3 id="赢得自由——如何辞职"><a href="#赢得自由——如何辞职" class="headerlink" title="赢得自由——如何辞职"></a>赢得自由——如何辞职</h3><p>在自己的积蓄不能支撑得起你的生活之前，还是老老实实当雇员。<br>在真正去创业之前，先是以副业的方式开始你的创业之旅，小有成就后再全职投入。</p>
+<h3 id="成为自由职业者：开启自己的一片天地"><a href="#成为自由职业者：开启自己的一片天地" class="headerlink" title="成为自由职业者：开启自己的一片天地"></a>成为自由职业者：开启自己的一片天地</h3><p>通用规则是，成为自由职业者之后，你的时薪水平应该是成为全职雇员时的2倍。</p>
+<h3 id="创建你的第一个产品"><a href="#创建你的第一个产品" class="headerlink" title="创建你的第一个产品"></a>创建你的第一个产品</h3><p>没有要解决问题的产品毫无意义，毫无意义的产品自然也就不会有用户。</p>
+<h3 id="你打算开始创业么"><a href="#你打算开始创业么" class="headerlink" title="你打算开始创业么"></a>你打算开始创业么</h3><p>第一种创业公司：在成立的时候就试图以获得外部投资者的投资来刺激公司快速成长。<br>第二种创业公司：自力更生创业。完全由其创始人提供资金支持。</p>
+<h3 id="远程工作的生产策略"><a href="#远程工作的生产策略" class="headerlink" title="远程工作的生产策略"></a>远程工作的生产策略</h3><p>挑战1：时间管理。你必须要有一个缜密的时间管理。<br>挑战2：自我激励。依靠缜密的时间管理做到自律。<br>挑战3：孤独感。走出去，确保每周都能见到他人。</p>
+<h3 id="假装自己能成功"><a href="#假装自己能成功" class="headerlink" title="假装自己能成功"></a>假装自己能成功</h3><p>当说“假装自己能成功”的时候，指的是：在做事情之前，可以暗示自己“我已经成功完成任务”。然后以这样的心态去做事。</p>
+<h3 id="如何修改简历"><a href="#如何修改简历" class="headerlink" title="如何修改简历"></a>如何修改简历</h3><p>你的简历应该展现你都做了哪些工作以及相应的结果。</p>
+<h3 id="请勿陷入对技术的狂热之中"><a href="#请勿陷入对技术的狂热之中" class="headerlink" title="请勿陷入对技术的狂热之中"></a>请勿陷入对技术的狂热之中</h3><p>没有理由去强烈坚持自己选择的技术就是最好的，而轻视甚至无视其他技术。如果固执己见，最终受损失的是你自己。</p>
+<h3 id="针对“码农”的营销基础课"><a href="#针对“码农”的营销基础课" class="headerlink" title="针对“码农”的营销基础课"></a>针对“码农”的营销基础课</h3><p>营销的核心在于将一些人所需要的所期待的产品或者服务与产品或服务本身连接起来。所以“自我营销”也就是把希望得到你提供的产品或者服务的人和你自己连接起来。自我营销的正确方式就是为他人提供价值。</p>
+<h3 id="打造引入注目的品牌"><a href="#打造引入注目的品牌" class="headerlink" title="打造引入注目的品牌"></a>打造引入注目的品牌</h3><p>品牌即承诺：承诺按照你预期的方式交付你所预期的价值。<br>品牌四个要素：品牌要传递的信息、品牌的视觉符号、品牌的一致性和品牌的曝光率。</p>
+<h3 id="创建大获成功的博客"><a href="#创建大获成功的博客" class="headerlink" title="创建大获成功的博客"></a>创建大获成功的博客</h3><p>持之以恒地坚持写作，坚持不懈地产生高品质的内容。<br>如果发现自己不知道写什么，没什么可写的怎么办呢？解决这个问题的最好方法是提前头脑风暴出各种不同的想法，随时更新可能的博客主题的清单，这样你总能保持一堆话题可供选择。</p>
+<h3 id="你的主要目标：为他人增加价值"><a href="#你的主要目标：为他人增加价值" class="headerlink" title="你的主要目标：为他人增加价值"></a>你的主要目标：为他人增加价值</h3><p>给人们想要的东西；把你工作成果的90%都做成免费的。</p>
+<h3 id="善于运用社交媒体"><a href="#善于运用社交媒体" class="headerlink" title="善于运用社交媒体"></a>善于运用社交媒体</h3><p>怎么样通过社交媒体提供在业界的声望？那就是“提供价值”。应该持续不断地分享和提供具有价值的内容，不要发布不适宜的、攻击性的内容或者那一些只与自己相关的类似“早餐吃了什么样的鸡蛋”这样毫无营养的内容。</p>
+<h3 id="演讲、报告和培训：做“说话的极客”"><a href="#演讲、报告和培训：做“说话的极客”" class="headerlink" title="演讲、报告和培训：做“说话的极客”"></a>演讲、报告和培训：做“说话的极客”</h3><p>OK，可以想想怎么在公司开始自己的培训和分享了。</p>
+<h3 id="著书立说，吸引追随者"><a href="#著书立说，吸引追随者" class="headerlink" title="著书立说，吸引追随者"></a>著书立说，吸引追随者</h3><p>从写博客开始，不断地写。也不一定非得是实体书，可以写某个主题的电子书。</p>
+<h3 id="百折不挠，越挫越勇"><a href="#百折不挠，越挫越勇" class="headerlink" title="百折不挠，越挫越勇"></a>百折不挠，越挫越勇</h3><p>万事开头难；被看做傻瓜又如何；小步快跑</p>
+<h3 id="学习怎样学习：如何自我教育"><a href="#学习怎样学习：如何自我教育" class="headerlink" title="学习怎样学习：如何自我教育"></a>学习怎样学习：如何自我教育</h3><p>学习的最好的方法就是把它付诸于实践。然后可以将自己所学的打包教给别人</p>
+<h3 id="“十步学习法”"><a href="#“十步学习法”" class="headerlink" title="“十步学习法”"></a>“十步学习法”</h3><p>为了能够掌握一门技术，我需要了解以下三个要点：</p>
+<ol>
+<li>如何开始——要想开始使用自己所学的，我需要掌握哪些基本知识。</li>
+<li>学科范围——我现在学的东西有多宏达？我应该怎么做？在开始阶段，我不需要了解每个细节，但是如果我能够对该学科的轮廓有大致的了解，那么将来我就能发现更多细节。</li>
+<li>基础知识——不止在开始阶段，我需要了解基本的用户案例和最常见的问题，也需要知道自己学的拿20%就能满足80%的日常应用。</li>
+</ol>
+<p>“十步学习法”的基本思想是：要对自己要学的内容有个基本的了解——了解自己不知道什么足矣。然后，利用这些信息勾勒出学习的范围，即需要学哪些内容，以及学成之后又会获得什么。依靠这些知识，你可以找出各种资源（不局限于书）来帮助自己学习。最后，你可以创建自己的学习计划，列出要去学习哪些相关课程，筛选学习材料，只保留帮助自己达成目标的优秀内容。</p>
+<p>学习-实践-掌握-教授（Learning,Doing,Learning and Teaching,LDLT）。</p>
+<p>十步学习法：了解全局——确定范围——定义目标——寻找资源——创建学习计划——筛选资源——开始学习，浅尝即止——动手操作，边玩边学——全面掌握，学以致用——乐为人师，融会贯通</p>
+<ol>
+<li>了解全局：了解自己将要学习的主题的全局。</li>
+<li>确定范围：集中精力去明确自己到底要学什么。将一个大的主题分解成可控的子主题。</li>
+<li>定义目标：确定自己的学习经历中获得什么决定了你的成功标准是什么。确保在借此在学习结束之后评估自己是否达成了目标。</li>
+<li>寻找资源：尽可能多的去找与自己所选主题相关的资源。此时，无需考虑这些资源的质量。</li>
+<li>创建学习计划：打造自己的学习计划，一个好方法就是观察别人是如何教你感兴趣的主题的。（比如，可以对比先前找资料时找到的书籍，对比目录，如果存在多位作者把内容分解为相同的模块和顺序，就按照那个进行学习。）</li>
+<li>筛选资源：把收集到的资源浏览一遍，找出哪些内容能够覆盖你的学习计划。</li>
+<li>开始学习，浅尝即止：在这一步中，你的目标是获得足够多的与所学主题相关的信息，从而能够让你开始学习，并在下一步中动手操作。这一步的关键在于过犹不及。</li>
+<li>动手操作，边玩边学：你无须提前了解全部，你要做的首要的一件事情就是亲自操作和亲身体验，采用这种方法，你通过探索和时间进行学习。</li>
+<li>全面掌握，学以致用：这一步的目标就是让你找回好奇心驱动学习。利用先前收集的资料，深度学习。</li>
+<li>乐为人师，融会贯通：走出自己的舒服区，将自己学到的知识教给别人。要明确自己确实掌握了某些知识，这是唯一的方法。重点在于，你要花时间将自己学到的东西从大脑中提取出来，以别人能理解的方式组织出来。</li>
+</ol>
+<p>以上10步中，1-6步只要做一次；7-10步需要循环往复。</p>
+<h3 id="寻找导师"><a href="#寻找导师" class="headerlink" title="寻找导师"></a>寻找导师</h3><p>在寻找一位导师的时候，你必须抛开自己的判断和推理，只关注导师的成就。</p>
+<h3 id="成为导师"><a href="#成为导师" class="headerlink" title="成为导师"></a>成为导师</h3><p>帮助他人时的成就感；深入学习和领悟知识的途径；你的徒弟有朝一日会帮到你；自身的成长，帮助别人的过程也就是自己成长的过程。</p>
+<h3 id="传道授业"><a href="#传道授业" class="headerlink" title="传道授业"></a>传道授业</h3><p>在教授别人的过程中发现自己的不足。</p>
+<h3 id="需要一个学位么？"><a href="#需要一个学位么？" class="headerlink" title="需要一个学位么？"></a>需要一个学位么？</h3><p>学位并不是那么重要，但是有学位比没有学位更重要。</p>
+<h3 id="发现自己的知识短板"><a href="#发现自己的知识短板" class="headerlink" title="发现自己的知识短板"></a>发现自己的知识短板</h3><p>在哪些工作上花费时间最多？可以改进的重复性劳动；自己没有完全理解的东西；你回答不出来的面试问题；</p>
+<h3 id="一切始于专注"><a href="#一切始于专注" class="headerlink" title="一切始于专注"></a>一切始于专注</h3><p>专注就是注意力分散的对立面。<br>要进入专注模式，必须要克服将自己的思绪集中于单一任务时的那种痛感。</p>
+<h3 id="生产力提升计划"><a href="#生产力提升计划" class="headerlink" title="生产力提升计划"></a>生产力提升计划</h3><p>把一周的时间分配给一个一个用时不超过两小时的小任务。使用白板来安排自己的一周活动。</p>
+<p>季度计划：尽力列出本季度完成的每一个大项目，制定一些较小的目标。<br>月计划：规划处每天要完成的工作。从季度计划中挑选任务，看看有哪些任务可以写入月历。<br>周计划：作者推荐使用Trello或者kanbanflow。<br>日计划与执行：详细今天要做的事情。<br>与干扰作斗争！</p>
+<h3 id="番茄工作法"><a href="#番茄工作法" class="headerlink" title="番茄工作法"></a>番茄工作法</h3><p>关于番茄工作法的资料和书籍很多，可以参考那些资料和书籍详细了解~~~</p>
+<h3 id="如何做到超额完成工作"><a href="#如何做到超额完成工作" class="headerlink" title="如何做到超额完成工作"></a>如何做到超额完成工作</h3><p>什么是定额工作法：明确一个目标，规定自己要在预先确定的时间段内需要取得多大的进展。<br>定额工作法的原理：一旦你明确了自己要做什么、多久做一次，接下来的步骤就是要做出“承诺”。“承诺”是“定额工作法”的核心。除了想法设法完成自己的工作，不给自己留下任何其他的选择。不能再定额必须完成的有效时间段之内放弃。</p>
+<p>定额工作法的规则：</p>
+<ul>
+<li>挑选一项重复性的工作。</li>
+<li>明确有效时限，在此期间该任务被重复执行。</li>
+<li>明确在给定的有效时限内该任务应该完成的次数的定额。</li>
+<li>给自己承诺：一定要达到定额。</li>
+<li>调整。调高或者调低定额，但是不能再有效的时间段之内调整。</li>
+</ul>
+<h3 id="对自己负责"><a href="#对自己负责" class="headerlink" title="对自己负责"></a>对自己负责</h3><p>抉择一下，我们想如何度过自己的一生。花点时间创建一些自己的规则，确保自己能够朝着正确的方向前进。<br>创建自己的责任制度，帮助自己严格执行规则。</p>
+<h3 id="要不要多任务并行"><a href="#要不要多任务并行" class="headerlink" title="要不要多任务并行"></a>要不要多任务并行</h3><p>批量处理生产效率更高</p>
+<p>什么才是真正的多任务并行：比如一边听歌一边敲代码；一边开车一边听书等</p>
+<h3 id="职业倦怠"><a href="#职业倦怠" class="headerlink" title="职业倦怠"></a>职业倦怠</h3><p>在大多数情况下，倦怠感完全是自然而然产生的，它并不是一个严重的问题。<br>所以我们必须，想办法去穿过阻挡的“那面墙”。</p>
+<h3 id="时间是怎样被浪费掉的"><a href="#时间是怎样被浪费掉的" class="headerlink" title="时间是怎样被浪费掉的"></a>时间是怎样被浪费掉的</h3><p>看电视（电视剧）、社交媒体、新闻网站、不必要的会议、看小说、玩电子游戏…..</p>
+<h3 id="形成惯例的重要性"><a href="#形成惯例的重要性" class="headerlink" title="形成惯例的重要性"></a>形成惯例的重要性</h3><p>你每天做什么样的决定塑造着未来的你。<br>确定一个大目标，然后围绕着这个大目标安排自己的行程。</p>
+<h3 id="刷新你的代码"><a href="#刷新你的代码" class="headerlink" title="刷新你的代码"></a>刷新你的代码</h3><p>习惯主要由三个元素构成：暗示，惯例和奖励。<br>暗示是导致习惯被触发的某样东西。它可能是某一天的某个特定时刻、某种形式的社交场合、某个特定的环境或者其他任何东西。<br>惯例就是你做的事情，也就是习惯的本质。<br>奖励就是让习惯真正保持下去的“锚”。</p>
+<p>试着从小事做起。选一个你找出的坏习惯，不要试图马上改变它。相反，尽量找出这个习惯被什么触发，你这么做有什么表现，以及是什么奖励激励你产生冲动要这么做。</p>
+<h3 id="如何吃掉一头大象"><a href="#如何吃掉一头大象" class="headerlink" title="如何吃掉一头大象"></a>如何吃掉一头大象</h3><p>帮助你克服拖延的提高生产力的窍门：分解任务。通过将大任务分解为小任务。</p>
+<p>首先要明确完成这项任务需要哪些步骤。</p>
+<h3 id="努力工作的价值，以及为什么你总是逃避努力工作"><a href="#努力工作的价值，以及为什么你总是逃避努力工作" class="headerlink" title="努力工作的价值，以及为什么你总是逃避努力工作"></a>努力工作的价值，以及为什么你总是逃避努力工作</h3><p>我们认为艰苦的工作最有可能就是让我们获益良多的工作。<br>我们只能坐在办公桌前，做我们应该做的事情。我们必须学会脚踏实地、埋头苦干。</p>
+<h3 id="任何行动逗比不采取行动好"><a href="#任何行动逗比不采取行动好" class="headerlink" title="任何行动逗比不采取行动好"></a>任何行动逗比不采取行动好</h3><p>拒绝采取行动，无数机会就会被浪费，无数可能性就会被挥霍。<br>很多人不采取行动的原因很简单：恐惧。恐惧出错，恐惧把事情搞砸，恐惧后果不可估量或失败，恐惧改变，恐惧做不一样的事情。<br>在面临多种选择的时候，最好的做法就是立刻选择其中之一，即使它不是最好的一个。通过采取行动，如果这个是无效的，那么就更换另外一个。</p>
+<p>“采取行动检查表”</p>
+<h3 id="怎样支配你的薪水"><a href="#怎样支配你的薪水" class="headerlink" title="怎样支配你的薪水"></a>怎样支配你的薪水</h3><p>赚钱多并不能让一个人在财务上更精明。<br>资产：指实用价值高于维护成本的东西。<br>负债：指成本高于带来的价值的东西。<br>任何能把钱装在你的口袋里的东西才是资产，而任何需要你把钱从口袋里掏出来的东西都是负债。</p>
+<h3 id="怎样进行薪酬谈判"><a href="#怎样进行薪酬谈判" class="headerlink" title="怎样进行薪酬谈判"></a>怎样进行薪酬谈判</h3><p>薪酬谈判始于求职之前。记住：自我营销做得越好，声望越高，薪酬谈判就越容易。<br>获得工作的方式至关重要。你的最佳状态是：一家公司知道你，然后无需任何面试就直接为你提供一个职位。<br>先出价者输。先出价的人会处于明显劣势。如果再预审面试时被直接文集期望薪酬是多少，那就给出类似这样的回复：<br>这就取决于公司的整体薪酬方案，包括福利。=&gt; 更多地了解下工作内容。 =&gt;对于薪酬，你们一定有个预算范围，然后让对方说出薪酬范围。=&gt;无法给出一个确切的数字，完全依赖于薪酬体系。<br>如果被问及当前薪酬：能不告诉对方尽量不告诉（委婉地规避这个问题），或者换一种算法（比如16薪等）</p>
+<p>一定要清楚自己值什么价钱。</p>
+<h3 id="期权：所有乐趣之所在"><a href="#期权：所有乐趣之所在" class="headerlink" title="期权：所有乐趣之所在"></a>期权：所有乐趣之所在</h3><p>期权的基本知识：期权就是选择做什么或者不做什么。期权背后的基本思想就是允许某人为在未来的某个日期买入或卖出股票的权利付费。<br>期权从根本上来说就是赋予你在未来某个日期之前以固定价格购买一定数量股票的选择权。<br>允许在未来一段时间内以固定价格购买股票的期权被称为“看涨期权”，允许在未来一定时间内以固定价格出售股票的期权被称为“看跌期权”。</p>
+<h3 id="房地产投资"><a href="#房地产投资" class="headerlink" title="房地产投资"></a>房地产投资</h3><p>这个说的是国外，国内的房价…伤不起</p>
+<h3 id="真的了解自己的退休计划吗？"><a href="#真的了解自己的退休计划吗？" class="headerlink" title="真的了解自己的退休计划吗？"></a>真的了解自己的退休计划吗？</h3><p>当你的“被动收入”达到每月所需的生活开销的时候，你就可以正式退休了。所谓被动收入，就是不用工作就获得的收入。你必须确保被动收入会随着通货膨胀而增加。</p>
+<h3 id="债务的危害"><a href="#债务的危害" class="headerlink" title="债务的危害"></a>债务的危害</h3><p>真正获得财务成功的唯一方法就是用钱生钱。如果想获得财务自由，你就必须要能够让你的钱为你所用。如果说收益给我们自由，那么后面唯一要加上一句——债务会给我们套上枷锁。<br>背负债务的底线就是确保在背上债务之前，这笔债务实际上是一笔投资，它将为你产生的回报高于你为这笔债务所支付的利息。</p>
+<h3 id="如何做到33岁退休"><a href="#如何做到33岁退休" class="headerlink" title="如何做到33岁退休"></a>如何做到33岁退休</h3><p>这里的退休的意思是财务自由。<br>投资房产？？？</p>
+<h3 id="为神魔需要破解自己的健康密码"><a href="#为神魔需要破解自己的健康密码" class="headerlink" title="为神魔需要破解自己的健康密码"></a>为神魔需要破解自己的健康密码</h3><p>增强自信心；让自己拥有更强的大脑力量；</p>
+<h3 id="设定你的健身标准"><a href="#设定你的健身标准" class="headerlink" title="设定你的健身标准"></a>设定你的健身标准</h3><p>挑选一个具体的目标，谨记每次不要挑选一个以上的目标。目标比如：减肥、增肌、增加力量、改善健康等等。<br>创建一系列的里程碑，沿着里程碑前进你就一定会达到最终的目标。一定要确保里程碑式可以实现的。</p>
+<h3 id="热力学、热量和你"><a href="#热力学、热量和你" class="headerlink" title="热力学、热量和你"></a>热力学、热量和你</h3><p>计算自己消耗的卡路里，计算自己可能获得卡路里，消耗大于摄入。</p>
+<h3 id="动力：让你的屁股离开椅子"><a href="#动力：让你的屁股离开椅子" class="headerlink" title="动力：让你的屁股离开椅子"></a>动力：让你的屁股离开椅子</h3><p>制作进度图表并且不断提醒自己你已经走了多远也是有帮助的。<br>当你的动力消失殆尽的时候，用原则来代替激励。</p>
+<h3 id="心灵影响身体"><a href="#心灵影响身体" class="headerlink" title="心灵影响身体"></a>心灵影响身体</h3><p>信念决定思想，思想决定言语，言语决定行动，行动决定习惯，习惯决定价值，价值决定命运。</p>
+<h3 id="拥有正确的心态：重新启动"><a href="#拥有正确的心态：重新启动" class="headerlink" title="拥有正确的心态：重新启动"></a>拥有正确的心态：重新启动</h3><p>如果想改变自己的态度，你就必须改变自己的想法。如果想改变自己的想法，你就必须转变自己的思维模式。你的思维模式是由你的习惯决定的，因此我们可以追溯到改变你生活中处理任何关键事情所采用的主要方式——养成一个习惯。</p>
+<h3 id="构建一个积极的自我形象"><a href="#构建一个积极的自我形象" class="headerlink" title="构建一个积极的自我形象"></a>构建一个积极的自我形象</h3><p>自我形象是在甩掉别人对你的看法，摆脱所有用来自我安慰的谎言和欺骗以后，你看到的自己的样子。</p>
+<h3 id="爱情与恋爱：计算机无法牵着你的手"><a href="#爱情与恋爱：计算机无法牵着你的手" class="headerlink" title="爱情与恋爱：计算机无法牵着你的手"></a>爱情与恋爱：计算机无法牵着你的手</h3><p>受“永远孤独”的互联网文化基因影响。</p>
+<p>爱情就是一场游戏，这是真的。不管怎么努力尝试，你都无法跳出这个规则。</p>
+<p>获得爱情的解决方法是:在行为上体现出自信，用一种自然随和且充满自信的态度与别人交往。“我自己感觉到很好，我不需要你，但是我觉得你挺有意思的，所以我想更好地了解你。”</p>
+<p>不要把喜欢的那个人放在“神龛”上时时供奉着。</p>
+<p>不要害怕失败，哪怕失败很多次；不要害怕被拒绝，没什么大不了的。</p>
+<h3 id="积极面对失败"><a href="#积极面对失败" class="headerlink" title="积极面对失败"></a>积极面对失败</h3><p>为什么我们会害怕失败呢？这可能是基于保护脆弱的自尊的想法。</p>
+<p>失败不同于被打败。失败是暂时的，被打败是永恒的。</p>
+<p>学会拥抱失败、期待失败、接受失败，并准备直面失败。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -461,7 +645,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -482,20 +666,10 @@
 
           
             
+            
           
 
           
-          
-             <span id="/2016/11/07/MongoDB使用技巧Tips/" class="leancloud_visitors" data-flag-title="MongoDB使用技巧Tips">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -519,219 +693,28 @@
       
         
           
-            <p>
-              这是一篇日常使用MongoDB时候遇到的问题的解决技巧的文章。
-查找数组字段不为空的记录查找数据中数组字段不为空的记录。
-举个例子：有以下Mongo文档，
-{
+            <p>这是一篇日常使用MongoDB时候遇到的问题的解决技巧的文章。</p>
+<h1 id="查找数组字段不为空的记录"><a href="#查找数组字段不为空的记录" class="headerlink" title="查找数组字段不为空的记录"></a>查找数组字段不为空的记录</h1><p>查找数据中数组字段不为空的记录。</p>
+<p>举个例子：有以下Mongo文档，</p>
+<pre><code>{
     &quot;id&quot; : &quot;581c060f2b436c05aafb1632&quot;,
-    &quot;c
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/11/07/MongoDB使用技巧Tips/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
-      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebFuse"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/" class="post-title-link" itemprop="url">在NodeJs中使用事件、监听器、定时器和回调</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-11-01 22:43:09" itemprop="dateCreated datePublished" datetime="2016-11-01T22:43:09+08:00">2016-11-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-10 09:44:23" itemprop="dateModified" datetime="2019-04-10T09:44:23+08:00">2019-04-10</time>
-              
-            
-          </span>
+    &quot;commit_history&quot; : [ 
+        &quot;581c20d52b436c05aafb1633&quot;, 
+        &quot;581c21c12b436c05aafb1634&quot;
+    ]
+},
+{
+    &quot;id&quot; : &quot;581c060f2b436c05aafb1633&quot;,
+    &quot;commit_history&quot; : []
+}
+</code></pre><p>想要查找<code>commit_history</code>不为空的记录，有以下方法：</p>
+<p>方法一： <code>db.collection.find({commit_history: {$not: {$size: 0}}})</code></p>
+<p>方法二： <code>db.collection.find({&#39;commit_history.0&#39;: {$exists: 1}})</code></p>
+<h1 id="MongoDB添加用户"><a href="#MongoDB添加用户" class="headerlink" title="MongoDB添加用户"></a>MongoDB添加用户</h1><p>在MongoDB中为一个Collection添加用户，可以如下操作：</p>
+<p><code>use collection_name</code> 切换到某个库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">db.createUser(</div><div class="line">   &#123;</div><div class="line">     user: "collection_name",</div><div class="line">     pwd: "password",</div><div class="line">     roles: [ "readWrite", "dbAdmin" ]</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/" class="leancloud_visitors" data-flag-title="在NodeJs中使用事件、监听器、定时器和回调">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              在阅读《Node.js+MongoDB+AngularJS Web开发》第四章的时候，发现很多概念以前没有去注意到，觉得还是有摘录下来的必要，方便以后查看。
-Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型中运行。
-传统的线程网络模型中，请求进入一个Web服务器，并分配给一个
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -796,7 +779,6 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -808,7 +790,7 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Hing Kwan</p>
-              <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
           
@@ -818,7 +800,7 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -828,7 +810,11 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -881,7 +867,11 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -980,9 +970,7 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1000,31 +988,7 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-            </div>
+
           
 
           
@@ -1046,6 +1010,7 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
 
     </div>
   </aside>
+  
 
 
         
@@ -1054,7 +1019,7 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1074,7 +1039,7 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
@@ -1152,9 +1117,9 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
   
 
 
-  <script src="/js/src/utils.js?v=6.7.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=6.7.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1162,9 +1127,7 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
   
 
 
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
@@ -1173,7 +1136,16 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
   
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -1181,512 +1153,12 @@ Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
 
   
 
   
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz",
-                'X-LC-Key': "RfYJ7E2mHXj4yux2OnSLoxdr",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
-          
-        })
-    });
-  </script>
-
-
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
-  <script>
-    (function () {
-
-      firebase.initializeApp({
-        apiKey: 'AIzaSyBOoFO6OomXzAe3yA8kpYOVxxTrbgoBMM8',
-        projectId: 'webfusecn-ada77'
-      })
-
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
-
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
-            }
-          }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
-              }
-            }
-          }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('阅读次数 ' + count))
-          )
-        }
-      }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = ''
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = 'titles.push("MongoDB使用技巧Tips");titles.push("在NodeJs中使用事件、监听器、定时器和回调");' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
-  </script>
-
 
   
 

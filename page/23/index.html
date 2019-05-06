@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,15 +30,9 @@
 
 
 
-  <meta name="google-site-verification" content="TSVApdOPJJ3_-stNp_HWhi0yV7De9ZNH0ajM8Ra9Zk4"/>
 
 
 
-
-
-
-
-  <meta name="baidu-site-verification" content="rt0dJarBwI"/>
 
 
 
@@ -52,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -76,9 +70,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://webfuse.cn/page/23/"/>
 
 
@@ -133,25 +130,7 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131682260-1');
-  </script>
 
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -262,96 +241,17 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
 
       
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
       
     </ul>
   
 
   
+    
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
@@ -371,12 +271,349 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/" class="post-title-link" itemprop="url">在NodeJs中使用事件、监听器、定时器和回调</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-01 22:43:09" itemprop="dateCreated datePublished" datetime="2016-11-01T22:43:09+08:00">2016-11-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-10 09:44:23" itemprop="dateModified" datetime="2019-04-10T09:44:23+08:00">2019-04-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在阅读《Node.js+MongoDB+AngularJS Web开发》第四章的时候，发现很多概念以前没有去注意到，觉得还是有摘录下来的必要，方便以后查看。</p>
+<h1 id="Node-js的事件模型"><a href="#Node-js的事件模型" class="headerlink" title="Node.js的事件模型"></a>Node.js的事件模型</h1><p>Node.js应用程序在一个单线程的事件驱动模型中运行。</p>
+<p>传统的线程网络模型中，请求进入一个Web服务器，并分配给一个可用的线程。对于请求的处理工作继续在该线程上运行，直到请求完成并发出响应。<br><img src="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/使用线程模型在不同线程上处理两个请求.png" alt="使用线程模型在不同线程上处理两个请求.png" title=""><br>以上使用线程模型在不同线程上处理两个请求。</p>
+<p>Node.js不是在各个线程为每个请求执行所有的工作。它是把工作添加到一个事件队列中，然后有一个单独的线程运行一个事件循环把这个工作提取出来。事件循环抓取时间队列中最上面的条目，执行它，然后抓取下一个条目。当执行长期运行或者有阻塞I/O的代码时，它不是直接调用该函数，而是把函数随同一个要在此函数完成后执行的回调一起添加到时间队列。当Node.js事件队列中的所有事件都被执行完成时，Node.js应用程序终止。<br><img src="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/处理两个请求在一个事件驱动线程，使用Node.js事件模型.png" alt="处理两个请求在一个事件驱动线程，使用Node.js事件模型.png" title=""><br>以上处理两个请求在一个事件驱动线程，使用Node.js的回调事件模型</p>
+<p>当我们遇到阻塞I/O（读取文件、查询数据库、请求套接字、访问远程服务）的时候，阻塞I/O停止当前线程的执行并等待一个回应，直到收到回应才能继续。</p>
+<p>Node.js使用事件回调来避免对阻塞I/O的等待。所以，阻塞I/O的任何请求都在后台的不同的线程中执行。Node.js在后台实现线程池。当该块的I/O从事件队列中检索一个事件时，Node.js从线程池中获取一个线程，并在那里执行功能，而不是主事件循环线程执行功能。这可以防止阻塞I/O阻碍事件队列的其余事件。在被阻塞的线程上执行的函数任然可以把事件添加到要处理的事件队列中。</p>
+<p>事件循环要么在事件循环线程本身上执行功能，要么在一个单独的线程上执行功能，阻塞I/O采用后一种方式。<br><img src="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/完整的Node.js事件模型.png" alt="完整的Node.js事件模型.png" title=""><br>在Node.js事件模型中，工作作为一个带有回调的函数被添加到事件队列中，然后在事件循环线程中被提取出。之后，在无阻塞的情况下，在事件循环线程上执行该函数；或在阻塞的情况下，在一个单独的线程上执行它。</p>
+<p>传统的线程模型遇到的问题：</p>
+<ul>
+<li>受到线程数量的限制。比如，你一次创建5个线程，当有6个访问同时到达时，只能让一个访问等待</li>
+<li>受到CPU数量的限制。一个CPU处理器只能处理一个线程</li>
+</ul>
+<h1 id="将工作添加到事件队列"><a href="#将工作添加到事件队列" class="headerlink" title="将工作添加到事件队列"></a>将工作添加到事件队列</h1><p>在用Node.js进行开发的时候，要利用事件模型的可扩展性和性能，要确保<strong>把工作分解成可以作为一系列的回调来执行的块</strong>。</p>
+<p>可以使用以下的方法之一传递回调函数来在事件队列中调度工作：</p>
+<ul>
+<li>对内置的事件，如http.request或server.connection添加一个时间监听器</li>
+<li>创建自己的事件发射器并对它们添加自定义的监听器</li>
+<li>使用process.nextTick选项来调度在事件循环的下一次循环中被提取出的工作</li>
+<li>使用定时器来调度在特定的时间数量或每隔一段时间后要做的工作</li>
+<li>对阻塞I/O库调用之一做出调用，如写入文件或连接到一个数据库</li>
+</ul>
+<h2 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h2><p>3种类型的定时器：超时定时器、时间间隔定时器、即时定时器</p>
+<ul>
+<li>超时定时器：用于将工作延迟一个特定的时间数。当时间到了，执行回调函数，定时器消失。对于只执行一次的工作，可以使用超时定时器。 setTimeout方法可以实现。</li>
+<li>时间间隔定时器：用于按定期的延迟时间间隔执行工作。当延迟时间结束时，回调函数被执行，然后再次重新调度为该延迟时间。对于必须定期进行的工作，应该使用它。 setInterval方法可以实现。</li>
+<li>即时计时器：用来在I/O事件的回调函数开始执行后，但任何超时时间或时间间隔事件被执行之前，立刻执行工作。它们允许你把工作调度为在事件队列中的当前事件完成之后执行。使用即时计时器为其他回调产生长期运行的执行段，以防止I/O事件饥饿。setImmediate方法可以实现</li>
+</ul>
+<p>取消定时器：在setTimeout和setInterval返回的对象中可用unref函数，它能够在这些事件是队列中仅有的事件是，通知事件循环不要继续。</p>
+<pre><code>myInterval = setInterval(myFunc)
+myInterval.unref()
+</code></pre><h2 id="使用nextTick"><a href="#使用nextTick" class="headerlink" title="使用nextTick"></a>使用nextTick</h2><p>在事件队列上调度工作的一个非常有用的方法是使用process.nextTick(callback)函数。此函数调度要在事件循环的下一次循环中运行的工作。nextTick()函数在I/O事件被触发之前执行。</p>
+<pre><code>var fs = require(&apos;fs&apos;)
+
+fs.stat(&apos;nexttick.js&apos;,function(err,stats){
+    if(stats){
+        console.log(&apos;nexttick.js exists&apos;)
+    }
+})
+
+setImmediate(function(){
+    console.log(&apos;Immediate Timer 1 Executed&apos;)
+})
+
+setImmediate(function(){
+    console.log(&apos;Immediate Timer 2 Executed&apos;)
+})
+
+process.nextTick(function(){
+    console.log(&apos;Next Tick 1 Executed&apos;)
+})
+
+process.nextTick(function(){
+    console.log(&apos;Next Tick 2 Executed&apos;)
+})
+</code></pre><h2 id="事件发射器和监听器"><a href="#事件发射器和监听器" class="headerlink" title="事件发射器和监听器"></a>事件发射器和监听器</h2><p>下列代码演示了Node.js中实现监听器和自定义事件发生器。</p>
+<pre><code>var events = require(&apos;events&apos;)
+
+function Account(){
+    this.balance = 0
+    events.EventEmitter.call(this)
+    this.deposit = function(amount){
+        this.balance += amount
+        this.emit(&apos;balancechanged&apos;) //触发事件
+    }
+    this.withdraw = function(amount){
+        this.balance -= amount
+        this.emit(&apos;balancechanged&apos;) //触发事件
+    }
+}
+
+Account.prototype.__proto__ = events.EventEmitter.prototype
+
+function displayBalance(){
+    console.log(&apos;Account balance: $%d&apos;,this.balance)
+}
+
+function checkOverdraw(){
+    if(this.balance &lt; 0){
+        console.log(&apos;Account overdrawn !!!&apos;)
+    }
+}
+
+function checkGoal(acc,goal){
+    if(acc.balance &gt; goal){
+        console.log(&apos;goal achieved&apos;)
+    }
+}
+
+var account = new Account()
+account.on(&apos;balancechanged&apos;,displayBalance) //添加监听器
+account.on(&apos;balancechanged&apos;,checkOverdraw)
+account.on(&apos;balancechanged&apos;,function(){
+    checkGoal(this,1000)
+})
+account.deposit(220)
+account.deposit(320)
+account.deposit(600)
+account.withdraw(1200)
+</code></pre><h1 id="实现回调"><a href="#实现回调" class="headerlink" title="实现回调"></a>实现回调</h1><p>回调的3个具体实现：将参数传递给回调函数、在循环内处理回调函数参数、嵌套回调</p>
+<h2 id="向回调函数传递额外的参数"><a href="#向回调函数传递额外的参数" class="headerlink" title="向回调函数传递额外的参数"></a>向回调函数传递额外的参数</h2><p>使用回调时，常见的一个问题是如何从调用函数给回调函数传递额外的参数。做到这一点的方法是在一个匿名函数中实现该参数，然后用来自匿名函数的参数调用回调函数。</p>
+<pre><code>var events = require(&apos;events&apos;)
+
+function CarShow() {
+    events.EventEmitter.call(this)
+    this.seeCar = function(make){
+        this.emit(&apos;sawCar&apos;,make)
+    }
+}
+CarShow.prototype.__proto__ = events.EventEmitter.prototype
+var show = new CarShow()
+function logCar(make){
+    console.log(&apos;saw a &apos;+ make)
+}
+function logColorCar(make,color){
+    console.log(&apos;saw a %s %s&apos;,color,make)
+}
+show.on(&apos;sawCar&apos;,logCar)
+show.on(&apos;sawCar&apos;,function(make){    //定义一个匿名函数
+    var colors = [&apos;red&apos;,&apos;blue&apos;,&apos;white&apos;]
+    var color = colors[Math.floor(Math.random()*3)]
+    logColorCar(make,color)
+})
+show.seeCar(&quot;Ferrari&quot;)
+show.seeCar(&apos;Porsche&apos;)
+show.seeCar(&apos;Bugatti&apos;)
+show.seeCar(&apos;Lamborghini&apos;)
+show.seeCar(&apos;Aston Martin&apos;)
+</code></pre><h2 id="在回调中使用闭包"><a href="#在回调中使用闭包" class="headerlink" title="在回调中使用闭包"></a>在回调中使用闭包</h2><p>如果某个回调函数需要访问父函数的作用域的变量，就需要提供闭包，使这些值在回调函数从事件队列被提取出时可以得到。</p>
+<pre><code>function logCar(logMsg, callback) {
+    process.nextTick(function () {
+        callback(logMsg)
+    })
+}
+var cars = [&apos;Ferrari&apos;, &apos;Porsche&apos;, &apos;Bugatti&apos;]
+for (var idx in cars) {
+    var message = &apos;saw a &apos; + cars[idx]
+    logCar(message, function () {
+        console.log(&apos;normal callback: &apos; + message)
+    })
+}
+
+for (var idx in cars) {
+    var message = &apos;saw a &apos; + cars[idx];
+    (function (msg) {
+        logCar(msg,function(){
+            console.log(&apos;closure callback: &apos; + msg)
+        })
+    })(message);
+}
+</code></pre><h2 id="链式回调"><a href="#链式回调" class="headerlink" title="链式回调"></a>链式回调</h2><p>使用异步函数时，如果两个函数都在事件队列上，那么我们无法保证它们的运行顺序。解决这一问题的最佳方法是让来自异步函数的回调再次调用该函数，直到没有更多的工作要做，以执行链式回调。</p>
+<pre><code>function logCar(car,callback){
+    console.log(&apos;saw a %s&apos;,car)
+    if(cars.length){
+        process.nextTick(function(){
+            callback()
+        })
+    }
+}
+
+function logCars(cars){
+    var car = cars.pop()
+    logCar(car,function(){
+        logCars(cars)
+    })
+}
+
+var cars = [&apos;Ferrari&apos;, &apos;Porsche&apos;, &apos;Bugatti&apos;,&apos;Lamborghini&apos;,&apos;Aston Martin&apos;]
+logCars(cars)
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -461,7 +698,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -482,20 +719,10 @@
 
           
             
+            
           
 
           
-          
-             <span id="/2016/10/24/《轻量级微服务架构》读书笔记/" class="leancloud_visitors" data-flag-title="《轻量级微服务架构》读书笔记">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -519,224 +746,72 @@
       
         
           
-            <p>
-              微服务是一种分布式系统架构，它建议我们将业务切分为更加细粒度的服务，并使每个服务的责任单一且可独立部署，服务内部高内聚，隐含内部细节，服务之间低耦合，彼此互相隔离。
-传统应用架构遇到的问题：
-
-系统资源浪费
-部署效率太低
-技术选型单一
-
-微服务需要满足的要求：
-
-根据业务模块划分服务种类
-每个服务可
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/10/24/《轻量级微服务架构》读书笔记/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/10/16/Ubuntu14下安装JDK8/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
-      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebFuse"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/10/16/Ubuntu14下安装JDK8/" class="post-title-link" itemprop="url">Ubuntu14下安装JDK8</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-10-16 18:16:25" itemprop="dateCreated datePublished" datetime="2016-10-16T18:16:25+08:00">2016-10-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
-              
-            
-          </span>
+            <p>微服务是一种分布式系统架构，它建议我们将业务切分为更加细粒度的服务，并使每个服务的责任单一且可独立部署，服务内部高内聚，隐含内部细节，服务之间低耦合，彼此互相隔离。</p>
+<p><strong>传统应用架构遇到的问题：</strong></p>
+<ul>
+<li>系统资源浪费</li>
+<li>部署效率太低</li>
+<li>技术选型单一</li>
+</ul>
+<p><strong>微服务需要满足的要求：</strong></p>
+<ul>
+<li>根据业务模块划分服务种类</li>
+<li>每个服务可独立部署且互相隔离</li>
+<li>通过轻量级API调用服务</li>
+<li>服务需要保证良好的高可用性</li>
+</ul>
+<p><strong>交付流程：</strong></p>
+<ul>
+<li>设计阶段：拆分服务，设计API接口，给出API文档</li>
+<li>开发阶段：服务端实现API接口；前端模拟API开发Web</li>
+<li>测试阶段：部署到测试环境后，QA测试；产品进行功能验收</li>
+<li>部署阶段：运维部署到预生产环境，QA进行冒烟测试；确认后部署到正式环境</li>
+</ul>
+<p><strong>开发规范：</strong></p>
+<ul>
+<li>Git Flow的使用</li>
+</ul>
+<p><strong>特点与挑战：</strong></p>
+<ul>
+<li>特点<ul>
+<li>微小度颗粒</li>
+<li>责任单一性</li>
+<li>运行隔离性</li>
+<li>管理自动化</li>
+</ul>
+</li>
+<li>挑战<ul>
+<li>运维要求高</li>
+<li>分布式复杂性</li>
+<li>部署依赖较强</li>
+<li>通信成本较高</li>
+</ul>
+</li>
+</ul>
+<p><strong>微服务架构图</strong></p>
+<img src="/2016/10/24/《轻量级微服务架构》读书笔记/微服务架构图.png" alt="微服务架构图.png" title="">
+<p><strong>微服务技术选型</strong></p>
+<img src="/2016/10/24/《轻量级微服务架构》读书笔记/微服务架构技术选型.png" alt="微服务架构技术选型.png" title="">
+<ul>
+<li>使用JenKins部署服务</li>
+<li>使用Spring Boot开发服务</li>
+<li>使用Docker封装服务</li>
+<li>使用ZooKeeper注册服务</li>
+<li>使用Node.js调用服务</li>
+</ul>
+<p>其他技术选型：</p>
+<ul>
+<li>Netflix: <a href="http://netflix.github.io/" target="_blank" rel="external">http://netflix.github.io/</a></li>
+<li>Spring Cloud: 在Spring Boot的基础上封装了Netflix相关组件</li>
+<li>JBoss的WildFly Swarm: <a href="http://wildfly-swarm.io/" target="_blank" rel="external">http://wildfly-swarm.io/</a></li>
+<li>J2EE官方的KumuluzEE: <a href="http://ee.kumuluz.com/" target="_blank" rel="external">http://ee.kumuluz.com/</a></li>
+<li>Dropwizard: <a href="http://www.dropwizard.io/" target="_blank" rel="external">http://www.dropwizard.io/</a></li>
+</ul>
+<p><strong>自动化发布平台</strong></p>
+<img src="/2016/10/24/《轻量级微服务架构》读书笔记/自动化发布平台系统架构.png" alt="自动化发布平台系统架构.png" title="">
+<p>（1）开发人员将源码提交到代码仓库系统GitLab中。<br>（2）持续集成系统Jenkins定期会从GitLab上拉取指定项目的源码。（也可以人工手动触发去拉取）<br>（3）在Jenkins上进行自动构建，并生成相关的Docker容器，形成相应的测试环境。<br>（4）测试人员在自己的测试环境下进行功能测试。</p>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/10/16/Ubuntu14下安装JDK8/" class="leancloud_visitors" data-flag-title="Ubuntu14下安装JDK8">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              安装JDK对于一个从事Java开发的人员来说应该是必会的，但是呢，很多时候在真正去安装JDK的时候又会去google下步骤。所以，记录下安装过程，方便下次安装JDK的时候免于查资料。
-步骤一：下载Linux版本的JDK在Oracle官网上下载对应的JDK版，或者通过命令行直接下载JDK。
-wget 
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/10/16/Ubuntu14下安装JDK8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -801,7 +876,6 @@ wget
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -813,7 +887,7 @@ wget
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Hing Kwan</p>
-              <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
           
@@ -823,7 +897,7 @@ wget
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -833,7 +907,11 @@ wget
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -886,7 +964,11 @@ wget
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -985,9 +1067,7 @@ wget
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1005,31 +1085,7 @@ wget
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-            </div>
+
           
 
           
@@ -1051,6 +1107,7 @@ wget
 
     </div>
   </aside>
+  
 
 
         
@@ -1059,7 +1116,7 @@ wget
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1079,7 +1136,7 @@ wget
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
@@ -1157,9 +1214,9 @@ wget
   
 
 
-  <script src="/js/src/utils.js?v=6.7.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=6.7.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1167,9 +1224,7 @@ wget
   
 
 
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
@@ -1178,7 +1233,16 @@ wget
   
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -1186,512 +1250,12 @@ wget
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
 
   
 
   
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz",
-                'X-LC-Key': "RfYJ7E2mHXj4yux2OnSLoxdr",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
-          
-        })
-    });
-  </script>
-
-
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
-  <script>
-    (function () {
-
-      firebase.initializeApp({
-        apiKey: 'AIzaSyBOoFO6OomXzAe3yA8kpYOVxxTrbgoBMM8',
-        projectId: 'webfusecn-ada77'
-      })
-
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
-
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
-            }
-          }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
-              }
-            }
-          }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('阅读次数 ' + count))
-          )
-        }
-      }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = ''
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = 'titles.push("《轻量级微服务架构》读书笔记");titles.push("Ubuntu14下安装JDK8");' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
-  </script>
-
 
   
 

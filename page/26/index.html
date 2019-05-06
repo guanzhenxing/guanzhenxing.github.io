@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,15 +30,9 @@
 
 
 
-  <meta name="google-site-verification" content="TSVApdOPJJ3_-stNp_HWhi0yV7De9ZNH0ajM8Ra9Zk4"/>
 
 
 
-
-
-
-
-  <meta name="baidu-site-verification" content="rt0dJarBwI"/>
 
 
 
@@ -52,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -76,9 +70,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://webfuse.cn/page/26/"/>
 
 
@@ -133,25 +130,7 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131682260-1');
-  </script>
 
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -262,96 +241,17 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
 
       
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
       
     </ul>
   
 
   
+    
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
@@ -371,12 +271,409 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/09/02/对Spring MVC做单元测试/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/09/02/对Spring MVC做单元测试/" class="post-title-link" itemprop="url">对Spring MVC做单元测试</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-02 15:27:11" itemprop="dateCreated datePublished" datetime="2016-09-02T15:27:11+08:00">2016-09-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>简单介绍在工作用到的对Controller进行单元测试。其实，在编写单元测试的时候还是遇到了一些问题没有解决（基于公司封装的框架，不能用最新的包 (⊙﹏⊙)b）。先记录下主要的代码，其他问题慢慢解决。</p>
+<h1 id="所需要基本的依赖包"><a href="#所需要基本的依赖包" class="headerlink" title="所需要基本的依赖包"></a>所需要基本的依赖包</h1><pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.mockito&lt;/groupId&gt;
+    &lt;artifactId&gt;mockito-core&lt;/artifactId&gt;
+    &lt;version&gt;1.10.19&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.jayway.jsonpath&lt;/groupId&gt;
+    &lt;artifactId&gt;json-path-assert&lt;/artifactId&gt;
+    &lt;version&gt;0.9.1&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.hamcrest&lt;/groupId&gt;
+    &lt;artifactId&gt;hamcrest-core&lt;/artifactId&gt;
+    &lt;version&gt;1.3&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;junit&lt;/groupId&gt;
+    &lt;artifactId&gt;junit&lt;/artifactId&gt;
+    &lt;version&gt;4.11&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
+    &lt;version&gt;4.0.3.RELEASE&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><p>当然还需要一些基本的Spring的包，就不列出了。</p>
+<h1 id="被测试的代码"><a href="#被测试的代码" class="headerlink" title="被测试的代码"></a>被测试的代码</h1><p>Controller类：</p>
+<pre><code>@RestController
+@RequestMapping(&quot;/v0.1/statistics&quot;)
+public class StatisticsController{
+
+    @Autowired
+    StatisticsService statisticsService;
+
+    @RequestMapping(value = &quot;/diaries&quot;, method = RequestMethod.GET)
+    public Object getDiariesStatistics(@AuthenticationPrincipal UserInfo userInfo) {
+
+        if (userInfo == null) {
+            throw new BizException(HttpStatus.UNAUTHORIZED, &quot;UNAUTHORIZED&quot;, &quot;缺少认证&quot;);
+        }
+
+        UserStatistics userStatistics = statisticsService.getDiariesStatistics(userInfo.getUserId());
+        return entityToVO(userStatistics);
+    }
+
+}
+</code></pre><p>Service类：</p>
+<pre><code>@Service
+public class StatisticsService {
+
+    @Autowired
+    StatisticsRepository statisticsRepository;
+
+    public UserStatistics getDiariesStatistics(String userId) {
+        return statisticsRepository.findByUserId(userId);
+    }
+}
+</code></pre><p>因为只是要对Controller进行单元测试，就不列举StatisticsRepository的代码了；另因为演示，也就不列举UserStatistics代码，可以自己替换为相关的实体。</p>
+<h1 id="独立的Controller单元测试"><a href="#独立的Controller单元测试" class="headerlink" title="独立的Controller单元测试"></a>独立的Controller单元测试</h1><p>这种是单纯地对Controller进行单元测试。这里会对Service进行mock处理，流程不会走到Service层。</p>
+<pre><code>import org.junit.Before;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+public class StatisticsControllerTestWithStandalone {
+
+    private MockMvc mockMvc;
+    @Mock
+    private StatisticsService statisticsService;
+    @InjectMocks
+    private StatisticsController statisticsController;
+
+    private UserStatistics userStatistics;
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(statisticsController).build();
+
+        userStatistics = new UserStatistics();
+        userStatistics.setUserId(&quot;330134&quot;);
+        Statistics statistics = new Statistics();
+        statistics.setDiaryCount(10);
+        userStatistics.setStatistics(statistics);
+    }
+
+    @Test
+    public void testGetDiariesStatistics() throws Exception {
+
+        when(statisticsService.getDiariesStatistics(any(String.class))).thenReturn(userStatistics);
+
+        mockMvc.perform(get(&quot;/v0.1/statistics/diaries&quot;).header(&quot;Authorization&quot;, &quot;debug userId=330134&quot;))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().contentType(&quot;application/json;charset=UTF-8&quot;))
+                .andExpect(jsonPath(&quot;diaryCount&quot;).value(10));
+
+        verify(statisticsService).getDiariesStatistics(any(String.class));
+
+    }
+
+}
+</code></pre><p>先来说明下代码：</p>
+<ul>
+<li><code>@Mock</code>：mock出一个对象</li>
+<li><code>@InjectMocks</code>：使mock对象的使用类可以注入mock对象。比如上面的例子中，我们要把StatisticsService注入到StatisticsController中，那么我们就要对StatisticsController进行InjectMocks，对StatisticsService进行mock</li>
+<li><code>MockitoAnnotations.initMocks(this)</code>： 将打上Mockito标签的对象起作用，使得Mock的类被Mock，使用了Mock对象的类自动与Mock对象关联。</li>
+<li>通过<code>MockMvcBuilders.standaloneSetup</code>模拟一个Mvc测试环境，通过build得到一个MockMvc</li>
+<li><code>MockMvc</code>：测试时经常用到核心API，具体可以看官网文档</li>
+</ul>
+<p>运行结果：</p>
+<pre><code>MockHttpServletRequest:
+         HTTP Method = GET
+         Request URI = /v0.1/statistics/diaries
+          Parameters = {}
+             Headers = {Authorization=[debug userId=330134]}
+
+             Handler:
+                Type = nd.sdp.imdiary.statistics.controller.StatisticsController
+              Method = public java.lang.Object nd.sdp.imdiary.statistics.controller.StatisticsController.getDiariesStatistics(com.nd.gaea.rest.security.authens.UserInfo)
+
+               Async:
+   Was async started = false
+        Async result = null
+
+  Resolved Exception:
+                Type = null
+
+        ModelAndView:
+           View name = null
+                View = null
+               Model = null
+
+            FlashMap:
+
+MockHttpServletResponse:
+              Status = 200
+       Error message = null
+             Headers = {Content-Type=[application/json;charset=UTF-8]}
+        Content type = application/json;charset=UTF-8
+                Body = {&quot;diaryCount&quot;:10,&quot;firstDiaryDate&quot;:null,&quot;lastDiaryDate&quot;:null,&quot;unfinishedDate&quot;:null}
+       Forwarded URL = null
+      Redirected URL = null
+             Cookies = []
+</code></pre><p>细心看以上代码会发现，我参数用到是<code>any(String.class)</code>。这是因为在独立测试该Controller的时候,<code>@AuthenticationPrincipal UserInfo userInfo</code>怎么也获得不到对应的值。据说这个在最新的Spring Security中有解决方案（用WithSecurityContextTestExcecutionListener），而项目用到是3.2.3版本。</p>
+<h1 id="集成到Web的单元测试"><a href="#集成到Web的单元测试" class="headerlink" title="集成到Web的单元测试"></a>集成到Web的单元测试</h1><p>有的时候我们需要对系统进行集成单元测试，那么我们就可以做如下操作：</p>
+<pre><code>import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+
+import javax.servlet.Filter;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@ContextConfiguration(classes = {WebConfig.class, MongodbConfig.class})
+@WebAppConfiguration
+@RunWith(SpringJUnit4ClassRunner.class)
+public class StatisticsControllerTest {
+
+    protected MockMvc mockMvc;
+
+    @Autowired
+    private Filter springSecurityFilterChain;
+    @Autowired
+    private WebApplicationContext wac;
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).addFilters(springSecurityFilterChain).build();
+    }
+
+    @After
+    public void teardown() throws Exception {
+        SecurityContextHolder.clearContext();
+    }
+
+    @Test
+    public void testGetDiariesStatistics() throws Exception {
+        mockMvc.perform(get(&quot;/v0.1/statistics/diaries&quot;).header(&quot;Authorization&quot;, &quot;debug userId=330134&quot;))
+                .andDo(print()).andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+}
+</code></pre><p>以上的代码和单独的单元测试代码还是有一些不一样的。首先是多个几个类上的注解，然后就是少了对Service的mock，最后就是生成mockmvc的方式不一样了。</p>
+<ul>
+<li><code>@ContextConfiguration()</code>：指定Bean的配置文件信息。项目中用的是注解风格配置，WebConfig.class等。如果你用的是xml配置，可以把它替换为对应的xml配置</li>
+<li><code>@WebAppConfiguration</code>：在运行单元测试的时候会启动一个Web服务，所有的测试用例跑完以后停掉</li>
+<li><code>@RunWith(SpringJUnit4ClassRunner.class)</code>：示使用Spring Test组件进行单元测试</li>
+<li><code>@Autowired WebApplicationContext wac</code>：注入web环境的ApplicationContext容器</li>
+<li><code>MockMvcBuilders.webAppContextSetup(this.wac)</code>：模拟真实的Spring MVC环境</li>
+<li><code>@Autowired Filter springSecurityFilterChain</code>：获得SecurityContextPersistenceFilter</li>
+</ul>
+<hr>
+<p>参考：</p>
+<ul>
+<li><a href="http://www.cnblogs.com/wade-xu/p/4311657.html" target="_blank" rel="external">http://www.cnblogs.com/wade-xu/p/4311657.html</a></li>
+<li><a href="http://zhaozhiming.github.io/blog/2014/06/16/spring-mvc-unit-test-part-1" target="_blank" rel="external">http://zhaozhiming.github.io/blog/2014/06/16/spring-mvc-unit-test-part-1</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -461,7 +758,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -482,20 +779,10 @@
 
           
             
+            
           
 
           
-          
-             <span id="/2016/08/25/grails备忘录（二）/" class="leancloud_visitors" data-flag-title="grails备忘录（二）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -519,217 +806,269 @@
       
         
           
-            <p>
-              Controllers创建一个Controllergrails create-controller org.bookstore.hello
-渲染（render）把响应以不同的形式呈现。
-render &quot;some text&quot;
-render(text: &quot;&lt;xml&g
-              ...
-            </p>
-          <!--noindex-->
+            <h2 id="Controllers"><a href="#Controllers" class="headerlink" title="Controllers"></a>Controllers</h2><h3 id="创建一个Controller"><a href="#创建一个Controller" class="headerlink" title="创建一个Controller"></a>创建一个Controller</h3><pre><code>grails create-controller org.bookstore.hello
+</code></pre><h3 id="渲染（render）"><a href="#渲染（render）" class="headerlink" title="渲染（render）"></a>渲染（render）</h3><p>把响应以不同的形式呈现。</p>
+<pre><code>render &quot;some text&quot;
+render(text: &quot;&lt;xml&gt;some xml&lt;/xml&gt;&quot;, contentType: &quot;text/xml&quot;, encoding: &quot;UTF-8&quot;)
+// render a template to the response for the specified model
+def theShining = new Book(title: &apos;The Shining&apos;, author: &apos;Stephen King&apos;)
+render(template: &quot;book&quot;, model: [book: theShining])
+render(view: &quot;viewName&quot;, model: [book: theShining])
+render(contentType: &quot;application/json&quot;) {
+    book(title: b.title, author: b.author)
+}
+</code></pre><h3 id="请求方法定义"><a href="#请求方法定义" class="headerlink" title="请求方法定义"></a>请求方法定义</h3><p>默认，所有的方法可以对应所有的Http请求的方法。</p>
+<p>我们可以自己配置Http请求方法与action的对应：</p>
+<pre><code>static allowedMethods = [action1:&apos;POST&apos;,
+                     action3:[&apos;POST&apos;, &apos;DELETE&apos;]]
+def action1() { … }
+def action2() { … }
+def action3() { … }
+</code></pre><h3 id="bindData"><a href="#bindData" class="headerlink" title="bindData"></a>bindData</h3><pre><code>语法：bindData(target, params, includesExcludes, prefix)
+用法：
+    // binds request parameters to a target object
+    bindData(target, params)
+    // exclude firstName and lastName
+    bindData(target, params, [exclude: [&apos;firstName&apos;, &apos;lastName&apos;]])
+
+    // only use parameters starting with &quot;author.&quot; e.g. author.email
+    bindData(target, params, &quot;author&quot;)
+    bindData(target, params, [exclude: [&apos;firstName&apos;, &apos;lastName&apos;]], &quot;author&quot;)
+
+    // using inclusive map
+    bindData(target, params, [include: [&apos;firstName&apos;, &apos;lastName&apos;]], &quot;author&quot;)
+</code></pre><h3 id="Chain"><a href="#Chain" class="headerlink" title="Chain"></a>Chain</h3><p>使用flash storage让从一个action跳转到另一个action时保持模型不变。</p>
+<pre><code>chain(action: &quot;details&quot;, model: [book: shawshankRedemption])
+
+语法：chain(controller*, namespace*， action, id*, model, params*)
+</code></pre><h3 id="默认的action"><a href="#默认的action" class="headerlink" title="默认的action"></a>默认的action</h3><p>可以指定默认的action。<code>static defaultAction = &quot;list&quot;</code></p>
+<h3 id="errors对象和hasErrors-方法"><a href="#errors对象和hasErrors-方法" class="headerlink" title="errors对象和hasErrors()方法"></a>errors对象和hasErrors()方法</h3><p>errors保存了该controller中的所有的错误。hasErrors()返回controller中是否有错误。</p>
+<h3 id="flash对象"><a href="#flash对象" class="headerlink" title="flash对象"></a>flash对象</h3><p>一个临时对象，保存并且只保存转到下一个action时候session中的对象，当跳转到下一个action后清除。</p>
+<pre><code>def index() {
+    flash.message = &quot;Welcome!&quot;
+    redirect(action: &apos;home&apos;)
+}
+
+def home() {}
+</code></pre><h3 id="forward和redirect"><a href="#forward和redirect" class="headerlink" title="forward和redirect"></a>forward和redirect</h3><p>forward：服务端跳转<br>redirect：浏览器跳转</p>
+<h3 id="grailsApplication"><a href="#grailsApplication" class="headerlink" title="grailsApplication"></a>grailsApplication</h3><p>GrailsApplication的实例。</p>
+<pre><code>def bookClass = grailsApplication.classLoader.loadClass(&quot;Book&quot;)
+</code></pre><h3 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h3><p>不同package的controller可以定义在同一个namespace中；如果没有定义namespace，相同package的命名空间一样。</p>
+<pre><code>static namespace = &apos;reports&apos;    //定义命名空间为reports
+</code></pre><h3 id="params"><a href="#params" class="headerlink" title="params"></a>params</h3><p>Http请求的参数。</p>
+<pre><code>def book = Book.get(params.id)
+</code></pre><h3 id="request和response"><a href="#request和response" class="headerlink" title="request和response"></a>request和response</h3><p>HttpServletRequest和HttpServletResponse的实例对象。</p>
+<h3 id="respond"><a href="#respond" class="headerlink" title="respond"></a>respond</h3><p>根据Accept的指定，以最合适的格式输出。比如：JSON、XML等。</p>
+<pre><code>respond Book.get(1)
+respond Book.get(1), [formats:[&apos;xml&apos;, &apos;json&apos;]]
+</code></pre><p>可以在responseFormats中指定，<code>static responseFormats = [&#39;xml&#39;, &#39;json&#39;]</code></p>
+<h3 id="scope"><a href="#scope" class="headerlink" title="scope"></a>scope</h3><p>修改controller的作用域</p>
+<pre><code>static scope = &quot;session&quot;
+</code></pre><h3 id="servletContext"><a href="#servletContext" class="headerlink" title="servletContext"></a>servletContext</h3><p>servletContext是 ServletContext 的实例对象。</p>
+<pre><code>input = servletContext.getResourceAsStream(&quot;/WEB-INF/myscript.groovy&quot;)
+</code></pre><h3 id="session"><a href="#session" class="headerlink" title="session"></a>session</h3><p>HttpSession的实例对象。</p>
+<pre><code>def logout() {
+    log.info &quot;User agent: &quot; + request.getHeader(&quot;User-Agent&quot;)
+    session.invalidate()
+    redirect(action: &quot;login&quot;)
+}
+</code></pre><h3 id="withForm-和-withFormat"><a href="#withForm-和-withFormat" class="headerlink" title="withForm 和 withFormat"></a>withForm 和 withFormat</h3><pre><code>withForm示例：
+    &lt;g:form useToken=&quot;true&quot; ...&gt;
+    withForm {
+       // good request
+    }.invalidToken {
+       // bad request
+    }
+
+withFormat示例：
+    def list() {
+        def books = Book.list()
+
+        withFormat {
+            html bookList:books
+            js { render &quot;alert(&apos;hello&apos;)&quot; }
+            xml { render books as XML }
+        }
+    }
+</code></pre><p>withForm：用来处理表单提交</p>
+<p>withFormat：根据请求的Accept，呈现不同的response</p>
+<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="创建一个Service"><a href="#创建一个Service" class="headerlink" title="创建一个Service"></a>创建一个Service</h3><pre><code>grails create-service org.bookstore.Book
+</code></pre><p>对应地grails生成一个BookService文件。</p>
+<pre><code>import grails.transaction.Transactional
+
+@Transactional
+class BookService {
+
+    def serviceMethod() {
+
+    }
+}
+</code></pre><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><pre><code>static scope = &quot;session&quot;
+</code></pre><p>score的值有：prototype,request,flash,flow,conversation,session,singleton。其中singleton为默认。</p>
+<h3 id="transactional"><a href="#transactional" class="headerlink" title="transactional"></a>transactional</h3><p>使用<code>static transactional = true</code>设置事务。</p>
+<p>也可以使用<code>@Transactional</code>注解。</p>
+<h2 id="GORM"><a href="#GORM" class="headerlink" title="GORM"></a>GORM</h2><h3 id="创建一个领域对象"><a href="#创建一个领域对象" class="headerlink" title="创建一个领域对象"></a>创建一个领域对象</h3><pre><code>grails create-domain-class helloworld.Person
+</code></pre><h3 id="基础的CRUD操作"><a href="#基础的CRUD操作" class="headerlink" title="基础的CRUD操作"></a>基础的CRUD操作</h3><h4 id="create"><a href="#create" class="headerlink" title="create"></a>create</h4><pre><code>def p = new Person(name:&quot;Fred&quot;,age:40,lastVisit: new Date())
+p.save()
+</code></pre><h4 id="read"><a href="#read" class="headerlink" title="read"></a>read</h4><pre><code>def p = Person.get(1)
+def p = Person.read(1)
+def p = Person.load(1)
+</code></pre><p>read和load的区别：对于load方法认为该数据在数据库中一定存在，可以放心的使用代理来延迟加载，如果在使用过程中发现了问题，只能抛异常；而对于get方法，一定要获取到真实的数据，否则返回null。</p>
+<h4 id="update"><a href="#update" class="headerlink" title="update"></a>update</h4><pre><code>def p = Person.get(1)
+p.name = &quot;Bob&quot;
+p.save()
+</code></pre><h4 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h4><pre><code>def p = Person.get(1)
+p.delete()
+</code></pre><h3 id="GORM中的关联关系"><a href="#GORM中的关联关系" class="headerlink" title="GORM中的关联关系"></a>GORM中的关联关系</h3><h4 id="Many-to-one-and-one-to-one"><a href="#Many-to-one-and-one-to-one" class="headerlink" title="Many-to-one and one-to-one"></a>Many-to-one and one-to-one</h4><p><strong>many-to-one</strong></p>
+<pre><code>class Face{
+    Nose nose
+}
+class Nose{
+}
+</code></pre><p>以上代码我们建立了一个多对一的关系。</p>
+<pre><code>class Face{
+    Nose nose
+}
+class Nose{
+    static belongsTo = [face:Face]
+}
+</code></pre><p>这段代码是在先去的基础上添加了belongsTo，从而建立了级联关系。</p>
+<p><strong>one-to-one</strong></p>
+<pre><code>class Face{
+    static hasOne = [nose:Nose]
+}
+class Nose{
+    Face face
+}
+</code></pre><p>这段代码建立了Face和Nose的一对一关联关系。</p>
+<pre><code>class Face{
+    static hasOne = [nose:Nose]
+    static constraints = {
+        nose unique: true
+    }
+}
+class Nose{
+    Face face
+}
+</code></pre><p>添加<code>nose unique: true</code>后，表示face必须有一个nose。</p>
+<pre><code>class Person {
+    String name
+    Person parent
+    static belongsTo = [ supervisor: Person ]
+
+    static mappedBy = [ supervisor: &quot;none&quot;, parent: &quot;none&quot; ]
+
+    static constraints = { supervisor nullable: true }
+}
+</code></pre><p>对象自身的关联关系</p>
+<h4 id="one-to-many"><a href="#one-to-many" class="headerlink" title="one-to-many"></a>one-to-many</h4><pre><code>class Author {
+    static hasMany = [books: Book]
+    String name
+}
+class Book {
+    String title
+}
+</code></pre><p>上述代码定义了一对多的关联关系。</p>
+<p>如果要求他们之间建立级联关系，则为Book修改如下：</p>
+<pre><code>class Book {
+    static belongsTo = [author: Author]
+    String title
+}
+</code></pre><p>如果多的一方有两个或以上相同的类型，可以如下代码：</p>
+<pre><code>class Airport {
+    static hasMany = [outboundFlights: Flight, inboundFlights: Flight]
+    static mappedBy = [outboundFlights: &quot;departureAirport&quot;,
+                       inboundFlights: &quot;destinationAirport&quot;]
+}
+class Flight {
+    Airport departureAirport
+    Airport destinationAirport
+}
+</code></pre><h4 id="many-to-many"><a href="#many-to-many" class="headerlink" title="many-to-many"></a>many-to-many</h4><pre><code>class Book {
+    static belongsTo = Author
+    static hasMany = [authors:Author]
+    String title
+}
+class Author{
+    static hasMany = [books:Book]
+    String name
+}
+</code></pre><h3 id="GORM中的组合"><a href="#GORM中的组合" class="headerlink" title="GORM中的组合"></a>GORM中的组合</h3><pre><code>class Person {
+    Address homeAddress
+    Address workAddress
+    static embedded = [&apos;homeAddress&apos;, &apos;workAddress&apos;]
+}
+class Address {
+    String number
+    String code
+}
+</code></pre><h3 id="Sets-Lists-and-Maps"><a href="#Sets-Lists-and-Maps" class="headerlink" title="Sets, Lists and Maps"></a>Sets, Lists and Maps</h3><p>上面的那些代码中定义了hasMany的属性其实就是一个Set。</p>
+<p>当然也可以定义many为其他类型：</p>
+<pre><code>class Author {
+//    SortedSet books    //定义为SortedSet
+//    List books    //定义为List
+//    Map books        //定义为Map
+    static hasMany = [books: Book]
+}
+</code></pre><h3 id="保存和更新"><a href="#保存和更新" class="headerlink" title="保存和更新"></a>保存和更新</h3><pre><code>def p = Person.get(1)
+p.save()    //没有立马保存到库
+
+try {
+    p.save(flush: true) //立马保存到库
+}
+catch (org.springframework.dao.DataIntegrityViolationException e) {
+    // deal with exception
+}
+
+try {
+    p.save(failOnError: true)   //校验失败时抛出异常
+}
+catch (ValidationException e) {
+    // deal with exception
+}
+</code></pre><h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><pre><code>def p = Person.get(1)
+p.delete()
+
+try {
+    p.delete(flush: true)
+}
+catch (org.springframework.dao.DataIntegrityViolationException e) {
+    flash.message = &quot;Could not delete person ${p.name}&quot;
+    redirect(action: &quot;show&quot;, id: p.id)
+}
+</code></pre><p>还可以用以下写法：</p>
+<pre><code>Customer.executeUpdate(&quot;delete Customer c where c.name = :oldName&quot;,
+                       [oldName: &quot;Fred&quot;])
+</code></pre><h3 id="级联更新和级联删除"><a href="#级联更新和级联删除" class="headerlink" title="级联更新和级联删除"></a>级联更新和级联删除</h3><p>不管是一对一、一对多或者是多对多，只要定义了belongsTo，就等于定义了级联操作。</p>
+<pre><code>class Airport {
+    String name
+    static hasMany = [flights: Flight]
+}
+class Flight {
+    String number
+    static belongsTo = [airport: Airport]
+}
+new Airport(name: &quot;Gatwick&quot;)
+        .addToFlights(new Flight(number: &quot;BA3430&quot;))
+        .addToFlights(new Flight(number: &quot;EZ0938&quot;))
+        .save()
+def airport = Airport.findByName(&quot;Gatwick&quot;)
+airport.delete()
+</code></pre><p>以上代码定义了Airport、Flight，并且定义了Airport和Flight之间的级联关系。在新建Airport对象时，添加了些Flight，也就新建增了些Flight记录。删除airport时，也就删除了与它关联的Flight记录。</p>
+<h4 id="用belongsTo定义双向的one-to-many"><a href="#用belongsTo定义双向的one-to-many" class="headerlink" title="用belongsTo定义双向的one-to-many"></a>用belongsTo定义双向的one-to-many</h4><pre><code>class A { static hasMany = [bees: B] }
+class B { static belongsTo = [a: A] }
+</code></pre><p>这样设置会让级联策略为：one的一方是ALL，many一方是NONE</p>
+<h4 id="单向的one-to-many"><a href="#单向的one-to-many" class="headerlink" title="单向的one-to-many"></a>单向的one-to-many</h4><pre><code>class A { static hasMany = [bees: B] }
+class B {  }
+</code></pre><p>这样的设置会让级联策略为SAVE_UPDATE</p>
+<h4 id="不用belongTo定义双向的one-to-many"><a href="#不用belongTo定义双向的one-to-many" class="headerlink" title="不用belongTo定义双向的one-to-many"></a>不用belongTo定义双向的one-to-many</h4><pre><code>class A { static hasMany = [bees: B] }
+class B { A a }
+</code></pre><p>这样的设置会让级联策略为one的一方为SAVE-UPDATE，many的一方为NONE</p>
+<h4 id="用belongsTo的单向的one-to-one"><a href="#用belongsTo的单向的one-to-one" class="headerlink" title="用belongsTo的单向的one-to-one"></a>用belongsTo的单向的one-to-one</h4><pre><code>class A {  }
+class B { static belongsTo = [a: A] }
+</code></pre><p>级联策略为：拥有的一方为ALL，belongsTo的一方为NONE</p>
+
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/08/25/grails备忘录（二）/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/08/22/grails备忘录（一）/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
-      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebFuse"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/08/22/grails备忘录（一）/" class="post-title-link" itemprop="url">grails备忘录（一）</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-08-22 23:02:12" itemprop="dateCreated datePublished" datetime="2016-08-22T23:02:12+08:00">2016-08-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Groovy/" itemprop="url" rel="index"><span itemprop="name">Groovy</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/08/22/grails备忘录（一）/" class="leancloud_visitors" data-flag-title="grails备忘录（一）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              Grails是一套用于快速Web应用开发的开源框架，它基于Groovy编程语言，并构建于Spring、Hibernate和其它标准Java框架之上，从而为大家带来一套能实现超高生产力的一站式框架。
-Grails命令首先看一个例子，用命令创建项目：
-grails create-app hellowor
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/08/22/grails备忘录（一）/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -794,7 +1133,6 @@ grails create-app hellowor
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -806,7 +1144,7 @@ grails create-app hellowor
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Hing Kwan</p>
-              <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
           
@@ -816,7 +1154,7 @@ grails create-app hellowor
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -826,7 +1164,11 @@ grails create-app hellowor
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -879,7 +1221,11 @@ grails create-app hellowor
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -978,9 +1324,7 @@ grails create-app hellowor
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -998,31 +1342,7 @@ grails create-app hellowor
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-            </div>
+
           
 
           
@@ -1044,6 +1364,7 @@ grails create-app hellowor
 
     </div>
   </aside>
+  
 
 
         
@@ -1052,7 +1373,7 @@ grails create-app hellowor
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1072,7 +1393,7 @@ grails create-app hellowor
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
@@ -1150,9 +1471,9 @@ grails create-app hellowor
   
 
 
-  <script src="/js/src/utils.js?v=6.7.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=6.7.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1160,9 +1481,7 @@ grails create-app hellowor
   
 
 
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
@@ -1171,7 +1490,16 @@ grails create-app hellowor
   
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -1179,512 +1507,12 @@ grails create-app hellowor
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
 
   
 
   
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz",
-                'X-LC-Key': "RfYJ7E2mHXj4yux2OnSLoxdr",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
-          
-        })
-    });
-  </script>
-
-
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
-  <script>
-    (function () {
-
-      firebase.initializeApp({
-        apiKey: 'AIzaSyBOoFO6OomXzAe3yA8kpYOVxxTrbgoBMM8',
-        projectId: 'webfusecn-ada77'
-      })
-
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
-
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
-            }
-          }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
-              }
-            }
-          }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('阅读次数 ' + count))
-          )
-        }
-      }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = ''
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = 'titles.push("grails备忘录（二）");titles.push("grails备忘录（一）");' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
-  </script>
-
 
   
 

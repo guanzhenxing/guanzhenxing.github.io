@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,15 +30,9 @@
 
 
 
-  <meta name="google-site-verification" content="TSVApdOPJJ3_-stNp_HWhi0yV7De9ZNH0ajM8Ra9Zk4"/>
 
 
 
-
-
-
-
-  <meta name="baidu-site-verification" content="rt0dJarBwI"/>
 
 
 
@@ -52,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -76,9 +70,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://webfuse.cn/page/31/"/>
 
 
@@ -133,25 +130,7 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131682260-1');
-  </script>
 
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -262,96 +241,17 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
 
       
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
       
     </ul>
   
 
   
+    
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
@@ -371,12 +271,358 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/07/07/使用json-server模拟REST API/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/07/07/使用json-server模拟REST API/" class="post-title-link" itemprop="url">使用json-server模拟REST API</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-07-07 22:43:08" itemprop="dateCreated datePublished" datetime="2016-07-07T22:43:08+08:00">2016-07-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>现在在开发一个应用（Web或者App）的时候，通常需要前后端进行配合。一般情况下，我们使用REST风格的JSON结构进行数据交互。</p>
+<p>实际工作中，我们会遇到服务端API的开发速度不能够满足前端开发速度的情况。这个时候，前端可以通过创建一个静态的JSON文件来模拟数据。但是呢，这样的模拟数据仅仅可以显示，如果要做增、删、改操作，必然不是那么方便。</p>
+<p><a href="https://github.com/typicode/json-server" target="_blank" rel="external">json-server</a>，就是为了给我们解决模拟REST API的一个npm模块。我们不需要自己写任何的代码，只需要将自己需要的模拟数据写入一个JSON文件中，json-server就可以向外提供REST风格的接口，方便我们进行数据模拟。</p>
+<p>接下来，让我们看看这个神奇的工具吧!</p>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>npm install -g json-server
+</code></pre><h2 id="模拟数据"><a href="#模拟数据" class="headerlink" title="模拟数据"></a>模拟数据</h2><p>创建一个文件db.json，并填入以下数据</p>
+<pre><code>{
+  &quot;posts&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;title&quot;: &quot;用json-server模拟rest api&quot;,
+      &quot;author&quot;: &quot;zxguan&quot;
+    }
+  ],
+  &quot;comments&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;body&quot;: &quot;用json-server模拟rest api&quot;,
+      &quot;postId&quot;: 1
+    }
+  ],
+  &quot;profile&quot;: {
+    &quot;name&quot;: &quot;zxguan&quot;
+  }
+}
+</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>运行： <code>json-server --watch db.json</code></p>
+<p>在浏览器中输入<a href="http://localhost:3000" target="_blank" rel="external">http://localhost:3000</a></p>
+<img src="/2016/07/07/使用json-server模拟REST%20API/index.jpg" alt="index.jpg" title="">
+<p>输入<a href="http://localhost:3000/posts" target="_blank" rel="external">http://localhost:3000/posts</a> </p>
+<pre><code>[{
+    id: 1,
+    title: &quot;用json-server模拟rest api&quot;,
+    author: &quot;zxguan&quot;
+}]
+</code></pre><p>其他类似的，我们可以通过postman进行POST、PUT和DELETE操作。使用时指定 <code>Content-Type: application/json</code> 。</p>
+<img src="/2016/07/07/使用json-server模拟REST%20API/post.jpg" alt="post.jpg" title="">
+<h1 id="其他特性"><a href="#其他特性" class="headerlink" title="其他特性"></a>其他特性</h1><h2 id="过滤查询"><a href="#过滤查询" class="headerlink" title="过滤查询"></a>过滤查询</h2><pre><code>GET /posts?title=test.........&amp;author=zxguan
+GET /posts?id=1&amp;id=2
+GET /comments?author.name=zxguan
+</code></pre><h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><p>使用 <code>_start</code> 、 <code>_end</code> 和 <code>_limit</code> 进行分页。</p>
+<pre><code>GET /posts?_start=0&amp;_end=10
+GET /posts/1/comments?_start=10&amp;_end=20
+GET /posts/1/comments?_start=20&amp;_limit=10
+</code></pre><h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>使用 <code>_sort</code> 和 <code>_order</code>进行排序</p>
+<pre><code>GET /posts?_sort=views&amp;_order=DESC
+GET /posts/1/comments?_sort=votes&amp;_order=ASC
+</code></pre><h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><ul>
+<li>_gte ： 大于等于</li>
+<li>_lte ： 小于等于</li>
+<li>_ne ： 不等于</li>
+<li>_like ： like操作</li>
+</ul>
+<p>用法为： 字段_gte 、字段_lte 、 字段_ne 、 字段_like</p>
+<pre><code>GET /posts?views_gte=10&amp;views_lte=20
+GET /posts?id_ne=1
+GET /posts?title_like=server
+</code></pre><h2 id="全文检索"><a href="#全文检索" class="headerlink" title="全文检索"></a>全文检索</h2><p>参数为q，</p>
+<pre><code>GET /posts?q=internet
+</code></pre><h2 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h2><p>通过_embed获得子资源；通过_expand获得父级资源，通过资源名称获得嵌套资源</p>
+<p>如：</p>
+<pre><code>GET /posts?_embed=comments
+GET /posts/1?_embed=comments
+GET /comments?_expand=post
+GET /comments/1?_expand=post
+GET  /posts/1/comments
+POST /posts/1/comments
+</code></pre><h1 id="高级特性"><a href="#高级特性" class="headerlink" title="高级特性"></a>高级特性</h1><h2 id="使用其他数据源"><a href="#使用其他数据源" class="headerlink" title="使用其他数据源"></a>使用其他数据源</h2><h3 id="使用js生成随机数"><a href="#使用js生成随机数" class="headerlink" title="使用js生成随机数"></a>使用js生成随机数</h3><p>将以下代码复制进index.js</p>
+<pre><code>module.exports = function() {
+  var data = { users: [] }
+  // Create 1000 users
+  for (var i = 0; i &lt; 1000; i++) {
+    data.users.push({ id: i, name: &apos;user&apos; + i })
+  }
+  return data
+}
+</code></pre><p>运行：<code>json-server index.js</code></p>
+<h3 id="使用外部数据链接"><a href="#使用外部数据链接" class="headerlink" title="使用外部数据链接"></a>使用外部数据链接</h3><pre><code>json-server http://jsonplaceholder.typicode.com/db
+</code></pre><h2 id="自定义路由"><a href="#自定义路由" class="headerlink" title="自定义路由"></a>自定义路由</h2><p><strong>方式一：使用routes.json</strong></p>
+<pre><code>{
+  &quot;/api/&quot;: &quot;/&quot;,
+  &quot;/v0.1/:resource/:id/show&quot;: &quot;/:resource/:id&quot;,
+  &quot;/v0.1/:category&quot;: &quot;/posts/:id?category=:category&quot;
+}
+</code></pre><p>运行： <code>json-server db.json --routes routes.json</code></p>
+<p><strong>方式二：使用自定义服务</strong></p>
+<p>将以下代码复制如server.js</p>
+<pre><code>var jsonServer = require(&apos;json-server&apos;)
+var server = jsonServer.create()
+var router = jsonServer.router(&apos;db.json&apos;)
+var middlewares = jsonServer.defaults()
+
+server.use(middlewares)
+
+server.get(&quot;/echo&quot;,function(req,res){
+    res.jsonp(req.query)
+})
+
+server.use(jsonServer.bodyParser)
+server.use(function(req,res,next){
+    if(req.method === &apos;POST&apos;){
+        req.body.createAt = Date.now()
+    }
+    next()
+})
+
+server.use(router)
+server.listen(3000, function () {
+  console.log(&apos;JSON Server is running&apos;)
+})
+</code></pre><p>然后运行 <code>node server.js</code></p>
+<p>当然，这种方式你需要使用到package.json，然后将<code>npm install json-server --save</code></p>
+<p><strong>方式三： 使用rewriter</strong></p>
+<p>复制以下代码到server.js</p>
+<pre><code>var jsonServer = require(&apos;json-server&apos;)
+var server = jsonServer.create()
+var router = jsonServer.router(&apos;db.json&apos;)
+var middlewares = jsonServer.defaults()
+
+
+server.use(middlewares)
+server.use(jsonServer.bodyParser)
+
+server.use(&apos;/v0.1&apos;, router)
+
+
+server.listen(3000, function () {
+  console.log(&apos;JSON Server is running&apos;)
+})
+</code></pre><p>或者：</p>
+<pre><code>var jsonServer = require(&apos;json-server&apos;)
+var server = jsonServer.create()
+var router = jsonServer.router(&apos;db.json&apos;)
+var middlewares = jsonServer.defaults()
+
+
+server.use(middlewares)
+server.use(jsonServer.bodyParser)
+
+server.use(jsonServer.rewriter({
+  &apos;/api/&apos;: &apos;/&apos;,
+  &apos;/blog/:resource/:id/show&apos;: &apos;/:resource/:id&apos;
+}))
+
+server.use(router)
+
+server.listen(3000, function () {
+  console.log(&apos;JSON Server is running&apos;)
+})
+</code></pre><h2 id="自定义输出"><a href="#自定义输出" class="headerlink" title="自定义输出"></a>自定义输出</h2><p>复制以下代码到server.js</p>
+<pre><code>var jsonServer = require(&apos;json-server&apos;)
+var server = jsonServer.create()
+var router = jsonServer.router(&apos;db.json&apos;)
+var middlewares = jsonServer.defaults()
+var _ = require(&apos;lodash&apos;);
+
+server.use(middlewares)
+server.use(jsonServer.bodyParser)
+
+router.render = function (req, res) {
+
+    var value = res.locals.data
+
+    if (_.isArray(value)) {
+        res.jsonp({
+            items: value
+        })
+    }else{
+        res.jsonp(value)
+    }
+
+
+}
+
+server.use(router)
+server.listen(3000, function () {
+  console.log(&apos;JSON Server is running&apos;)
+})
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -461,7 +707,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -482,20 +728,10 @@
 
           
             
+            
           
 
           
-          
-             <span id="/2016/06/24/SpringMVC异常处理/" class="leancloud_visitors" data-flag-title="SpringMVC异常处理">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -519,221 +755,112 @@
       
         
           
-            <p>
-              SpringMVC处理异常的方式有以下四种：
+            <p>SpringMVC处理异常的方式有以下四种：</p>
+<ul>
+<li>使用 @ResponseStatus</li>
+<li>使用 @ExceptionHandler</li>
+<li>使用 @ControllerAdvice</li>
+<li>使用 HandlerExceptionResolver</li>
+</ul>
+<h3 id="使用-ResponseStatus"><a href="#使用-ResponseStatus" class="headerlink" title="使用 @ResponseStatus"></a>使用 @ResponseStatus</h3><p>@ResponseStatus可以被用于指定的方法或者类上，可以返回指定的HTTP Response状态码和原因。</p>
+<p>使用方式如下：</p>
+<p>NotFoundException.java</p>
+<pre><code>@ResponseStatus(value = HttpStatus.NOT_FOUND, reason = &quot;NOT FOUND.&quot;)
+public class NotFoundException extends RuntimeException {
+    public NotFoundException() {
+        super();
+    }
+}
+</code></pre><p>TestController.java</p>
+<pre><code>@RequestMapping(&quot;/test&quot;)
+public String test() {
 
-使用 @ResponseStatus
-使用 @ExceptionHandler
-使用 @ControllerAdvice
-使用 HandlerExceptionResolver
+    boolean isException = true; //模拟了有异常的时候
 
-使用 @ResponseStatus@ResponseStatus可以被
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/06/24/SpringMVC异常处理/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
+    if (isException) {
+        throw new NotFoundException();  //抛出异常
+    }
+    return &quot;success&quot;;
+}    
+</code></pre><h3 id="使用-ExceptionHandler"><a href="#使用-ExceptionHandler" class="headerlink" title="使用 @ExceptionHandler"></a>使用 @ExceptionHandler</h3><p>可以在Controller类的一些方法上添加@ExceptionHandler注解，该方法就可以用来处理该Controller类抛出的特定异常。</p>
+<p>TestController.java</p>
+<pre><code>//一个预定义的异常转换为一个HTTP状态代码
+@ResponseStatus(value=HttpStatus.CONFLICT, reason=&quot;Data already present&quot;)
+@ExceptionHandler(SQLException.class)
+public void dataConflict() {
+    System.out.println(&quot;----Caught SQLException----&quot;);
+}
 
-    
+//通过ModelAndView处理
+@ExceptionHandler(Exception.class)
+public ModelAndView myError(Exception exception) {
+    System.out.println(&quot;----Caught Exception----&quot;);
+    ModelAndView mav = new ModelAndView();
+    mav.addObject(&quot;exc&quot;, exception);
+    mav.setViewName(&quot;myerror&quot;);
+    return mav;
+}
 
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
+//直接返回到error页面
+@ExceptionHandler({SQLException.class,DataAccessException.class})
+public String handDatabaseError(){
+    return &quot;error&quot;;
+}
+</code></pre><p>这样的异常处理方式比较简单，扩展性好。我们可以创建一个处理异常的BaseExController基类，所有的要处理异常的Controller类都继承于该基类。</p>
+<h3 id="使用-ControllerAdvice"><a href="#使用-ControllerAdvice" class="headerlink" title="使用 @ControllerAdvice"></a>使用 @ControllerAdvice</h3><p>在ControllerAdvice的javadoc上有一段话，大致意思是@ControllerAdvice通常用来定义@ExceptionHandler,<br>@InitBinder,@ModelAttribute方法，适用于所有@RequestMapping方法。</p>
+<p>GlobalExceptionHandler.java</p>
+<pre><code>@ControllerAdvice
+public class GlobalExceptionHandler {
 
 
-    
-      
+    @ExceptionHandler(IOException.class)
+    public ModelAndView myError(Exception exception) {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject(&quot;exception&quot;, exception);
+        mav.setViewName(&quot;globalerror&quot;);
+        return mav;
+    }
 
-  
+    @ExceptionHandler(KeywordNotFoundException.class)
+    public String notFound() {
+        return &quot;404&quot;;
+    }
 
-  
-  
-  
+}
+</code></pre><h3 id="使用-HandlerExceptionResolver"><a href="#使用-HandlerExceptionResolver" class="headerlink" title="使用 HandlerExceptionResolver"></a>使用 HandlerExceptionResolver</h3><p>SpringMVC通过HandlerExceptionResolver处理程序的异常。SpringMVC中默认使用了：</p>
+<ul>
+<li>DefaultHandlerExceptionResolver：HandlerExceptionResolver的默认实现。</li>
+<li>ResponseStatusExceptionResolver：处理使用了@ResponseStatus注解的方法。</li>
+<li>ExceptionHandlerExceptionResolver：处理使用了@ExceptionHandler注解的方法（当然也包括了使用了@ControllerAdvice）</li>
+</ul>
+<p>我们可以通过实现HandlerExceptionResolver接口来定义自己的异常处理器，达到统一处理异常的目的。</p>
+<p>最简单的，我们可以使用SpringMVC默认的<strong>SimpleMappingExceptionResolver</strong>来进行简单的统一异常处理。使用方法如下（因为使用了Spring boot，所以直接使用Java Configuration）：</p>
+<pre><code>@Configuration
+@ComponentScan(&quot;cn.webfuse.exception.demos&quot;)
+@EnableWebMvc
+public class WebConfig extends WebMvcConfigurerAdapter {
 
-  
+    @Bean(name = &quot;simpleMappingExceptionResolver&quot;)
+    public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/06/15/体验Meteor/"/>
+        SimpleMappingExceptionResolver resolver = new SimpleMappingExceptionResolver();
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
-      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
+        Properties errorMaps = new Properties();
+        errorMaps.setProperty(&quot;ElectricityNotFoundException&quot;, &quot;error&quot;);
+        errorMaps.setProperty(&quot;NullPointerException&quot;, &quot;error&quot;);
+        errorMaps.setProperty(&quot;DatabaseException&quot;, &quot;databaseError&quot;);
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebFuse"/>
-    </span>
+        resolver.setExceptionMappings(errorMaps);
+        resolver.setDefaultErrorView(&quot;error&quot;);
+        resolver.setExceptionAttribute(&quot;exc&quot;);
 
-    
-      <header class="post-header">
+        return resolver;
+    }
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/06/15/体验Meteor/" class="post-title-link" itemprop="url">体验Meteor</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-06-15 10:29:40" itemprop="dateCreated datePublished" datetime="2016-06-15T10:29:40+08:00">2016-06-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
-              
-            
-          </span>
+}
+</code></pre><p>当然我们也可以直接继承SimpleMappingExceptionResolver来定义我们自己的简单的异常处理类。</p>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/06/15/体验Meteor/" class="leancloud_visitors" data-flag-title="体验Meteor">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              Meteor是什么?在Meteor官网的教程上是这样对Meteor进行解释的：
-
-Meteor is a full-stack JavaScript platform for developing modern web and mobile applications. Meteor includes
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/06/15/体验Meteor/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -798,7 +925,6 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -810,7 +936,7 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Hing Kwan</p>
-              <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
           
@@ -820,7 +946,7 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -830,7 +956,11 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -883,7 +1013,11 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -982,9 +1116,7 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1002,31 +1134,7 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-            </div>
+
           
 
           
@@ -1048,6 +1156,7 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
 
     </div>
   </aside>
+  
 
 
         
@@ -1056,7 +1165,7 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1076,7 +1185,7 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
@@ -1154,9 +1263,9 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
   
 
 
-  <script src="/js/src/utils.js?v=6.7.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=6.7.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1164,9 +1273,7 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
   
 
 
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
@@ -1175,7 +1282,16 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
   
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -1183,512 +1299,12 @@ Meteor is a full-stack JavaScript platform for developing modern web and mobile 
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
 
   
 
   
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz",
-                'X-LC-Key': "RfYJ7E2mHXj4yux2OnSLoxdr",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
-          
-        })
-    });
-  </script>
-
-
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
-  <script>
-    (function () {
-
-      firebase.initializeApp({
-        apiKey: 'AIzaSyBOoFO6OomXzAe3yA8kpYOVxxTrbgoBMM8',
-        projectId: 'webfusecn-ada77'
-      })
-
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
-
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
-            }
-          }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
-              }
-            }
-          }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('阅读次数 ' + count))
-          )
-        }
-      }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = ''
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = 'titles.push("SpringMVC异常处理");titles.push("体验Meteor");' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
-  </script>
-
 
   
 

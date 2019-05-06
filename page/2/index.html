@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,15 +30,9 @@
 
 
 
-  <meta name="google-site-verification" content="TSVApdOPJJ3_-stNp_HWhi0yV7De9ZNH0ajM8Ra9Zk4"/>
 
 
 
-
-
-
-
-  <meta name="baidu-site-verification" content="rt0dJarBwI"/>
 
 
 
@@ -52,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -76,9 +70,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://webfuse.cn/page/2/"/>
 
 
@@ -133,25 +130,7 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131682260-1');
-  </script>
 
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -262,96 +241,17 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
 
       
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
       
     </ul>
   
 
   
+    
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
@@ -370,9 +270,6 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
-            
-
           
           <div id="content" class="content">
             
@@ -393,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2019/03/21/达世币从入门到XX/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2019/04/11/web3-js编译Solidity，发布，调用全部流程/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -413,7 +310,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/03/21/达世币从入门到XX/" class="post-title-link" itemprop="url">达世币从入门到XX</a>
+                <a href="/2019/04/11/web3-js编译Solidity，发布，调用全部流程/" class="post-title-link" itemprop="url">web3.js编译Solidity，发布，调用全部流程</a>
               
             
           </h1>
@@ -438,7 +335,7 @@
                 
               
 
-              <time title="创建时间：2019-03-21 21:55:50 / 修改时间：21:57:13" itemprop="dateCreated datePublished" datetime="2019-03-21T21:55:50+08:00">2019-03-21</time>
+              <time title="创建时间：2019-04-11 15:53:53 / 修改时间：15:56:46" itemprop="dateCreated datePublished" datetime="2019-04-11T15:53:53+08:00">2019-04-11</time>
             
 
             
@@ -449,7 +346,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -470,20 +367,10 @@
 
           
             
+            
           
 
           
-          
-             <span id="/2019/03/21/达世币从入门到XX/" class="leancloud_visitors" data-flag-title="达世币从入门到XX">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -507,28 +394,43 @@
       
         
           
-            <p>
-              什么是达世币达世币（DASH）：一个支持即时交，专注于保护隐私的数字货币。
-概述DASH是以比特币为基础，它的代码是fork了bitcoin的。
-比特币遇到的问题
-确认时间长
-只提供低层次的隐私保护
-ASIC矿机导致的中心化问题
-矿池（存在51%攻击的可能）
+            <p>根据 <a href="http://web3.tryblockchain.org/web3-js-in-action.html" target="_blank" rel="external">web3.js编译Solidity，发布，调用全部流程（手把手教程）</a>进行。因为这篇文章中的一些方法和最新版本的不一样了，中间遇到了一些坑，现把解决方法记录如下：</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>安装 Node.js 、安装以太节点以及合约代码等与<a href="http://web3.tryblockchain.org/web3-js-in-action.html" target="_blank" rel="external">web3.js编译Solidity，发布，调用全部流程（手把手教程）</a>中的一致。</p>
+<ul>
+<li>安装好的NodeJs版本为：v10.15.3</li>
+<li>安装好的以太节点版本为：ethereumjs-testrpc@6.0.3</li>
+</ul>
+<h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><h3 id="第一个坑：Solidity安装"><a href="#第一个坑：Solidity安装" class="headerlink" title="第一个坑：Solidity安装"></a>第一个坑：Solidity安装</h3><p>按照官方文档使用 <code>npm install -g solc</code> 安装。</p>
+<p>安装后验证版本应该使用 <code>solcjs --version</code> ，而不是 <code>solc --version</code> 。而且这边安装的是最新版本，也为后面的步骤埋下了坑。</p>
+<h3 id="第二个坑：TypeError-Cannot-read-property-‘solidity’-of-undefined"><a href="#第二个坑：TypeError-Cannot-read-property-‘solidity’-of-undefined" class="headerlink" title="第二个坑：TypeError: Cannot read property ‘solidity’ of undefined"></a>第二个坑：TypeError: Cannot read property ‘solidity’ of undefined</h3><p>使用以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> source = <span class="string">"pragma solidity ^0.4.0;contract Calc&#123;  /*区块链存储*/  uint count;  /*执行会写入数据，所以需要`transaction`的方式执行。*/  function add(uint a, uint b) returns(uint)&#123;    count++;    return a + b;  &#125;  /*执行不会写入数据，所以允许`call`的方式执行。*/  function getCount() returns (uint)&#123;    return count;  &#125;&#125;"</span>;</div><div class="line"><span class="keyword">let</span> calc = web3.eth.compile.solidity(source);</div></pre></td></tr></table></figure>
+<p>运行的时候报：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">let calc = web3.eth.compile.solidity(source);</div><div class="line">                            ^</div><div class="line"></div><div class="line">TypeError: Cannot read property 'solidity' of undefined</div><div class="line">    at Object.&lt;anonymous&gt; (/data/eth-contract/src/index.js:15:29)</div><div class="line">    at Module._compile (internal/modules/cjs/loader.js:701:30)</div><div class="line">    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)</div><div class="line">    at Module.load (internal/modules/cjs/loader.js:600:32)</div><div class="line">    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)</div><div class="line">    at Function.Module._load (internal/modules/cjs/loader.js:531:3)</div><div class="line">    at Function.Module.runMain (internal/modules/cjs/loader.js:754:12)</div><div class="line">    at startup (internal/bootstrap/node.js:283:19)</div><div class="line">    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)</div></pre></td></tr></table></figure>
+<p>这个是因为 Geth 在 1.5.9 版本以后就不支持此功能。见：<a href="https://medium.com/@ksin751119/ethereum-dapp%E5%88%9D%E5%BF%83%E8%80%85%E4%B9%8B%E8%B7%AF-7-web3-eth-compile-solidity-%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88-a020a6763fbd" target="_blank" rel="external">Ethereum Dapp初心者之路(7): web3.eth.compile.solidity()替代方案</a>。</p>
+<p>所以参考 <a href="https://ethereum.stackexchange.com/questions/6346/solc-version-command-not-found" target="_blank" rel="external">https://ethereum.stackexchange.com/questions/6346/solc-version-command-not-found</a> 文章，将代码改为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">const</span> solc = <span class="built_in">require</span>(<span class="string">'solc'</span>);</div><div class="line"><span class="keyword">let</span> source = fs.readFileSync(<span class="string">'Calc.sol'</span>, <span class="string">'UTF-8'</span>);</div><div class="line"><span class="keyword">let</span> compilationData = solc.compile(source);</div></pre></td></tr></table></figure>
+<h3 id="第三个坑：编译报错"><a href="#第三个坑：编译报错" class="headerlink" title="第三个坑：编译报错"></a>第三个坑：编译报错</h3><p>编译的时候，如果遇到以下报错：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;"errors":[&#123;"component":"general","formattedMessage":"* Line 1, Column 1\n  Syntax error: value, object or array expected.\n* Line 1, Column 2\n  Extra non-whitespace after JSON value.\n","message":"* Line 1, Column 1\n  Syntax error: value, object or array expected.\n* Line 1, Column 2\n  Extra non-whitespace after JSON value.\n","severity":"error","type":"JSONError"&#125;]&#125;</div></pre></td></tr></table></figure>
+<p>这个是因为 solc 的版本不对，我们的代码中的版本是 <code>^0.4.0</code> ，而安装的 solc 的版本为 <code>^0.5.7</code> 。应该用一样的版本。</p>
+<p>代码中的版本改为<code>^0.5.7</code>，即<code>pragma solidity ^0.5.7;</code>。运行后，报：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">assert.js:350</div><div class="line">    throw err;</div><div class="line">    ^</div><div class="line"></div><div class="line">AssertionError [ERR_ASSERTION]: Invalid callback specified.</div><div class="line">    at wrapCallback (/data/eth-contract/node_modules/solc/wrapper.js:16:5)</div><div class="line">    at runWithReadCallback (/data/eth-contract/node_modules/solc/wrapper.js:42:26)</div><div class="line">    at compileStandard (/data/eth-contract/node_modules/solc/wrapper.js:83:14)</div><div class="line">    at Object.compileStandardWrapper (/data/eth-contract/node_modules/solc/wrapper.js:90:14)</div><div class="line">    at Object.&lt;anonymous&gt; (/data/eth-contract/src/index.js:8:28)</div><div class="line">    at Module._compile (internal/modules/cjs/loader.js:701:30)</div><div class="line">    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)</div><div class="line">    at Module.load (internal/modules/cjs/loader.js:600:32)</div><div class="line">    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)</div><div class="line">    at Function.Module._load (internal/modules/cjs/loader.js:531:3)</div><div class="line">    at Function.Module.runMain (internal/modules/cjs/loader.js:754:12)</div><div class="line">    at startup (internal/bootstrap/node.js:283:19)</div><div class="line">    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)</div></pre></td></tr></table></figure>
+<p>参考 <a href="https://stackoverflow.com/questions/53353167/npm-solc-assertionerror-err-assertion-invalid-callback-specified" target="_blank" rel="external">https://stackoverflow.com/questions/53353167/npm-solc-assertionerror-err-assertion-invalid-callback-specified</a> 后，如下操作：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm uninstall -g solc</div><div class="line">npm uninstall solc</div><div class="line">npm install solc@0.4.25</div></pre></td></tr></table></figure>
+<p>然后将代码中的版本号改为：<code>pragma solidity ^0.4.25;</code></p>
+<h2 id="完整源码"><a href="#完整源码" class="headerlink" title="完整源码"></a>完整源码</h2><p>index.js:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Web3 = <span class="built_in">require</span>(<span class="string">'web3'</span>);</div><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">const</span> solc = <span class="built_in">require</span>(<span class="string">'solc'</span>);</div><div class="line"></div><div class="line"><span class="keyword">let</span> web3;</div><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> web3 !== <span class="string">'undefined'</span>) &#123;</div><div class="line">    web3 = <span class="keyword">new</span> Web3(web3.currentProvider);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// set the provider you want from Web3.providers</span></div><div class="line">    web3 = <span class="keyword">new</span> Web3(<span class="keyword">new</span> Web3.providers.HttpProvider(<span class="string">"http://localhost:8545"</span>));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//编译合约</span></div><div class="line"><span class="keyword">let</span> source = fs.readFileSync(<span class="string">'Calc.sol'</span>, <span class="string">'UTF-8'</span>).toString();</div><div class="line"><span class="keyword">let</span> calcCompiled = solc.compile(source);</div><div class="line"></div><div class="line"><span class="comment">//得到合约对象</span></div><div class="line"><span class="keyword">let</span> jsonInterface = calcCompiled[<span class="string">'contracts'</span>][<span class="string">':Calc'</span>][<span class="string">'interface'</span>];</div><div class="line"></div><div class="line"><span class="comment">//获得abi</span></div><div class="line"><span class="keyword">let</span> abi = <span class="built_in">JSON</span>.parse(jsonInterface);</div><div class="line"></div><div class="line"><span class="comment">//获取合约的代码</span></div><div class="line"><span class="keyword">let</span> bytecode = calcCompiled[<span class="string">'contracts'</span>][<span class="string">':Calc'</span>][<span class="string">'bytecode'</span>]</div><div class="line"></div><div class="line"><span class="comment">//得到合约对象</span></div><div class="line"><span class="keyword">const</span> calcContract = <span class="keyword">new</span> web3.eth.Contract(abi,<span class="literal">null</span>,&#123;</div><div class="line">    <span class="attr">data</span>: <span class="string">'0x'</span>+bytecode, </div><div class="line">    <span class="attr">defaultGas</span>:<span class="string">'4700000'</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//部署者的地址，当前取默认账户的第一个地址</span></div><div class="line"><span class="keyword">let</span> deployeAddr = web3.eth.accounts[<span class="number">0</span>];</div><div class="line"></div><div class="line"><span class="comment">//部署合约</span></div><div class="line">calcContract.deploy().send(&#123;</div><div class="line">    <span class="attr">from</span>: deployeAddr</div><div class="line">&#125;)</div><div class="line">.on(<span class="string">'error'</span>, (error) =&gt; &#123; </div><div class="line">    <span class="built_in">console</span>.error(error)</div><div class="line"> &#125;)</div><div class="line">.on(<span class="string">'transactionHash'</span>, (transactionHash) =&gt; &#123; </div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"transactionHash :"</span> + transactionHash)</div><div class="line"> &#125;)</div><div class="line">.on(<span class="string">'receipt'</span>, (receipt) =&gt; &#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"receipt:"</span>) </div><div class="line">   <span class="built_in">console</span>.log(receipt) </div><div class="line">&#125;)</div><div class="line">.on(<span class="string">'confirmation'</span>, (confirmationNumber, receipt) =&gt; &#123; </div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"confirmationNumber:"</span>+confirmationNumber)</div><div class="line"> &#125;).then(<span class="function">(<span class="params">newContractInstance</span>) =&gt;</span> &#123;</div><div class="line">    <span class="built_in">console</span>.log(newContractInstance)</div><div class="line">    <span class="built_in">console</span>.log(newContractInstance.options.address) <span class="comment">// instance with the new contract address</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Calc.sol:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">pragma solidity ^0.4.25;</div><div class="line"></div><div class="line">contract Calc&#123;</div><div class="line">  /*区块链存储*/</div><div class="line">  uint count;</div><div class="line"></div><div class="line">  /*执行会写入数据，所以需要`transaction`的方式执行。*/</div><div class="line">  function add(uint a, uint b) returns(uint)&#123;</div><div class="line">    count++;</div><div class="line">    return a + b;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /*执行不会写入数据，所以允许`call`的方式执行。*/</div><div class="line">  function getCount() constant returns (uint)&#123;</div><div class="line">    return count;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>package.json:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"eth-contract"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"author"</span>: <span class="string">""</span>,</div><div class="line">  <span class="attr">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="attr">"dependencies"</span>: &#123;</div><div class="line">    <span class="attr">"solc"</span>: <span class="string">"^0.4.25"</span>,</div><div class="line">    <span class="attr">"web3"</span>: <span class="string">"^1.0.0-beta.52"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://web3.tryblockchain.org/web3-js-in-action.html" target="_blank" rel="external">web3.js编译Solidity，发布，调用全部流程（手把手教程）</a></li>
+<li><a href="https://web3js.readthedocs.io/en/1.0/index.html" target="_blank" rel="external">web3.js - Ethereum JavaScript API</a></li>
+<li><a href="https://solidity-cn.readthedocs.io/zh/develop/index.html" target="_blank" rel="external">Solidity 开发指南</a></li>
+<li><a href="http://remix.ethereum.org" target="_blank" rel="external">Remix - Solidity IDE</a></li>
+</ul>
 
-解决方案
-使用InstantSend进
-              ...
-            </p>
-          <!--noindex-->
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/21/达世币从入门到XX/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -583,7 +485,7 @@ ASIC矿机导致的中心化问题
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2019/03/21/使用Docker容器构建Bitcoin/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2019/04/08/初识比特闪电网络/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hing Kwan"/>
@@ -603,7 +505,7 @@ ASIC矿机导致的中心化问题
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/03/21/使用Docker容器构建Bitcoin/" class="post-title-link" itemprop="url">使用Docker容器构建Bitcoin</a>
+                <a href="/2019/04/08/初识比特闪电网络/" class="post-title-link" itemprop="url">初识比特闪电网络</a>
               
             
           </h1>
@@ -628,7 +530,7 @@ ASIC矿机导致的中心化问题
                 
               
 
-              <time title="创建时间：2019-03-21 21:53:32 / 修改时间：21:56:42" itemprop="dateCreated datePublished" datetime="2019-03-21T21:53:32+08:00">2019-03-21</time>
+              <time title="创建时间：2019-04-08 15:41:59 / 修改时间：15:44:19" itemprop="dateCreated datePublished" datetime="2019-04-08T15:41:59+08:00">2019-04-08</time>
             
 
             
@@ -639,7 +541,7 @@ ASIC矿机导致的中心化问题
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -660,20 +562,10 @@ ASIC矿机导致的中心化问题
 
           
             
+            
           
 
           
-          
-             <span id="/2019/03/21/使用Docker容器构建Bitcoin/" class="leancloud_visitors" data-flag-title="使用Docker容器构建Bitcoin">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -697,27 +589,119 @@ ASIC矿机导致的中心化问题
       
         
           
-            <p>
-              虽然说Bitcoin Core有编译好的客户端。但如果能自己编译下源码，感觉也还是不错的。所以就有了以下的图文：
-前置条件
-已经安装好Docker
-能够科学上网
+            <p>闪电网络在今年的区块链世界是一个很热门的词。这个词乍听起来很酷炫，很深奥，它到底是什么呢？本文带你了解它。</p>
+<h2 id="闪电网络是什么"><a href="#闪电网络是什么" class="headerlink" title="闪电网络是什么"></a>闪电网络是什么</h2><p>官方网站：<a href="http://lightning.network/" target="_blank" rel="external">http://lightning.network/</a></p>
+<p>闪电网络（Lightning Network）是一个去中心化的系统。闪电网络的卓越之处在于，无需信任对方以及第三方即可实现实时的、海量的交易网络。这也就解决了比特币支付存在着拥堵的问题。</p>
+<p>闪电网络是基于微支付通道演进而来，创造性的设计出了两种类型的交易合约：序列到期可撤销合约RSMC（Revocable Sequence Maturity Contract），哈希时间锁定合约HTLC（Hashed Timelock Contract）。</p>
+<p>RSMC解决了通道中币单向流动问题，也就是链下交易的确认问题；HTLC解决了币跨节点传递的问题，也就是支付通道问题。这两个类型的交易组合构成了闪电网络。</p>
+<p><strong>1. 入门级文字：</strong></p>
+<ul>
+<li><a href="https://www.8btc.com/article/375131" target="_blank" rel="external">用大白话解释：闪电网络是什么？</a></li>
+<li><a href="https://github.com/diaojibo/StudyNote_Rocklct/blob/master/%E5%8C%BA%E5%9D%97%E9%93%BE/%E9%97%AA%E7%94%B5%E7%BD%91%E7%BB%9C.md" target="_blank" rel="external">闪电网络详解</a></li>
+<li><a href="https://www.8btc.com/article/242957" target="_blank" rel="external">闪电网络入门：什么是闪电网络？它是如何运作的？</a></li>
+<li><a href="https://www.jianshu.com/p/233b192dc4dc" target="_blank" rel="external">什么是闪电网络？干货都在这了！</a></li>
+<li><a href="https://www.jianshu.com/p/2cd6113b2668" target="_blank" rel="external">区块链学堂——闪电网络是什么鬼（故事篇）？</a></li>
+<li><a href="https://www.jianshu.com/p/e326802294e1" target="_blank" rel="external">区块链学堂——闪电网络是个什么鬼（技术篇）？</a></li>
+</ul>
+<p><strong>2. 如果不喜欢文字资料，还可以通过以下两个视频简单入门：</strong></p>
+<ul>
+<li><a href="https://www.8btc.com/video/345682" target="_blank" rel="external">中心化魔鬼or 扩容灵药，6分钟带你看懂闪电网络！</a></li>
+<li><a href="https://www.8btc.com/video/352353" target="_blank" rel="external">闪电网络五大误区，你踩雷了吗？</a></li>
+</ul>
+<p><strong>3. 白皮书：</strong></p>
+<ul>
+<li><a href="https://wenku.baidu.com/view/f3bd55ea763231126fdb1150.html" target="_blank" rel="external">比特币闪电网络白皮书：可扩展的 off-chain 即时支付</a></li>
+<li><a href="https://lightning.network/lightning-network-paper.pdf" target="_blank" rel="external">The Bitcoin Lightning Network: Scalable Off-Chain Instant Payments</a></li>
+</ul>
+<p><strong>4. 其他资料：</strong></p>
+<ul>
+<li><a href="https://lnroute.com/" target="_blank" rel="external">BITCOIN LIGHTNING NETWORK - Resource and Information Guide</a></li>
+</ul>
+<h2 id="闪电网络的优缺点"><a href="#闪电网络的优缺点" class="headerlink" title="闪电网络的优缺点"></a>闪电网络的优缺点</h2><h3 id="闪电网络的优点"><a href="#闪电网络的优点" class="headerlink" title="闪电网络的优点"></a>闪电网络的优点</h3><ul>
+<li>可以即时支付</li>
+<li>对节点的性能需求并不高</li>
+<li>通过路由系统自动寻径(寻找花费最少的路径)，网络中的节点充分竞争使得交易费用可以低</li>
+<li>匿名性(每一个节点只记录该通道内的交易)</li>
+</ul>
+<h3 id="闪电网络的缺点"><a href="#闪电网络的缺点" class="headerlink" title="闪电网络的缺点"></a>闪电网络的缺点</h3><ul>
+<li>如果换一种代币就需要重新开启通道，节点和用户的成本都相当的高</li>
+<li>没有足够的商家支持闪电网络，使得作为节点的收益并不高，由于没有足够的商家支持，用户使用闪电网络的需求并不高</li>
+<li>闪电网络是小额支付，开启通道是需要使用公网的，使用公网意味着要发起一次交易，如果只转入几百块，一次交易就需要几十块，可能就得不偿失了</li>
+<li>关闭通道时,也需要发起交易，将通道中的币分配给通道以及用户，这又需要发起一次交易，又需要发起一次交易</li>
+<li>其次每个节点都需要抵押一定的比特币，才能开启节点，长时间暴露在公网中，可能会存在私钥泄露的问题</li>
+<li>现阶段闪电网络并不完善处于一个初始版本</li>
+</ul>
+<h2 id="闪电网络的浏览器"><a href="#闪电网络的浏览器" class="headerlink" title="闪电网络的浏览器"></a>闪电网络的浏览器</h2><ul>
+<li><a href="https://1ml.com/" target="_blank" rel="external">1ML</a></li>
+<li><a href="https://explorer.acinq.co/" target="_blank" rel="external">Lightning network explorer</a></li>
+<li><a href="https://lightblock.me/" target="_blank" rel="external">Lightblock</a></li>
+<li><a href="https://www.robtex.com/lightning/node/" target="_blank" rel="external">Robtex Bitcoin Lightning Explorer</a></li>
+<li><a href="https://explore.casa/" target="_blank" rel="external">Lightning Explorer (explore casa)</a></li>
+<li><a href="https://graph.lndexplorer.com/" target="_blank" rel="external">lndexplorer</a></li>
+<li><a href="https://lightning.chaintools.io/" target="_blank" rel="external">Lightning Explorerc(chaintools)</a></li>
+<li><a href="https://bitcoinvisuals.com/lightning" target="_blank" rel="external">Bitcoin Visuals</a></li>
+<li><a href="https://lnmainnet.rompert.com/" target="_blank" rel="external">rompert.com</a></li>
+<li><a href="https://bitcoinexchangerate.org/lightning" target="_blank" rel="external">Bitcoin Exchange Rate</a></li>
+</ul>
+<p>其他：</p>
+<ul>
+<li><a href="https://github.com/xsb/lngraph" target="_blank" rel="external">lngraph - Personal private Lightning Network explorer using Neo4j Browser</a></li>
+<li><a href="https://gist.github.com/bretton/798ec38165ffabc719d91e0f4f67552d#a-mostly-visual-collection-of-the-lightning-network" target="_blank" rel="external">A (mostly) visual collection of the Lightning Network</a></li>
+</ul>
+<h2 id="闪电网络的钱包"><a href="#闪电网络的钱包" class="headerlink" title="闪电网络的钱包"></a>闪电网络的钱包</h2><p>闪电网络的钱包可以参考<a href="https://lightningnetworkstores.com/wallets" target="_blank" rel="external">Lightning mobile wallets</a>列表。</p>
+<p>GitHub上开源的钱包项目：</p>
+<p><strong>桌面</strong></p>
+<ul>
+<li><a href="https://github.com/lightninglabs/lightning-app" target="_blank" rel="external">lightning-app</a> - NodeJs实现</li>
+<li><a href="https://github.com/alexbosworth/lnd-gui" target="_blank" rel="external">lnd-gui</a> - Swift实现</li>
+<li><a href="https://github.com/ACINQ/eclair" target="_blank" rel="external">eclair-node-gui</a> - Java实现</li>
+<li><a href="https://github.com/LN-Zap/zap-desktop" target="_blank" rel="external">zap-desktop</a> -  Electron+React+Redux实现</li>
+<li><a href="https://github.com/icota/presto" target="_blank" rel="external">Presto</a> - C++实现</li>
+<li><a href="https://github.com/LightningPeach/lightning-peach-wallet" target="_blank" rel="external">Lightning Peach Wallet</a> - Electron+React+Redux实现</li>
+<li><a href="https://github.com/shesek/spark-wallet" target="_blank" rel="external">spark-wallet</a> - NodeJs实现</li>
+</ul>
+<p><strong>Web</strong></p>
+<ul>
+<li><a href="https://github.com/Lightning-Family/Discovery-Wallet" target="_blank" rel="external">Discovery wallet</a> - NodeJs实现</li>
+<li><a href="https://github.com/marzig76/fulmo" target="_blank" rel="external">fulmo</a> - Python实现</li>
+<li><a href="https://github.com/cdecker/kugelblitz" target="_blank" rel="external">kugelblitz</a> - Go实现</li>
+<li><a href="https://github.com/mably/lncli-web" target="_blank" rel="external">lncli-web</a> - NodeJS+Angular实现</li>
+<li><a href="https://github.com/ShahanaFarooqui/RTL" target="_blank" rel="external">Ride The Lightning (RTL)</a> - NodeJS+Angular7实现</li>
+</ul>
+<p><strong>移动端</strong></p>
+<p>可以参考<a href="https://lightningnetworkstores.com/wallets" target="_blank" rel="external">Lightning mobile wallets</a>中<code>Open source</code>为<code>yes</code>的项目。</p>
+<h2 id="闪电网络协议的实现"><a href="#闪电网络协议的实现" class="headerlink" title="闪电网络协议的实现"></a>闪电网络协议的实现</h2><p>在闪电网络的实现方面，现在比较主流的有<a href="https://github.com/lightningnetwork/lnd" target="_blank" rel="external">Lightning Network Daemon</a>、<a href="https://github.com/ACINQ/eclair" target="_blank" rel="external">eclair</a>和<a href="https://github.com/ElementsProject/lightning" target="_blank" rel="external">c-lightning</a>。这三个实现是兼容的。</p>
+<h3 id="Lightning-Network-Daemon-LND"><a href="#Lightning-Network-Daemon-LND" class="headerlink" title="Lightning Network Daemon (LND)"></a>Lightning Network Daemon (LND)</h3><p>LND是论文《The Bitcoin Lightning Network: Scalable Off-Chain Instant Payments》中提出者的项目，使用Go语言编写，它比较适用于社区和开发者方面。</p>
+<ul>
+<li>项目地址：<a href="https://github.com/lightningnetwork/lnd" target="_blank" rel="external">https://github.com/lightningnetwork/lnd</a></li>
+<li>LND Developer Site： <a href="https://dev.lightning.community/" target="_blank" rel="external">https://dev.lightning.community/</a></li>
+</ul>
+<p>开发支持：</p>
+<ul>
+<li><a href="http://www.lightningj.org/" target="_blank" rel="external">LightningJ - Lightning APIs for Java </a></li>
+</ul>
+<blockquote>
+<p>风险：目前LND还不支持导出私钥<a href="https://github.com/lightningnetwork/lnd/issues/732" target="_blank" rel="external">https://github.com/lightningnetwork/lnd/issues/732</a></p>
+</blockquote>
+<h3 id="eclair"><a href="#eclair" class="headerlink" title="eclair"></a>eclair</h3><p>Eclair(法语闪电)是闪电网络的Scala实现。它可以运行GUI，也可以不运行GUI，还可以使用JSON-RPC API。因为是Scala开发的，所以适用于所有的java语言，适合商业场景。</p>
+<ul>
+<li>项目地址：<a href="https://github.com/ACINQ/eclair" target="_blank" rel="external">https://github.com/ACINQ/eclair</a></li>
+</ul>
+<h3 id="c-lightning"><a href="#c-lightning" class="headerlink" title="c-lightning"></a>c-lightning</h3><p>用C实现的一个规范兼容的闪电网络。</p>
+<ul>
+<li>项目地址：<a href="https://github.com/ElementsProject/lightning" target="_blank" rel="external">https://github.com/ElementsProject/lightning</a></li>
+</ul>
+<h3 id="其他实现"><a href="#其他实现" class="headerlink" title="其他实现"></a>其他实现</h3><ul>
+<li><a href="https://github.com/raiden-network/raiden" target="_blank" rel="external">Raiden Network</a> - Python实现</li>
+<li><a href="https://github.com/mit-dci/lit" target="_blank" rel="external">lit</a> - Go实现</li>
+<li><a href="https://github.com/lightningnetwork/lightning-onion" target="_blank" rel="external">lightning-onion</a> - Go实现</li>
+<li><a href="https://github.com/nayutaco/ptarmigan" target="_blank" rel="external">ptarmigan</a> - C实现</li>
+</ul>
+<h2 id="其他资料"><a href="#其他资料" class="headerlink" title="其他资料"></a>其他资料</h2><ul>
+<li><a href="https://github.com/bcongdon/awesome-lightning-network" target="_blank" rel="external">Awesome-lightning-network</a></li>
+</ul>
 
-构建Bitcoin客户端从源码构建bitcoin客户端，我们分为以下几步：
-
-选择一个Linux，并安装系统依赖库
-从github下载代
-              ...
-            </p>
-          <!--noindex-->
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/03/21/使用Docker容器构建Bitcoin/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -782,7 +766,6 @@ ASIC矿机导致的中心化问题
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -794,7 +777,7 @@ ASIC矿机导致的中心化问题
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Hing Kwan</p>
-              <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
           
@@ -804,7 +787,7 @@ ASIC矿机导致的中心化问题
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -814,7 +797,11 @@ ASIC矿机导致的中心化问题
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -867,7 +854,11 @@ ASIC矿机导致的中心化问题
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -966,9 +957,7 @@ ASIC矿机导致的中心化问题
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -986,31 +975,7 @@ ASIC矿机导致的中心化问题
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-            </div>
+
           
 
           
@@ -1032,6 +997,7 @@ ASIC矿机导致的中心化问题
 
     </div>
   </aside>
+  
 
 
         
@@ -1040,7 +1006,7 @@ ASIC矿机导致的中心化问题
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1060,7 +1026,7 @@ ASIC矿机导致的中心化问题
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
@@ -1138,9 +1104,9 @@ ASIC矿机导致的中心化问题
   
 
 
-  <script src="/js/src/utils.js?v=6.7.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=6.7.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1148,9 +1114,7 @@ ASIC矿机导致的中心化问题
   
 
 
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
@@ -1159,7 +1123,16 @@ ASIC矿机导致的中心化问题
   
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -1167,512 +1140,12 @@ ASIC矿机导致的中心化问题
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
 
   
 
   
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz",
-                'X-LC-Key': "RfYJ7E2mHXj4yux2OnSLoxdr",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
-          
-        })
-    });
-  </script>
-
-
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
-  <script>
-    (function () {
-
-      firebase.initializeApp({
-        apiKey: 'AIzaSyBOoFO6OomXzAe3yA8kpYOVxxTrbgoBMM8',
-        projectId: 'webfusecn-ada77'
-      })
-
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
-
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
-            }
-          }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
-              }
-            }
-          }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('阅读次数 ' + count))
-          )
-        }
-      }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = ''
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = 'titles.push("达世币从入门到XX");titles.push("使用Docker容器构建Bitcoin");' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
-  </script>
-
 
   
 

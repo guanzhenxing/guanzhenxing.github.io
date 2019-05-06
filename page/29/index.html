@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -30,15 +30,9 @@
 
 
 
-  <meta name="google-site-verification" content="TSVApdOPJJ3_-stNp_HWhi0yV7De9ZNH0ajM8Ra9Zk4"/>
 
 
 
-
-
-
-
-  <meta name="baidu-site-verification" content="rt0dJarBwI"/>
 
 
 
@@ -52,19 +46,19 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=6.7.0"/>
+<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
 
 
 
@@ -76,9 +70,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.7.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +112,8 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://webfuse.cn/page/29/"/>
 
 
@@ -133,25 +130,7 @@
 
 
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131682260-1');
-  </script>
 
-
-
-  <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
@@ -262,96 +241,17 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
 
       
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
-        </li>
       
     </ul>
   
 
   
+    
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
@@ -371,12 +271,250 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/08/11/简单使用babel/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/08/11/简单使用babel/" class="post-title-link" itemprop="url">简单使用babel</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-08-11 21:11:08" itemprop="dateCreated datePublished" datetime="2016-08-11T21:11:08+08:00">2016-08-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这篇文章的前提是读者知道什么是ES6以及为什么我们需要用到babel。本文的行文思路是怎么搭建一个es6+babel的开发环境。</p>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><h2 id="创建工程目录"><a href="#创建工程目录" class="headerlink" title="创建工程目录"></a>创建工程目录</h2><ol>
+<li>创建一个文件夹，命名为use-babel</li>
+<li>使用<code>npm init</code>初始化目录</li>
+<li>创建babel的配置文件<code>.babelrc</code>，该文件用来设置转码规则和插件</li>
+</ol>
+<h2 id="安装babel"><a href="#安装babel" class="headerlink" title="安装babel"></a>安装babel</h2><p>在工程目录下执行：</p>
+<pre><code>npm install --save-dev babel-cli -g
+npm install --save-dev babel-preset-es2015
+npm install --save-dev babel-preset-stage-0
+npm install --save-dev babel-preset-stage-1
+npm install --save-dev babel-polyfill
+</code></pre><p>然后<code>.babelrc</code>文件中输入：</p>
+<pre><code>{
+  &quot;presets&quot;: [
+    &quot;es2015&quot;,
+    &quot;stage-0&quot;,
+    &quot;stage-1&quot;
+  ],
+  &quot;plugins&quot;: []
+}
+</code></pre><h2 id="使用babel"><a href="#使用babel" class="headerlink" title="使用babel"></a>使用babel</h2><p>改写<code>package.json</code>如下：</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;babel-node&quot;: &quot;babel-node --presets es2015,stage-0,stage-1&quot;,
+  &quot;start&quot;: &quot;npm run babel-node src/index.js&quot;
+},
+</code></pre><p>工程目录下执行 <code>npm start</code>。</p>
+<h1 id="Babel的一些解释"><a href="#Babel的一些解释" class="headerlink" title="Babel的一些解释"></a>Babel的一些解释</h1><h2 id="babel-cli"><a href="#babel-cli" class="headerlink" title="babel-cli"></a>babel-cli</h2><p>babel-cli是babel提供的一个命令行转码工具。具体的使用可以参考<a href="https://babeljs.io/docs/usage/cli/" target="_blank" rel="external">官方文档</a></p>
+<p>特别要提的是，babel-cli还提供了babel-node。它类似于node，可以在运行前预编译ES2015，你就可以直接使用babel-node运行你的ES2015程序了。</p>
+<p>因为babel-node会去读取<code>.babelrc</code>文件中的配置，所以上面的package.json中的代码又可以改写为：</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;start&quot;: &quot;babel-node src/index.js&quot;
+},
+</code></pre><h2 id="babel-插件"><a href="#babel-插件" class="headerlink" title="babel 插件"></a>babel 插件</h2><p>babel插件提供了转码规则。我们可以根据自己的需要安装不同的转码规则。具体插件列表可以自行查看<a href="https://babeljs.io/docs/plugins/" target="_blank" rel="external">官方文档</a></p>
+<p>ES2015的转码规则：babel-preset-es2015</p>
+<p>ES7不同阶段语法提案的转码规则（共有4个阶段）：preset-stage-0，preset-stage-1，preset-stage-2，preset-stage-3</p>
+<p>ReactJs的转码规则：babel-preset-react</p>
+<h2 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a>babel-register</h2><p><code>babel-register</code>是在你的程序中直接使用的。可以认为它改写了<code>require</code>，在使用<code>babel-register</code>的程序中，会对<code>require</code>的js先进行转码处理。这样，你就不需要自己去转码了。</p>
+<p>但是，babel-register只会对require命令加载的文件转码，而不会对当前文件转码。</p>
+<p>由于它是实时转码，所以只适合在开发环境使用。</p>
+<p>使用<code>npm install babel-register --save-dev</code>安装。</p>
+<pre><code>require(&quot;babel-register&quot;);
+require(&apos;./config&apos;);    //这样，我们就可以在config.js中使用ES2015的语法了。
+</code></pre><h2 id="babel-core"><a href="#babel-core" class="headerlink" title="babel-core"></a>babel-core</h2><p>如果你很喜欢在代码中使用babel，那么你就可以使用<code>babel-core</code>。（ps:目前我还没用过transform等方法）</p>
+<p>具体的使用可以参考<a href="https://babeljs.io/docs/usage/api/" target="_blank" rel="external">官方文档</a>。</p>
+<h2 id="babel-polyfill"><a href="#babel-polyfill" class="headerlink" title="babel-polyfill"></a>babel-polyfill</h2><p>babel虽然能转码ES6，但是还有很多新的API语法是转不了的，比如Promise、Object.assign、Generator等。</p>
+<p>如果想使用这些新的API，我们必须在代码中用到<code>babel-polyfill</code>。</p>
+<p>使用<code>npm install --save babel-polyfill</code>安装，并且在代码中<code>require(&#39;babel-polyfill&#39;);</code>或<code>import &#39;babel-polyfill&#39;;</code></p>
+<p>如果我们要在多个地方使用到<code>babel-polyfill</code>的话，我们可以直接使用<code>babel-runtime</code>。</p>
+<p>安装<code>babel-plugin-transform-runtime</code>和<code>babel-runtime</code>，并更新<code>.babelrc</code>。</p>
+<pre><code>$ npm install --save-dev babel-plugin-transform-runtime
+$ npm install --save babel-runtime
+</code></pre><p>向plugins中添加”transform-runtime”</p>
+<pre><code>{
+  &quot;plugins&quot;: [
+   &quot;transform-runtime&quot;
+  ]
+}
+</code></pre><h2 id="在webpack中使用"><a href="#在webpack中使用" class="headerlink" title="在webpack中使用"></a>在webpack中使用</h2><p>一个比较经典的配置为：</p>
+<pre><code>module: {
+  loaders:  [
+    {
+      test: /\.js/,
+      loader: &apos;babel?presets[]=es2015,presets[]=react,plugins[]=transform-runtime&apos;
+    }
+  ]
+}
+</code></pre><hr>
+<p>其他的一些babel的资料：<br>Babel用户手册 ： <a href="https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md" target="_blank" rel="external">https://github.com/thejameskyle/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md</a><br>Babel官网：<a href="https://babeljs.io" target="_blank" rel="external">https://babeljs.io</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -461,7 +599,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -482,20 +620,10 @@
 
           
             
+            
           
 
           
-          
-             <span id="/2016/08/10/Groovy中的MOP——Groovy对象/" class="leancloud_visitors" data-flag-title="Groovy中的MOP——Groovy对象">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -519,218 +647,151 @@
       
         
           
-            <p>
-              Groovy对象是带有附加功能的Java对象。
-POJO：普通的Java对象
-POGO：用Groovy编写的对象，扩展了java.lang.Object，同时实现了groovy.lang.GroovyObject。
-Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
-              ...
-            </p>
-          <!--noindex-->
+            <p>Groovy对象是带有附加功能的Java对象。</p>
+<p>POJO：普通的Java对象</p>
+<p>POGO：用Groovy编写的对象，扩展了java.lang.Object，同时实现了groovy.lang.GroovyObject。</p>
+<p>Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。</p>
+<pre><code>public interface GroovyObject {
+
+    Object invokeMethod(String name, Object args);
+
+    Object getProperty(String propertyName);
+
+    void setProperty(String propertyName, Object newValue);
+
+    MetaClass getMetaClass();
+
+    void setMetaClass(MetaClass metaClass);
+}
+</code></pre><p>invokeMethod()、getProperty()和setProperty()使Java对象具有了高度的多态性，可以使用它们来处理运行中的方法和属性。getMetaClass()和setMetaClass()使创建代理拦截POGO的方法调用、在POGO上注入方法变得非常容易。</p>
+<pre><code>public interface GroovyInterceptable extends GroovyObject {
+}
+</code></pre><p>GroovyInterceptable接口扩展了GroovyObject接口，对于实现该接口的对象，其上所有的方法调用，都会被它的invokeMethod()方法拦截。</p>
+<p>Groovy支持对POJO和POGO进行编程。对于POJO，Groovy维护了MetaClass的一个MetaClassRegistry；POGO有一个到其MetaClass的直接引用。</p>
+<p>当我们调用一个方法时，Groovy会检查目标对象是一个POJO还是一个POGO。不同的对象类型，Groovy处理的方式不一样。</p>
+<img src="/2016/08/10/Groovy中的MOP——Groovy对象/Groovy如何处理POGO上的方法调用.png" alt="Groovy如何处理POGO上的方法调用" title="Groovy如何处理POGO上的方法调用">
+<pre><code>package exploring
+
+
+class TestMethodInvocation extends GroovyTestCase{
+
+
+    void testInterceptedMethodCallOnPOJO(){
+        def val = new Integer(3)
+        Integer.metaClass.toString = {-&gt;&apos;intercepted&apos;}
+
+        assertEquals &quot;intercepted&quot;,val.toString()
+    }
+
+    void testInterceptableCalled(){
+        def obj = new AnInterceptable()
+        assertEquals &quot;intercepted&quot;,obj.existingMethod()
+        assertEquals &quot;intercepted&quot;,obj.nonExistingMethod()
+    }
+
+    void testInterceptedExistingMethodCalled(){
+        AGroovyObject.metaClass.existingMethod2 = {-&gt; &apos;intercepted&apos;}
+        def obj = new AGroovyObject()
+        assertEquals &quot;intercepted&quot;,obj.existingMethod2()
+    }
+
+    void testUnInterceptedExistingMethodCalled(){
+        def obj = new AGroovyObject()
+        assertEquals &quot;existingMethod&quot;,obj.existingMethod()
+    }
+
+    void testPropertyThatIsClosureCalled(){
+        def obj = new AGroovyObject()
+        assertEquals &apos;closure called&apos;,obj.closureProp()
+    }
+
+    void testMethodMissingCalledOnlyForNonExistent(){
+        def obj = new ClassWithInvokeAndMissingMethod()
+        assertEquals &quot;existingMethod&quot;,obj.existingMethod()
+        assertEquals &quot;missing called&quot;,obj.nonExistingMethod()
+    }
+
+    def testInvokeMethodCalledForOnlyNonExistent(){
+        def obj = new ClassWithInvokeOnly()
+        assertEquals &quot;existingMethod&quot;,obj.existingMethod()
+        assertEquals &quot;invoke called&quot;,obj.nonExistingMethod()
+    }
+
+    def testMethodFailsONNonExistent(){
+        def obj = new TestMethodInvocation()
+        shouldFail (MissingMethodException){
+            obj.nonExistingMethod()
+        }
+    }
+
+}
+
+class AnInterceptable implements GroovyInterceptable{
+    def existingMethod(){}
+    def invokeMethod(String name,args){
+        &apos;intercepted&apos;
+    }
+}
+
+class AGroovyObject{
+    def existingMethod(){&apos;existingMethod&apos;}
+    def existingMethod2(){&apos;existingMethod2&apos;}
+    def closureProp = {&apos;closure called&apos;}
+}
+
+class ClassWithInvokeAndMissingMethod{
+    def existingMethod(){&apos;existingMethod&apos;}
+    def invokeMethod(String name,args){&apos;invoke called&apos;}
+    def methodMissing(String name,args){&apos;missing called&apos;}
+}
+
+class ClassWithInvokeOnly{
+    def existingMethod(){&apos;existingMethod&apos;}
+    def invokeMethod(String name,args){&apos;invoke called&apos;}
+}
+</code></pre><p>运行时，可以查询一个对象的方法和属性，以确定该对象是否支持某一特定行为。</p>
+<ul>
+<li>可以使用MetaObjectProtocal的getMetaMethod()（MetaClass扩展了MetaObjectProtocal）来获得一个元方法。</li>
+<li>如果要查找一个static方法，可以使用getStaticMetaMethod()。</li>
+<li>要获得重载方法的列表，使用这些方法的复数形式——getMetaMethods()和getStaticMetaMethods()。</li>
+<li>getProperty()和getStaticProperty()可以获得元属性。</li>
+<li>使用respondsTo()检查方法，使用hasProperty()检查属性。</li>
+</ul>
+<p>MetaMethod的使用</p>
+<pre><code>str = &quot;hello&quot;
+methodName = &quot;toUpperCase&quot;
+methodOfInterest = str.metaClass.getMetaMethod(methodName)
+println methodOfInterest.invoke(str)
+
+
+print &quot;Does String respond to toUpperCase()? &quot;
+println String.metaClass.respondsTo(str, &apos;toUpperCase&apos;) ? &apos;yes&apos; : &apos;no&apos;
+
+print &quot;Does String respond to compareTo(String)? &quot;
+println String.metaClass.respondsTo(str, &quot;compareTo&quot;, &apos;test&apos;) ? &apos;yes&apos; : &apos;no&apos;
+
+print &quot;Does String respond to toUpperCase(int)? &quot;
+println String.metaClass.respondsTo(str, &quot;toUpperCase&quot;, 5) ? &apos;yes&apos; : &apos;no&apos;
+</code></pre><p>动态访问对象</p>
+<pre><code>def printInfo(obj){
+
+    usrRequestedProperty = &apos;bytes&apos;
+    usrRequestedMethod = &apos;toUpperCase&apos;
+
+    println obj[usrRequestedProperty]
+    println obj.&quot;$usrRequestedProperty&quot;
+
+    println obj.&quot;$usrRequestedMethod&quot;()
+    println obj.invokeMethod(usrRequestedMethod,null)
+
+}
+printInfo(&quot;hello&quot;)
+</code></pre><p>要调用一个属性，可以使用索引操作符[]，或使用点记号后跟一个计算属性名的GString。</p>
+<p>迭代一个对象的所有属性：</p>
+<pre><code>println &quot;Properties of &apos;hello are:&quot;
+&apos;hello&apos;.properties.each{ println it}
+</code></pre>
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/08/10/Groovy中的MOP——Groovy对象/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/07/26/Groovy入门/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
-      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebFuse"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/07/26/Groovy入门/" class="post-title-link" itemprop="url">Groovy入门</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-07-26 21:34:31" itemprop="dateCreated datePublished" datetime="2016-07-26T21:34:31+08:00">2016-07-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Groovy/" itemprop="url" rel="index"><span itemprop="name">Groovy</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2016/07/26/Groovy入门/" class="leancloud_visitors" data-flag-title="Groovy入门">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              安装以及简单使用安装到Groovy官网下载安装包。（本人使用的是windows，故以windows为例）
-
-按照安装程序指引操作。
-设置GROOVY_HOME环境变量和Groovy路径。GROOVY_HOME设置为安装目录（C:\Groovy\Groovy-2.4.7），Path中添加%GROOVY
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/07/26/Groovy入门/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
         
       
     </div>
@@ -795,7 +856,6 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -807,7 +867,7 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Hing Kwan</p>
-              <p class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
           
@@ -817,7 +877,7 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -827,7 +887,11 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -880,7 +944,11 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
                     
                     
                       
@@ -979,9 +1047,7 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -999,31 +1065,7 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
           
 
           
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
-                </span>
-              
-            </div>
+
           
 
           
@@ -1045,6 +1087,7 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
 
     </div>
   </aside>
+  
 
 
         
@@ -1053,7 +1096,7 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -1073,7 +1116,7 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
 
 
 
@@ -1151,9 +1194,9 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
   
 
 
-  <script src="/js/src/utils.js?v=6.7.0"></script>
+  <script src="/js/utils.js?v=7.1.0"></script>
 
-  <script src="/js/src/motion.js?v=6.7.0"></script>
+  <script src="/js/motion.js?v=7.1.0"></script>
 
 
 
@@ -1161,9 +1204,7 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
   
 
 
-  <script src="/js/src/affix.js?v=6.7.0"></script>
-
-  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
 
 
 
@@ -1172,7 +1213,16 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
   
 
 
-  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -1180,512 +1230,12 @@ Groovy拦截器：扩展了GroovyInterceptable的Groovy对象。
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
 
   
 
   
-  <script>
-    
-    function showTime(Counter) {
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
-        .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz")
-        .done(function ({ api_server }) {
-          var Counter = function (method, url, data) {
-            return $.ajax({
-              method: method,
-              url: `https://${api_server}/1.1${url}`,
-              headers: {
-                'X-LC-Id': "yXK0om3XTfywfj3yrROVIfYE-gzGzoHsz",
-                'X-LC-Key': "RfYJ7E2mHXj4yux2OnSLoxdr",
-                'Content-Type': 'application/json',
-              },
-              data: data,
-            });
-          };
-          
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
-          
-        })
-    });
-  </script>
-
-
 
   
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
-  
-  <script>
-    (function () {
-
-      firebase.initializeApp({
-        apiKey: 'AIzaSyBOoFO6OomXzAe3yA8kpYOVxxTrbgoBMM8',
-        projectId: 'webfusecn-ada77'
-      })
-
-      function getCount(doc, increaseCount) {
-        //increaseCount will be false when not in article page
-
-        return doc.get().then(function (d) {
-          var count
-          if (!d.exists) { //has no data, initialize count
-            if (increaseCount) {
-              doc.set({
-                count: 1
-              })
-              count = 1
-            }
-            else {
-              count = 0
-            }
-          }
-          else { //has data
-            count = d.data().count
-            if (increaseCount) {
-              if (!(window.localStorage && window.localStorage.getItem(title))) { //if first view this article
-                doc.set({ //increase count
-                  count: count + 1
-                })
-                count++
-              }
-            }
-          }
-          if (window.localStorage && increaseCount) { //mark as visited
-            localStorage.setItem(title, true)
-          }
-
-          return count
-        })
-      }
-
-      function appendCountTo(el) {
-        return function (count) {
-          $(el).append(
-            $('<span>').addClass('post-visitors-count').append(
-              $('<span>').addClass('post-meta-divider').text('|')
-            ).append(
-              $('<span>').addClass('post-meta-item-icon').append(
-                $('<i>').addClass('fa fa-users')
-              )
-              ).append($('<span>').text('阅读次数 ' + count))
-          )
-        }
-      }
-
-      var db = firebase.firestore()
-      var articles = db.collection('articles')
-
-      //https://hexo.io/docs/variables.html
-      var isPost = ''.length > 0
-      var isArchive = '' === 'true'
-      var isCategory = ''.length > 0
-      var isTag = ''.length > 0
-
-      if (isPost) { //is article page
-        var title = ''
-        var doc = articles.doc(title)
-
-        getCount(doc, true).then(appendCountTo($('.post-meta')))
-      }
-      else if (!isArchive && !isCategory && !isTag) { //is index page
-        var titles = [] //array to titles
-
-        var postsstr = 'titles.push("Groovy中的MOP——Groovy对象");titles.push("Groovy入门");' //if you have a better way to get titles of posts, please change it
-        eval(postsstr)
-
-        var promises = titles.map(function (title) {
-          return articles.doc(title)
-        }).map(function (doc) {
-          return getCount(doc)
-        })
-        Promise.all(promises).then(function (counts) {
-          var metas = $('.post-meta')
-          counts.forEach(function (val, idx) {
-            appendCountTo(metas[idx])(val)
-          })
-        })
-      }
-    })()
-  </script>
-
 
   
 
