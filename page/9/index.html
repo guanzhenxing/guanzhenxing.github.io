@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -42,23 +42,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
-
-<link rel="stylesheet" href="/css/main.css?v=7.1.0"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -70,9 +68,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
-    version: '7.1.0',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: false,
     fancybox: false,
@@ -130,7 +128,28 @@
 
 
 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-131682260');
+    }
+  </script>
 
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -215,7 +234,6 @@
 
     
     
-    
       
     
 
@@ -232,7 +250,6 @@
 
     
     
-    
       
     
 
@@ -241,17 +258,93 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
 
       
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
+        </li>
       
     </ul>
   
 
   
-    
 
   
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
 
+
+
+    </div>
   
 </nav>
 
@@ -265,11 +358,21 @@
     </header>
 
     
+  
+  
+
+  
+
+  <a href="https://github.com/guanzhenxing" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
 
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -290,10 +393,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2018/03/01/RBAC实践/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2017/01/18/可伸缩的Web应用碎碎念/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="name" content="Jesen Kwan"/>
       <meta itemprop="description" content="Make it work, make it right, make it fast"/>
       <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
@@ -310,20 +413,20 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/03/01/RBAC实践/" class="post-title-link" itemprop="url">RBAC实践</a>
+                <a href="/2017/01/18/可伸缩的Web应用碎碎念/" class="post-title-link" itemprop="url">可伸缩的Web应用碎碎念</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
 
-            
-            
-            
+          
+          
+          
 
-            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
@@ -335,17 +438,15 @@
                 
               
 
-              <time title="创建时间：2018-03-01 22:34:42" itemprop="dateCreated datePublished" datetime="2018-03-01T22:34:42+08:00">2018-03-01</time>
+              <time title="创建时间：2017-01-18 21:44:52" itemprop="dateCreated datePublished" datetime="2017-01-18T21:44:52+08:00">2017-01-18</time>
+            </span>
+          
+
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
@@ -353,15 +454,12 @@
                   <span class="post-meta-item-text">更新于</span>
                 
                 <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
-              
+              </span>
             
-          </span>
+          
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -369,7 +467,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/UAA/" itemprop="url" rel="index"><span itemprop="name">UAA</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
 
                 
                 
@@ -385,6 +483,9 @@
           
           
 
+          
+
+          <br/>
           
 
           
@@ -406,80 +507,25 @@
       
         
           
-            <p>RBAC，即大家很熟悉的“基于角色的访问控制”。理论什么的这里就不讲了，重点介绍下一种基于RBAC的实践。</p>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><ul>
-<li>领域：Realm，角色的定义范围。</li>
-<li>角色：Role，一组权限的集合。角色必须定义在指定领域内</li>
-<li>资源：Resource，主要应用于前端UI元素可见性方面的权限管控</li>
-<li>操作：Action，主要应用于服务端api调用合法性方面的管控</li>
-<li>权限：Permission，一组“资源+操作”的组合，并具备一个用户易于理解的名称</li>
-</ul>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="角色-ROLE-INFO"><a href="#角色-ROLE-INFO" class="headerlink" title="角色 ROLE_INFO"></a>角色 ROLE_INFO</h3><pre><code>{
-    &quot;id&quot;:&quot;&quot;, // 角色id
-    &quot;tenant&quot;:&quot;&quot;, // 租户id
-    &quot;code&quot;:&quot;&quot;, // 角色代码
-    &quot;realm&quot;:&quot;&quot;, // 角色领域，global:应用内全局角色；app：app端角色；admin：管理端角色；web: web前端角色；
-    &quot;realm_id&quot;:&quot;&quot;, // 领域id，选填。
-    &quot;name&quot;:&quot;&quot;, // 角色名称
-    &quot;status&quot;:0, // 状态，0 启用，1 禁用
-    &quot;type&quot;:0, // 类型：0 正常角色，1 临时角色，2 默认角色
-    &quot;valid&quot;:1, // 2：未生效，1：生效
-    &quot;valid_time&quot;:&quot;&quot;, // 生效时间
-    &quot;invalid_time&quot;:&quot;&quot;, // 失效时间
-    &quot;remark&quot;:&quot;管理员&quot;， // 角色备注
-    &quot;permissions&quot;: // 分配的权限列表
-        [
-            PERMISSION_INFO
-        ]
-}
-</code></pre><h3 id="资源-RESOURCE-INFO"><a href="#资源-RESOURCE-INFO" class="headerlink" title="资源 RESOURCE_INFO"></a>资源 RESOURCE_INFO</h3><pre><code>{
-    &quot;id&quot;:&quot;&quot;, // 资源id
-    &quot;client&quot;:&quot;&quot;, // 客户端类型，取值：app，web，admin
-    &quot;code&quot;:&quot;&quot;, // 资源标识符，客户端控制用，全局唯一
-    &quot;tag&quot;:&quot;&quot;, // 资源标签
-    &quot;remark&quot;:&quot;&quot; // 资源名称，管理后台显示用
-}
-</code></pre><h3 id="权限-PERMISSION-INFO"><a href="#权限-PERMISSION-INFO" class="headerlink" title="权限 PERMISSION_INFO"></a>权限 PERMISSION_INFO</h3><pre><code>{
-    &quot;id&quot;:&quot;&quot;, // 权限id
-    &quot;name&quot;:&quot;&quot;, // 权限名称
-    &quot;code&quot;:&quot;&quot;, // 权限代码
-    &quot;status&quot;:0, // 状态，0 启用，1 禁用
-    &quot;remark&quot;:&quot;&quot;, // 权限备注
-    &quot;actions&quot;:[ // 权限对应的ACTION列表
-        ACTION_INFO,
-        ACTION_INFO,
-        ...
-    ],
-    &quot;resources&quot;:[ // 权限对应的资源列表
-        RESOURCE_INFO,
-        RESOURCE_INFO,
-        ...
-    ]
-}
-</code></pre><h3 id="操作-ACTION-INFO"><a href="#操作-ACTION-INFO" class="headerlink" title="操作 ACTION_INFO"></a>操作 ACTION_INFO</h3><pre><code>{
-    &quot;id&quot;:&quot;&quot;, // 操作id
-    &quot;code&quot;:&quot;&quot;, // 全局唯一:包名.类名.方法
-    &quot;biz_type&quot;:&quot;&quot;, // 二级服务需要填写此项
-    &quot;uri&quot;:&quot;&quot;, // Restful api，管理后台显示用
-    &quot;remark&quot;:&quot;&quot; // api名称，管理后台显示用
-}
-</code></pre><h2 id="业务流程"><a href="#业务流程" class="headerlink" title="业务流程"></a>业务流程</h2><h3 id="服务端权限校验流程"><a href="#服务端权限校验流程" class="headerlink" title="服务端权限校验流程"></a>服务端权限校验流程</h3><ol>
-<li>当前请求接口有@RequirePermission注解，进入鉴权流程。没有@RequirePermission注解，返回鉴权成功</li>
-<li>【当前请求接口的@RequirePermission内的权限列表】与【用户的拥有的权限列表】有交集，返回鉴权成功。无交集返回鉴权失败。</li>
-<li>RBAC服务器故障，导致角色数据无法获取时，返回鉴权失败，同时启动RBAC Server存活检测线程，存活检查按递增间隔进行检测。发现RBAC Server正常后，重新加载角色数据。</li>
-</ol>
-<h3 id="客户端权限校验流程"><a href="#客户端权限校验流程" class="headerlink" title="客户端权限校验流程"></a>客户端权限校验流程</h3><ol>
-<li>每个组件将自己的所有UI元素中涉及权限控制的资源做成【权限资源列表】，这些资源默认不可见。</li>
-<li>从RBAC获取当前登录用户的可见资源列表。</li>
-<li>当用户进入某个page时，获取【用户可见资源列表】与【权限资源列表】的交集，将交集的资源设置为可见。</li>
-<li>如果RBAC服务端无法连接，则【用户可见资源列表】为空，这些受控资源不可见。</li>
-</ol>
-<h3 id="缓存更新流程"><a href="#缓存更新流程" class="headerlink" title="缓存更新流程"></a>缓存更新流程</h3><ol>
-<li>服务端的角色缓存数据通过MQ订阅通知实现实时更新。</li>
-<li>客户端如果使用IM组件时，通过IM事件消息触发更新。如果未使用IM组件，采用定时到服务端检查版本变更的策略，如果数据有更新再去RBAC服务端拉取。</li>
-</ol>
+            <p>
+              概念什么是伸缩性伸缩性是指系统可以根据需求和成本调整自身处理能力的一种能力。伸缩性常常意味着系统可以改变自身的处理能力以满足更多用户访问、处理更多数据而不会对用户体验造成任何影响。主要从以下几个方面度量：
 
+处理更多数据
+处理更高的并发
+处理更高频次的用户交互
+
+性能更多的是衡量系统处理一个请求或者执行一个任务需要花费多长时间，而伸缩性则更关注系统是否能够随着请求数量的增加（或减少）而相应地拥有相
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/01/18/可伸缩的Web应用碎碎念/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -534,10 +580,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2018/02/15/多租户设计/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2017/01/02/前后端分离中的请求跨域问题/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hing Kwan"/>
+      <meta itemprop="name" content="Jesen Kwan"/>
       <meta itemprop="description" content="Make it work, make it right, make it fast"/>
       <meta itemprop="image" content="/images/avatar.gif"/>
     </span>
@@ -554,20 +600,20 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/02/15/多租户设计/" class="post-title-link" itemprop="url">多租户设计</a>
+                <a href="/2017/01/02/前后端分离中的请求跨域问题/" class="post-title-link" itemprop="url">前后端分离中的请求跨域问题</a>
               
             
           </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
 
-            
-            
-            
+          
+          
+          
 
-            
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
@@ -579,33 +625,28 @@
                 
               
 
-              <time title="创建时间：2018-02-15 09:55:53" itemprop="dateCreated datePublished" datetime="2018-02-15T09:55:53+08:00">2018-02-15</time>
+              <time title="创建时间：2017-01-02 13:15:31" itemprop="dateCreated datePublished" datetime="2017-01-02T13:15:31+08:00">2017-01-02</time>
+            </span>
+          
+
+          
             
 
             
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-10 09:38:52" itemprop="dateModified" datetime="2019-04-10T09:38:52+08:00">2019-04-10</time>
-              
+                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
+              </span>
             
-          </span>
+          
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -613,7 +654,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/UAA/" itemprop="url" rel="index"><span itemprop="name">UAA</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
 
                 
                 
@@ -629,6 +670,9 @@
           
           
 
+          
+
+          <br/>
           
 
           
@@ -650,31 +694,577 @@
       
         
           
-            <p>多租户（Multi Tenancy/Tenant）是一种软件架构，其定义是：在一台服务器上运行单个应用实例，它为多个租户提供服务。</p>
-<p>多个租户在数据上既有共享又有隔离，常有的存储方式有以下三种：</p>
-<p>方案一：独立数据库<br>方案二：共享数据库，隔离数据架构<br>方案三：共享数据库，共享数据架构</p>
-<h2 id="独立数据库"><a href="#独立数据库" class="headerlink" title="独立数据库"></a>独立数据库</h2><p>独立数据库即一个租户一个数据库，这种方案的用户数据隔离级别最高，安全性最好，但成本较高。</p>
-<p>这种模式下，我们可以为不同的租户提供独立的数据库，针对不同用户的独特需求扩展方便，数据备份以及修复比较简单。但是这种方案增多了数据库的数量，维护成本和购置成本高。</p>
-<h2 id="共享数据库，隔离数据架构"><a href="#共享数据库，隔离数据架构" class="headerlink" title="共享数据库，隔离数据架构"></a>共享数据库，隔离数据架构</h2><p>共享数据库，隔离数据架构即多个或所有租户共享Database，但是每个租户一个Schema。</p>
-<p>该模式为安全性要求较高的租户提供了一定程度的逻辑数据隔离，并不是完全隔离；每个数据库可支持更多的租户数量。 </p>
-<p>但是该模式下，如果数据库出现故障，数据恢复比较困难，因为数据库的恢复会牵扯到其他租户的数据；如果需要跨租户统计数据，存在一定困难。</p>
-<h2 id="共享数据库，共享数据架构"><a href="#共享数据库，共享数据架构" class="headerlink" title="共享数据库，共享数据架构"></a>共享数据库，共享数据架构</h2><p>第三种方案，即租户共享同一个Database、同一个Schema，但在表中增加TenantID多租户的数据字段。这是共享程度最高、隔离级别最低的模式。 </p>
-<p>这种方案的维护和购置成本最低，允许每个数据库支持的租户数量最多。 </p>
-<p>但是这种隔离级别最低，安全性最低，需要在设计开发时加大对安全的开发量；同时数据备份和恢复最困难，需要逐表逐条备份和还原。 </p>
-<p>如果希望以最少的服务器为最多的租户提供服务，并且租户接受牺牲隔离级别换取降低成本，这种方案最适合。</p>
-<h2 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a>如何选择</h2><p>我们要如何选择这三种模式呢？衡量三种模式主要考虑的因素是隔离还是共享，还有成本。</p>
-<p>考虑到成本角度因素：隔离性越好，设计和实现的难度和成本越高，初始成本越高。共享性越好，同一运营成本下支持的用户越多，运营成本越低。</p>
-<p>安全因素：要考虑业务和客户的安全方面的要求。安全性要求越高，越要倾向于隔离。</p>
-<p>从租户数量上考虑：租户越多，应该越倾向于共享；如果每个租户存储的数据越多，应该越倾向于隔离；每个租户同时访问系统的用户数量越多，应该越倾向于隔离；如果针对每个用户都要提供一些附加服务，就应该越倾向于隔离。</p>
-<p>信息监管因素：要考虑政府，机关，企业，公司的安全和信息监管相关的一些政策和规定。</p>
-<p>技术储备：共享性越高，对技术的要求越高。</p>
-<hr>
-<p>参考：</p>
-<p><a href="http://www.cnblogs.com/junneyang/p/5212516.html" target="_blank" rel="external">【架构】如何设计支持多租户的数据库？</a></p>
-<p><a href="http://blog.csdn.net/yown/article/details/51288549" target="_blank" rel="external">SaaS多租户数据隔离的三种方案</a></p>
-<p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-dataMultitenant/index.html" target="_blank" rel="external">数据层的多租户浅谈</a></p>
+            <p>
+              现在的WEB应用很多情况下都是前后端分离的，使用RESTful架构很经常遇到的一个问题的就是跨域问题。我们主要在这里讨论的是，在前端请求服务端接口的时候遇到的跨域的问题，不讨论前端之间的跨域互调。
+什么是跨域只要协议、域名、端口有任何一个不同，都被当作是不同的域。简单地理解就是因为JavaScript同源策略的限制，a.com 域名下的js无法操作b.com或是c.a.com域名下的对象。
+
+
+
+
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/01/02/前后端分离中的请求跨域问题/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/12/09/代码之外的软技能/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jesen Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/12/09/代码之外的软技能/" class="post-title-link" itemprop="url">代码之外的软技能</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
 
           
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-12-09 22:47:25" itemprop="dateCreated datePublished" datetime="2016-12-09T22:47:25+08:00">2016-12-09</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/读书笔记/" itemprop="url" rel="index"><span itemprop="name">读书笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              这是一篇《软技能-代码之外的生存指南》的读书笔记。在书到手的两个礼拜中除了在给书写上自己的名字意外，没有翻开过一页。最近的一个多礼拜没有碰代码，没有读书，想着趁着这个周末回老家应该没有被其他事情打扰，好好地看看。然后，文档记之。
+优秀的软件开发人员的定义并不是说要精于编码之道，善于解决缺陷，通晓单元测试。而是，那些能够把控自己的职业生涯、达成目标、享受生活的人。
+我们入职以来可能犯的最大的错误我们
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2016/12/09/代码之外的软技能/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/11/07/MongoDB使用技巧Tips/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jesen Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/07/MongoDB使用技巧Tips/" class="post-title-link" itemprop="url">MongoDB使用技巧Tips</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-07 19:29:50" itemprop="dateCreated datePublished" datetime="2016-11-07T19:29:50+08:00">2016-11-07</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MongoDB/" itemprop="url" rel="index"><span itemprop="name">MongoDB</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              这是一篇日常使用MongoDB时候遇到的问题的解决技巧的文章。
+查找数组字段不为空的记录查找数据中数组字段不为空的记录。
+举个例子：有以下Mongo文档，
+{
+    &quot;id&quot; : &quot;581c060f2b436c05aafb1632&quot;,
+    &quot;commit_history&quot; : [ 
+        &quot;581c20d52b4
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2016/11/07/MongoDB使用技巧Tips/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jesen Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/" class="post-title-link" itemprop="url">在NodeJs中使用事件、监听器、定时器和回调</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-11-01 22:43:09" itemprop="dateCreated datePublished" datetime="2016-11-01T22:43:09+08:00">2016-11-01</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-10 09:44:23" itemprop="dateModified" datetime="2019-04-10T09:44:23+08:00">2019-04-10</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/NodeJs/" itemprop="url" rel="index"><span itemprop="name">NodeJs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              在阅读《Node.js+MongoDB+AngularJS Web开发》第四章的时候，发现很多概念以前没有去注意到，觉得还是有摘录下来的必要，方便以后查看。
+Node.js的事件模型Node.js应用程序在一个单线程的事件驱动模型中运行。
+传统的线程网络模型中，请求进入一个Web服务器，并分配给一个可用的线程。对于请求的处理工作继续在该线程上运行，直到请求完成并发出响应。以上使用线程模型在不同线程
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -718,7 +1308,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -749,7 +1339,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Hing Kwan</p>
+              <p class="site-author-name" itemprop="name">Jesen Kwan</p>
               <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
           </div>
 
@@ -950,6 +1540,32 @@
           
 
           
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
 
           
 
@@ -979,11 +1595,11 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Hing Kwan</span>
+  <span class="author" itemprop="copyrightHolder">Jesen Kwan</span>
 
   
 
@@ -999,12 +1615,38 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
@@ -1028,6 +1670,13 @@
 
     
 
+    
+      <div>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d18c73b5e8375b2" async="async"></script>
+</div>
+
+      </div>
     
   </div>
 
@@ -1065,7 +1714,7 @@
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
@@ -1077,39 +1726,19 @@
   
 
 
-  <script src="/js/utils.js?v=7.1.0"></script>
+  <script src="/js/utils.js?v=7.1.2"></script>
 
-  <script src="/js/motion.js?v=7.1.0"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+  <script src="/js/motion.js?v=7.1.2"></script>
 
 
 
   
-
   
 
 
-  <script src="/js/next-boot.js?v=7.1.0"></script>
+  <script src="/js/affix.js?v=7.1.2"></script>
 
-
-  
-
-  
-
-  
-
-  
-
-
-
-  
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
 
 
 
@@ -1118,7 +1747,369 @@
 
   
 
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
   
+
+  
+
+  
+
+  
+
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+
 
   
 
