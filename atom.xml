@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2019-04-15T13:32:17.933Z</updated>
+  <updated>2019-04-11T07:56:46.975Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,48 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Spring-Security-OAuth2架构和源码的简单理解</title>
-    <link href="http://webfuse.cn/2019/04/15/Spring-Security-OAuth2%E6%9E%B6%E6%9E%84%E5%92%8C%E6%BA%90%E7%A0%81%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/"/>
-    <id>http://webfuse.cn/2019/04/15/Spring-Security-OAuth2架构和源码的简单理解/</id>
-    <published>2019-04-15T06:28:03.000Z</published>
-    <updated>2019-04-15T13:32:17.933Z</updated>
-    
-    <content type="html"><![CDATA[<ul>
-<li><a href="https://juejin.im/post/5b3f283af265da0f6012ef30" target="_blank" rel="external">Spring-Security-OAuth2架构及源码浅析</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://juejin.im/post/5b3f283af265da0f6012ef30&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Spring-Security-OAuth2架构及源码浅析&lt;/a&gt;&lt;/li&gt;
-&lt;/u
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>OAuth 2.0的简单理解</title>
-    <link href="http://webfuse.cn/2019/04/15/OAuth%202.0%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/"/>
-    <id>http://webfuse.cn/2019/04/15/OAuth 2.0的简单理解/</id>
-    <published>2019-04-15T06:24:39.000Z</published>
-    <updated>2019-04-15T13:32:17.933Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://blog.sqdyy.cn/2018/05/12/microservice-understand-oauth2/" target="_blank" rel="external">https://blog.sqdyy.cn/2018/05/12/microservice-understand-oauth2/</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://blog.sqdyy.cn/2018/05/12/microservice-understand-oauth2/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://blog.sqdyy.cn/2018/05/1
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>web3.js编译Solidity，发布，调用全部流程</title>
@@ -1775,6 +1733,103 @@ import java.math.BigIntege
       <category term="读书笔记" scheme="http://webfuse.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="Java" scheme="http://webfuse.cn/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ehcache缓存持久化</title>
+    <link href="http://webfuse.cn/2017/12/22/Ehcache%E7%BC%93%E5%AD%98%E6%8C%81%E4%B9%85%E5%8C%96/"/>
+    <id>http://webfuse.cn/2017/12/22/Ehcache缓存持久化/</id>
+    <published>2017-12-22T01:25:24.000Z</published>
+    <updated>2018-07-28T03:19:46.904Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为在项目中需要将Ehcache的缓存数据写入磁盘，搜索一些怎么样持久化Ehcache缓存的资料，根据获得的资料在开发过程中遇到蛮多的坑，逐一记录下来。</p>
+<h2 id="根据官网上的配置踩过的坑"><a href="#根据官网上的配置踩过的坑" class="headerlink" title="根据官网上的配置踩过的坑"></a>根据官网上的配置踩过的坑</h2><p>在Ehcache的官网上，有关于怎么配置持久化的说明。详情见： <a href="http://www.ehcache.org/generated/2.10.4/html/ehc-all/#page/Ehcache_Documentation_Set%2Fto-persist_configuring_persistance_and_restart.html%23" target="_blank" rel="external">Configuring Restartability and Persistence</a></p>
+<p>然后，我按照常规的逻辑添加了一下的配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span></span></div><div class="line">       <span class="attr">eternal</span>=<span class="string">"true"</span></div><div class="line">       <span class="attr">maxElementsInMemory</span>=<span class="string">"1"</span></div><div class="line">       <span class="attr">overflowToDisk</span>=<span class="string">"true"</span></div><div class="line">       <span class="attr">diskPersistent</span>=<span class="string">"true"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">persistence</span> <span class="attr">strategy</span>=<span class="string">"localRestartable"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>然后，报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Caused by: org.xml.sax.SAXException: null:17: Could not finish element &lt;persistence&gt;. Message was: net.sf.ehcache.config.InvalidConfigurationException: Cannot use both &lt;persistence ...&gt; and diskPersistent in a single cache configuration.</div></pre></td></tr></table></figure>
+<p>说明diskPersistent和persistence不能共存。修改配置后：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">persistence</span> <span class="attr">strategy</span>=<span class="string">"localRestartable"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>启动，报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Caused by: net.sf.ehcache.config.InvalidConfigurationException: There is one error in your configuration: </div><div class="line">	* Cache &apos;indexCache&apos; error: If your CacheManager has no maxBytesLocalHeap set, you need to either set maxEntriesLocalHeap or maxBytesLocalHeap at the Cache level</div></pre></td></tr></table></figure>
+<p>添加 maxEntriesLocalHeap 后如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span> <span class="attr">maxEntriesLocalHeap</span>=<span class="string">"1000"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">persistence</span> <span class="attr">strategy</span>=<span class="string">"localRestartable"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>还是报错:You must use an enterprise version of Ehcache to successfully enable enterprise persistence.</p>
+<p>原来需要用到BigMemory，但是BigMemory又是收费的。至此，第一次尝试失败。</p>
+<h2 id="根据网上资料踩过的坑"><a href="#根据网上资料踩过的坑" class="headerlink" title="根据网上资料踩过的坑"></a>根据网上资料踩过的坑</h2><p>资料显示：我们要在每次使用cache.put()后再调用cache.flush()，这样就能够将索引写入到磁盘。同时在配置中开启eternal（永久有效），overflowToDisk（磁盘缓存）， diskPersistent（持久化到磁盘）和<a href="http://blog.csdn.net/xiajun07061225/article/details/40211391" target="_blank" rel="external">预热机制</a>。</p>
+<p>然后还要在web.xml中加入ShutdownListener的监听，这样可以保证在正常关闭的时候缓存数据成功写入磁盘。</p>
+<p>所以有了以下配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span> <span class="attr">maxElementsInMemory</span>=<span class="string">"1"</span> <span class="attr">eternal</span>=<span class="string">"true"</span> <span class="attr">overflowToDisk</span>=<span class="string">"true"</span></span></div><div class="line">       <span class="attr">diskPersistent</span>=<span class="string">"true"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">bootstrapCacheLoaderFactory</span> <span class="attr">class</span>=<span class="string">"net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"</span></span></div><div class="line">                                 <span class="attr">properties</span>=<span class="string">"bootstrapAsynchronously=true"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Bean</span></div><div class="line"><span class="function"><span class="keyword">public</span> ServletListenerRegistrationBean&lt;ShutdownListener&gt; <span class="title">testListenerRegistration</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ServletListenerRegistrationBean&lt;&gt;(<span class="keyword">new</span> ShutdownListener());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>启动试验，发现只生成.data文件并没有生成.index文件。</p>
+<h2 id="跳出坑，解决问题"><a href="#跳出坑，解决问题" class="headerlink" title="跳出坑，解决问题"></a>跳出坑，解决问题</h2><p>跟踪调试代码，发现cache.flush()调用的是CacheStore中的flush。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">flush</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">    <span class="keyword">if</span> (authoritativeTier <span class="keyword">instanceof</span> DiskStore &amp;&amp; cacheConfiguration != <span class="keyword">null</span> &amp;&amp; cacheConfiguration.isClearOnFlush()) &#123;</div><div class="line">        <span class="keyword">final</span> Lock lock = daLock.writeLock();</div><div class="line">        lock.lock();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            cachingTier.clear();</div><div class="line">            ((DiskStore)authoritativeTier).clearFaultedBit();</div><div class="line">        &#125; <span class="keyword">finally</span> &#123;</div><div class="line">            lock.unlock();</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        authoritativeTier.flush();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>程序总是进入if条件中，并没有调用到<code>authoritativeTier.flush()</code>方法。</p>
+<p>修改配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache</span> <span class="attr">name</span>=<span class="string">"indexCache"</span> <span class="attr">maxElementsInMemory</span>=<span class="string">"1"</span> <span class="attr">eternal</span>=<span class="string">"true"</span> <span class="attr">overflowToDisk</span>=<span class="string">"true"</span></span></div><div class="line">       <span class="attr">diskPersistent</span>=<span class="string">"true"</span> <span class="attr">clearOnFlush</span>=<span class="string">"false"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">bootstrapCacheLoaderFactory</span> <span class="attr">class</span>=<span class="string">"net.sf.ehcache.distribution.RMIBootstrapCacheLoaderFactory"</span></span></div><div class="line">                                 <span class="attr">properties</span>=<span class="string">"bootstrapAsynchronously=true"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>重新运行，OK。</p>
+<p>以上基于spring boot 1.5.4.RELEASE，ehcache的版本为2.10.4</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;因为在项目中需要将Ehcache的缓存数据写入磁盘，搜索一些怎么样持久化Ehcache缓存的资料，根据获得的资料在开发过程中遇到蛮多的坑，逐一记录下来。&lt;/p&gt;
+&lt;h2 id=&quot;根据官网上的配置踩过的坑&quot;&gt;&lt;a href=&quot;#根据官网上的配置踩过的坑&quot; class=&quot;hea
+    
+    </summary>
+    
+      <category term="缓存" scheme="http://webfuse.cn/categories/%E7%BC%93%E5%AD%98/"/>
+    
+    
+      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
+    
+      <category term="Ehcache" scheme="http://webfuse.cn/tags/Ehcache/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在SpringCloud Zuul中使用WebSockets</title>
+    <link href="http://webfuse.cn/2017/11/15/%E5%9C%A8SpringCloud%20Zuul%E4%B8%AD%E4%BD%BF%E7%94%A8WebSockets/"/>
+    <id>http://webfuse.cn/2017/11/15/在SpringCloud Zuul中使用WebSockets/</id>
+    <published>2017-11-15T01:46:38.000Z</published>
+    <updated>2019-04-10T05:44:03.108Z</updated>
+    
+    <content type="html"><![CDATA[<p>近期的项目中需要用到WebSocket，因为使用的是微服务架构，所以又直接使用了Spring Cloud的Zuul。然而，Zuul对WebSocket的支持不是那么友好，具体可以参考：<a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/163。" target="_blank" rel="external">https://github.com/spring-cloud/spring-cloud-netflix/issues/163。</a></p>
+<p>Spring已经给我们提供了一套<a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#websocket" target="_blank" rel="external">WebSockets的解决方案</a>。我们需要用到的有：Sock.js、STOMP、Spring Messaging以及Spring Integration。</p>
+<p><strong>Sock.js</strong></p>
+<p><a href="https://github.com/sockjs/sockjs-client" target="_blank" rel="external">Sock.js</a>是一个JavaScript代码库，提供WebSocket-like对象、跨浏览器的JavaScript的API。它在浏览器和web服务器之间创建了一个低延迟、全双工、跨域通信通道。在低版本的浏览器不支持WebSocket时，它可以使用其他协议来处理。</p>
+<p><strong>STOMP</strong></p>
+<p><a href="https://stomp.github.io/" target="_blank" rel="external">STOMP</a>是一种简单的（或流媒体）的消息传递协议。在多种语言、平台和代理之间提供简单和广泛的消息互操作性。</p>
+<p><strong>Spring组件</strong></p>
+<p>我们在项目中大量使用Spring组件，在这里我们使用到了Spring Messaging和Spring Integration。</p>
+<p>Spring Messaging和Spring Integration具体与SockJs、STOMP组合使用可以参考：</p>
+<p><a href="https://spring.io/guides/gs/messaging-stomp-websocket/" target="_blank" rel="external">https://spring.io/guides/gs/messaging-stomp-websocket/</a></p>
+<p><a href="http://assets.spring.io/wp/WebSocketBlogPost.html" target="_blank" rel="external">http://assets.spring.io/wp/WebSocketBlogPost.html</a></p>
+<p><strong>Zuul中的处理</strong></p>
+<p>在使用Zuul作为网关的时候，因为我们使用的是Sock.js，所以它可以算得上是支持了。但是为了能够更保险些，需要写一个Filter：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Component</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSocketFilter</span> <span class="keyword">extends</span> <span class="title">ZuulFilter</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">filterType</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"pre"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">filterOrder</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">shouldFilter</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        RequestContext context = RequestContext.getCurrentContext();</div><div class="line">        HttpServletRequest request = context.getRequest();</div><div class="line">        String upgradeHeader = request.getHeader(<span class="string">"Upgrade"</span>);</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == upgradeHeader) &#123;</div><div class="line">            upgradeHeader = request.getHeader(<span class="string">"upgrade"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> != upgradeHeader &amp;&amp; <span class="string">"websocket"</span>.equalsIgnoreCase(upgradeHeader)) &#123;</div><div class="line">            context.addZuulRequestHeader(<span class="string">"connection"</span>, <span class="string">"Upgrade"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Spring WebSockets默认的心跳时间是25s，为了能够不被认为是连接超时，我们需要在Zuul中设置比较长的超时时间。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attr">hystrix:</span></div><div class="line"><span class="attr">  command:</span></div><div class="line"><span class="attr">    default:</span></div><div class="line"><span class="attr">      execution:</span></div><div class="line"><span class="attr">        isolation:</span></div><div class="line"><span class="attr">          thread:</span></div><div class="line"><span class="attr">            timeoutInMilliseconds:</span> <span class="number">60000</span>  <span class="comment">#设置API网关中路由转发请求的HystrixCommand执行超时时间</span></div><div class="line"></div><div class="line"><span class="attr">ribbon:</span></div><div class="line"><span class="attr">  ConnectTimeout:</span> <span class="number">3000</span> <span class="comment">#设置路由转发请求的时候，创建请求连接的超时时间</span></div><div class="line"><span class="attr">  ReadTimeout:</span> <span class="number">60000</span>  <span class="comment">#用来设置路由转发请求的超时时间</span></div></pre></td></tr></table></figure>
+<p>以上，基本上是完成了Zuul与WebSockets之间的代理了。</p>
+<hr>
+
+<p>参考：</p>
+<p><a href="https://jmnarloch.wordpress.com/2015/11/11/spring-cloud-sock-js-stomp-zuul-no-websockets/" target="_blank" rel="external">https://jmnarloch.wordpress.com/2015/11/11/spring-cloud-sock-js-stomp-zuul-no-websockets/</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;近期的项目中需要用到WebSocket，因为使用的是微服务架构，所以又直接使用了Spring Cloud的Zuul。然而，Zuul对WebSocket的支持不是那么友好，具体可以参考：&lt;a href=&quot;https://github.com/spring-cloud/spri
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/categories/Spring/Spring-Cloud/"/>
+    
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/tags/Spring-Cloud/"/>
     
   </entry>
   
