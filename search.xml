@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SpringBoot中使用Redis]]></title>
+    <url>%2F2019%2F07%2F09%2FSpringBoot%E4%B8%AD%E4%BD%BF%E7%94%A8Redis%2F</url>
+    <content type="text"><![CDATA[本文介绍SpringBoot Redis的基本使用和多Redis数据源配置 基本使用SpringBoot 2.x项目中引入spring-boot-starter-data-redis： 1234&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;&lt;/dependency&gt; 查看引入包，发现SpringBoot 2.x 使用的是： lettuce 。 配置 application.yml 123456spring: redis: host: 127.0.0.1 port: 6379 password: database: 0 使用： 12345@Autowiredprivate RedisTemplate&lt;String, String&gt; redisTemplate;@Autowiredprivate StringRedisTemplate stringRedisTemplate; SpringBoot Redis的自动化配置位于：RedisAutoConfiguration 多Redis数据源配置项目中常常用到不止一个Redis数据源，如果按照上面的简单配置，那么很难满足需要。需要我们自己来声明 ConnectionFactory 和 RedisTemplate 。 application.yml中配置如下： 1234567891011121314spring: redis: #redis配置 redis-a: host: 127.0.0.1 port: 6379 password: pwd@local ssl: true database: 0 redis-b: host: 127.0.0.1 port: 6479 password: pwd@local ssl: true database: 0 以上配置是在spring.redis下做区分两个数据源，这是为了能够方便地查找配置位置。 添加RedisConfig.java，如下： 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465@Configurationpublic class RedisConfig &#123; @Bean(name = "aRedisTemplate") public StringRedisTemplate aRedisTemplate( @Qualifier("aLettuceConnectionFactory") RedisConnectionFactory aLettuceConnectionFactory) &#123; StringRedisTemplate template = new StringRedisTemplate(); template.setConnectionFactory(aLettuceConnectionFactory); return template; &#125; @Bean(name = "bRedisTemplate") public StringRedisTemplate bRedisTemplate( @Qualifier("bConnectionFactory") RedisConnectionFactory bConnectionFactory) &#123; StringRedisTemplate template = new StringRedisTemplate(); template.setConnectionFactory(bConnectionFactory); return template; &#125; @Bean(name = "aLettuceConnectionFactory") @Primary public LettuceConnectionFactory aLettuceConnectionFactory(@Value("$&#123;spring.redis.redis-a.host&#125;") String host, @Value("$&#123;spring.redis.redis-a.port&#125;") int port, @Value("$&#123;spring.redis.redis-a.password&#125;") String password, @Value("$&#123;spring.redis.redis-a.ssl&#125;") boolean ssl, @Value("$&#123;spring.redis.redis-a.database&#125;") int database) &#123; LettuceClientConfiguration.LettuceClientConfigurationBuilder builder = LettuceClientConfiguration.builder(); if (ssl) &#123; builder.useSsl(); &#125; RedisStandaloneConfiguration standaloneConfiguration = getRedisStandaloneConfiguration(host, port, password, database); return new LettuceConnectionFactory(standaloneConfiguration, builder.build()); &#125; @Bean(name = "bConnectionFactory") public LettuceConnectionFactory bConnectionFactory(@Value("$&#123;spring.redis.redis-b.host&#125;") String host, @Value("$&#123;spring.redis.redis-b.port&#125;") int port, @Value("$&#123;spring.redis.redis-b.password&#125;") String password, @Value("$&#123;spring.redis.redis-b.ssl&#125;") boolean ssl, @Value("$&#123;spring.redis.redis-b.database&#125;") int database) &#123; LettuceClientConfiguration.LettuceClientConfigurationBuilder builder = LettuceClientConfiguration.builder(); if (ssl) &#123; builder.useSsl(); &#125; RedisStandaloneConfiguration standaloneConfiguration = getRedisStandaloneConfiguration(host, port, password, database); return new LettuceConnectionFactory(standaloneConfiguration, builder.build()); &#125; private RedisStandaloneConfiguration getRedisStandaloneConfiguration(String host, int port, String password, int database) &#123; RedisStandaloneConfiguration standaloneConfiguration = new RedisStandaloneConfiguration(); standaloneConfiguration.setHostName(host); standaloneConfiguration.setPort(port); standaloneConfiguration.setPassword(password); standaloneConfiguration.setDatabase(database); return standaloneConfiguration; &#125;&#125; 使用： 123456789@Autowired@Qualifier("aRedisTemplate")private StringRedisTemplate aRedisTemplate;@Autowired@Qualifier("bRedisTemplate")private StringRedisTemplate bRedisTemplate; 如果想要忽略掉默认的Redis配置，那么可以将 RedisAutoConfiguration 和 RedisReactiveAutoConfiguration 加入忽略： 1@EnableAutoConfiguration(exclude = &#123;RedisAutoConfiguration.class, RedisReactiveAutoConfiguration.class&#125;)]]></content>
+      <categories>
+        <category>Spring</category>
+        <category>Spring Boot</category>
+      </categories>
+      <tags>
+        <tag>实战</tag>
+        <tag>Spring Boot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[PMP必须掌握的知识——PMI主义]]></title>
     <url>%2F2019%2F07%2F04%2FPMP%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94PMI%E4%B8%BB%E4%B9%89%2F</url>
     <content type="text"><![CDATA[你是专业的项目经理，管理是你的核心职能 必须以专业的方法做项目，即遵循 PMBOK 的要求 强调事业环境因素和组织过程资产 强调历史信息，强调经验教训总结，强调记录 问题重在预防，而非解决 必须有明确的目标，必须有正式的计划，才可行动 利害关系者很重要，尽早识别全部并让其参与 项目经理必须被任命，PM 是管理工作的核心责任点 项目是系统工程，PM 是整合者， 三重约束牢记在心 项目管理以结果为导向，项目成功是 PM 最终责任 变更影响项目成功，PM 应影响变更变化，管理变更 整合通过沟通实现，PM 要花 75% ~ 90% 时间用于沟通 PM 应拒绝提供不重要的信息要求 工作必须被详细描述，责任必须明确 任何情况下，质量都要达到客户满意 消减费用的前提是消减项目范围 PM 必须遵守职业道德（个人、公司、社会、道德、法律） PM 必须主动，PM 是神器、伟大的，可以拯救世界 一切决策必须以事实为依据，以程序为准绳，正确的程序优先于正确的结果 防止范围潜变，杜绝质量镀金 项目必须收尾 公正、公平、公开，勇敢、诚实地面对现实 双赢理念 决策要遵守四大价值观：责任、尊重、公平、诚信]]></content>
@@ -668,8 +681,8 @@
         <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>NodeJs</tag>
         <tag>ES6</tag>
+        <tag>NodeJs</tag>
         <tag>babel</tag>
       </tags>
   </entry>
@@ -887,8 +900,8 @@
         <category>开发工具</category>
       </categories>
       <tags>
-        <tag>实战</tag>
         <tag>Gradle</tag>
+        <tag>实战</tag>
       </tags>
   </entry>
   <entry>
