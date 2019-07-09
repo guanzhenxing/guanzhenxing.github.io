@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2019-07-09T11:39:53.006Z</updated>
+  <updated>2019-07-09T12:30:38.764Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,6 +14,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://webfuse.cn/2019/07/09/Java%E4%B8%ADAES%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
+    <id>http://webfuse.cn/2019/07/09/Java中AES加解密/</id>
+    <published>2019-07-09T11:44:52.288Z</published>
+    <updated>2019-07-09T12:30:38.764Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>layout: post<br>title: Java中AES加解密<br>date: 2019-07-09 19:44:52<br>categories:</p>
+<ul>
+<li>Java<br>tags:<ul>
+<li>Java</li>
+</ul>
+</li>
+</ul>
+<h2 id="Java-SDK-对-AES-的实现"><a href="#Java-SDK-对-AES-的实现" class="headerlink" title="Java SDK 对 AES 的实现"></a>Java SDK 对 AES 的实现</h2><p>AES 是 Advanced Encryption Standard 的缩写，也就是 高级加密标准 。具体可以见：<a href="https://zh.wikipedia.org/wiki/%E9%AB%98%E7%BA%A7%E5%8A%A0%E5%AF%86%E6%A0%87%E5%87%86" target="_blank" rel="external">高级加密标准</a>。本文主要讨论使用 Java SDK中对 AES 的实现。</p>
+<p>从 <a href="https://docs.oracle.com/javase/7/docs/api/javax/crypto/Cipher.html" target="_blank" rel="external">JDK 的 Cipher 文档</a> 中，知道它支持 4 种 AES 加密模式：</p>
+<ul>
+<li>AES/CBC/NoPadding (128)</li>
+<li>AES/CBC/PKCS5Padding (128)</li>
+<li>AES/ECB/NoPadding (128)</li>
+<li>AES/ECB/PKCS5Padding (128)</li>
+</ul>
+<p>AES 是一种加解密算法，那么 CBC, ECB, NoPadding 和 PKCS5Padding 是什么呢？</p>
+<p>CBC, CBC 是分组密码工作模式，是对于按块处理密码的加密方式的一种扩充。NoPadding, PKCS5Padding 是填充(Padding)，是对需要按块处理的数据，当数据长度不符合块处理需求时，按照一定方法填充满块长的一种规则。</p>
+<blockquote>
+<p>关于分组密码工作模式，可以参考： <a href="https://zh.wikipedia.org/wiki/%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F" target="_blank" rel="external">分组密码工作模式</a> 和 <a href="https://www.cnblogs.com/starwolf/p/3365834.html" target="_blank" rel="external">AES五种加密模式（CBC、ECB、CTR、OCF、CFB）</a><br>关于填充，可以参考：<a href="https://en.wikipedia.org/wiki/Padding_%28cryptography%29" target="_blank" rel="external">Padding (cryptography)</a></p>
+</blockquote>
+<p>参考，<a href="https://blog.51cto.com/qiaofengzxq/1748687" target="_blank" rel="external">JAVA AES算法</a> 知道（以下部分的内容为该文章里的内容）：</p>
+<ul>
+<li>(1)缺省模式和填充为“AES/ECB/PKCS5Padding”，Cipher.getInstance(“AES”)与Cipher.getInstance(“AES/ECB/PKCS5Padding”)等效。</li>
+<li>(2)JDK的PKCS5Padding实际是上述的PKCS7的实现。</li>
+<li>(3)由于AES是按照16Byte为块进行处理，对于NoPadding而言，如果需要加密的原文长度不是16Byte的倍数，将无法处理抛出异常，其实是由用户自己选择Padding的算法。密文则必然是16Byte的倍数，否则密文肯定异常。</li>
+<li>(4)如果加密为PKCS5Padding，解密可以选择NoPadding，也能解密成功，内容为原文加上PKCS5Padding之后的结果。</li>
+<li>(5)如果原文最后一个字符为&gt;=0x00&amp;&amp;&lt;=0x10的内容，PKCS5Padding的解密将会出现异常，要么是符合PKCS5Padding，最后的内容被删除，要么不符合，则解密失败抛出异常。对此有两种思路，一是原文通过Base64编码为可见字符，二是原文自带长度使用NoPadding解密。</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> javax.crypto.Cipher;</div><div class="line"><span class="keyword">import</span> javax.crypto.spec.IvParameterSpec;</div><div class="line"><span class="keyword">import</span> javax.crypto.spec.SecretKeySpec;</div><div class="line"><span class="keyword">import</span> java.security.SecureRandom;</div><div class="line"><span class="keyword">import</span> java.util.Base64;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AesUtil</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * AES/CBC/PKCS5Padding加密，然后进行base64加密</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> plainText</div><div class="line">     * <span class="doctag">@param</span> key</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     * <span class="doctag">@throws</span> Exception</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">encryptBase64AESCBC</span><span class="params">(String plainText, String key)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">byte</span>[] clean = plainText.getBytes();</div><div class="line"></div><div class="line">        <span class="comment">//Cipher</span></div><div class="line">        Cipher cipher = Cipher.getInstance(<span class="string">"AES/CBC/PKCS5Padding"</span>);</div><div class="line"></div><div class="line">        <span class="comment">// Generating IV.</span></div><div class="line">        <span class="keyword">int</span> ivSize = cipher.getBlockSize();</div><div class="line">        <span class="keyword">byte</span>[] iv = <span class="keyword">new</span> <span class="keyword">byte</span>[ivSize];</div><div class="line">        SecureRandom random = <span class="keyword">new</span> SecureRandom();</div><div class="line">        random.nextBytes(iv);</div><div class="line">        IvParameterSpec ivParameterSpec = <span class="keyword">new</span> IvParameterSpec(iv);</div><div class="line"></div><div class="line">        <span class="comment">// Encrypt.</span></div><div class="line">        SecretKeySpec secretKeySpec = <span class="keyword">new</span> SecretKeySpec(key.getBytes(<span class="string">"UTF-8"</span>), <span class="string">"AES"</span>);</div><div class="line">        cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, ivParameterSpec);</div><div class="line">        <span class="keyword">byte</span>[] encrypted = cipher.doFinal(clean);</div><div class="line"></div><div class="line">        <span class="comment">// Combine IV and encrypted part.</span></div><div class="line">        <span class="keyword">byte</span>[] encryptedIVAndText = <span class="keyword">new</span> <span class="keyword">byte</span>[ivSize + encrypted.length];</div><div class="line">        System.arraycopy(iv, <span class="number">0</span>, encryptedIVAndText, <span class="number">0</span>, ivSize);</div><div class="line">        System.arraycopy(encrypted, <span class="number">0</span>, encryptedIVAndText, ivSize, encrypted.length);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> Base64.getEncoder().encodeToString(encryptedIVAndText);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * base64解密后再进行AES/CBC/PKCS5Padding解密</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> encryptedIvText</div><div class="line">     * <span class="doctag">@param</span> key</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     * <span class="doctag">@throws</span> Exception</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">decryptBase64AESCBC</span><span class="params">(String encryptedIvText, String key)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">byte</span>[] encryptedIvTextBytes = Base64.getDecoder().decode(encryptedIvText);</div><div class="line"></div><div class="line">        <span class="comment">//Cipher</span></div><div class="line">        Cipher cipher = Cipher.getInstance(<span class="string">"AES/CBC/PKCS5Padding"</span>);</div><div class="line"></div><div class="line">        <span class="comment">// Extract IV.</span></div><div class="line">        <span class="keyword">int</span> ivSize = cipher.getBlockSize();</div><div class="line">        <span class="keyword">byte</span>[] iv = <span class="keyword">new</span> <span class="keyword">byte</span>[ivSize];</div><div class="line">        System.arraycopy(encryptedIvTextBytes, <span class="number">0</span>, iv, <span class="number">0</span>, iv.length);</div><div class="line">        IvParameterSpec ivParameterSpec = <span class="keyword">new</span> IvParameterSpec(iv);</div><div class="line"></div><div class="line">        <span class="comment">// Extract encrypted part.</span></div><div class="line">        <span class="keyword">int</span> encryptedSize = encryptedIvTextBytes.length - ivSize;</div><div class="line">        <span class="keyword">byte</span>[] encryptedBytes = <span class="keyword">new</span> <span class="keyword">byte</span>[encryptedSize];</div><div class="line">        System.arraycopy(encryptedIvTextBytes, ivSize, encryptedBytes, <span class="number">0</span>, encryptedSize);</div><div class="line"></div><div class="line">        <span class="comment">// Decrypt.</span></div><div class="line">        SecretKeySpec secretKeySpec = <span class="keyword">new</span> SecretKeySpec(key.getBytes(<span class="string">"UTF-8"</span>), <span class="string">"AES"</span>);</div><div class="line">        cipher.init(Cipher.DECRYPT_MODE, secretKeySpec, ivParameterSpec);</div><div class="line">        <span class="keyword">byte</span>[] original = cipher.doFinal(encryptedBytes);</div><div class="line">        String originalString = <span class="keyword">new</span> String(original);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> originalString;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码中 <code>iv</code>的长度为 <code>cipher.getBlockSize()</code>，然后将 <code>iv</code> 放在加密文本的前部分。解密的时候一样先获得 <code>iv</code>，再进行加密内容的解密。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;layout: post&lt;br&gt;title: Java中AES加解密&lt;br&gt;date: 2019-07-09 19:44:52&lt;br&gt;categories:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Java&lt;br&gt;tags:&lt;ul&gt;
+&lt;li&gt;Java&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>SpringBoot中使用Redis</title>
@@ -1589,249 +1644,6 @@
       <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
     
       <category term="权限认证" scheme="http://webfuse.cn/tags/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《写给大忙人看的JavaSE8》读书笔记</title>
-    <link href="http://webfuse.cn/2018/02/08/%E3%80%8A%E5%86%99%E7%BB%99%E5%A4%A7%E5%BF%99%E4%BA%BA%E7%9C%8B%E7%9A%84JavaSE8%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    <id>http://webfuse.cn/2018/02/08/《写给大忙人看的JavaSE8》读书笔记/</id>
-    <published>2018-02-08T15:08:32.000Z</published>
-    <updated>2018-07-28T03:19:46.917Z</updated>
-    
-    <content type="html"><![CDATA[<p>重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。</p>
-<pre><code>import java.io.IOException;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.TemporalAdjuster;
-import java.time.temporal.TemporalAdjusters;
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.LongAdder;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-public class Java8Demo {
-
-    /**
-    * 带有参数变量的表达式都被称为lambda表达式
-    * lambda表达式：基本型为 (形参列表)-&gt;{方法体}
-    * 方法引用： ::操作符将方法名和对象或类的名字分割开来
-    */
-    public void aboutLambda() {
-        Comparator&lt;String&gt; comp = (str1, str2) -&gt; 0;
-
-        new Thread(() -&gt; {
-            for (int i = 0; i &lt; 100; i++)
-                System.out.println(&quot;Lambda Expression&quot;);
-        }).start();
-
-        //函数式接口：对于只包含一个抽象方法的接口，你可以通过lambda表达式来创建该接口的对象。
-        Arrays.sort(new String[]{&quot;a&quot;, &quot;b&quot;}, comp);
-
-        //方法引用等同于提供方法参数的lambda表达式
-        Arrays.asList(&quot;&quot;, &quot;&quot;).stream().forEach(System.out::print);//情况1：对象::实例方法
-        Arrays.asList(1, 2).stream().map(Math::abs).collect(Collectors.toList());//情况2：类::静态方法
-        Arrays.sort(new String[]{&quot;&quot;, &quot;&quot;}, Comparator.comparingInt(String::length)); //情况3：类::实例方法。第一个参数会成为执行方法的对象.String::length 等于 (x)-&gt;x.length()
-        String[] arr = Arrays.asList(&quot;&quot;, &quot;&quot;).stream().toArray(String[]::new);   //情况4：类::new
-
-        //所有的lambda表达式都是延迟执行的
-    }
-
-
-    public void aboutStreamAPI() {
-        List&lt;String&gt; words = new ArrayList&lt;&gt;();
-        long count = words.parallelStream().filter(w -&gt; w.length() &gt; 12).count();
-
-        //Stream遵循“做什么，而不是怎么去做”的原则。
-        //在使用Stream时候，你会通过三个阶段来建立一个操作流水线：
-        //1-创建一个Stream
-        //2-在一个或多个步骤中，指定将初始Stream转换为另一个Stream的中间操作
-        //3-使用一个终止操作来产生一个结果。该操作会强制它之前的延迟操作立即执行。在这之后，该Stream操作就不会再被使用了。
-
-        Stream&lt;String&gt; wordStream = Stream.of(new String[]{});
-        Stream&lt;String&gt; song = Stream.of(&quot;&quot;, &quot;&quot;, &quot;&quot;);
-
-        Stream&lt;String&gt; echos = Stream.generate(() -&gt; &quot;Echo&quot;); //创建一个含有常亮值的Stream
-        Stream&lt;Double&gt; randoms = Stream.generate(Math::random); //创建一个含有随机数的Stream
-        //iterate方法接受一个“种子”的值和一个函数作为参数
-        Stream&lt;BigInteger&gt; integers = Stream.iterate(BigInteger.ZERO, n -&gt; n.add(BigInteger.ONE));
-
-
-        //流转换是指从一个流中读取数据，并将转换后的数据写入到另一个流中。
-        //filter方法的参数是一个Predicate&lt;T&gt;对象——即一个从T到boolean的函数。
-        //我们使用map方法对流中的值进行某种形式的转换，它会对每个元素应用一个函数，并将返回的值收集到一个新的流中。
-
-        //distinct方法会根据原始流中的元素返回一个具有相同顺序、抑制了重复元素的新流。
-
-        //聚合方法：如果你希望对元素求和，或者以其他方式将流中的元素组合为一个值
-        //    - count方法：返回流中元素的总数
-        //    - max方法：返回流中最大值
-        //    - min方法：返回流中最小值
-        //    - reduce方法： 提供聚合操作
-
-        //Optional&lt;T&gt;对象或者是对一个T类型对象的封装，或者表示不是任何对象。
-        // if(optionalValue.ifPresent()) optionalValue.get().someMethod();
-        // optionalValue.ifPresent(v-&gt;results::add);
-        // Optional&lt;Boolean&gt; added = optionalValue.map(results::add);   //返回一个值
-        // optionalValue.orElse(&quot;&quot;);
-        // optionalValue.orElseGet(()-&gt;System.out.print(&quot;....&quot;));
-        // optionalValue.orElseThrow(NoSuchElementException:new);
-        // 可以使用Optional.of(result)或者Optional.empty()来创建一个Optional对象
-        // ofNullable方法中，如果obj不为null,那么Optional.ofNullable(obj)会返回Optional.of(obj),否则会返回Optional.empty()。
-        //使用flatMap来组合可选函数。Optional&lt;U&gt; u =  s.f().flatMap(T::g);
-
-        //以下3个是等效的
-        HashSet&lt;String&gt; res = wordStream.collect(HashSet::new, HashSet::add, HashSet::addAll);
-        List&lt;String&gt; res1 = wordStream.collect(Collectors.toList());
-        Set&lt;String&gt; res2 = wordStream.collect(Collectors.toSet());
-
-        //将字符串连接起来
-        String str = wordStream.collect(Collectors.joining());
-
-        //将字符串连接起来，中间以,隔开
-        String str1 = wordStream.collect(Collectors.joining(&quot;, &quot;));
-
-        //使用(Int|Double|Long)SummaryStatistics来获得一个流的总和、平均值、最大值或最小值
-        IntSummaryStatistics summary = wordStream.collect(Collectors.summarizingInt(String::length));
-        double averageWordLength = summary.getAverage();
-        double maxWordLength = summary.getMax();
-
-        //将一个Stream对象中的元素收集到一个map中
-        //Map&lt;Integer,String&gt; idToName = peopleStream.collect(Collectors.toMap(Person::getId,Person::getName));
-
-        //上面的转换成Map中，如果存在相同的键异常，我们可以重写方法搞定。
-        Stream&lt;Locale&gt; locales = Stream.of(Locale.getAvailableLocales());
-        Map&lt;String, String&gt; languageNames = locales.collect(Collectors.toMap(
-                l -&gt; l.getDisplayLanguage(),
-                l -&gt; l.getDisplayLanguage(l),
-                (existingValue, newValue) -&gt; existingValue
-        ));
-
-
-        //groupingBy方法，对具有相同特性的值进行分组
-        //当分类函数式一个predicate函数（即返回一个布尔值的函数）时，流元素会被分为两组列表：一组是函数会返回true的元素，另一组返回false的元素。
-        //在这种情况下，使用partitioningBy会比groupingBy更有效率。
-
-    }
-
-    public void aboutTime() {
-
-        Instant start = Instant.now();
-        Instant end = Instant.now();
-        Duration timeElapsed = Duration.between(start, end);
-        timeElapsed.toMillis();
-        timeElapsed.toDays();
-        timeElapsed.plusDays(1).getSeconds();
-        start.plusMillis(1);
-
-        // 以下是来自廖雪峰的博客
-        // Java 8新增了LocalDate和LocalTime接口，为什么要搞一套全新的处理日期和时间的API？因为旧的java.util.Date实在是太难用了。
-        // java.util.Date月份从0开始，一月是0，十二月是11，变态吧！java.time.LocalDate月份和星期都改成了enum，就不可能再用错了。
-        // java.util.Date和SimpleDateFormatter都不是线程安全的，而LocalDate和LocalTime和最基本的String一样，是不变类型，不但线程安全，而且不能修改。
-        // java.util.Date是一个“万能接口”，它包含日期、时间，还有毫秒数，如果你只想用java.util.Date存储日期，或者只存储时间，那么，只有你知道哪些部分的数据是有用的，哪些部分的数据是不能用的。在新的Java 8中，日期和时间被明确划分为LocalDate和LocalTime，LocalDate无法包含时间，LocalTime无法包含日期。当然，LocalDateTime才能同时包含日期和时间。
-        // 新接口更好用的原因是考虑到了日期时间的操作，经常发生往前推或往后推几天的情况。用java.util.Date配合Calendar要写好多代码，而且一般的开发人员还不一定能写对。
-
-        // 取当前日期：
-        LocalDate today = LocalDate.now(); // -&gt; 2014-12-24
-        // 根据年月日取日期，12月就是12：
-        LocalDate crischristmas = LocalDate.of(2014, 12, 25); // -&gt; 2014-12-25
-        // 根据字符串取：
-        LocalDate endOfFeb = LocalDate.parse(&quot;2014-02-28&quot;); // 严格按照ISO yyyy-MM-dd验证，02写成2都不行，当然也有一个重载方法允许自己定义格式
-        LocalDate.parse(&quot;2014-02-29&quot;); // 无效日期无法通过：DateTimeParseException: Invalid date
-
-        // LocalTime只包含时间，以前用java.util.Date怎么才能只表示时间呢？答案是，假装忽略日期。
-        // LocalTime包含毫秒：
-        LocalTime now = LocalTime.now(); // 11:09:09.240
-
-        //你可能想清除毫秒数：
-        LocalTime now1 = LocalTime.now().withNano(0); // 11:09:09
-
-        //构造时间也很简单：
-        LocalTime zero = LocalTime.of(0, 0, 0); // 00:00:00
-        LocalTime mid = LocalTime.parse(&quot;12:00:00&quot;); // 12:00:00
-
-        //日期校正器
-        //TemporalAdjusters类提供了很多静态方法来进行常用的校正。你可以将一个校正放的结果传递给with方法。
-        LocalDate firstTuesday = LocalDate.of(2018, 2, 1).with(TemporalAdjusters.nextOrSame(DayOfWeek.THURSDAY)); //计算2月的第一个星期二
-
-        //实现自己的校验器
-        TemporalAdjuster NEXT_WORKDAY = TemporalAdjusters.ofDateAdjuster(w -&gt; {
-            LocalDate result = w;
-            do {
-                result = result.plusDays(1);
-            } while (result.getDayOfWeek().getValue() &gt;= 6);
-            return result;
-        });
-        LocalDate backToWork = LocalDate.now().with(NEXT_WORKDAY);
-
-        //格式化与解析
-        // String formatted =  DateTimeFormatter.ISO_DATE_TIME.format();
-    }
-
-
-    public void aboutConcurrency() {
-        //原子性 lambda
-        // ConcurrentHashMap
-        ConcurrentHashMap&lt;String, LongAdder&gt; map = new ConcurrentHashMap();
-        map.putIfAbsent(&quot;&quot;, new LongAdder());
-        map.get(&quot;&quot;).increment();
-
-        //批量数据操作有三类：
-        //1)search会对每个键和（或）值应用一个函数，直到函数返回一个非null的结果。然后search会终止并返回该函数的结果。
-        //2)reduce会通过提供的累积函数，将所有的键和（或）值组合起来。
-        //3)forEach会对所有的键和（或）值应用一个函数。
-
-        //在使用这几种操作时，你需要指定一个并行阈值。如果映射包含的元素数量超过了这个阈值，批量操作就以并行方式执行。
-        //如果你希望批量数据操作在一个线程中运行，请使用Long.MAX_VALUE作为阈值。
-        //如果你希望批量数据操作尽可能使用更多的线程，则应该使用1作为阈值。
-
-        Set&lt;String&gt; words = map.keySet();
-
-        //并行数组操作
-        //静态方法Arrays.parallelSort可以对原始类型数组或者对象数组进行排序。
-        try {
-            String contents = new String(Files.readAllBytes(Paths.get(&quot;&quot;)), StandardCharsets.UTF_8);
-            String[] words1 = contents.split(&quot;&quot;);
-            Arrays.parallelSort(words1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //可完成的Future
-        //Future&lt;T&gt;接口用来表示一个在将来某个时间点可用的、类型为T的值。
-    }
-
-    public void aboutOthers() {
-
-        String joined = String.join(&quot;/&quot;, &quot;usr&quot;, &quot;local&quot;, &quot;bin&quot;);
-        String ids = String.join(&quot;, &quot;, ZoneId.getAvailableZoneIds());
-
-        Objects.isNull(&quot;&quot;);
-        Objects.nonNull(&quot;&quot;);
-    }
-
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;重新看了一遍《写给大忙人看的Java SE 8》，简单地做了一下笔记。该书还有很多内容没有细细品味，可以在用到的时候时不时地再翻一番。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import java.io.IOException;
-import java.math.BigIntege
-    
-    </summary>
-    
-      <category term="读书笔记" scheme="http://webfuse.cn/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-      <category term="读书笔记" scheme="http://webfuse.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Java" scheme="http://webfuse.cn/tags/Java/"/>
     
   </entry>
   
