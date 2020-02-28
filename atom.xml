@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2019-11-22T03:17:50.518Z</updated>
+  <updated>2020-02-28T03:59:52.437Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,6 +14,57 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Golang之禅</title>
+    <link href="http://webfuse.cn/2020/02/28/Golang%E4%B9%8B%E7%A6%85/"/>
+    <id>http://webfuse.cn/2020/02/28/Golang之禅/</id>
+    <published>2020-02-28T03:55:12.000Z</published>
+    <updated>2020-02-28T03:59:52.437Z</updated>
+    
+    <content type="html"><![CDATA[<p>文章转载自 OSCHINA 社区 [<a href="http://www.oschina.net" target="_blank" rel="external">http://www.oschina.net</a>]</p>
+<p>标题：Golang 之禅</p>
+<p>地址：<a href="https://www.oschina.net/news/113606/the-zen-of-go" target="_blank" rel="external">https://www.oschina.net/news/113606/the-zen-of-go</a></p>
+<hr>
+<p>在本月初的 GopherCon 上，知名 Go 语言贡献者与布道师 Dave Cheney 发表了名为《The Zen of Go》的演讲，之后他整理了演讲内容在博客中分享，由于内容过长，他又写了一个简洁版本：</p>
+<p>完整版：<a href="https://dave.cheney.net/2020/02/23/the-zen-of-go" target="_blank" rel="external">https://dave.cheney.net/2020/02/23/the-zen-of-go</a><br>简洁版：<a href="https://the-zen-of-go.netlify.com" target="_blank" rel="external">https://the-zen-of-go.netlify.com</a><br>这里简单翻译一下简洁版本的内容：</p>
+<p>编写简单、可读、可维护的 Go 代码的十个工程要点。</p>
+<p><strong>每个包实现单一目标</strong></p>
+<p>设计良好的 Go 软件包提供一个单一的思路，以及一系列相关的行为。一个好的 Go 软件包首先需要选择一个好名字，使用电梯法则（30 秒内向客户讲清楚一个方案），仅用一个词来思考你的软件包要提供什么功能。</p>
+<p><strong>明确处理错误</strong></p>
+<p>健壮的程序其实是由处理故障案例的片段组成的，并且需要在故障出现之前处理好。冗余的if err != nil { return err }比出了故障再一个个去处理更有价值。panic 和 recover 也一样。</p>
+<p><strong>尽早 return，不要深陷</strong></p>
+<p>每次缩进时都会在程序员的堆栈中添加另一个先决条件，这会占用他们短期内存中的 7±2 个片段。避免需要深层缩进的控制流。与其深入嵌套，不如使用守卫子句将成功路径保持在左侧。</p>
+<p><strong>并发权留给调用者</strong></p>
+<p>让调用者选择是否要异步运行你的库或函数，不要强制他们使用异步。</p>
+<p><strong>在启动 goroutine 之前，要知道它什么时候会停止</strong></p>
+<p>goroutines 拥有资源、锁、变量与内存等，释放这些资源的可靠方法是停止 goroutine。</p>
+<p><strong>避免包级别的状态</strong></p>
+<p>要完成明确和减少耦合的操作，需要通过提供类型需要的依赖项作为该类型上的字段，而不是使用包变量。</p>
+<p><strong>简单性很重要</strong></p>
+<p>简单性不是老练的代名词。简单并不意味着粗糙，它意味着可读性和可维护性。如果可以选择，请遵循较简单的解决方案。</p>
+<p><strong>编写测试以确认包 API 的行为</strong></p>
+<p>软件包的 API 是与使用者的一份合约，不管先后，不管多少，一定要进行测试。测试是确定合约的保证。要确保测试使用者可以观察和依赖的行为。</p>
+<p><strong>如果你认为速度缓慢，先通过基准测试进行验证</strong></p>
+<p>以性能之名会犯下许多危害可维护性的罪行。优化会破坏抽象、暴露内部和紧密耦合。如果要付出这样的代价，请确保有充分理由这样做。</p>
+<p><strong>节制是一种美德</strong></p>
+<p>适度使用 goroutine、通道、锁、接口与嵌套。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;文章转载自 OSCHINA 社区 [&lt;a href=&quot;http://www.oschina.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.oschina.net&lt;/a&gt;]&lt;/p&gt;
+&lt;p&gt;标题：Golang 之禅&lt;/p&gt;
+&lt;p&gt;
+    
+    </summary>
+    
+      <category term="Go" scheme="http://webfuse.cn/categories/Go/"/>
+    
+    
+      <category term="Go" scheme="http://webfuse.cn/tags/Go/"/>
+    
+  </entry>
   
   <entry>
     <title>Python的logging实践</title>
@@ -1583,55 +1634,6 @@
       <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
     
       <category term="RBAC" scheme="http://webfuse.cn/tags/RBAC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>多租户设计</title>
-    <link href="http://webfuse.cn/2018/02/15/%E5%A4%9A%E7%A7%9F%E6%88%B7%E8%AE%BE%E8%AE%A1/"/>
-    <id>http://webfuse.cn/2018/02/15/多租户设计/</id>
-    <published>2018-02-15T01:55:53.000Z</published>
-    <updated>2019-04-10T01:38:52.773Z</updated>
-    
-    <content type="html"><![CDATA[<p>多租户（Multi Tenancy/Tenant）是一种软件架构，其定义是：在一台服务器上运行单个应用实例，它为多个租户提供服务。</p>
-<p>多个租户在数据上既有共享又有隔离，常有的存储方式有以下三种：</p>
-<p>方案一：独立数据库<br>方案二：共享数据库，隔离数据架构<br>方案三：共享数据库，共享数据架构</p>
-<h2 id="独立数据库"><a href="#独立数据库" class="headerlink" title="独立数据库"></a>独立数据库</h2><p>独立数据库即一个租户一个数据库，这种方案的用户数据隔离级别最高，安全性最好，但成本较高。</p>
-<p>这种模式下，我们可以为不同的租户提供独立的数据库，针对不同用户的独特需求扩展方便，数据备份以及修复比较简单。但是这种方案增多了数据库的数量，维护成本和购置成本高。</p>
-<h2 id="共享数据库，隔离数据架构"><a href="#共享数据库，隔离数据架构" class="headerlink" title="共享数据库，隔离数据架构"></a>共享数据库，隔离数据架构</h2><p>共享数据库，隔离数据架构即多个或所有租户共享Database，但是每个租户一个Schema。</p>
-<p>该模式为安全性要求较高的租户提供了一定程度的逻辑数据隔离，并不是完全隔离；每个数据库可支持更多的租户数量。 </p>
-<p>但是该模式下，如果数据库出现故障，数据恢复比较困难，因为数据库的恢复会牵扯到其他租户的数据；如果需要跨租户统计数据，存在一定困难。</p>
-<h2 id="共享数据库，共享数据架构"><a href="#共享数据库，共享数据架构" class="headerlink" title="共享数据库，共享数据架构"></a>共享数据库，共享数据架构</h2><p>第三种方案，即租户共享同一个Database、同一个Schema，但在表中增加TenantID多租户的数据字段。这是共享程度最高、隔离级别最低的模式。 </p>
-<p>这种方案的维护和购置成本最低，允许每个数据库支持的租户数量最多。 </p>
-<p>但是这种隔离级别最低，安全性最低，需要在设计开发时加大对安全的开发量；同时数据备份和恢复最困难，需要逐表逐条备份和还原。 </p>
-<p>如果希望以最少的服务器为最多的租户提供服务，并且租户接受牺牲隔离级别换取降低成本，这种方案最适合。</p>
-<h2 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a>如何选择</h2><p>我们要如何选择这三种模式呢？衡量三种模式主要考虑的因素是隔离还是共享，还有成本。</p>
-<p>考虑到成本角度因素：隔离性越好，设计和实现的难度和成本越高，初始成本越高。共享性越好，同一运营成本下支持的用户越多，运营成本越低。</p>
-<p>安全因素：要考虑业务和客户的安全方面的要求。安全性要求越高，越要倾向于隔离。</p>
-<p>从租户数量上考虑：租户越多，应该越倾向于共享；如果每个租户存储的数据越多，应该越倾向于隔离；每个租户同时访问系统的用户数量越多，应该越倾向于隔离；如果针对每个用户都要提供一些附加服务，就应该越倾向于隔离。</p>
-<p>信息监管因素：要考虑政府，机关，企业，公司的安全和信息监管相关的一些政策和规定。</p>
-<p>技术储备：共享性越高，对技术的要求越高。</p>
-<hr>
-<p>参考：</p>
-<p><a href="http://www.cnblogs.com/junneyang/p/5212516.html" target="_blank" rel="external">【架构】如何设计支持多租户的数据库？</a></p>
-<p><a href="http://blog.csdn.net/yown/article/details/51288549" target="_blank" rel="external">SaaS多租户数据隔离的三种方案</a></p>
-<p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-dataMultitenant/index.html" target="_blank" rel="external">数据层的多租户浅谈</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;多租户（Multi Tenancy/Tenant）是一种软件架构，其定义是：在一台服务器上运行单个应用实例，它为多个租户提供服务。&lt;/p&gt;
-&lt;p&gt;多个租户在数据上既有共享又有隔离，常有的存储方式有以下三种：&lt;/p&gt;
-&lt;p&gt;方案一：独立数据库&lt;br&gt;方案二：共享数据库，隔离数
-    
-    </summary>
-    
-      <category term="UAA" scheme="http://webfuse.cn/categories/UAA/"/>
-    
-    
-      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
-    
-      <category term="权限认证" scheme="http://webfuse.cn/tags/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/"/>
     
   </entry>
   
