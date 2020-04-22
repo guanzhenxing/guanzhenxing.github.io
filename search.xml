@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[从0开始用SpringCloud搭建微服务系统【二】]]></title>
+    <url>%2F2020%2F04%2F22%2F%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>Spring</category>
+        <category>Spring Cloud</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
+        <tag>Spring Cloud</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[从0开始用SpringCloud搭建微服务系统【一】]]></title>
     <url>%2F2020%2F04%2F22%2F%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91%2F</url>
-    <content type="text"><![CDATA[微服务与 Spring Cloud微服务从单体到微服务单体服务 概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。 优点：容易开发、测试、部署，适合项目初期试错。 缺点： 随着项目越来越复杂，团队不断扩大。坏处就显现出来了。 复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。 技术债务：人员流动，不坏不修，因为不敢修。 持续部署困难：由于是全量应用，改一个小功能，全部部署，会导致无关的功能暂停使用。编译部署上线耗时长，不敢随便部署，导致部署频率低，进而又导致两次部署之间 功能修改多，越不敢部署，恶性循环。 可靠性差：某个小问题，比如小功能出现 OOM，会导致整个应用崩溃。 扩展受限：只能整体扩展，无法按照需要进行扩展， 不能根据计算密集型（派单系统）和IO密集型（文件服务） 进行合适的区分。 阻碍创新：单体应用是以一种技术解决所有问题，不容易引入新技术。但在高速的互联网发展过程中，适应的潮流是：用合适的语言做合适的事情。比如在单体应用中，一个项目用 spring MVC，想换成s pring boot，切换成本很高，因为有可能10万，百万行代码都要改。 微服务 Martin Fowler 在 2014年提出 Microservices架构 微服务是一种架构风格，将单体应用划分为小型的服务单元。 微服务架构是一种使用一系列粒度较小的服务来开发单个应用的方式。 每个服务运行在自己的进程中 服务间采用轻量级的方式进行通信（通常是HTTP API） 这些服务是基于业务逻辑和范围，通过自动化部署的机制来独立部署的，并且服务的集中管理应该是最低限度的，即每个服务可以采用不同的编程语言编写，使用不同的数据存储技术。 优点： 独立部署。不依赖其他服务，耦合性低，不用管其他服务的部署对自己的影响。 易于开发和维护。关注特定业务，所以业务清晰，代码量少，模块变的易开发、易理解、易维护。 启动快。功能少，代码少，所以启动快，有需要停机维护的服务，不会长时间暂停服务。 局部修改容易。只需要部署 相应的服务即可，适合敏捷开发。 技术栈不受限。java，node.js，go 等 按需伸缩.某个服务受限，可以按需增加内存，cpu 等。 职责专一。专门团队负责专门业务，有利于团队分工。 代码复用。不需要重复写。底层实现通过接口方式提供。 便于团队协作：每个团队只需要提供 API 就行，定义好 API 后，可以并行开发。 缺点： 分布式固有的复杂性。容错，网络延时，调用关系、分布式事务等，都会带来复杂。 分布式事务的挑战。每个服务有自己的数据库，有点在于不同服务可以选择适合自身业务的数据库。订单用MySQL，评论用Mongodb等。目前最理想解决方案是：柔性事务的最终一致性。 接口调整成本高。改一个接口，调用方都要改。 测试难度提升。一个接口改变，所有调用方都得测。自动化测试就变得重要了，API文档的管理也尤为重要。 运维要求高。需要维护几十上百个服务，监控变的复杂，并且还要关注多个集群。 重复工作。比如 java 的工具类可以在共享 common.ja r中，但在多语言下行不通，C++ 无法直接用 java的 jar 包。 微服务组件基于微服务的特性，微服务的组件不局限于技术的实现。主要的组件有： 服务注册与发现：服务提供方将己方调用地址注册到服务注册中心，让服务调用方能够方便地找到自己；服务调用方从服务注册中心找到自己需要调用的服务的地址。 负载均衡：服务提供方一般以多实例的形式提供服务，负载均衡功能能够让服务调用方连接到合适的服务节点。并且，服务节点选择的过程对服务调用方来说是透明的。 服务网关：服务网关是服务调用的唯一入口，可以在这个组件中实现用户鉴权、动态路由、灰度发布、A/B测试、负载限流等功能。 配置中心：将本地化的配置信息（Properties、XML、YAML等形式）注册到配置中心，实现程序包在开发、测试、生产环境中的无差别性，方便程序包的迁移，也是无状态特性。 集成框架：微服务组件都以职责单一的程序包对外提供服务，集成框架以配置的形式将所有微服务组件(特别是管理端组件)集成到统一的界面框架下，让用户能够在统一的界面中使用系统。Spring Cloud 就是一个集成框架。 调用链监控：记录完成一次请求的先后衔接和调用关系，并将这种串行或并行的调用关系展示出来。在系统出错时，可以方便地找到出错点。 支撑平台：系统微服务化后，各个业务模块经过拆分变得更加细化，系统的部署、运维、监控等都比单体应用架构更加复杂，这就需要将大部分的工作自动化。现在，Docker 等工具可以给微服务架构的部署带来较多的便利，例如持续集成、蓝绿发布、健康检查、性能监控等等。如果没有合适的支撑平台或工具，微服务架构就无法发挥它最大的功效。 常见的架构图 Spring CloudSpring Cloud 是实现微服务架构的一系列框架的有机集合。是在 Spring Boot 基础上构建的，用于简化分布式系统构建的工具集。是拥有众多子项目的项目集合。利用 Spring Boot 的开发便利性，巧妙地简化了分布式系统基础设施（服务注册与发现、熔断机制、网关路由、配置中心、消息总线、负载均衡、链路追踪等）的开发。 Spring Cloud的基础组件 Eureka：服务注册与发现，用于服务管理。 Feign： web调用客户端，能够简化HTTP接口的调用。 Ribbon：基于客户端的负载均衡。 Hystrix：熔断降级，防止服务雪崩。 Zuul：网关路由，提供路由转发、请求过滤、限流降级等功能。 Config：配置中心，分布式配置管理。 Sleuth：服务链路追踪 Admin：健康管理]]></content>
+    <content type="text"><![CDATA[服务注册与服务发现 背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。 概念：实现服务治理，即管理所有的服务信息和状态。 注册中心好处：不用关心有多少提供方。 注册中心有哪些: Eureka，Nacos，Consul，Zookeeper等。 服务注册与发现包括两部分，一个是服务器端，另一个是客户端。 服务端（Server）是一个公共服务，为Client提供服务注册和发现的功能，维护注册到自身的Client的相关信息，同时提供接口给Client获取注册表中其他服务的信息，使得动态变化的Client能够进行服务间的相互调用。 客户端（Client） 将自己的服务信息通过一定的方式登记到 Server上，并在正常范围内维护自己信息一致性，方便其他服务发现自己，同时可以通过Server获取到自己依赖的其他服务信息，完成服务调用，还内置了负载均衡器，用来进行基本的负载均衡。 服务端和客户端功能server注册中心功能 服务注册表：记录各个微服务信息，例如服务名称，ip，端口等。注册表提供查询 API（查询可用的微服务实例）和管理 API（用于服务的注册和注销）。 服务注册与发现： 注册：将微服务信息注册到注册中心。 发现：查询可用微服务列表及其网络地址。 服务检查：定时检测已注册的服务，如发现某实例长时间无法访问，就从注册表中移除。 client功能 注册：每个微服务启动时，将自己的网络地址等信息注册到注册中心，注册中心会存储（内存中）这些信息。 获取服务注册表：服务消费者从注册中心，查询服务提供者的网络地址，并使用该地址调用服务提供者，为了避免每次都查注册表信息，所以 client 会定时去 serve r拉取注册表信息到缓存到 client 本地。 心跳：各个微服务与注册中心通过某种机制（心跳）通信，若注册中心长时间和服务间没有通信，就会注销该实例。 调用：实际的服务调用，通过注册表，解析服务名和具体地址的对应关系，找到具体服务的地址，进行实际调用。 Eureka Eureka 是 Netflix 开源的一个 Restful 服务，主要用于服务的注册发现。它由两个组件组成：Eureka 服务器 和Eureka 客户端。 Eureka 服务器用作服务注册服务器。各个节点启动后，会在 Eureka Server 中进行注册，这样 Eureka Server 中的服务注册表中将会存储所有可用服务节点的信息。 Eureka 客户端是一个 Java 客户端，用来简化与服务器的交互，作为轮询负载均衡器，发现相关的服务，并提供服务的故障切换。 Eureka 在设计时就优先保证可用性。即在 CAP 理论中，Eureka 满足 AP。Eureka 各个节点都是平等的，几个节点挂掉不会影响正常节点的工作，剩余的节点依然可以提供注册和查询服务。 Eureka 的几个时间点： 在应用启动后，将会向 Eureka Server 发送心跳,默认周期为 30 秒。 如果 Eureka Server 在多个心跳周期内没有接收到某个节点的心跳，Eureka Server 将会从服务注册表中把这个服务节点移除(默认90秒)。 Eureka Client 对已经获取到的注册信息做了 30s 缓存。即服务通过 Eureka 客户端第一次查询到可用服务地址后会将结果缓存，下次再调用时就不会真正向 Eureka 发起 HTTP 请求了。 负载均衡组件 Ribbon 也有 30s 缓存。Ribbon 会从上面提到的 Eureka Client 获取服务列表，然后将结果缓存 30s。 Eureka 还有一种自我保护机制，如果在 15 分钟内超过 85% 的节点都没有正常的心跳，那 么Eureka 就认为客户端与注册中心出现了网络故障。 Eureka 启动保护机制会出现以下情况： Eureka 不再从注册列表中移除因为长时间没收到心跳而应该过期的服务。 Eureka 仍然能够接受新服务的注册和查询请求，但是不会被同步到其它节点上(即保证当前节点依然可用)。 当网络稳定时，当前实例新的注册信息会被同步到其它节点中。 Eureka Server引入依赖 spring-cloud-starter-netflix-eureka-server， 在启动类 Application 上，添加 @EnableEurekaServer 注解。 如果是单机服务，可以在 application.yml 中使用以下配置： 123456789101112131415161718192021eureka: environment: dev # 设置环境，可选 server: enable-self-preservation: false # 中小规模下，自我保护模式坑比好处多，所以关闭它 renewal-threshold-update-interval-ms: 120000 # 心跳阈值计算周期，如果开启自我保护模式，可以改一下这个配置 eviction-interval-timer-in-ms: 5000 # 主动失效检测间隔,配置成5秒 use-read-only-response-cache: false # 禁用readOnlyCacheMap wait-time-in-ms-when-sync-empty: 0 #在Eureka服务器获取不到集群里对等服务器上的实例时，需要等待的时间，单机模式设置为0 client: healthcheck: true service-url: defaultZone: http://$&#123;webfuse-security.user.name&#125;:$&#123;webfuse-security.user.password&#125;@localhost:2000/eureka/ registry-fetch-interval-seconds: 5 # 定时刷新本地缓存时间 register-with-eureka: false #表示是否将自己注册到Eureka Server，默认为true。由于当前这个应用就是Eureka Server，故而设为false。 fetch-registry: false #表示是否从Eureka Server获取注册信息，默认为true。因为这是一个单点的Eureka Server，不需要同步其他的Eureka Server节点的数据，故而设为false。 instance: hostname: $&#123;hostname:localhost&#125; instance-id: $&#123;spring.application.name&#125;@$&#123;spring.cloud.client.ip-address&#125;:$&#123;server.port&#125; # 自定义实例ID prefer-ip-address: true lease-expiration-duration-in-seconds: 10 # 没有心跳的淘汰时间，10秒 lease-renewal-interval-in-seconds: 5 # 心跳间隔，5秒 启动服务，可在 http://localhost:2000 查看项目页面。 Eureka Client引入依赖 spring-cloud-starter-netflix-eureka-client, 在启动类 Application 上，添加 @EnableDiscoveryClient 注解。 在 application.yml 中使用以下配置： 123456789101112eureka: client: healthcheck: true registry-fetch-interval-seconds: 5 # 定时刷新本地缓存时间 service-url: defaultZone: http://$&#123;webfuse-security.user.name&#125;:$&#123;webfuse-security.user.password&#125;@localhost:2000/eureka/ instance: hostname: $&#123;hostname:localhost&#125; instance-id: $&#123;spring.application.name&#125;@$&#123;spring.cloud.client.ip-address&#125;:$&#123;server.port&#125; # 自定义实例ID prefer-ip-address: true lease-expiration-duration-in-seconds: 10 # 没有心跳的淘汰时间，10秒 lease-renewal-interval-in-seconds: 5 # 心跳间隔，5秒 启动项目即可。可在 http://localhost:2000 中看到注册的状态。 Eureka 高可用Eureka Server 之间是可以互相注册的。 举个例子，我们有 3 个 Eureka 注册中心，端口分别为 2001 、 2002 和 2003 。那么端口为 2001 的最基本的配置如下： 1234eureka: client: service-url: defaultZone: http://localhost:2002/eureka/,http://localhost:2003/eureka/ 端口 2002 和 2003 服务可以根据以上规则配置。 Eureka遇到的坑available-replicas为空的问题如果使用了eureka.instance.prefer-ip-address: true，然后eureka.client.service-url.defaultZone配置的IP与实例IP不一致，会出现available-replicas为空的问题。 解决方法：在eureka.instance.ip-address中强制设置IP，然后在eureka.client.service-url.defaultZone配置对应的IP。 Eureka 最佳实践本人所在的公司由于体量小，生产环境直接使用 Eureka 的默认配置进行高可用性运行，目前也没有出现太大的问题。 以下是一些实践参考文章（注意：文章中的版本号不是最新的，可能在配置上会有调整）： Spring Cloud中，Eureka常见问题总结 Eureka Clustering documentation and best practices Documentation: changing Eureka renewal frequency WILL break the self-preservation feature of the server]]></content>
       <categories>
         <category>Spring</category>
         <category>Spring Cloud</category>
@@ -236,8 +249,8 @@
         <category>读书笔记</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Java</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -296,8 +309,8 @@
         <category>读书笔记</category>
       </categories>
       <tags>
-        <tag>读书笔记</tag>
         <tag>Java</tag>
+        <tag>读书笔记</tag>
       </tags>
   </entry>
   <entry>

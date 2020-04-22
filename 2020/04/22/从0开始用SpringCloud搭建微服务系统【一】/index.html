@@ -94,19 +94,17 @@
 
 
 
-  <meta name="description" content="微服务与 Spring Cloud微服务从单体到微服务单体服务 概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。  优点：容易开发、测试、部署，适合项目初期试错。  缺点：  随着项目越来越复杂，团队不断扩大。坏处就显现出来了。  复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。 技术债务：人员流">
+  <meta name="description" content="服务注册与服务发现 背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。  概念：实现服务治理，即管理所有的服务信息和状态。  注册中心好处：不用关心有多少提供方。  注册中心有哪些: Eureka，Na">
 <meta name="keywords" content="微服务,Spring Cloud">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从0开始用SpringCloud搭建微服务系统【一】">
 <meta property="og:url" content="http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/index.html">
 <meta property="og:site_name" content="WebFuse">
-<meta property="og:description" content="微服务与 Spring Cloud微服务从单体到微服务单体服务 概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。  优点：容易开发、测试、部署，适合项目初期试错。  缺点：  随着项目越来越复杂，团队不断扩大。坏处就显现出来了。  复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。 技术债务：人员流">
-<meta property="og:image" content="http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/基础微服务架构图.png">
-<meta property="og:updated_time" content="2020-04-22T08:02:35.532Z">
+<meta property="og:description" content="服务注册与服务发现 背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。  概念：实现服务治理，即管理所有的服务信息和状态。  注册中心好处：不用关心有多少提供方。  注册中心有哪些: Eureka，Na">
+<meta property="og:updated_time" content="2020-04-22T12:28:52.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从0开始用SpringCloud搭建微服务系统【一】">
-<meta name="twitter:description" content="微服务与 Spring Cloud微服务从单体到微服务单体服务 概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。  优点：容易开发、测试、部署，适合项目初期试错。  缺点：  随着项目越来越复杂，团队不断扩大。坏处就显现出来了。  复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。 技术债务：人员流">
-<meta name="twitter:image" content="http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/基础微服务架构图.png">
+<meta name="twitter:description" content="服务注册与服务发现 背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。  概念：实现服务治理，即管理所有的服务信息和状态。  注册中心好处：不用关心有多少提供方。  注册中心有哪些: Eureka，Na">
 
 
 
@@ -424,7 +422,7 @@
                 
               
 
-              <time title="创建时间：2020-04-22 15:58:34 / 修改时间：16:02:35" itemprop="dateCreated datePublished" datetime="2020-04-22T15:58:34+08:00">2020-04-22</time>
+              <time title="创建时间：2020-04-22 15:58:34 / 修改时间：20:28:52" itemprop="dateCreated datePublished" datetime="2020-04-22T15:58:34+08:00">2020-04-22</time>
             </span>
           
 
@@ -497,87 +495,77 @@
       
 
       
-        <h2 id="微服务与-Spring-Cloud"><a href="#微服务与-Spring-Cloud" class="headerlink" title="微服务与 Spring Cloud"></a>微服务与 Spring Cloud</h2><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h4 id="从单体到微服务"><a href="#从单体到微服务" class="headerlink" title="从单体到微服务"></a>从单体到微服务</h4><h5 id="单体服务"><a href="#单体服务" class="headerlink" title="单体服务"></a>单体服务</h5><ul>
-<li><p>概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。</p>
+        <h2 id="服务注册与服务发现"><a href="#服务注册与服务发现" class="headerlink" title="服务注册与服务发现"></a>服务注册与服务发现</h2><ol>
+<li><p>背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。</p>
 </li>
-<li><p>优点：容易开发、测试、部署，适合项目初期试错。</p>
+<li><p>概念：实现服务治理，即管理所有的服务信息和状态。</p>
 </li>
-<li><p>缺点：</p>
-<p> 随着项目越来越复杂，团队不断扩大。坏处就显现出来了。</p>
+<li><p>注册中心好处：不用关心有多少提供方。</p>
+</li>
+<li><p>注册中心有哪些: Eureka，Nacos，Consul，Zookeeper等。</p>
+</li>
+<li><p>服务注册与发现包括两部分，一个是服务器端，另一个是客户端。</p>
+<ol>
+<li>服务端（Server）是一个公共服务，为Client提供服务注册和发现的功能，维护注册到自身的Client的相关信息，同时提供接口给Client获取注册表中其他服务的信息，使得动态变化的Client能够进行服务间的相互调用。</li>
+<li>客户端（Client） 将自己的服务信息通过一定的方式登记到 Server上，并在正常范围内维护自己信息一致性，方便其他服务发现自己，同时可以通过Server获取到自己依赖的其他服务信息，完成服务调用，还内置了负载均衡器，用来进行基本的负载均衡。</li>
+</ol>
+</li>
+</ol>
+<h3 id="服务端和客户端功能"><a href="#服务端和客户端功能" class="headerlink" title="服务端和客户端功能"></a>服务端和客户端功能</h3><h4 id="server注册中心功能"><a href="#server注册中心功能" class="headerlink" title="server注册中心功能"></a>server注册中心功能</h4><ol>
+<li>服务注册表：记录各个微服务信息，例如服务名称，ip，端口等。注册表提供查询 API（查询可用的微服务实例）和管理 API（用于服务的注册和注销）。</li>
+<li>服务注册与发现：<ol>
+<li>注册：将微服务信息注册到注册中心。</li>
+<li>发现：查询可用微服务列表及其网络地址。</li>
+</ol>
+</li>
+<li>服务检查：定时检测已注册的服务，如发现某实例长时间无法访问，就从注册表中移除。</li>
+</ol>
+<h4 id="client功能"><a href="#client功能" class="headerlink" title="client功能"></a>client功能</h4><ol>
+<li>注册：每个微服务启动时，将自己的网络地址等信息注册到注册中心，注册中心会存储（内存中）这些信息。</li>
+<li>获取服务注册表：服务消费者从注册中心，查询服务提供者的网络地址，并使用该地址调用服务提供者，为了避免每次都查注册表信息，所以 client 会定时去 serve r拉取注册表信息到缓存到 client 本地。</li>
+<li>心跳：各个微服务与注册中心通过某种机制（心跳）通信，若注册中心长时间和服务间没有通信，就会注销该实例。</li>
+<li>调用：实际的服务调用，通过注册表，解析服务名和具体地址的对应关系，找到具体服务的地址，进行实际调用。</li>
+</ol>
+<h3 id="Eureka"><a href="#Eureka" class="headerlink" title="Eureka"></a>Eureka</h3><ul>
+<li>Eureka 是 Netflix 开源的一个 Restful 服务，主要用于服务的注册发现。它由两个组件组成：Eureka 服务器 和Eureka 客户端。</li>
+<li>Eureka 服务器用作服务注册服务器。各个节点启动后，会在 Eureka Server 中进行注册，这样 Eureka Server 中的服务注册表中将会存储所有可用服务节点的信息。</li>
+<li>Eureka 客户端是一个 Java 客户端，用来简化与服务器的交互，作为轮询负载均衡器，发现相关的服务，并提供服务的故障切换。</li>
+<li><strong>Eureka 在设计时就优先保证可用性。</strong>即在 CAP 理论中，Eureka 满足 AP。Eureka 各个节点都是平等的，几个节点挂掉不会影响正常节点的工作，剩余的节点依然可以提供注册和查询服务。</li>
+<li>Eureka 的几个时间点：<ul>
+<li>在应用启动后，将会向 Eureka Server 发送心跳,默认周期为 30 秒。</li>
+<li>如果 Eureka Server 在多个心跳周期内没有接收到某个节点的心跳，Eureka Server 将会从服务注册表中把这个服务节点移除(默认90秒)。</li>
+<li>Eureka Client 对已经获取到的注册信息做了 30s 缓存。即服务通过 Eureka 客户端第一次查询到可用服务地址后会将结果缓存，下次再调用时就不会真正向 Eureka 发起 HTTP 请求了。</li>
+<li>负载均衡组件 Ribbon 也有 30s 缓存。Ribbon 会从上面提到的 Eureka Client 获取服务列表，然后将结果缓存 30s。</li>
+<li>Eureka 还有一种自我保护机制，如果在 15 分钟内超过 85% 的节点都没有正常的心跳，那 么Eureka 就认为客户端与注册中心出现了网络故障。</li>
+</ul>
+</li>
+<li>Eureka 启动保护机制会出现以下情况：<ul>
+<li>Eureka 不再从注册列表中移除因为长时间没收到心跳而应该过期的服务。</li>
+<li>Eureka 仍然能够接受新服务的注册和查询请求，但是不会被同步到其它节点上(即保证当前节点依然可用)。</li>
+<li>当网络稳定时，当前实例新的注册信息会被同步到其它节点中。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Eureka-Server"><a href="#Eureka-Server" class="headerlink" title="Eureka Server"></a>Eureka Server</h4><p>引入依赖 <code>spring-cloud-starter-netflix-eureka-server</code>， 在启动类 <code>Application</code> 上，添加 <code>@EnableEurekaServer</code> 注解。</p>
+<p>如果是单机服务，可以在 <code>application.yml</code> 中使用以下配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="attr">eureka:</span></div><div class="line"><span class="attr">  environment:</span> <span class="string">dev</span>  <span class="comment"># 设置环境，可选</span></div><div class="line"><span class="attr">  server:</span></div><div class="line"><span class="attr">    enable-self-preservation:</span> <span class="literal">false</span>  <span class="comment"># 中小规模下，自我保护模式坑比好处多，所以关闭它</span></div><div class="line"><span class="attr">    renewal-threshold-update-interval-ms:</span> <span class="number">120000</span>  <span class="comment"># 心跳阈值计算周期，如果开启自我保护模式，可以改一下这个配置</span></div><div class="line"><span class="attr">    eviction-interval-timer-in-ms:</span> <span class="number">5000</span> <span class="comment"># 主动失效检测间隔,配置成5秒</span></div><div class="line"><span class="attr">    use-read-only-response-cache:</span> <span class="literal">false</span> <span class="comment"># 禁用readOnlyCacheMap</span></div><div class="line"><span class="attr">    wait-time-in-ms-when-sync-empty:</span> <span class="number">0</span>  <span class="comment">#在Eureka服务器获取不到集群里对等服务器上的实例时，需要等待的时间，单机模式设置为0</span></div><div class="line"><span class="attr">  client:</span></div><div class="line"><span class="attr">    healthcheck:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    service-url:</span></div><div class="line"><span class="attr">      defaultZone:</span> <span class="attr">http://$&#123;webfuse-security.user.name&#125;:$&#123;webfuse-security.user.password&#125;@localhost:2000/eureka/</span></div><div class="line"><span class="attr">    registry-fetch-interval-seconds:</span> <span class="number">5</span>  <span class="comment"># 定时刷新本地缓存时间</span></div><div class="line"><span class="attr">    register-with-eureka:</span> <span class="literal">false</span> <span class="comment">#表示是否将自己注册到Eureka Server，默认为true。由于当前这个应用就是Eureka Server，故而设为false。</span></div><div class="line"><span class="attr">    fetch-registry:</span> <span class="literal">false</span> <span class="comment">#表示是否从Eureka Server获取注册信息，默认为true。因为这是一个单点的Eureka Server，不需要同步其他的Eureka Server节点的数据，故而设为false。</span></div><div class="line"><span class="attr">  instance:</span></div><div class="line"><span class="attr">    hostname:</span> <span class="string">$&#123;hostname:localhost&#125;</span></div><div class="line"><span class="attr">    instance-id:</span> <span class="string">$&#123;spring.application.name&#125;@$&#123;spring.cloud.client.ip-address&#125;:$&#123;server.port&#125;</span>    <span class="comment"># 自定义实例ID</span></div><div class="line"><span class="attr">    prefer-ip-address:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    lease-expiration-duration-in-seconds:</span> <span class="number">10</span>  <span class="comment">#  没有心跳的淘汰时间，10秒</span></div><div class="line"><span class="attr">    lease-renewal-interval-in-seconds:</span> <span class="number">5</span>  <span class="comment"># 心跳间隔，5秒</span></div></pre></td></tr></table></figure>
+<p>启动服务，可在 <code>http://localhost:2000</code> 查看项目页面。</p>
+<h4 id="Eureka-Client"><a href="#Eureka-Client" class="headerlink" title="Eureka Client"></a>Eureka Client</h4><p>引入依赖 <code>spring-cloud-starter-netflix-eureka-client</code>, 在启动类 <code>Application</code> 上，添加 <code>@EnableDiscoveryClient</code> 注解。</p>
+<p>在 <code>application.yml</code> 中使用以下配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="attr">eureka:</span></div><div class="line"><span class="attr">  client:</span></div><div class="line"><span class="attr">    healthcheck:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    registry-fetch-interval-seconds:</span> <span class="number">5</span>  <span class="comment"># 定时刷新本地缓存时间</span></div><div class="line"><span class="attr">    service-url:</span></div><div class="line"><span class="attr">      defaultZone:</span> <span class="attr">http://$&#123;webfuse-security.user.name&#125;:$&#123;webfuse-security.user.password&#125;@localhost:2000/eureka/</span></div><div class="line"><span class="attr">  instance:</span></div><div class="line"><span class="attr">    hostname:</span> <span class="string">$&#123;hostname:localhost&#125;</span></div><div class="line"><span class="attr">    instance-id:</span> <span class="string">$&#123;spring.application.name&#125;@$&#123;spring.cloud.client.ip-address&#125;:$&#123;server.port&#125;</span>    <span class="comment"># 自定义实例ID</span></div><div class="line"><span class="attr">    prefer-ip-address:</span> <span class="literal">true</span></div><div class="line"><span class="attr">    lease-expiration-duration-in-seconds:</span> <span class="number">10</span>  <span class="comment">#  没有心跳的淘汰时间，10秒</span></div><div class="line"><span class="attr">    lease-renewal-interval-in-seconds:</span> <span class="number">5</span>  <span class="comment"># 心跳间隔，5秒</span></div></pre></td></tr></table></figure>
+<p>启动项目即可。可在 <code>http://localhost:2000</code> 中看到注册的状态。</p>
+<h4 id="Eureka-高可用"><a href="#Eureka-高可用" class="headerlink" title="Eureka 高可用"></a>Eureka 高可用</h4><p>Eureka Server 之间是可以互相注册的。</p>
+<p>举个例子，我们有 3 个 Eureka 注册中心，端口分别为 2001 、 2002 和 2003 。那么端口为 2001 的最基本的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eureka:</div><div class="line">  client:</div><div class="line">    service-url:</div><div class="line">      defaultZone: http://localhost:2002/eureka/,http://localhost:2003/eureka/</div></pre></td></tr></table></figure>
+<p>端口 2002 和 2003 服务可以根据以上规则配置。</p>
+<h4 id="Eureka遇到的坑"><a href="#Eureka遇到的坑" class="headerlink" title="Eureka遇到的坑"></a>Eureka遇到的坑</h4><h5 id="available-replicas为空的问题"><a href="#available-replicas为空的问题" class="headerlink" title="available-replicas为空的问题"></a>available-replicas为空的问题</h5><p>如果使用了<code>eureka.instance.prefer-ip-address: true</code>，然后<code>eureka.client.service-url.defaultZone</code>配置的IP与实例IP不一致，会出现available-replicas为空的问题。</p>
+<p>解决方法：在<code>eureka.instance.ip-address</code>中强制设置IP，然后在<code>eureka.client.service-url.defaultZone</code>配置对应的IP。</p>
+<h4 id="Eureka-最佳实践"><a href="#Eureka-最佳实践" class="headerlink" title="Eureka 最佳实践"></a>Eureka 最佳实践</h4><p>本人所在的公司由于体量小，<strong>生产环境直接使用 Eureka 的默认配置进行高可用性运行</strong>，目前也没有出现太大的问题。</p>
+<p>以下是一些实践参考文章（注意：文章中的版本号不是最新的，可能在配置上会有调整）：</p>
 <ul>
-<li>复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。</li>
-<li>技术债务：人员流动，不坏不修，因为不敢修。</li>
-<li>持续部署困难：由于是全量应用，改一个小功能，全部部署，会导致无关的功能暂停使用。编译部署上线耗时长，不敢随便部署，导致部署频率低，进而又导致两次部署之间 功能修改多，越不敢部署，恶性循环。</li>
-<li>可靠性差：某个小问题，比如小功能出现 OOM，会导致整个应用崩溃。</li>
-<li>扩展受限：只能整体扩展，无法按照需要进行扩展， 不能根据计算密集型（派单系统）和IO密集型（文件服务） 进行合适的区分。</li>
-<li>阻碍创新：单体应用是以一种技术解决所有问题，不容易引入新技术。但在高速的互联网发展过程中，适应的潮流是：用合适的语言做合适的事情。比如在单体应用中，一个项目用 spring MVC，想换成s pring boot，切换成本很高，因为有可能10万，百万行代码都要改。</li>
-</ul>
-</li>
-</ul>
-<h5 id="微服务-1"><a href="#微服务-1" class="headerlink" title="微服务"></a>微服务</h5><ul>
-<li><p><a href="https://martinfowler.com/" target="_blank" rel="external">Martin Fowler</a> 在 2014年提出 <a href="https://www.martinfowler.com/articles/microservices.html" target="_blank" rel="external">Microservices架构</a></p>
-</li>
-<li><p>微服务是一种架构风格，将单体应用划分为小型的服务单元。</p>
-</li>
-<li><p>微服务架构是一种使用一系列粒度较小的服务来开发单个应用的方式。</p>
-<ul>
-<li>每个服务运行在自己的进程中</li>
-<li>服务间采用轻量级的方式进行通信（通常是HTTP API）</li>
-<li>这些服务是基于业务逻辑和范围，通过自动化部署的机制来独立部署的，并且服务的集中管理应该是最低限度的，即每个服务可以采用不同的编程语言编写，使用不同的数据存储技术。</li>
-</ul>
-</li>
-<li><p>优点：</p>
-<ul>
-<li>独立部署。不依赖其他服务，耦合性低，不用管其他服务的部署对自己的影响。</li>
-<li>易于开发和维护。关注特定业务，所以业务清晰，代码量少，模块变的易开发、易理解、易维护。</li>
-<li>启动快。功能少，代码少，所以启动快，有需要停机维护的服务，不会长时间暂停服务。</li>
-<li>局部修改容易。只需要部署 相应的服务即可，适合敏捷开发。</li>
-<li>技术栈不受限。java，node.js，go 等</li>
-<li>按需伸缩.某个服务受限，可以按需增加内存，cpu 等。</li>
-<li>职责专一。专门团队负责专门业务，有利于团队分工。</li>
-<li>代码复用。不需要重复写。底层实现通过接口方式提供。</li>
-<li>便于团队协作：每个团队只需要提供 API 就行，定义好 API 后，可以并行开发。</li>
-</ul>
-</li>
-<li>缺点：<ul>
-<li>分布式固有的复杂性。容错，网络延时，调用关系、分布式事务等，都会带来复杂。</li>
-<li>分布式事务的挑战。每个服务有自己的数据库，有点在于不同服务可以选择适合自身业务的数据库。订单用MySQL，评论用Mongodb等。目前最理想解决方案是：柔性事务的最终一致性。</li>
-<li>接口调整成本高。改一个接口，调用方都要改。</li>
-<li>测试难度提升。一个接口改变，所有调用方都得测。自动化测试就变得重要了，API文档的管理也尤为重要。</li>
-<li>运维要求高。需要维护几十上百个服务，监控变的复杂，并且还要关注多个集群。</li>
-<li>重复工作。比如 java 的工具类可以在共享 common.ja r中，但在多语言下行不通，C++ 无法直接用 java的 jar 包。</li>
-</ul>
-</li>
-</ul>
-<h4 id="微服务组件"><a href="#微服务组件" class="headerlink" title="微服务组件"></a>微服务组件</h4><p>基于微服务的特性，微服务的组件不局限于技术的实现。主要的组件有：</p>
-<ul>
-<li>服务注册与发现：服务提供方将己方调用地址注册到服务注册中心，让服务调用方能够方便地找到自己；服务调用方从服务注册中心找到自己需要调用的服务的地址。</li>
-<li>负载均衡：服务提供方一般以多实例的形式提供服务，负载均衡功能能够让服务调用方连接到合适的服务节点。并且，服务节点选择的过程对服务调用方来说是透明的。</li>
-<li>服务网关：服务网关是服务调用的唯一入口，可以在这个组件中实现用户鉴权、动态路由、灰度发布、A/B测试、负载限流等功能。</li>
-<li>配置中心：将本地化的配置信息（Properties、XML、YAML等形式）注册到配置中心，实现程序包在开发、测试、生产环境中的无差别性，方便程序包的迁移，也是无状态特性。</li>
-<li>集成框架：微服务组件都以职责单一的程序包对外提供服务，集成框架以配置的形式将所有微服务组件(特别是管理端组件)集成到统一的界面框架下，让用户能够在统一的界面中使用系统。Spring Cloud 就是一个集成框架。</li>
-<li>调用链监控：记录完成一次请求的先后衔接和调用关系，并将这种串行或并行的调用关系展示出来。在系统出错时，可以方便地找到出错点。</li>
-<li>支撑平台：系统微服务化后，各个业务模块经过拆分变得更加细化，系统的部署、运维、监控等都比单体应用架构更加复杂，这就需要将大部分的工作自动化。现在，Docker 等工具可以给微服务架构的部署带来较多的便利，例如持续集成、蓝绿发布、健康检查、性能监控等等。如果没有合适的支撑平台或工具，微服务架构就无法发挥它最大的功效。</li>
-</ul>
-<h5 id="常见的架构图"><a href="#常见的架构图" class="headerlink" title="常见的架构图"></a>常见的架构图</h5><img src="/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/基础微服务架构图.png" alt="基础微服务架构图.png" title="">
-<h4 id="Spring-Cloud"><a href="#Spring-Cloud" class="headerlink" title="Spring Cloud"></a>Spring Cloud</h4><p>Spring Cloud 是实现微服务架构的一系列框架的有机集合。是在 Spring Boot 基础上构建的，用于简化分布式系统构建的工具集。是拥有众多子项目的项目集合。利用 Spring Boot 的开发便利性，巧妙地简化了分布式系统基础设施（服务注册与发现、熔断机制、网关路由、配置中心、消息总线、负载均衡、链路追踪等）的开发。</p>
-<h6 id="Spring-Cloud的基础组件"><a href="#Spring-Cloud的基础组件" class="headerlink" title="Spring Cloud的基础组件"></a>Spring Cloud的基础组件</h6><ul>
-<li><p>Eureka：服务注册与发现，用于服务管理。</p>
-</li>
-<li><p>Feign： web调用客户端，能够简化HTTP接口的调用。</p>
-</li>
-<li><p>Ribbon：基于客户端的负载均衡。</p>
-</li>
-<li><p>Hystrix：熔断降级，防止服务雪崩。</p>
-</li>
-<li><p>Zuul：网关路由，提供路由转发、请求过滤、限流降级等功能。</p>
-</li>
-<li><p>Config：配置中心，分布式配置管理。</p>
-</li>
-<li><p>Sleuth：服务链路追踪</p>
-</li>
-<li><p>Admin：健康管理</p>
-</li>
+<li><a href="http://www.itmuch.com/spring-cloud-sum-eureka/" target="_blank" rel="external">Spring Cloud中，Eureka常见问题总结</a></li>
+<li><a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/203" target="_blank" rel="external">Eureka Clustering documentation and best practices</a></li>
+<li><a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/373" target="_blank" rel="external">Documentation: changing Eureka renewal frequency <em>WILL</em> break the self-preservation feature of the server</a></li>
 </ul>
 
       
@@ -629,6 +617,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/22/从0开始用SpringCloud搭建微服务系统【二】/" rel="prev" title="从0开始用SpringCloud搭建微服务系统【二】">
+                从0开始用SpringCloud搭建微服务系统【二】 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -697,7 +689,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">85</span>
+                    <span class="site-state-item-count">86</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -950,7 +942,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#微服务与-Spring-Cloud"><span class="nav-number">1.</span> <span class="nav-text">微服务与 Spring Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#微服务"><span class="nav-number">1.1.</span> <span class="nav-text">微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从单体到微服务"><span class="nav-number">1.1.1.</span> <span class="nav-text">从单体到微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单体服务"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">单体服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#微服务-1"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">微服务</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微服务组件"><span class="nav-number">1.1.2.</span> <span class="nav-text">微服务组件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常见的架构图"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">常见的架构图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-Cloud"><span class="nav-number">1.1.3.</span> <span class="nav-text">Spring Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Spring-Cloud的基础组件"><span class="nav-number">1.1.3.0.1.</span> <span class="nav-text">Spring Cloud的基础组件</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务注册与服务发现"><span class="nav-number">1.</span> <span class="nav-text">服务注册与服务发现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#服务端和客户端功能"><span class="nav-number">1.1.</span> <span class="nav-text">服务端和客户端功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#server注册中心功能"><span class="nav-number">1.1.1.</span> <span class="nav-text">server注册中心功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#client功能"><span class="nav-number">1.1.2.</span> <span class="nav-text">client功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Eureka"><span class="nav-number">1.2.</span> <span class="nav-text">Eureka</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Eureka-Server"><span class="nav-number">1.2.1.</span> <span class="nav-text">Eureka Server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Eureka-Client"><span class="nav-number">1.2.2.</span> <span class="nav-text">Eureka Client</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Eureka-高可用"><span class="nav-number">1.2.3.</span> <span class="nav-text">Eureka 高可用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Eureka遇到的坑"><span class="nav-number">1.2.4.</span> <span class="nav-text">Eureka遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#available-replicas为空的问题"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">available-replicas为空的问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Eureka-最佳实践"><span class="nav-number">1.2.5.</span> <span class="nav-text">Eureka 最佳实践</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
