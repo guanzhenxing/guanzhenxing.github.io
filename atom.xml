@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2020-04-06T07:58:03.468Z</updated>
+  <updated>2020-04-22T08:02:35.532Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,6 +14,114 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从0开始用SpringCloud搭建微服务系统【一】</title>
+    <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91/"/>
+    <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/</id>
+    <published>2020-04-22T07:58:34.000Z</published>
+    <updated>2020-04-22T08:02:35.532Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="微服务与-Spring-Cloud"><a href="#微服务与-Spring-Cloud" class="headerlink" title="微服务与 Spring Cloud"></a>微服务与 Spring Cloud</h2><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h4 id="从单体到微服务"><a href="#从单体到微服务" class="headerlink" title="从单体到微服务"></a>从单体到微服务</h4><h5 id="单体服务"><a href="#单体服务" class="headerlink" title="单体服务"></a>单体服务</h5><ul>
+<li><p>概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。</p>
+</li>
+<li><p>优点：容易开发、测试、部署，适合项目初期试错。</p>
+</li>
+<li><p>缺点：</p>
+<p> 随着项目越来越复杂，团队不断扩大。坏处就显现出来了。</p>
+<ul>
+<li>复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。</li>
+<li>技术债务：人员流动，不坏不修，因为不敢修。</li>
+<li>持续部署困难：由于是全量应用，改一个小功能，全部部署，会导致无关的功能暂停使用。编译部署上线耗时长，不敢随便部署，导致部署频率低，进而又导致两次部署之间 功能修改多，越不敢部署，恶性循环。</li>
+<li>可靠性差：某个小问题，比如小功能出现 OOM，会导致整个应用崩溃。</li>
+<li>扩展受限：只能整体扩展，无法按照需要进行扩展， 不能根据计算密集型（派单系统）和IO密集型（文件服务） 进行合适的区分。</li>
+<li>阻碍创新：单体应用是以一种技术解决所有问题，不容易引入新技术。但在高速的互联网发展过程中，适应的潮流是：用合适的语言做合适的事情。比如在单体应用中，一个项目用 spring MVC，想换成s pring boot，切换成本很高，因为有可能10万，百万行代码都要改。</li>
+</ul>
+</li>
+</ul>
+<h5 id="微服务-1"><a href="#微服务-1" class="headerlink" title="微服务"></a>微服务</h5><ul>
+<li><p><a href="https://martinfowler.com/" target="_blank" rel="external">Martin Fowler</a> 在 2014年提出 <a href="https://www.martinfowler.com/articles/microservices.html" target="_blank" rel="external">Microservices架构</a></p>
+</li>
+<li><p>微服务是一种架构风格，将单体应用划分为小型的服务单元。</p>
+</li>
+<li><p>微服务架构是一种使用一系列粒度较小的服务来开发单个应用的方式。</p>
+<ul>
+<li>每个服务运行在自己的进程中</li>
+<li>服务间采用轻量级的方式进行通信（通常是HTTP API）</li>
+<li>这些服务是基于业务逻辑和范围，通过自动化部署的机制来独立部署的，并且服务的集中管理应该是最低限度的，即每个服务可以采用不同的编程语言编写，使用不同的数据存储技术。</li>
+</ul>
+</li>
+<li><p>优点：</p>
+<ul>
+<li>独立部署。不依赖其他服务，耦合性低，不用管其他服务的部署对自己的影响。</li>
+<li>易于开发和维护。关注特定业务，所以业务清晰，代码量少，模块变的易开发、易理解、易维护。</li>
+<li>启动快。功能少，代码少，所以启动快，有需要停机维护的服务，不会长时间暂停服务。</li>
+<li>局部修改容易。只需要部署 相应的服务即可，适合敏捷开发。</li>
+<li>技术栈不受限。java，node.js，go 等</li>
+<li>按需伸缩.某个服务受限，可以按需增加内存，cpu 等。</li>
+<li>职责专一。专门团队负责专门业务，有利于团队分工。</li>
+<li>代码复用。不需要重复写。底层实现通过接口方式提供。</li>
+<li>便于团队协作：每个团队只需要提供 API 就行，定义好 API 后，可以并行开发。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>分布式固有的复杂性。容错，网络延时，调用关系、分布式事务等，都会带来复杂。</li>
+<li>分布式事务的挑战。每个服务有自己的数据库，有点在于不同服务可以选择适合自身业务的数据库。订单用MySQL，评论用Mongodb等。目前最理想解决方案是：柔性事务的最终一致性。</li>
+<li>接口调整成本高。改一个接口，调用方都要改。</li>
+<li>测试难度提升。一个接口改变，所有调用方都得测。自动化测试就变得重要了，API文档的管理也尤为重要。</li>
+<li>运维要求高。需要维护几十上百个服务，监控变的复杂，并且还要关注多个集群。</li>
+<li>重复工作。比如 java 的工具类可以在共享 common.ja r中，但在多语言下行不通，C++ 无法直接用 java的 jar 包。</li>
+</ul>
+</li>
+</ul>
+<h4 id="微服务组件"><a href="#微服务组件" class="headerlink" title="微服务组件"></a>微服务组件</h4><p>基于微服务的特性，微服务的组件不局限于技术的实现。主要的组件有：</p>
+<ul>
+<li>服务注册与发现：服务提供方将己方调用地址注册到服务注册中心，让服务调用方能够方便地找到自己；服务调用方从服务注册中心找到自己需要调用的服务的地址。</li>
+<li>负载均衡：服务提供方一般以多实例的形式提供服务，负载均衡功能能够让服务调用方连接到合适的服务节点。并且，服务节点选择的过程对服务调用方来说是透明的。</li>
+<li>服务网关：服务网关是服务调用的唯一入口，可以在这个组件中实现用户鉴权、动态路由、灰度发布、A/B测试、负载限流等功能。</li>
+<li>配置中心：将本地化的配置信息（Properties、XML、YAML等形式）注册到配置中心，实现程序包在开发、测试、生产环境中的无差别性，方便程序包的迁移，也是无状态特性。</li>
+<li>集成框架：微服务组件都以职责单一的程序包对外提供服务，集成框架以配置的形式将所有微服务组件(特别是管理端组件)集成到统一的界面框架下，让用户能够在统一的界面中使用系统。Spring Cloud 就是一个集成框架。</li>
+<li>调用链监控：记录完成一次请求的先后衔接和调用关系，并将这种串行或并行的调用关系展示出来。在系统出错时，可以方便地找到出错点。</li>
+<li>支撑平台：系统微服务化后，各个业务模块经过拆分变得更加细化，系统的部署、运维、监控等都比单体应用架构更加复杂，这就需要将大部分的工作自动化。现在，Docker 等工具可以给微服务架构的部署带来较多的便利，例如持续集成、蓝绿发布、健康检查、性能监控等等。如果没有合适的支撑平台或工具，微服务架构就无法发挥它最大的功效。</li>
+</ul>
+<h5 id="常见的架构图"><a href="#常见的架构图" class="headerlink" title="常见的架构图"></a>常见的架构图</h5><img src="/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/基础微服务架构图.png" alt="基础微服务架构图.png" title="">
+<h4 id="Spring-Cloud"><a href="#Spring-Cloud" class="headerlink" title="Spring Cloud"></a>Spring Cloud</h4><p>Spring Cloud 是实现微服务架构的一系列框架的有机集合。是在 Spring Boot 基础上构建的，用于简化分布式系统构建的工具集。是拥有众多子项目的项目集合。利用 Spring Boot 的开发便利性，巧妙地简化了分布式系统基础设施（服务注册与发现、熔断机制、网关路由、配置中心、消息总线、负载均衡、链路追踪等）的开发。</p>
+<h6 id="Spring-Cloud的基础组件"><a href="#Spring-Cloud的基础组件" class="headerlink" title="Spring Cloud的基础组件"></a>Spring Cloud的基础组件</h6><ul>
+<li><p>Eureka：服务注册与发现，用于服务管理。</p>
+</li>
+<li><p>Feign： web调用客户端，能够简化HTTP接口的调用。</p>
+</li>
+<li><p>Ribbon：基于客户端的负载均衡。</p>
+</li>
+<li><p>Hystrix：熔断降级，防止服务雪崩。</p>
+</li>
+<li><p>Zuul：网关路由，提供路由转发、请求过滤、限流降级等功能。</p>
+</li>
+<li><p>Config：配置中心，分布式配置管理。</p>
+</li>
+<li><p>Sleuth：服务链路追踪</p>
+</li>
+<li><p>Admin：健康管理</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;微服务与-Spring-Cloud&quot;&gt;&lt;a href=&quot;#微服务与-Spring-Cloud&quot; class=&quot;headerlink&quot; title=&quot;微服务与 Spring Cloud&quot;&gt;&lt;/a&gt;微服务与 Spring Cloud&lt;/h2&gt;&lt;h3 id=&quot;微服务&quot;&gt;
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/categories/Spring/Spring-Cloud/"/>
+    
+    
+      <category term="微服务" scheme="http://webfuse.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/tags/Spring-Cloud/"/>
+    
+  </entry>
   
   <entry>
     <title>Golang简单入门笔记</title>
@@ -1848,98 +1956,6 @@
       <category term="读书笔记" scheme="http://webfuse.cn/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
       <category term="Java" scheme="http://webfuse.cn/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于Token的权限认证服务</title>
-    <link href="http://webfuse.cn/2018/03/11/%E5%9F%BA%E4%BA%8EToken%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81%E6%9C%8D%E5%8A%A1/"/>
-    <id>http://webfuse.cn/2018/03/11/基于Token的权限认证服务/</id>
-    <published>2018-03-11T14:03:58.000Z</published>
-    <updated>2018-07-28T03:19:46.930Z</updated>
-    
-    <content type="html"><![CDATA[<p>在这两年接触的项目基本上是基于前后端分离、多种后端服务组合而成的，这有别于先前的“单体”的项目，而且我们还需要考虑外部应用接入的场景、用户-服务的鉴权、服务-服务的鉴权等多种鉴权场景。</p>
-<p>本方案基于客户端Token与网关结合的方式。所有的客户端请求都经过网关，网关将校验客户端发送上来的Token等信息，如果通过则转发给对应的服务，如果不通过则直接返回40X给客户端。</p>
-<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><img src="/2018/03/11/基于Token的权限认证服务/auth-arch.png" alt="auth-arch.png" title="">
-<ol>
-<li>获得authorize,用户/设备从UAA Service中获得authorize信息</li>
-<li>附加mac token,请求在访问服务时候附加上mac token</li>
-<li>Gateway进行认证，Gateway将收到的每个mac token发送给UAA Service进行校验</li>
-<li>每个服务只有权限去操作自己负责的那部分功能（待规划）</li>
-</ol>
-<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><img src="/2018/03/11/基于Token的权限认证服务/auth-sequence.png" alt="auth-sequence.png" title="">
-<ol>
-<li>用户/客户端从UAA Service中获得Token</li>
-<li>如果UAA Service中无此用户/客户端,则抛出AuthorizationException异常并返回401</li>
-<li>如果UAA Service认证成功，返回对应的Token信息</li>
-<li>用户的请求数据，请求头Authorization中带上Token信息</li>
-<li>网关过滤所有的请求，携带Token、请求信息向UAA Service请求鉴权</li>
-<li>如果UAA Service鉴权失败，抛出AuthenticationException异常并返回403</li>
-<li>如果UAA Service鉴权成功，返回用户的权限等信息</li>
-<li>网关向业务发起请求（此时，不携带授权信息。因为鉴权等都在网关处理了）</li>
-<li>业务服务向微服务发起请求，同样也不携带授权信息</li>
-<li>返回结果给用户</li>
-</ol>
-<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p>根据开发阶段的鉴权、用户-服务的鉴权、服务-服务的鉴权等不同的场景，定义了三种方式的协议。</p>
-<h3 id="Debug-Token协议"><a href="#Debug-Token协议" class="headerlink" title="Debug Token协议"></a>Debug Token协议</h3><p>debug token适用于在开发测试环境调试API。</p>
-<h4 id="协议-1"><a href="#协议-1" class="headerlink" title="协议"></a>协议</h4><p>在Client发出api请求之前，必须将debug token的信息放在HTTP Header的Authorization里面。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization:DEBUG userid=&quot;123456&quot;,realm=&quot;&quot;</div></pre></td></tr></table></figure>
-<p>上面的代码中：</p>
-<blockquote>
-<p>userid为调试的用户</p>
-<p>realm为可选字段，预定为用户所在的领域(应用、行业或者机构）</p>
-</blockquote>
-<h4 id="示例（伪代码）"><a href="#示例（伪代码）" class="headerlink" title="示例（伪代码）"></a>示例（伪代码）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GET /v0.1/resources HTTP/1.1</div><div class="line">Host: a.dynamax.io</div><div class="line">Accept: application/json</div><div class="line">Authorization: DEBUG userid=&apos;&apos;,realm=&apos;&apos;</div></pre></td></tr></table></figure>
-<h3 id="Mac-Token协议"><a href="#Mac-Token协议" class="headerlink" title="Mac Token协议"></a>Mac Token协议</h3><p>mac token适用于不安全网络下的API授权</p>
-<h4 id="协议-2"><a href="#协议-2" class="headerlink" title="协议"></a>协议</h4><p>通过“登录接口”可以获得Token。mac_token的数据结构如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    &quot;user_id&quot;:&quot;&quot;, //用户标识</div><div class="line">    &quot;access_token&quot;:&quot;&quot;, //token标识</div><div class="line">    &quot;expires_at&quot;:&quot;&quot;,    //本token的过期时间</div><div class="line">    &quot;refresh_token&quot;:&quot;&quot;,   //用以续期</div><div class="line">    &quot;mac_key&quot;:&quot;&quot;,   //hmac的密钥</div><div class="line">    &quot;mac_algorithm&quot;:&quot;hmac-sha-256&quot;  //hmac算法的名称</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>hmac算法见：[[<a href="https://tools.ietf.org/html/rfc2104" target="_blank" rel="external">https://tools.ietf.org/html/rfc2104</a>]]</p>
-<p>在Client发出api请求之前，必须将mac token的信息放在HTTP Header的Authorization里面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization:MAC id=&quot;&quot;,nonce=&quot;&quot;,mac=&quot;&quot;</div></pre></td></tr></table></figure></p>
-<p>上面的代码中：</p>
-<blockquote>
-<p>id为mac_token.access_token</p>
-<p>nonce为 时间戳:随机码（客户端生成），有效时间+-5分钟</p>
-<p>mac为请求签名： mac=base64(hmac(mac_token.mac_key,mac_token.mac_algorithm,request_content))</p>
-<p>request_content = nonce + \n + http-method + \n + request-url + \n + host + \n </p>
-<p>http-method，请求的方法，大写，如：GET</p>
-<p>request-url，请求的地址（包含参数的部分，不包含域名部分），区分大小写，如/v0.1/databases</p>
-<p>host，为HTTP Header中的host，区分大小写，如dynamax.io</p>
-</blockquote>
-<h4 id="示例-伪代码）"><a href="#示例-伪代码）" class="headerlink" title="示例(伪代码）"></a>示例(伪代码）</h4><p>获得token</p>
-<p><strong>request</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">POST /v0.1/tokens HTTP/1.1</div><div class="line">Host: api.uaa.dynamax.io</div><div class="line">Accept: application/json</div><div class="line">Content-Type: application/json</div><div class="line">&#123;</div><div class="line">    &quot;username&quot;:&quot;330134&quot;,</div><div class="line">    &quot;password&quot;:&quot;******&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>reqponse</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 201 Created</div><div class="line">Content-Type: application/json;charset=UTF-8</div><div class="line">Cache-Control: no-store</div><div class="line">Pragma: no-Cache</div><div class="line">&#123;</div><div class="line">    &quot;user_id&quot;:&quot;&quot;,</div><div class="line">    &quot;access_token&quot;:&quot;&quot;,</div><div class="line">    &quot;expires_at&quot;:&quot;&quot;,</div><div class="line">    &quot;refresh_token&quot;:&quot;&quot;,</div><div class="line">    &quot;mac_key&quot;:&quot;&quot;,</div><div class="line">    &quot;mac_algorithm&quot;:&quot;&quot;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h4 id="访问资源"><a href="#访问资源" class="headerlink" title="访问资源"></a>访问资源</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">GET /v0.1/resources HTTP/1.1</div><div class="line">Host: resources.dynamax.io</div><div class="line">Accept: application/json</div><div class="line">Authorization:MAC id=&quot;adFeww3Fw4VV09876&quot;,nonce=&quot;1234234345343:adfasd32&quot;,mac=&quot;SDFS8weadfa42234&quot;</div></pre></td></tr></table></figure>
-<h3 id="Bearer-Token协议"><a href="#Bearer-Token协议" class="headerlink" title="Bearer Token协议"></a>Bearer Token协议</h3><p>bearer token适用于安全网络下的api授权。也就是说，bearer适用于微服务之间的相互调用的api授权。</p>
-<h4 id="协议-3"><a href="#协议-3" class="headerlink" title="协议"></a>协议</h4><p>可以通过“bearer_token”的接口获得相应的bearer_token，数据结构如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">&quot;user_id&quot;:&quot;&quot;, //用户标识</div><div class="line">&quot;access_token&quot;:&quot;&quot; //token标识</div><div class="line">&quot;expires_at&quot;:&quot;&quot; //本token的过期时间</div><div class="line">&quot;refresh_token&quot;:&quot;&quot; //用以续期</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在Client发出api请求之前，必须将bearer token的信息放在HTTP Header的Authorization里面。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization:BEARER &quot;XXX123XXXXX&quot; user_id:&quot;&quot;</div></pre></td></tr></table></figure>
-<p>上面的代码中：</p>
-<blockquote>
-<p>“XXX123XXXXX”为bearer_token.access_token</p>
-<p>user_id可选，该值位获得bearer token对应的账号。该值用来传递用户信息到其他服务端，用来判断是否有权限。</p>
-</blockquote>
-<h2 id="待优化的点"><a href="#待优化的点" class="headerlink" title="待优化的点"></a>待优化的点</h2><ul>
-<li>怎么鉴定一个请求是否需要认证？白名单？</li>
-<li>各个业务服务以及微服务是否需要再次认证？会不会出现绕过网关的情况？</li>
-<li>所有的服务都通过网关，在UAA Service中进行鉴权，会不会造成UAA Service是个瓶颈点？</li>
-<li>是否能够很方便地扩展到OAuth2？</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在这两年接触的项目基本上是基于前后端分离、多种后端服务组合而成的，这有别于先前的“单体”的项目，而且我们还需要考虑外部应用接入的场景、用户-服务的鉴权、服务-服务的鉴权等多种鉴权场景。&lt;/p&gt;
-&lt;p&gt;本方案基于客户端Token与网关结合的方式。所有的客户端请求都经过网关，网
-    
-    </summary>
-    
-      <category term="UAA" scheme="http://webfuse.cn/categories/UAA/"/>
-    
-    
-      <category term="实战" scheme="http://webfuse.cn/tags/%E5%AE%9E%E6%88%98/"/>
-    
-      <category term="权限认证" scheme="http://webfuse.cn/tags/%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/"/>
     
   </entry>
   
