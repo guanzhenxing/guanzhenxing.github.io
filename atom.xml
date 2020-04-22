@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2020-04-22T12:33:24.231Z</updated>
+  <updated>2020-04-22T14:11:54.439Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【二】/</id>
     <published>2020-04-22T12:22:35.000Z</published>
-    <updated>2020-04-22T12:33:24.231Z</updated>
+    <updated>2020-04-22T14:11:54.439Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务注册与服务发现"><a href="#服务注册与服务发现" class="headerlink" title="服务注册与服务发现"></a>服务注册与服务发现</h2><ol>
 <li><p>背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。</p>
@@ -85,8 +85,13 @@
 <p>举个例子，我们有 3 个 Eureka 注册中心，端口分别为 2001 、 2002 和 2003 。那么端口为 2001 的最基本的配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eureka:</div><div class="line">  client:</div><div class="line">    service-url:</div><div class="line">      defaultZone: http://localhost:2002/eureka/,http://localhost:2003/eureka/</div></pre></td></tr></table></figure>
 <p>端口 2002 和 2003 服务可以根据以上规则配置。</p>
-<h4 id="Eureka遇到的坑"><a href="#Eureka遇到的坑" class="headerlink" title="Eureka遇到的坑"></a>Eureka遇到的坑</h4><h5 id="available-replicas为空的问题"><a href="#available-replicas为空的问题" class="headerlink" title="available-replicas为空的问题"></a>available-replicas为空的问题</h5><p>如果使用了<code>eureka.instance.prefer-ip-address: true</code>，然后<code>eureka.client.service-url.defaultZone</code>配置的IP与实例IP不一致，会出现available-replicas为空的问题。</p>
+<h4 id="Eureka遇到的坑"><a href="#Eureka遇到的坑" class="headerlink" title="Eureka遇到的坑"></a>Eureka遇到的坑</h4><h5 id="available-replicas为空的问题"><a href="#available-replicas为空的问题" class="headerlink" title="available-replicas为空的问题"></a>available-replicas为空的问题</h5><p>有两种情况：</p>
+<p>第一种：</p>
+<p>如果使用了<code>eureka.instance.prefer-ip-address: true</code>，然后<code>eureka.client.service-url.defaultZone</code>配置的IP与实例IP不一致，会出现available-replicas为空的问题。</p>
 <p>解决方法：在<code>eureka.instance.ip-address</code>中强制设置IP，然后在<code>eureka.client.service-url.defaultZone</code>配置对应的IP。</p>
+<p>第二种：</p>
+<p>在集群的时候，各个服务的<code>spring.application.name</code>不一样。</p>
+<p>解决方法：各个 eureka 服务的 <code>spring.application.name</code> 改为一样。</p>
 <h4 id="Eureka-最佳实践"><a href="#Eureka-最佳实践" class="headerlink" title="Eureka 最佳实践"></a>Eureka 最佳实践</h4><p>本人所在的公司由于体量小，<strong>生产环境直接使用 Eureka 的默认配置进行高可用性运行</strong>，目前也没有出现太大的问题。</p>
 <p>以下是一些实践参考文章（注意：文章中的版本号不是最新的，可能在配置上会有调整）：</p>
 <ul>
