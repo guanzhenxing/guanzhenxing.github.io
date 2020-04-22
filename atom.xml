@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2020-04-22T12:28:14.784Z</updated>
+  <updated>2020-04-22T12:33:24.231Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -20,29 +20,7 @@
     <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【二】/</id>
     <published>2020-04-22T12:22:35.000Z</published>
-    <updated>2020-04-22T12:28:14.784Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
-    
-      <category term="Spring Cloud" scheme="http://webfuse.cn/categories/Spring/Spring-Cloud/"/>
-    
-    
-      <category term="微服务" scheme="http://webfuse.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
-    
-      <category term="Spring Cloud" scheme="http://webfuse.cn/tags/Spring-Cloud/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从0开始用SpringCloud搭建微服务系统【一】</title>
-    <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91/"/>
-    <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/</id>
-    <published>2020-04-22T07:58:34.000Z</published>
-    <updated>2020-04-22T12:28:52.462Z</updated>
+    <updated>2020-04-22T12:33:24.231Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务注册与服务发现"><a href="#服务注册与服务发现" class="headerlink" title="服务注册与服务发现"></a>服务注册与服务发现</h2><ol>
 <li><p>背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。</p>
@@ -116,12 +94,130 @@
 <li><a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/203" target="_blank" rel="external">Eureka Clustering documentation and best practices</a></li>
 <li><a href="https://github.com/spring-cloud/spring-cloud-netflix/issues/373" target="_blank" rel="external">Documentation: changing Eureka renewal frequency <em>WILL</em> break the self-preservation feature of the server</a></li>
 </ul>
+<hr>
+<ul>
+<li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
+<li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
     
       &lt;h2 id=&quot;服务注册与服务发现&quot;&gt;&lt;a href=&quot;#服务注册与服务发现&quot; class=&quot;headerlink&quot; title=&quot;服务注册与服务发现&quot;&gt;&lt;/a&gt;服务注册与服务发现&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/categories/Spring/Spring-Cloud/"/>
+    
+    
+      <category term="微服务" scheme="http://webfuse.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/tags/Spring-Cloud/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从0开始用SpringCloud搭建微服务系统【一】</title>
+    <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91/"/>
+    <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/</id>
+    <published>2020-04-22T07:58:34.000Z</published>
+    <updated>2020-04-22T12:33:13.899Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="微服务与-Spring-Cloud"><a href="#微服务与-Spring-Cloud" class="headerlink" title="微服务与 Spring Cloud"></a>微服务与 Spring Cloud</h2><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h4 id="从单体到微服务"><a href="#从单体到微服务" class="headerlink" title="从单体到微服务"></a>从单体到微服务</h4><h5 id="单体服务"><a href="#单体服务" class="headerlink" title="单体服务"></a>单体服务</h5><ul>
+<li><p>概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。</p>
+</li>
+<li><p>优点：容易开发、测试、部署，适合项目初期试错。</p>
+</li>
+<li><p>缺点：</p>
+<p> 随着项目越来越复杂，团队不断扩大。坏处就显现出来了。</p>
+<ul>
+<li>复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。</li>
+<li>技术债务：人员流动，不坏不修，因为不敢修。</li>
+<li>持续部署困难：由于是全量应用，改一个小功能，全部部署，会导致无关的功能暂停使用。编译部署上线耗时长，不敢随便部署，导致部署频率低，进而又导致两次部署之间 功能修改多，越不敢部署，恶性循环。</li>
+<li>可靠性差：某个小问题，比如小功能出现 OOM，会导致整个应用崩溃。</li>
+<li>扩展受限：只能整体扩展，无法按照需要进行扩展， 不能根据计算密集型（派单系统）和IO密集型（文件服务） 进行合适的区分。</li>
+<li>阻碍创新：单体应用是以一种技术解决所有问题，不容易引入新技术。但在高速的互联网发展过程中，适应的潮流是：用合适的语言做合适的事情。比如在单体应用中，一个项目用 spring MVC，想换成s pring boot，切换成本很高，因为有可能10万，百万行代码都要改。</li>
+</ul>
+</li>
+</ul>
+<h5 id="微服务-1"><a href="#微服务-1" class="headerlink" title="微服务"></a>微服务</h5><ul>
+<li><p><a href="https://martinfowler.com/" target="_blank" rel="external">Martin Fowler</a> 在 2014年提出 <a href="https://www.martinfowler.com/articles/microservices.html" target="_blank" rel="external">Microservices架构</a></p>
+</li>
+<li><p>微服务是一种架构风格，将单体应用划分为小型的服务单元。</p>
+</li>
+<li><p>微服务架构是一种使用一系列粒度较小的服务来开发单个应用的方式。</p>
+<ul>
+<li>每个服务运行在自己的进程中</li>
+<li>服务间采用轻量级的方式进行通信（通常是HTTP API）</li>
+<li>这些服务是基于业务逻辑和范围，通过自动化部署的机制来独立部署的，并且服务的集中管理应该是最低限度的，即每个服务可以采用不同的编程语言编写，使用不同的数据存储技术。</li>
+</ul>
+</li>
+<li><p>优点：</p>
+<ul>
+<li>独立部署。不依赖其他服务，耦合性低，不用管其他服务的部署对自己的影响。</li>
+<li>易于开发和维护。关注特定业务，所以业务清晰，代码量少，模块变的易开发、易理解、易维护。</li>
+<li>启动快。功能少，代码少，所以启动快，有需要停机维护的服务，不会长时间暂停服务。</li>
+<li>局部修改容易。只需要部署 相应的服务即可，适合敏捷开发。</li>
+<li>技术栈不受限。java，node.js，go 等</li>
+<li>按需伸缩.某个服务受限，可以按需增加内存，cpu 等。</li>
+<li>职责专一。专门团队负责专门业务，有利于团队分工。</li>
+<li>代码复用。不需要重复写。底层实现通过接口方式提供。</li>
+<li>便于团队协作：每个团队只需要提供 API 就行，定义好 API 后，可以并行开发。</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>分布式固有的复杂性。容错，网络延时，调用关系、分布式事务等，都会带来复杂。</li>
+<li>分布式事务的挑战。每个服务有自己的数据库，有点在于不同服务可以选择适合自身业务的数据库。订单用MySQL，评论用Mongodb等。目前最理想解决方案是：柔性事务的最终一致性。</li>
+<li>接口调整成本高。改一个接口，调用方都要改。</li>
+<li>测试难度提升。一个接口改变，所有调用方都得测。自动化测试就变得重要了，API文档的管理也尤为重要。</li>
+<li>运维要求高。需要维护几十上百个服务，监控变的复杂，并且还要关注多个集群。</li>
+<li>重复工作。比如 java 的工具类可以在共享 common.ja r中，但在多语言下行不通，C++ 无法直接用 java的 jar 包。</li>
+</ul>
+</li>
+</ul>
+<h4 id="微服务组件"><a href="#微服务组件" class="headerlink" title="微服务组件"></a>微服务组件</h4><p>基于微服务的特性，微服务的组件不局限于技术的实现。主要的组件有：</p>
+<ul>
+<li>服务注册与发现：服务提供方将己方调用地址注册到服务注册中心，让服务调用方能够方便地找到自己；服务调用方从服务注册中心找到自己需要调用的服务的地址。</li>
+<li>负载均衡：服务提供方一般以多实例的形式提供服务，负载均衡功能能够让服务调用方连接到合适的服务节点。并且，服务节点选择的过程对服务调用方来说是透明的。</li>
+<li>服务网关：服务网关是服务调用的唯一入口，可以在这个组件中实现用户鉴权、动态路由、灰度发布、A/B测试、负载限流等功能。</li>
+<li>配置中心：将本地化的配置信息（Properties、XML、YAML等形式）注册到配置中心，实现程序包在开发、测试、生产环境中的无差别性，方便程序包的迁移，也是无状态特性。</li>
+<li>集成框架：微服务组件都以职责单一的程序包对外提供服务，集成框架以配置的形式将所有微服务组件(特别是管理端组件)集成到统一的界面框架下，让用户能够在统一的界面中使用系统。Spring Cloud 就是一个集成框架。</li>
+<li>调用链监控：记录完成一次请求的先后衔接和调用关系，并将这种串行或并行的调用关系展示出来。在系统出错时，可以方便地找到出错点。</li>
+<li>支撑平台：系统微服务化后，各个业务模块经过拆分变得更加细化，系统的部署、运维、监控等都比单体应用架构更加复杂，这就需要将大部分的工作自动化。现在，Docker 等工具可以给微服务架构的部署带来较多的便利，例如持续集成、蓝绿发布、健康检查、性能监控等等。如果没有合适的支撑平台或工具，微服务架构就无法发挥它最大的功效。</li>
+</ul>
+<h5 id="常见的架构图"><a href="#常见的架构图" class="headerlink" title="常见的架构图"></a>常见的架构图</h5><img src="/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/基础微服务架构图.png" alt="基础微服务架构图.png" title="">
+<h4 id="Spring-Cloud"><a href="#Spring-Cloud" class="headerlink" title="Spring Cloud"></a>Spring Cloud</h4><p>Spring Cloud 是实现微服务架构的一系列框架的有机集合。是在 Spring Boot 基础上构建的，用于简化分布式系统构建的工具集。是拥有众多子项目的项目集合。利用 Spring Boot 的开发便利性，巧妙地简化了分布式系统基础设施（服务注册与发现、熔断机制、网关路由、配置中心、消息总线、负载均衡、链路追踪等）的开发。</p>
+<h6 id="Spring-Cloud的基础组件"><a href="#Spring-Cloud的基础组件" class="headerlink" title="Spring Cloud的基础组件"></a>Spring Cloud的基础组件</h6><ul>
+<li><p>Eureka：服务注册与发现，用于服务管理。</p>
+</li>
+<li><p>Feign： web调用客户端，能够简化HTTP接口的调用。</p>
+</li>
+<li><p>Ribbon：基于客户端的负载均衡。</p>
+</li>
+<li><p>Hystrix：熔断降级，防止服务雪崩。</p>
+</li>
+<li><p>Zuul：网关路由，提供路由转发、请求过滤、限流降级等功能。</p>
+</li>
+<li><p>Config：配置中心，分布式配置管理。</p>
+</li>
+<li><p>Sleuth：服务链路追踪</p>
+</li>
+<li><p>Admin：健康管理</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
+<li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;微服务与-Spring-Cloud&quot;&gt;&lt;a href=&quot;#微服务与-Spring-Cloud&quot; class=&quot;headerlink&quot; title=&quot;微服务与 Spring Cloud&quot;&gt;&lt;/a&gt;微服务与 Spring Cloud&lt;/h2&gt;&lt;h3 id=&quot;微服务&quot;&gt;
     
     </summary>
     
