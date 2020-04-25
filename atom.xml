@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2020-04-24T07:37:49.294Z</updated>
+  <updated>2020-04-25T09:39:35.501Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -14,6 +14,152 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从0开始用SpringCloud搭建微服务系统【三】</title>
+    <link href="http://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/"/>
+    <id>http://webfuse.cn/2020/04/25/从0开始用SpringCloud搭建微服务系统【三】/</id>
+    <published>2020-04-25T09:38:59.000Z</published>
+    <updated>2020-04-25T09:39:35.501Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="服务间通信"><a href="#服务间通信" class="headerlink" title="服务间通信"></a>服务间通信</h2><p>微服务间可以使用 HTTP 协议，RESTful 规范进行通信。Spring Cloud 提供了 2 种 RESTful 调用方式：Ribbon 和 Feign 。</p>
+<h3 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h3><p>客户端软负载组件，支持Eureka对接，支持多种可插拔LB策略。依赖 <code>spring-cloud-starter-netflix-eureka-client</code> 中已经默认加载了 Ribbon 的依赖。</p>
+<p>Ribbon作为Spring Cloud的负载均衡机制的实现：</p>
+<ol>
+<li>Ribbon可以单独使用，作为一个独立的负载均衡组件。只是需要我们手动配置 服务地址列表。</li>
+<li>Ribbon与Eureka配合使用时，Ribbon可自动从Eureka Server获取服务提供者地址列表（DiscoveryClient），并基于负载均衡算法，请求其中一个服务提供者实例。</li>
+<li>Ribbon与OpenFeign和RestTemplate进行无缝对接，让二者具有负载均衡的能力。OpenFeign默认集成了ribbon。</li>
+</ol>
+<p>Ribbon 的自定义配置以及一些高级使用可以参考官方文档：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.2.2.RELEASE/reference/html/#spring-cloud-ribbon" target="_blank" rel="external">Client Side Load Balancer: Ribbon</a></p>
+<h4 id="Ribbon组成"><a href="#Ribbon组成" class="headerlink" title="Ribbon组成"></a>Ribbon组成</h4><p>官网首页：<a href="https://github.com/Netflix/ribbon" target="_blank" rel="external">https://github.com/Netflix/ribbon</a></p>
+<p>ribbon-core: 核心的通用性代码。api一些配置。</p>
+<p>ribbon-eureka：基于eureka封装的模块，能快速集成eureka。</p>
+<p>ribbon-examples：学习示例。</p>
+<p>ribbon-httpclient：基于apache httpClient封装的rest客户端，集成了负载均衡模块，可以直接在项目中使用。</p>
+<p>ribbon-loadbalancer：负载均衡模块。</p>
+<p>ribbon-transport：基于netty实现多协议的支持。比如http，tcp，udp等。</p>
+<h4 id="调用方式"><a href="#调用方式" class="headerlink" title="调用方式"></a>调用方式</h4><h5 id="使用RestTemplate"><a href="#使用RestTemplate" class="headerlink" title="使用RestTemplate"></a>使用RestTemplate</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoadBalancerClientConfig</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 负载均衡的RestTemplate。</div><div class="line">     */</div><div class="line">    <span class="meta">@LoadBalanced</span></div><div class="line">    <span class="meta">@Bean</span>(name = <span class="string">"loadBalanced"</span>)</div><div class="line">    <span class="function">RestTemplate <span class="title">loadBalanced</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 常规的RestTemplate。</div><div class="line">     */</div><div class="line">    <span class="meta">@Primary</span></div><div class="line">    <span class="meta">@Bean</span>(name = <span class="string">"restTemplate"</span>)</div><div class="line">    <span class="function">RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码中使用 <code>@LoadBalanced</code> 注解，这样就可以让 RestTemplate 在请求时拥有客户端负载均衡的能力。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="meta">@Qualifier</span>(<span class="string">"loadBalanced"</span>)</div><div class="line"><span class="keyword">private</span> RestTemplate loadBalanced;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getTime</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">return</span> loadBalanced.getForEntity(<span class="string">"http://service-producer/get_time"</span>, String.class).getBody();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="使用DiscoveryClient"><a href="#使用DiscoveryClient" class="headerlink" title="使用DiscoveryClient"></a>使用DiscoveryClient</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> DiscoveryClient discoveryClient;</div><div class="line">   </div><div class="line">   </div><div class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getAllInstance</span><span class="params">(@RequestParam(<span class="string">"service_id"</span>)</span> String serviceId) </span>&#123;</div><div class="line"></div><div class="line">   List&lt;ServiceInstance&gt; instances = discoveryClient.getInstances(serviceId);</div><div class="line">   <span class="keyword">return</span> instances.stream()</div><div class="line">           .map(instance -&gt; String.format(<span class="string">"http://%s:%s"</span>, instance.getHost(), instance.getPort()))</div><div class="line">           .collect(Collectors.toList());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h4><p>Ribbon 提供了很多负载均衡的策略。详情可见：</p>
+<table>
+<thead>
+<tr>
+<th>策略名称</th>
+<th>策略描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BestAvailableRule（最低并发策略）</td>
+<td>会先过滤掉由于多次访问故障而处于断路器跳闸状态的服务，然后选择一个并发量最小的服务。逐个找服务，如果断路器打开，则忽略。</td>
+</tr>
+<tr>
+<td>AvailabilityFilteringRule（可用过滤策略）</td>
+<td>会先过滤掉多次访问故障而处于断路器跳闸状态的服务和过滤并发的连接数量超过阀值得服务，然后对剩余的服务列表安装轮询策略进行访问。</td>
+</tr>
+<tr>
+<td>WeightedResponseTimeRule（响应时间加权策略）</td>
+<td>据平均响应时间计算所有的服务的权重，响应时间越快服务权重越大，容易被选中的概率就越高。刚启动时，如果统计信息不中，则使用RoundRobinRule(轮询)策略，等统计的信息足够了会自动的切换到WeightedResponseTimeRule。响应时间长，权重低，被选择的概率低。反之，同样道理。此策略综合了各种因素（网络，磁盘，IO等），这些因素直接影响响应时间。</td>
+</tr>
+<tr>
+<td>RetryRule（重试策略）</td>
+<td>先按照RoundRobinRule(轮询)的策略获取服务，如果获取的服务失败则在指定的时间会进行重试，进行获取可用的服务。如多次获取某个服务失败，就不会再次获取该服务。主要是在一个时间段内，如果选择一个服务不成功，就继续找可用的服务，直到超时。</td>
+</tr>
+<tr>
+<td>RoundRobinRule（轮询策略）</td>
+<td>以简单轮询选择一个服务器。按顺序循环选择一个server。</td>
+</tr>
+<tr>
+<td>RandomRule（随机策略）</td>
+<td>随机选择一个服务器。</td>
+</tr>
+<tr>
+<td>ZoneAvoidanceRule（区域权衡策略）【默认实现】</td>
+<td>复合判断Server所在区域的性能和Server的可用性，轮询选择服务器。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="切换负载均衡策略"><a href="#切换负载均衡策略" class="headerlink" title="切换负载均衡策略"></a>切换负载均衡策略</h4><h5 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultRibbonConfig</span> </span>&#123;</div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> IRule <span class="title">ribbonRule</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BestAvailableRule();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上，配置IRule的新值，直接可以切换负载均衡策略</p>
+<h5 id="配置文件方式"><a href="#配置文件方式" class="headerlink" title="配置文件方式"></a>配置文件方式</h5><p>给所有的服务指定负载均衡策略：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">ribbon:</span></div><div class="line"><span class="attr">    NIWSServerListClassName:</span> <span class="string">com.netflix.loadbalancer.ConfigurationBasedServerList</span></div><div class="line"><span class="attr">    NFLoadBalancerRuleClassName:</span> <span class="string">com.netflix.loadbalancer.WeightedResponseTimeRule</span></div></pre></td></tr></table></figure>
+<p>给特定的服务指定负载均衡策略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;服务名&gt;.ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.RandomRule</div></pre></td></tr></table></figure>
+<h4 id="Ribbon拦截"><a href="#Ribbon拦截" class="headerlink" title="Ribbon拦截"></a>Ribbon拦截</h4><p>在服务调用的时候，我们可能不仅仅是简单地进行调用，会涉及到一些接口的校验、权限的校验等。要实现这些，可以实现<code>ClientHttpRequestInterceptor</code>接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggingClientHttpRequestInterceptor</span> <span class="keyword">implements</span> <span class="title">ClientHttpRequestInterceptor</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> ClientHttpResponse <span class="title">intercept</span><span class="params">(HttpRequest httpRequest, <span class="keyword">byte</span>[] bytes, ClientHttpRequestExecution clientHttpRequestExecution)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        System.out.println(<span class="string">"拦截啦！！！"</span>);</div><div class="line">        System.out.println(httpRequest.getURI());</div><div class="line"></div><div class="line">        ClientHttpResponse response = clientHttpRequestExecution.execute(httpRequest, bytes);</div><div class="line"></div><div class="line">        System.out.println(response.getHeaders());</div><div class="line">        <span class="keyword">return</span> response;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>添加到resttemplate中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@LoadBalanced</span></div><div class="line"><span class="meta">@Bean</span>(name = <span class="string">"loadBalanced"</span>)</div><div class="line"><span class="meta">@Primary</span></div><div class="line"><span class="function">RestTemplate <span class="title">loadBalanced</span><span class="params">()</span> </span>&#123;</div><div class="line">    RestTemplate restTemplate = <span class="keyword">new</span> RestTemplate();</div><div class="line">    restTemplate.getInterceptors().add(<span class="keyword">new</span> LoggingClientHttpRequestInterceptor());</div><div class="line">    <span class="keyword">return</span> restTemplate;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h4><p>Ribbon的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#连接超时时间(ms)</div><div class="line">ribbon.ConnectTimeout=1000</div><div class="line">#业务逻辑超时时间(ms)</div><div class="line">ribbon.ReadTimeout=6000</div></pre></td></tr></table></figure>
+<h4 id="重试"><a href="#重试" class="headerlink" title="重试"></a>重试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#同一台实例最大重试次数,不包括首次调用</div><div class="line">ribbon.MaxAutoRetries=1</div><div class="line">#重试负载均衡其他的实例最大重试次数,不包括首次调用</div><div class="line">ribbon.MaxAutoRetriesNextServer=1</div><div class="line">#是否所有操作都重试</div><div class="line">ribbon.OkToRetryOnAllOperations=false</div></pre></td></tr></table></figure>
+<p>使用ribbon重试机制，请求失败后，每个6秒会重新尝试</p>
+<h3 id="Feign"><a href="#Feign" class="headerlink" title="Feign"></a>Feign</h3><p>Feign 是 Netflix 开发的声明式、模板化的 HTTP 客户端，Feign 的使用非常简单，创建一个接口，在接口上加入一些注解，这样就完成了代码开发。</p>
+<p>Feign 是一个 Http 请求调用的轻量级框架，可以以 Java 接口注解的方式调用 Http 请求，而不用像 Java 中通过封装 HTTP 请求报文的方式直接调用。通过处理注解，将请求模板化，当实际调用的时候，传入参数，根据参数再应用到请求上，进而转化成真正的请求，这种请求相对而言比较直观。Feign 封装 了HTTP 调用流程，面向接口编程</p>
+<h4 id="Spring-Cloud-OpenFeign"><a href="#Spring-Cloud-OpenFeign" class="headerlink" title="Spring Cloud OpenFeign"></a>Spring Cloud OpenFeign</h4><p>Spring Cloud OpenFeign 通过自动配置并绑定到Spring Environment和其他Spring编程模型习惯用法，为Spring Boot应用程序提供OpenFeign集成。</p>
+<p>官方文档：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-openfeign/2.2.2.RELEASE/reference/html/" target="_blank" rel="external">Spring Cloud OpenFeign</a></p>
+<h4 id="服务调用"><a href="#服务调用" class="headerlink" title="服务调用"></a>服务调用</h4><p>使用 Feign 必须引入 <code>spring-cloud-starter-openfeign</code>。在启动类 <code>Application</code> 上 <code>@EnableFeignClients</code> 注解。</p>
+<h5 id="服务提供者"><a href="#服务提供者" class="headerlink" title="服务提供者"></a>服务提供者</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequestMapping</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HelloApi</span> </span>&#123;</div><div class="line">    <span class="meta">@GetMapping</span>(value = <span class="string">"/v0.1/greeting"</span>)</div><div class="line">    <span class="function">String <span class="title">greeting</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@RestController</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> <span class="keyword">implements</span> <span class="title">HelloApi</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">greeting</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"hello world"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="服务消费者：简单使用"><a href="#服务消费者：简单使用" class="headerlink" title="服务消费者：简单使用"></a>服务消费者：简单使用</h5><p>简单使用Feign不需要代码耦合，但是需要硬编码接口的信息。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"producer-service"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HelloClient</span></span>&#123;</div><div class="line">    <span class="meta">@GetMapping</span>(value = <span class="string">"/v0.1/greeting"</span>)</div><div class="line">    <span class="function">String <span class="title">greeting</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    HelloClient helloClient;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">        helloClient.greeting();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>@FeignClient</code>也可以脱离Eureka使用，如：<code>@FeignClient(name = &quot;xxx&quot;,url=&quot;&quot;)</code> 这个url就是接口的地址。</p>
+<h5 id="服务消费者：接口继承方式"><a href="#服务消费者：接口继承方式" class="headerlink" title="服务消费者：接口继承方式"></a>服务消费者：接口继承方式</h5><p>此方法需要引入<strong>服务提供者</strong>提供的接口jar包。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"producer-service"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HelloService</span> <span class="keyword">extends</span> <span class="title">HelloApi</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    HelloService helloService;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">        helloService.greeting();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码中，<code>@FeignClient(value = &quot;producer-service&quot;)</code> 指定了使用哪一个服务。</p>
+<h4 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h4><h5 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h5><p>feign的默认配置类是：org.springframework.cloud.openfeign.FeignClientsConfiguration。默认定义了feign使用的编码器，解码器等。</p>
+<p>允许使用@FeignClient的configuration的属性自定义Feign配置。自定义的配置优先级高于上面的FeignClientsConfiguration。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@Slf</span>4j</div><div class="line"><span class="meta">@EnableConfigurationProperties</span>(FeignSecurityProperties.class)</div><div class="line"><span class="meta">@ConditionalOnClass</span>(value = &#123;RequestInterceptor.class, Decoder.class, Encoder.class&#125;)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FeignAutoConfig</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> FeignSecurityProperties feignSecurityProperties;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 内部微服务请求，加上timestamp，并且按字典序进行签名，附上sig</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> RequestInterceptor 请求拦截器</div><div class="line">     */</div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConditionalOnMissingBean</span>(RequestInterceptor.class)</div><div class="line">    <span class="function"><span class="keyword">public</span> RequestInterceptor <span class="title">requestTokenBearerInterceptor</span><span class="params">()</span> </span>&#123;</div><div class="line">        String apiSecretKey = feignSecurityProperties.getApiSignature().getInternalApiKey();</div><div class="line">        <span class="keyword">return</span> requestTemplate -&gt; ApiSigUtil.sig(apiSecretKey, requestTemplate);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Decoder <span class="title">feignDecoder</span><span class="params">()</span> </span>&#123;</div><div class="line">        HttpMessageConverter jacksonConverter = <span class="keyword">new</span> MappingJackson2HttpMessageConverter(customObjectMapper());</div><div class="line">        ObjectFactory&lt;HttpMessageConverters&gt; objectFactory = () -&gt; <span class="keyword">new</span> HttpMessageConverters(jacksonConverter);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntityDecoder(<span class="keyword">new</span> SpringDecoder(objectFactory));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Encoder <span class="title">feignEncoder</span><span class="params">()</span> </span>&#123;</div><div class="line">        HttpMessageConverter jacksonConverter = <span class="keyword">new</span> MappingJackson2HttpMessageConverter(customObjectMapper());</div><div class="line">        ObjectFactory&lt;HttpMessageConverters&gt; objectFactory = () -&gt; <span class="keyword">new</span> HttpMessageConverters(jacksonConverter);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SpringEncoder(objectFactory);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> ObjectMapper <span class="title">customObjectMapper</span><span class="params">()</span> </span>&#123;</div><div class="line">        ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</div><div class="line">        objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, <span class="keyword">true</span>);</div><div class="line">        <span class="keyword">return</span> objectMapper;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConditionalOnMissingBean</span>(Retryer.class)</div><div class="line">    <span class="function"><span class="keyword">public</span> Retryer <span class="title">feignRetryer</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Retryer.NEVER_RETRY;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConditionalOnMissingBean</span>(Request.Options.class)</div><div class="line">    Request.<span class="function">Options <span class="title">feignOptions</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Request.Options(<span class="number">30</span> * <span class="number">1000</span>, <span class="number">30</span> * <span class="number">1000</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上面所示，<strong>在配置类上加上@Configuration注解，且该类在@ComponentScan所扫描的包中，那么该类中的配置信息就会被所有的@FeignClient共享。</strong>如果想要对某些的@FeignClient添加指定的配置，则：不指定@Configuration注解（或者指定configuration，用注解忽略），而是手动使用：<code>@FeignClient(name = &quot;service-valuation&quot;,configuration = FeignAuthConfiguration.class)</code></p>
+<h5 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h5><p>上面代码中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConditionalOnMissingBean</span>(RequestInterceptor.class)</div><div class="line">    <span class="function"><span class="keyword">public</span> RequestInterceptor <span class="title">requestTokenBearerInterceptor</span><span class="params">()</span> </span>&#123;</div><div class="line">        String apiSecretKey = feignSecurityProperties.getApiSignature().getInternalApiKey();</div><div class="line">        <span class="keyword">return</span> requestTemplate -&gt; ApiSigUtil.sig(apiSecretKey, requestTemplate);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><code>RequestInterceptor</code>是一个请求拦截器，我们可以继承它做很多事情，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> feign.RequestInterceptor;</div><div class="line"><span class="keyword">import</span> feign.RequestTemplate;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBasicAuthRequestInterceptor</span> <span class="keyword">implements</span> <span class="title">RequestInterceptor</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">(RequestTemplate template)</span> </span>&#123;</div><div class="line">		template.header(<span class="string">"Authorization"</span>, <span class="string">"Basic cm9vdDpyb290"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果是BasicAuth认证，可以重写BasicAuthRequestInterceptor。</p>
+</blockquote>
+<p>然后，在配置文件中添加：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line"><span class="attr">  client:</span> </div><div class="line"><span class="attr">    config:</span>  </div><div class="line"><span class="attr">      service-valuation:</span> </div><div class="line"><span class="attr">        request-interceptors:</span></div><div class="line"><span class="bullet">        -</span> <span class="string">cn.webfuse.passenger.feign.interceptor.MyBasicAuthRequestInterceptor</span></div></pre></td></tr></table></figure>
+<h5 id="配置文件扩展"><a href="#配置文件扩展" class="headerlink" title="配置文件扩展"></a>配置文件扩展</h5><p>指定服务名配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line"><span class="attr">  client:</span> </div><div class="line"><span class="attr">    config:</span>  </div><div class="line"><span class="attr">      service-valuation:</span> </div><div class="line"><span class="attr">        connect-timeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">        read-timeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">        logger-level:</span> <span class="string">full</span></div></pre></td></tr></table></figure>
+<p>通用配置:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line"><span class="attr">     client:</span> </div><div class="line"><span class="attr">       config:</span>  </div><div class="line"><span class="attr">         default:</span> </div><div class="line"><span class="attr">           connect-timeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">           read-timeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">           logger-level:</span> <span class="string">full</span></div></pre></td></tr></table></figure>
+<p>属性配置比Java代码优先级高。也可通过配置设置java代码优先级高：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line">	<span class="attr">client:</span> </div><div class="line">		<span class="attr">default-to-properties:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<h5 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line"><span class="attr">  compression:</span>  <span class="comment"># 开启请求与响应的GZIP压缩</span></div><div class="line"><span class="attr">    request:</span></div><div class="line"><span class="attr">      enabled:</span> <span class="literal">true</span></div><div class="line"><span class="attr">      min-request-size:</span> <span class="number">10000</span> <span class="comment"># 单位是B</span></div><div class="line"><span class="attr">    response:</span></div><div class="line"><span class="attr">      enabled:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h5 id="超时-1"><a href="#超时-1" class="headerlink" title="超时"></a>超时</h5><p>Feign默认支持Ribbon；Ribbon的重试机制和Feign的重试机制有冲突，所以源码中默认关闭Feign的重试机制,使用Ribbon的重试机制。</p>
+<h5 id="保留原始异常信息"><a href="#保留原始异常信息" class="headerlink" title="保留原始异常信息"></a>保留原始异常信息</h5><p>当调用服务时，如果服务返回的状态码不是200，就会进入到<code>Feign</code>的<code>ErrorDecoder</code>中，因此如果我们要解析异常信息，就要重写<code>ErrorDecoder</code></p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ol>
+<li>主程序入口添加@EnableFeignClients注解开启对Feign Client扫描加载处理。根据Feign Client的开发规范，定义接口并加@FeignClient注解。</li>
+<li>当程序启动时，会进行包扫描，扫描所有@FeignClient注解的类，并将这些信息注入Spring IoC容器中。当定义的Feign接口中的方法被调用时，通过JDK的代理方式，来生成具体的RequestTemplate。当生成代理时，Feign会为每个接口方法创建一个RequestTemplate对象，该对象封装了HTTP请求需要的全部信息，如请求参数名、请求方法等信息都在这个过程中确定。</li>
+<li>然后由RequestTemplate生成Request，然后把这个Request交给client处理，这里指的Client可以是JDK原生的URLConnection、Apache的Http Client，也可以是Okhttp。最后Client被封装到LoadBalanceClient类，这个类结合Ribbon负载均衡发起服务之间的调用。</li>
+</ol>
+<h3 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h3><ul>
+<li><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.1.0.RELEASE/single/spring-cloud-netflix.html#_service_discovery_eureka_clients" target="_blank" rel="external">Service Discovery: Eureka Clients</a></li>
+<li><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.1.0.RELEASE/single/spring-cloud-netflix.html#spring-cloud-eureka-server" target="_blank" rel="external">Service Discovery: Eureka Server</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24829766" target="_blank" rel="external">深度剖析服务发现组件Netflix Eureka</a></li>
+<li><a href="https://blog.csdn.net/forezp/article/details/73017664" target="_blank" rel="external">深入理解Eureka之源码解析</a></li>
+<li><a href="https://blog.csdn.net/forezp/article/details/74820899" target="_blank" rel="external">深入理解Ribbon之源码解析</a></li>
+<li><a href="https://blog.csdn.net/forezp/article/details/73480304" target="_blank" rel="external">深入理解Feign之源码解析</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;服务间通信&quot;&gt;&lt;a href=&quot;#服务间通信&quot; class=&quot;headerlink&quot; title=&quot;服务间通信&quot;&gt;&lt;/a&gt;服务间通信&lt;/h2&gt;&lt;p&gt;微服务间可以使用 HTTP 协议，RESTful 规范进行通信。Spring Cloud 提供了 2 种 RESTf
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/categories/Spring/Spring-Cloud/"/>
+    
+    
+      <category term="微服务" scheme="http://webfuse.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/tags/Spring-Cloud/"/>
+    
+  </entry>
   
   <entry>
     <title>从0开始用SpringCloud搭建微服务系统【二】</title>
@@ -1975,36 +2121,6 @@
       <category term="区块链" scheme="http://webfuse.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
       <category term="以太坊" scheme="http://webfuse.cn/tags/%E4%BB%A5%E5%A4%AA%E5%9D%8A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>离职前夕的随想</title>
-    <link href="http://webfuse.cn/2018/07/25/%E7%A6%BB%E8%81%8C%E5%89%8D%E5%A4%95%E7%9A%84%E9%9A%8F%E6%83%B3/"/>
-    <id>http://webfuse.cn/2018/07/25/离职前夕的随想/</id>
-    <published>2018-07-24T16:03:21.000Z</published>
-    <updated>2018-07-28T03:19:46.941Z</updated>
-    
-    <content type="html"><![CDATA[<p>去年，离开ND后的第一天，在去临海的动车上，写了《十年》一文。没想到的是今年，在离开德诺的前一天晚上，又写下了一篇类似的文章。</p>
-<p>离开德诺不舍是真，但是浓浓的不甘也是真。故事终究是有聚有散，事情也无法分辨谁对谁错，无非就是那一时刻的选择而已。</p>
-<p>最近在看《少有人走的路》，也就刚看了第一章，也许明天开始又会重新从头开始看，不为别的，只是觉得第一章就已经很和我口味了。一年来，特别是今年以来的一些事情让我很无语，其实，现在想来也是自己的问题罢了。“我的时间是我的责任，是我，只有我，能决定怎么安排和利用我的时间”，同理，他人的时间应该也是他人负责，旁人无法左右。</p>
-<p>最后，引用“自律是解决人生问题最主要的工具，也是消除人生痛苦最重要的方法。”这句来做个结束吧！希望，新的开始是自己想要的开始，新的征程是充满激情的征程~</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;去年，离开ND后的第一天，在去临海的动车上，写了《十年》一文。没想到的是今年，在离开德诺的前一天晚上，又写下了一篇类似的文章。&lt;/p&gt;
-&lt;p&gt;离开德诺不舍是真，但是浓浓的不甘也是真。故事终究是有聚有散，事情也无法分辨谁对谁错，无非就是那一时刻的选择而已。&lt;/p&gt;
-&lt;p&gt;最近
-    
-    </summary>
-    
-      <category term="未分类" scheme="http://webfuse.cn/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/"/>
-    
-    
-      <category term="生活" scheme="http://webfuse.cn/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-      <category term="杂念" scheme="http://webfuse.cn/tags/%E6%9D%82%E5%BF%B5/"/>
     
   </entry>
   

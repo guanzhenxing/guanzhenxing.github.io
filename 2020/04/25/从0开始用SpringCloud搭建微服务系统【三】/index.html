@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: 'RQOOC0OJ8P',
+      apiKey: '',
+      indexName: 'webfusecn',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search","hits_empty":"我们没有找到任何搜索结果: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="服务间通信微服务间可以使用 HTTP 协议，RESTful 规范进行通信。Spring Cloud 提供了 2 种 RESTful 调用方式：Ribbon 和 Feign 。 Ribbon客户端软负载组件，支持Eureka对接，支持多种可插拔LB策略。依赖 spring-cloud-starter-netflix-eureka-client 中已经默认加载了 Ribbon 的依赖。 Ribbon作">
+<meta name="keywords" content="微服务,Spring Cloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从0开始用SpringCloud搭建微服务系统【三】">
+<meta property="og:url" content="http://webfuse.cn/2020/04/25/从0开始用SpringCloud搭建微服务系统【三】/index.html">
+<meta property="og:site_name" content="WebFuse">
+<meta property="og:description" content="服务间通信微服务间可以使用 HTTP 协议，RESTful 规范进行通信。Spring Cloud 提供了 2 种 RESTful 调用方式：Ribbon 和 Feign 。 Ribbon客户端软负载组件，支持Eureka对接，支持多种可插拔LB策略。依赖 spring-cloud-starter-netflix-eureka-client 中已经默认加载了 Ribbon 的依赖。 Ribbon作">
+<meta property="og:updated_time" content="2020-04-25T09:39:35.501Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从0开始用SpringCloud搭建微服务系统【三】">
+<meta name="twitter:description" content="服务间通信微服务间可以使用 HTTP 协议，RESTful 规范进行通信。Spring Cloud 提供了 2 种 RESTful 调用方式：Ribbon 和 Feign 。 Ribbon客户端软负载组件，支持Eureka对接，支持多种可插拔LB策略。依赖 spring-cloud-starter-netflix-eureka-client 中已经默认加载了 Ribbon 的依赖。 Ribbon作">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WebFuse" type="application/atom+xml"/>
+
+
+
+  
+  
+  <link rel="canonical" href="http://webfuse.cn/2020/04/25/从0开始用SpringCloud搭建微服务系统【三】/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>从0开始用SpringCloud搭建微服务系统【三】 | WebFuse</title>
+  
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131682260"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-131682260');
+    }
+  </script>
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?71eee1c6792ff8b5b386a78c59848d67";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WebFuse</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br/>站点地图</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/guanzhenxing" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2020/04/25/从0开始用SpringCloud搭建微服务系统【三】/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jesen Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从0开始用SpringCloud搭建微服务系统【三】
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-25 17:38:59 / 修改时间：17:39:35" itemprop="dateCreated datePublished" datetime="2020-04-25T17:38:59+08:00">2020-04-25</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/Spring-Cloud/" itemprop="url" rel="index"><span itemprop="name">Spring Cloud</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="服务间通信"><a href="#服务间通信" class="headerlink" title="服务间通信"></a>服务间通信</h2><p>微服务间可以使用 HTTP 协议，RESTful 规范进行通信。Spring Cloud 提供了 2 种 RESTful 调用方式：Ribbon 和 Feign 。</p>
+<h3 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h3><p>客户端软负载组件，支持Eureka对接，支持多种可插拔LB策略。依赖 <code>spring-cloud-starter-netflix-eureka-client</code> 中已经默认加载了 Ribbon 的依赖。</p>
+<p>Ribbon作为Spring Cloud的负载均衡机制的实现：</p>
+<ol>
+<li>Ribbon可以单独使用，作为一个独立的负载均衡组件。只是需要我们手动配置 服务地址列表。</li>
+<li>Ribbon与Eureka配合使用时，Ribbon可自动从Eureka Server获取服务提供者地址列表（DiscoveryClient），并基于负载均衡算法，请求其中一个服务提供者实例。</li>
+<li>Ribbon与OpenFeign和RestTemplate进行无缝对接，让二者具有负载均衡的能力。OpenFeign默认集成了ribbon。</li>
+</ol>
+<p>Ribbon 的自定义配置以及一些高级使用可以参考官方文档：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.2.2.RELEASE/reference/html/#spring-cloud-ribbon" target="_blank" rel="external">Client Side Load Balancer: Ribbon</a></p>
+<h4 id="Ribbon组成"><a href="#Ribbon组成" class="headerlink" title="Ribbon组成"></a>Ribbon组成</h4><p>官网首页：<a href="https://github.com/Netflix/ribbon" target="_blank" rel="external">https://github.com/Netflix/ribbon</a></p>
+<p>ribbon-core: 核心的通用性代码。api一些配置。</p>
+<p>ribbon-eureka：基于eureka封装的模块，能快速集成eureka。</p>
+<p>ribbon-examples：学习示例。</p>
+<p>ribbon-httpclient：基于apache httpClient封装的rest客户端，集成了负载均衡模块，可以直接在项目中使用。</p>
+<p>ribbon-loadbalancer：负载均衡模块。</p>
+<p>ribbon-transport：基于netty实现多协议的支持。比如http，tcp，udp等。</p>
+<h4 id="调用方式"><a href="#调用方式" class="headerlink" title="调用方式"></a>调用方式</h4><h5 id="使用RestTemplate"><a href="#使用RestTemplate" class="headerlink" title="使用RestTemplate"></a>使用RestTemplate</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoadBalancerClientConfig</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 负载均衡的RestTemplate。</div><div class="line">     */</div><div class="line">    <span class="meta">@LoadBalanced</span></div><div class="line">    <span class="meta">@Bean</span>(name = <span class="string">"loadBalanced"</span>)</div><div class="line">    <span class="function">RestTemplate <span class="title">loadBalanced</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 常规的RestTemplate。</div><div class="line">     */</div><div class="line">    <span class="meta">@Primary</span></div><div class="line">    <span class="meta">@Bean</span>(name = <span class="string">"restTemplate"</span>)</div><div class="line">    <span class="function">RestTemplate <span class="title">restTemplate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码中使用 <code>@LoadBalanced</code> 注解，这样就可以让 RestTemplate 在请求时拥有客户端负载均衡的能力。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="meta">@Qualifier</span>(<span class="string">"loadBalanced"</span>)</div><div class="line"><span class="keyword">private</span> RestTemplate loadBalanced;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getTime</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">return</span> loadBalanced.getForEntity(<span class="string">"http://service-producer/get_time"</span>, String.class).getBody();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="使用DiscoveryClient"><a href="#使用DiscoveryClient" class="headerlink" title="使用DiscoveryClient"></a>使用DiscoveryClient</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> DiscoveryClient discoveryClient;</div><div class="line">   </div><div class="line">   </div><div class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getAllInstance</span><span class="params">(@RequestParam(<span class="string">"service_id"</span>)</span> String serviceId) </span>&#123;</div><div class="line"></div><div class="line">   List&lt;ServiceInstance&gt; instances = discoveryClient.getInstances(serviceId);</div><div class="line">   <span class="keyword">return</span> instances.stream()</div><div class="line">           .map(instance -&gt; String.format(<span class="string">"http://%s:%s"</span>, instance.getHost(), instance.getPort()))</div><div class="line">           .collect(Collectors.toList());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h4><p>Ribbon 提供了很多负载均衡的策略。详情可见：</p>
+<table>
+<thead>
+<tr>
+<th>策略名称</th>
+<th>策略描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BestAvailableRule（最低并发策略）</td>
+<td>会先过滤掉由于多次访问故障而处于断路器跳闸状态的服务，然后选择一个并发量最小的服务。逐个找服务，如果断路器打开，则忽略。</td>
+</tr>
+<tr>
+<td>AvailabilityFilteringRule（可用过滤策略）</td>
+<td>会先过滤掉多次访问故障而处于断路器跳闸状态的服务和过滤并发的连接数量超过阀值得服务，然后对剩余的服务列表安装轮询策略进行访问。</td>
+</tr>
+<tr>
+<td>WeightedResponseTimeRule（响应时间加权策略）</td>
+<td>据平均响应时间计算所有的服务的权重，响应时间越快服务权重越大，容易被选中的概率就越高。刚启动时，如果统计信息不中，则使用RoundRobinRule(轮询)策略，等统计的信息足够了会自动的切换到WeightedResponseTimeRule。响应时间长，权重低，被选择的概率低。反之，同样道理。此策略综合了各种因素（网络，磁盘，IO等），这些因素直接影响响应时间。</td>
+</tr>
+<tr>
+<td>RetryRule（重试策略）</td>
+<td>先按照RoundRobinRule(轮询)的策略获取服务，如果获取的服务失败则在指定的时间会进行重试，进行获取可用的服务。如多次获取某个服务失败，就不会再次获取该服务。主要是在一个时间段内，如果选择一个服务不成功，就继续找可用的服务，直到超时。</td>
+</tr>
+<tr>
+<td>RoundRobinRule（轮询策略）</td>
+<td>以简单轮询选择一个服务器。按顺序循环选择一个server。</td>
+</tr>
+<tr>
+<td>RandomRule（随机策略）</td>
+<td>随机选择一个服务器。</td>
+</tr>
+<tr>
+<td>ZoneAvoidanceRule（区域权衡策略）【默认实现】</td>
+<td>复合判断Server所在区域的性能和Server的可用性，轮询选择服务器。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="切换负载均衡策略"><a href="#切换负载均衡策略" class="headerlink" title="切换负载均衡策略"></a>切换负载均衡策略</h4><h5 id="注解方式"><a href="#注解方式" class="headerlink" title="注解方式"></a>注解方式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DefaultRibbonConfig</span> </span>&#123;</div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> IRule <span class="title">ribbonRule</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BestAvailableRule();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上，配置IRule的新值，直接可以切换负载均衡策略</p>
+<h5 id="配置文件方式"><a href="#配置文件方式" class="headerlink" title="配置文件方式"></a>配置文件方式</h5><p>给所有的服务指定负载均衡策略：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">ribbon:</span></div><div class="line"><span class="attr">    NIWSServerListClassName:</span> <span class="string">com.netflix.loadbalancer.ConfigurationBasedServerList</span></div><div class="line"><span class="attr">    NFLoadBalancerRuleClassName:</span> <span class="string">com.netflix.loadbalancer.WeightedResponseTimeRule</span></div></pre></td></tr></table></figure>
+<p>给特定的服务指定负载均衡策略：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;服务名&gt;.ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.RandomRule</div></pre></td></tr></table></figure>
+<h4 id="Ribbon拦截"><a href="#Ribbon拦截" class="headerlink" title="Ribbon拦截"></a>Ribbon拦截</h4><p>在服务调用的时候，我们可能不仅仅是简单地进行调用，会涉及到一些接口的校验、权限的校验等。要实现这些，可以实现<code>ClientHttpRequestInterceptor</code>接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggingClientHttpRequestInterceptor</span> <span class="keyword">implements</span> <span class="title">ClientHttpRequestInterceptor</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> ClientHttpResponse <span class="title">intercept</span><span class="params">(HttpRequest httpRequest, <span class="keyword">byte</span>[] bytes, ClientHttpRequestExecution clientHttpRequestExecution)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        System.out.println(<span class="string">"拦截啦！！！"</span>);</div><div class="line">        System.out.println(httpRequest.getURI());</div><div class="line"></div><div class="line">        ClientHttpResponse response = clientHttpRequestExecution.execute(httpRequest, bytes);</div><div class="line"></div><div class="line">        System.out.println(response.getHeaders());</div><div class="line">        <span class="keyword">return</span> response;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>添加到resttemplate中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@LoadBalanced</span></div><div class="line"><span class="meta">@Bean</span>(name = <span class="string">"loadBalanced"</span>)</div><div class="line"><span class="meta">@Primary</span></div><div class="line"><span class="function">RestTemplate <span class="title">loadBalanced</span><span class="params">()</span> </span>&#123;</div><div class="line">    RestTemplate restTemplate = <span class="keyword">new</span> RestTemplate();</div><div class="line">    restTemplate.getInterceptors().add(<span class="keyword">new</span> LoggingClientHttpRequestInterceptor());</div><div class="line">    <span class="keyword">return</span> restTemplate;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h4><p>Ribbon的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#连接超时时间(ms)</div><div class="line">ribbon.ConnectTimeout=1000</div><div class="line">#业务逻辑超时时间(ms)</div><div class="line">ribbon.ReadTimeout=6000</div></pre></td></tr></table></figure>
+<h4 id="重试"><a href="#重试" class="headerlink" title="重试"></a>重试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#同一台实例最大重试次数,不包括首次调用</div><div class="line">ribbon.MaxAutoRetries=1</div><div class="line">#重试负载均衡其他的实例最大重试次数,不包括首次调用</div><div class="line">ribbon.MaxAutoRetriesNextServer=1</div><div class="line">#是否所有操作都重试</div><div class="line">ribbon.OkToRetryOnAllOperations=false</div></pre></td></tr></table></figure>
+<p>使用ribbon重试机制，请求失败后，每个6秒会重新尝试</p>
+<h3 id="Feign"><a href="#Feign" class="headerlink" title="Feign"></a>Feign</h3><p>Feign 是 Netflix 开发的声明式、模板化的 HTTP 客户端，Feign 的使用非常简单，创建一个接口，在接口上加入一些注解，这样就完成了代码开发。</p>
+<p>Feign 是一个 Http 请求调用的轻量级框架，可以以 Java 接口注解的方式调用 Http 请求，而不用像 Java 中通过封装 HTTP 请求报文的方式直接调用。通过处理注解，将请求模板化，当实际调用的时候，传入参数，根据参数再应用到请求上，进而转化成真正的请求，这种请求相对而言比较直观。Feign 封装 了HTTP 调用流程，面向接口编程</p>
+<h4 id="Spring-Cloud-OpenFeign"><a href="#Spring-Cloud-OpenFeign" class="headerlink" title="Spring Cloud OpenFeign"></a>Spring Cloud OpenFeign</h4><p>Spring Cloud OpenFeign 通过自动配置并绑定到Spring Environment和其他Spring编程模型习惯用法，为Spring Boot应用程序提供OpenFeign集成。</p>
+<p>官方文档：<a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-openfeign/2.2.2.RELEASE/reference/html/" target="_blank" rel="external">Spring Cloud OpenFeign</a></p>
+<h4 id="服务调用"><a href="#服务调用" class="headerlink" title="服务调用"></a>服务调用</h4><p>使用 Feign 必须引入 <code>spring-cloud-starter-openfeign</code>。在启动类 <code>Application</code> 上 <code>@EnableFeignClients</code> 注解。</p>
+<h5 id="服务提供者"><a href="#服务提供者" class="headerlink" title="服务提供者"></a>服务提供者</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@RequestMapping</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HelloApi</span> </span>&#123;</div><div class="line">    <span class="meta">@GetMapping</span>(value = <span class="string">"/v0.1/greeting"</span>)</div><div class="line">    <span class="function">String <span class="title">greeting</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@RestController</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> <span class="keyword">implements</span> <span class="title">HelloApi</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">greeting</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"hello world"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="服务消费者：简单使用"><a href="#服务消费者：简单使用" class="headerlink" title="服务消费者：简单使用"></a>服务消费者：简单使用</h5><p>简单使用Feign不需要代码耦合，但是需要硬编码接口的信息。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"producer-service"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HelloClient</span></span>&#123;</div><div class="line">    <span class="meta">@GetMapping</span>(value = <span class="string">"/v0.1/greeting"</span>)</div><div class="line">    <span class="function">String <span class="title">greeting</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    HelloClient helloClient;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">        helloClient.greeting();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>@FeignClient</code>也可以脱离Eureka使用，如：<code>@FeignClient(name = &quot;xxx&quot;,url=&quot;&quot;)</code> 这个url就是接口的地址。</p>
+<h5 id="服务消费者：接口继承方式"><a href="#服务消费者：接口继承方式" class="headerlink" title="服务消费者：接口继承方式"></a>服务消费者：接口继承方式</h5><p>此方法需要引入<strong>服务提供者</strong>提供的接口jar包。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"producer-service"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HelloService</span> <span class="keyword">extends</span> <span class="title">HelloApi</span> </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestService</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    HelloService helloService;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</div><div class="line">        helloService.greeting();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上代码中，<code>@FeignClient(value = &quot;producer-service&quot;)</code> 指定了使用哪一个服务。</p>
+<h4 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h4><h5 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h5><p>feign的默认配置类是：org.springframework.cloud.openfeign.FeignClientsConfiguration。默认定义了feign使用的编码器，解码器等。</p>
+<p>允许使用@FeignClient的configuration的属性自定义Feign配置。自定义的配置优先级高于上面的FeignClientsConfiguration。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span></div><div class="line"><span class="meta">@Slf</span>4j</div><div class="line"><span class="meta">@EnableConfigurationProperties</span>(FeignSecurityProperties.class)</div><div class="line"><span class="meta">@ConditionalOnClass</span>(value = &#123;RequestInterceptor.class, Decoder.class, Encoder.class&#125;)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FeignAutoConfig</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> FeignSecurityProperties feignSecurityProperties;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 内部微服务请求，加上timestamp，并且按字典序进行签名，附上sig</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> RequestInterceptor 请求拦截器</div><div class="line">     */</div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConditionalOnMissingBean</span>(RequestInterceptor.class)</div><div class="line">    <span class="function"><span class="keyword">public</span> RequestInterceptor <span class="title">requestTokenBearerInterceptor</span><span class="params">()</span> </span>&#123;</div><div class="line">        String apiSecretKey = feignSecurityProperties.getApiSignature().getInternalApiKey();</div><div class="line">        <span class="keyword">return</span> requestTemplate -&gt; ApiSigUtil.sig(apiSecretKey, requestTemplate);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Decoder <span class="title">feignDecoder</span><span class="params">()</span> </span>&#123;</div><div class="line">        HttpMessageConverter jacksonConverter = <span class="keyword">new</span> MappingJackson2HttpMessageConverter(customObjectMapper());</div><div class="line">        ObjectFactory&lt;HttpMessageConverters&gt; objectFactory = () -&gt; <span class="keyword">new</span> HttpMessageConverters(jacksonConverter);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ResponseEntityDecoder(<span class="keyword">new</span> SpringDecoder(objectFactory));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Encoder <span class="title">feignEncoder</span><span class="params">()</span> </span>&#123;</div><div class="line">        HttpMessageConverter jacksonConverter = <span class="keyword">new</span> MappingJackson2HttpMessageConverter(customObjectMapper());</div><div class="line">        ObjectFactory&lt;HttpMessageConverters&gt; objectFactory = () -&gt; <span class="keyword">new</span> HttpMessageConverters(jacksonConverter);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> SpringEncoder(objectFactory);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> ObjectMapper <span class="title">customObjectMapper</span><span class="params">()</span> </span>&#123;</div><div class="line">        ObjectMapper objectMapper = <span class="keyword">new</span> ObjectMapper();</div><div class="line">        objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, <span class="keyword">true</span>);</div><div class="line">        <span class="keyword">return</span> objectMapper;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConditionalOnMissingBean</span>(Retryer.class)</div><div class="line">    <span class="function"><span class="keyword">public</span> Retryer <span class="title">feignRetryer</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> Retryer.NEVER_RETRY;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConditionalOnMissingBean</span>(Request.Options.class)</div><div class="line">    Request.<span class="function">Options <span class="title">feignOptions</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Request.Options(<span class="number">30</span> * <span class="number">1000</span>, <span class="number">30</span> * <span class="number">1000</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如上面所示，<strong>在配置类上加上@Configuration注解，且该类在@ComponentScan所扫描的包中，那么该类中的配置信息就会被所有的@FeignClient共享。</strong>如果想要对某些的@FeignClient添加指定的配置，则：不指定@Configuration注解（或者指定configuration，用注解忽略），而是手动使用：<code>@FeignClient(name = &quot;service-valuation&quot;,configuration = FeignAuthConfiguration.class)</code></p>
+<h5 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h5><p>上面代码中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Bean</span></div><div class="line">    <span class="meta">@ConditionalOnMissingBean</span>(RequestInterceptor.class)</div><div class="line">    <span class="function"><span class="keyword">public</span> RequestInterceptor <span class="title">requestTokenBearerInterceptor</span><span class="params">()</span> </span>&#123;</div><div class="line">        String apiSecretKey = feignSecurityProperties.getApiSignature().getInternalApiKey();</div><div class="line">        <span class="keyword">return</span> requestTemplate -&gt; ApiSigUtil.sig(apiSecretKey, requestTemplate);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><code>RequestInterceptor</code>是一个请求拦截器，我们可以继承它做很多事情，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> feign.RequestInterceptor;</div><div class="line"><span class="keyword">import</span> feign.RequestTemplate;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBasicAuthRequestInterceptor</span> <span class="keyword">implements</span> <span class="title">RequestInterceptor</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">(RequestTemplate template)</span> </span>&#123;</div><div class="line">		template.header(<span class="string">"Authorization"</span>, <span class="string">"Basic cm9vdDpyb290"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果是BasicAuth认证，可以重写BasicAuthRequestInterceptor。</p>
+</blockquote>
+<p>然后，在配置文件中添加：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line"><span class="attr">  client:</span> </div><div class="line"><span class="attr">    config:</span>  </div><div class="line"><span class="attr">      service-valuation:</span> </div><div class="line"><span class="attr">        request-interceptors:</span></div><div class="line"><span class="bullet">        -</span> <span class="string">cn.webfuse.passenger.feign.interceptor.MyBasicAuthRequestInterceptor</span></div></pre></td></tr></table></figure>
+<h5 id="配置文件扩展"><a href="#配置文件扩展" class="headerlink" title="配置文件扩展"></a>配置文件扩展</h5><p>指定服务名配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line"><span class="attr">  client:</span> </div><div class="line"><span class="attr">    config:</span>  </div><div class="line"><span class="attr">      service-valuation:</span> </div><div class="line"><span class="attr">        connect-timeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">        read-timeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">        logger-level:</span> <span class="string">full</span></div></pre></td></tr></table></figure>
+<p>通用配置:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line"><span class="attr">     client:</span> </div><div class="line"><span class="attr">       config:</span>  </div><div class="line"><span class="attr">         default:</span> </div><div class="line"><span class="attr">           connect-timeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">           read-timeout:</span> <span class="number">5000</span></div><div class="line"><span class="attr">           logger-level:</span> <span class="string">full</span></div></pre></td></tr></table></figure>
+<p>属性配置比Java代码优先级高。也可通过配置设置java代码优先级高：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line">	<span class="attr">client:</span> </div><div class="line">		<span class="attr">default-to-properties:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<h5 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">feign:</span></div><div class="line"><span class="attr">  compression:</span>  <span class="comment"># 开启请求与响应的GZIP压缩</span></div><div class="line"><span class="attr">    request:</span></div><div class="line"><span class="attr">      enabled:</span> <span class="literal">true</span></div><div class="line"><span class="attr">      min-request-size:</span> <span class="number">10000</span> <span class="comment"># 单位是B</span></div><div class="line"><span class="attr">    response:</span></div><div class="line"><span class="attr">      enabled:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
+<h5 id="超时-1"><a href="#超时-1" class="headerlink" title="超时"></a>超时</h5><p>Feign默认支持Ribbon；Ribbon的重试机制和Feign的重试机制有冲突，所以源码中默认关闭Feign的重试机制,使用Ribbon的重试机制。</p>
+<h5 id="保留原始异常信息"><a href="#保留原始异常信息" class="headerlink" title="保留原始异常信息"></a>保留原始异常信息</h5><p>当调用服务时，如果服务返回的状态码不是200，就会进入到<code>Feign</code>的<code>ErrorDecoder</code>中，因此如果我们要解析异常信息，就要重写<code>ErrorDecoder</code></p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><ol>
+<li>主程序入口添加@EnableFeignClients注解开启对Feign Client扫描加载处理。根据Feign Client的开发规范，定义接口并加@FeignClient注解。</li>
+<li>当程序启动时，会进行包扫描，扫描所有@FeignClient注解的类，并将这些信息注入Spring IoC容器中。当定义的Feign接口中的方法被调用时，通过JDK的代理方式，来生成具体的RequestTemplate。当生成代理时，Feign会为每个接口方法创建一个RequestTemplate对象，该对象封装了HTTP请求需要的全部信息，如请求参数名、请求方法等信息都在这个过程中确定。</li>
+<li>然后由RequestTemplate生成Request，然后把这个Request交给client处理，这里指的Client可以是JDK原生的URLConnection、Apache的Http Client，也可以是Okhttp。最后Client被封装到LoadBalanceClient类，这个类结合Ribbon负载均衡发起服务之间的调用。</li>
+</ol>
+<h3 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h3><ul>
+<li><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.1.0.RELEASE/single/spring-cloud-netflix.html#_service_discovery_eureka_clients" target="_blank" rel="external">Service Discovery: Eureka Clients</a></li>
+<li><a href="https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.1.0.RELEASE/single/spring-cloud-netflix.html#spring-cloud-eureka-server" target="_blank" rel="external">Service Discovery: Eureka Server</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/24829766" target="_blank" rel="external">深度剖析服务发现组件Netflix Eureka</a></li>
+<li><a href="https://blog.csdn.net/forezp/article/details/73017664" target="_blank" rel="external">深入理解Eureka之源码解析</a></li>
+<li><a href="https://blog.csdn.net/forezp/article/details/74820899" target="_blank" rel="external">深入理解Ribbon之源码解析</a></li>
+<li><a href="https://blog.csdn.net/forezp/article/details/73480304" target="_blank" rel="external">深入理解Feign之源码解析</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/微服务/" rel="tag"># 微服务</a>
+          
+            <a href="/tags/Spring-Cloud/" rel="tag"># Spring Cloud</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/22/从0开始用SpringCloud搭建微服务系统【二】/" rel="next" title="从0开始用SpringCloud搭建微服务系统【二】">
+                <i class="fa fa-chevron-left"></i> 从0开始用SpringCloud搭建微服务系统【二】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jesen Kwan</p>
+              <div class="site-description motion-element" itemprop="description">Make it work, make it right, make it fast</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">87</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">49</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/guanzhenxing" title="GitHub &rarr; https://github.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/guanzhenxing" title="Weibo &rarr; https://weibo.com/guanzhenxing" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务间通信"><span class="nav-number">1.</span> <span class="nav-text">服务间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ribbon"><span class="nav-number">1.1.</span> <span class="nav-text">Ribbon</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Ribbon组成"><span class="nav-number">1.1.1.</span> <span class="nav-text">Ribbon组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用方式"><span class="nav-number">1.1.2.</span> <span class="nav-text">调用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用RestTemplate"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">使用RestTemplate</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用DiscoveryClient"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">使用DiscoveryClient</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#负载均衡算法"><span class="nav-number">1.1.3.</span> <span class="nav-text">负载均衡算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切换负载均衡策略"><span class="nav-number">1.1.4.</span> <span class="nav-text">切换负载均衡策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注解方式"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">注解方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置文件方式"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">配置文件方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ribbon拦截"><span class="nav-number">1.1.5.</span> <span class="nav-text">Ribbon拦截</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超时"><span class="nav-number">1.1.6.</span> <span class="nav-text">超时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重试"><span class="nav-number">1.1.7.</span> <span class="nav-text">重试</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feign"><span class="nav-number">1.2.</span> <span class="nav-text">Feign</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-Cloud-OpenFeign"><span class="nav-number">1.2.1.</span> <span class="nav-text">Spring Cloud OpenFeign</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务调用"><span class="nav-number">1.2.2.</span> <span class="nav-text">服务调用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#服务提供者"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">服务提供者</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务消费者：简单使用"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">服务消费者：简单使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#服务消费者：接口继承方式"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">服务消费者：接口继承方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高级用法"><span class="nav-number">1.2.3.</span> <span class="nav-text">高级用法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义配置"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">自定义配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#拦截器"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">拦截器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置文件扩展"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">配置文件扩展</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#压缩"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">压缩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#超时-1"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">超时</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保留原始异常信息"><span class="nav-number">1.2.3.6.</span> <span class="nav-text">保留原始异常信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">1.2.4.</span> <span class="nav-text">原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资源"><span class="nav-number">1.3.</span> <span class="nav-text">参考资源</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jesen Kwan</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.3.7</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+      <div>
+        <div class="addthis_inline_share_toolbox">
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5d18c73b5e8375b2" async="async"></script>
+</div>
+
+      </div>
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
