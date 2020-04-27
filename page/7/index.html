@@ -378,6 +378,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2017/11/10/Spring Data MongoDB中的自定义级联/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jesen Kwan"/>
+      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WebFuse"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2017/11/10/Spring Data MongoDB中的自定义级联/" class="post-title-link" itemprop="url">Spring Data MongoDB中的自定义级联</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-11-10 18:26:52" itemprop="dateCreated datePublished" datetime="2017-11-10T18:26:52+08:00">2017-11-10</time>
+            </span>
+          
+
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-10 13:43:11" itemprop="dateModified" datetime="2019-04-10T13:43:11+08:00">2019-04-10</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br/>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              背景在使用Spring Data操作MongoDB中：
+
+在保存一个实体的时候，如果被@DBRef标识的类只传入Id，保存后返回的结果并没有全部的引用类内容，只有Id。
+保存实体，不能保存引用实体。
+
+例如：我们有一个实体Person，有一个实体EmailAddress。
+@Document(collection = "test_person")public class Person &#123;
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2017/11/10/Spring Data MongoDB中的自定义级联/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2017/11/09/将一个JavaBean中的非空属性转到Map中/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1109,196 +1296,6 @@ spring-inte
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2017/08/15/Spring @Value—从yml文件中引入list/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jesen Kwan"/>
-      <meta itemprop="description" content="Make it work, make it right, make it fast"/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WebFuse"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017/08/15/Spring @Value—从yml文件中引入list/" class="post-title-link" itemprop="url">Spring @Value—从yml文件中引入list</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-08-15 23:04:13" itemprop="dateCreated datePublished" datetime="2017-08-15T23:04:13+08:00">2017-08-15</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-10 13:40:27" itemprop="dateModified" datetime="2019-04-10T13:40:27+08:00">2019-04-10</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/Spring-Boot/" itemprop="url" rel="index"><span itemprop="name">Spring Boot</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          <br/>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>
-              在SpringBoot中要引入yml配置文件中的数组，用常用的@Value是不可取的，我们必须另寻途径。详见以下代码：
-配置文件，其中mqtt是一个对象，urls是一个字符串数组，mappings是一个对象数组
-mqtt:  urls:  - tcp://120.24.75.149:1883  clientId: mqtt-gateway  completionTimeout: 5000route
-              ...
-            </p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/08/15/Spring @Value—从yml文件中引入list/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1345,7 +1342,7 @@ mqtt:  urls:  - tcp://120.24.75.149:1883  clientId: mqtt-gateway  completionTime
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">87</span>
+                    <span class="site-state-item-count">88</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

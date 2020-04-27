@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2020-04-25T09:45:06.541Z</updated>
+  <updated>2020-04-27T08:32:20.403Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -16,11 +16,197 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>从0开始用SpringCloud搭建微服务系统【四】</title>
+    <link href="http://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/"/>
+    <id>http://webfuse.cn/2020/04/27/从0开始用SpringCloud搭建微服务系统【四】/</id>
+    <published>2020-04-27T08:30:38.000Z</published>
+    <updated>2020-04-27T08:32:20.403Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="容错"><a href="#容错" class="headerlink" title="容错"></a>容错</h2><p>基本的容错模式有：</p>
+<ul>
+<li>主动超时：</li>
+<li>限流：限制最大并发数</li>
+<li>熔断：错误数达到阈值时，类似保险丝熔断</li>
+<li>隔离：隔离不同的依赖调用或者隔离不同的线程</li>
+<li>降级：服务降低</li>
+</ul>
+<p>容错理念：</p>
+<ul>
+<li>凡是依赖都可能会失败</li>
+<li>凡是资源都有限制<ul>
+<li>CPU/Memory/Threads/Queue</li>
+</ul>
+</li>
+<li>网络并不可靠</li>
+<li>延迟是应用稳定性杀手</li>
+</ul>
+<h3 id="Netflix-Hystrix"><a href="#Netflix-Hystrix" class="headerlink" title="Netflix Hystrix"></a>Netflix Hystrix</h3><p>Hystrix实现了 超时机制和断路器模式。</p>
+<p>Hystrix是Netflix开源的一个类库，用于隔离远程系统、服务或者第三方库，防止级联失败，从而提升系统的可用性与容错性。主要有以下几点功能：</p>
+<ul>
+<li>为系统提供保护机制。在依赖的服务出现高延迟或失败时，为系统提供保护和控制。</li>
+<li>防止雪崩。</li>
+<li>包裹请求：使用HystrixCommand（或HystrixObservableCommand）包裹对依赖的调用逻辑，每个命令在独立线程中运行。</li>
+<li>跳闸机制：当某服务失败率达到一定的阈值时，Hystrix可以自动跳闸，停止请求该服务一段时间。</li>
+<li>资源隔离：Hystrix为每个请求都的依赖都维护了一个小型线程池，如果该线程池已满，发往该依赖的请求就被立即拒绝，而不是排队等候，从而加速失败判定。防止级联失败。</li>
+<li>快速失败：Fail Fast。同时能快速恢复。侧重点是：（不去真正的请求服务，发生异常再返回），而是直接失败。</li>
+<li>监控：Hystrix可以实时监控运行指标和配置的变化，提供近实时的监控、报警、运维控制。</li>
+<li>回退机制：fallback，当请求失败、超时、被拒绝，或当断路器被打开时，执行回退逻辑。回退逻辑我们自定义，提供优雅的服务降级。</li>
+<li>自我修复：断路器打开一段时间后，会自动进入“半开”状态，可以进行打开，关闭，半开状态的转换。</li>
+</ul>
+<h3 id="Hystrix设计原理"><a href="#Hystrix设计原理" class="headerlink" title="Hystrix设计原理"></a>Hystrix设计原理</h3><p>Hystrix的工作原理可以可以参考官网的<a href="https://github.com/Netflix/Hystrix/wiki/How-it-Works" target="_blank" rel="external">How it Works</a>。如果要看中文版，可以参考：<a href="https://segmentfault.com/a/1190000012439580" target="_blank" rel="external">Hystrix工作原理</a>。</p>
+<h4 id="信号量隔离与线程隔离"><a href="#信号量隔离与线程隔离" class="headerlink" title="信号量隔离与线程隔离"></a>信号量隔离与线程隔离</h4><p>默认情况下hystrix使用线程池控制请求隔离</p>
+<p>线程池隔离技术，是用 Hystrix 自己的线程去执行调用；而信号量隔离技术，是直接让 tomcat 线程去调用依赖服务。信号量隔离，只是一道关卡，信号量有多少，就允许多少个 tomcat 线程通过它，然后去执行。</p>
+<p>信号量隔离主要维护的是Tomcat的线程，不需要内部线程池，更加轻量级。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>优点</th>
+<th>不足</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>信号量隔离</td>
+<td>轻量，无额外开销</td>
+<td>不支持任务排队和主动超时<br>不支持异步调用</td>
+<td>受信客户<br>高扇出(网关)<br>高频高速调用(cache)</td>
+</tr>
+<tr>
+<td>线程池隔离</td>
+<td>支持排队和超时<br>支持异步调用</td>
+<td>线程调用会产生额外的开销</td>
+<td>不受信客户<br>有限扇出</td>
+</tr>
+</tbody>
+</table>
+<h3 id="使用Hystrix"><a href="#使用Hystrix" class="headerlink" title="使用Hystrix"></a>使用Hystrix</h3><h4 id="独立使用"><a href="#独立使用" class="headerlink" title="独立使用"></a>独立使用</h4><p>独立使用Hystrix可以参考<a href="https://github.com/Netflix/Hystrix/wiki/How-To-Use" target="_blank" rel="external">How To Use</a>。</p>
+<p>如果想要中文，可以参考：<a href="https://juejin.im/post/5c009ff6f265da614b11b84d" target="_blank" rel="external">Hystrix都停更了，我为什么还要学？</a></p>
+<h4 id="与Resttemplate整合"><a href="#与Resttemplate整合" class="headerlink" title="与Resttemplate整合"></a>与Resttemplate整合</h4><p>引入依赖<code>spring-cloud-starter-netflix-hystrix</code>。</p>
+<p>在Service中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GreetingService</span> </span>&#123;</div><div class="line">    <span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"defaultGreeting"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getGreeting</span><span class="params">(String username)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate()</div><div class="line">          .getForObject(<span class="string">"http://localhost:9090/greeting/&#123;username&#125;"</span>, </div><div class="line">          String.class, username);</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">defaultGreeting</span><span class="params">(String username)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Hello User!"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在Application中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SpringBootApplication</span></div><div class="line"><span class="meta">@EnableCircuitBreaker</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestConsumerApplication</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        SpringApplication.run(RestConsumerApplication.class, args);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>@EnableCircuitBreaker注释将扫描类路径以查找任何兼容的Circuit Breaker实现。</p>
+<h4 id="与Feign整合"><a href="#与Feign整合" class="headerlink" title="与Feign整合"></a>与Feign整合</h4><p>在集成Feign的基础上修改如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"statistics-service"</span>, fallback = StatisticsServiceClientFallback.class)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StatisticsServiceClient</span> </span>&#123;</div><div class="line">	<span class="meta">@RequestMapping</span>(method = RequestMethod.PUT, value = <span class="string">"/statistics/&#123;accountName&#125;"</span>)</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">updateStatistics</span><span class="params">(@PathVariable(<span class="string">"accountName"</span>)</span> String accountName, Account account)</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Component</span></div><div class="line"><span class="meta">@Slf</span>4j</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StatisticsServiceClientFallback</span> <span class="keyword">implements</span> <span class="title">StatisticsServiceClient</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateStatistics</span><span class="params">(String accountName, Account account)</span> </span>&#123;</div><div class="line">        log.error(<span class="string">"Error during update statistics for account: &#123;&#125;"</span>, accountName);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在配置文件中打开：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">feign.hystrix.enabled=true</div></pre></td></tr></table></figure>
+<h4 id="使用fallbackFactory检查具体错误"><a href="#使用fallbackFactory检查具体错误" class="headerlink" title="使用fallbackFactory检查具体错误"></a>使用fallbackFactory检查具体错误</h4><p>在一些场景中，简单的触发在 FeignClient 加入 Fallback 属性即可，而另外有一些场景需要访问导致回退触发的原因，那么这个时候可以在 FeignClient 中加入 FallbackFactory 属性即可；</p>
+<ol>
+<li>定义一个类，实现FallbackFactory</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Component</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebError</span> <span class="keyword">implements</span> <span class="title">FallbackFactory</span>&lt;<span class="title">ConsumerApi</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> ConsumerApi <span class="title">create</span><span class="params">(Throwable cause)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ConsumerApi() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> String <span class="title">getById</span><span class="params">(Integer id)</span> </span>&#123;</div><div class="line">        <span class="comment">//针对不同异常返回响应</span></div><div class="line">				<span class="keyword">if</span>(cause <span class="keyword">instanceof</span> InternalServerError) &#123;</div><div class="line">					System.out.println(<span class="string">"InternalServerError"</span>);</div><div class="line">					<span class="keyword">return</span> <span class="string">"远程服务报错"</span>;</div><div class="line">				&#125;<span class="keyword">else</span> <span class="keyword">if</span>(cause <span class="keyword">instanceof</span> RuntimeException) &#123;</div><div class="line">					<span class="keyword">return</span> <span class="string">"请求时异常："</span> + cause;</div><div class="line">				&#125;<span class="keyword">else</span> &#123;</div><div class="line">					<span class="keyword">return</span> <span class="string">"都算不上"</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>@Feign中的使用<code>@FeignClient(name = &quot;statistics-service&quot;, fallbackFactory = WebError.class)</code></li>
+</ol>
+<h3 id="主要配置项"><a href="#主要配置项" class="headerlink" title="主要配置项"></a>主要配置项</h3><table>
+<thead>
+<tr>
+<th>配置项(前缀hystrix.command.*.)</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>execution.isolation.strategy</td>
+<td>线程“THREAD”或信号量“SEMAPHORE”隔离(Default: THREAD)</td>
+</tr>
+<tr>
+<td>execution.isolation.thread.timeoutInMilliseconds</td>
+<td>run()方法执行超时时间(Default: 1000)</td>
+</tr>
+<tr>
+<td>execution.isolation.semaphore.maxConcurrentRequests</td>
+<td>信号量隔离最大并发数(Default:10)</td>
+</tr>
+<tr>
+<td>circuitBreaker.errorThresholdPercentage</td>
+<td>熔断的错误百分比阀值(Default:50)</td>
+</tr>
+<tr>
+<td>circuitBreaker.requestVolumeThreshold</td>
+<td>断路器生效必须满足的流量阀值(Default:20)</td>
+</tr>
+<tr>
+<td>circuitBreaker.sleepWindowInMilliseconds</td>
+<td>熔断后重置断路器的时间间隔(Default:5000)</td>
+</tr>
+<tr>
+<td>circuitBreaker.forceOpen</td>
+<td>设true表示强制熔断器进入打开状态(Default: false)</td>
+</tr>
+<tr>
+<td>circuitBreaker.forceClosed</td>
+<td>设true表示强制熔断器进入关闭状态(Default: false)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>配置项(前缀hystrix.threadpool.*.)</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coreSize</td>
+<td>使用线程池时的最大并发请求(Default: 10)</td>
+</tr>
+<tr>
+<td>maxQueueSize</td>
+<td>最大LinkedBlockingQueue大小，-1表示用SynchronousQueue(Default:-1)</td>
+</tr>
+<tr>
+<td>default.queueSizeRejectionThreshold</td>
+<td>队列大小阀值，超过则拒绝(Default:5)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Hystrix-Dashboard"><a href="#Hystrix-Dashboard" class="headerlink" title="Hystrix Dashboard"></a><strong>Hystrix Dashboard</strong></h3><p>Hystrix有一个不错的可选功能是能够在仪表板上监视其状态。 为了启用它，我们将<code>spring-cloud-starter-hystrix-dashboard</code>和<code>spring-boot-starter-actuator</code>放入项目的pom.xml中。</p>
+<p>然后添加<code>@EnableHystrixDashboard</code>注解。</p>
+<p>启动应用程序后，将浏览器指向<a href="http://localhost:8080/hystrix，输入“" target="_blank" rel="external">http://localhost:8080/hystrix，输入“</a> hystrix.stream”的指标URL并开始监视。</p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li><a href="https://www.baeldung.com/spring-cloud-netflix-hystrix" target="_blank" rel="external">A Guide to Spring Cloud Netflix – Hystrix</a></li>
+</ul>
+<hr>
+<ul>
+<li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
+<li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
+<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
+<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;容错&quot;&gt;&lt;a href=&quot;#容错&quot; class=&quot;headerlink&quot; title=&quot;容错&quot;&gt;&lt;/a&gt;容错&lt;/h2&gt;&lt;p&gt;基本的容错模式有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;主动超时：&lt;/li&gt;
+&lt;li&gt;限流：限制最大并发数&lt;/li&gt;
+&lt;li&gt;熔断：错误数达到阈值时，
+    
+    </summary>
+    
+      <category term="Spring" scheme="http://webfuse.cn/categories/Spring/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/categories/Spring/Spring-Cloud/"/>
+    
+    
+      <category term="微服务" scheme="http://webfuse.cn/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+      <category term="Spring Cloud" scheme="http://webfuse.cn/tags/Spring-Cloud/"/>
+    
+  </entry>
+  
+  <entry>
     <title>从0开始用SpringCloud搭建微服务系统【三】</title>
     <link href="http://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/25/从0开始用SpringCloud搭建微服务系统【三】/</id>
     <published>2020-04-25T09:38:59.000Z</published>
-    <updated>2020-04-25T09:45:06.541Z</updated>
+    <updated>2020-04-27T08:32:23.570Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务间通信"><a href="#服务间通信" class="headerlink" title="服务间通信"></a>服务间通信</h2><p>微服务间可以使用 HTTP 协议，RESTful 规范进行通信。Spring Cloud 提供了 2 种 RESTful 调用方式：Ribbon 和 Feign 。</p>
 <h3 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h3><p>客户端软负载组件，支持Eureka对接，支持多种可插拔LB策略。依赖 <code>spring-cloud-starter-netflix-eureka-client</code> 中已经默认加载了 Ribbon 的依赖。</p>
@@ -147,6 +333,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
+<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
 </ul>
 ]]></content>
     
@@ -172,7 +359,7 @@
     <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【二】/</id>
     <published>2020-04-22T12:22:35.000Z</published>
-    <updated>2020-04-25T09:45:13.351Z</updated>
+    <updated>2020-04-27T08:32:17.463Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务注册与服务发现"><a href="#服务注册与服务发现" class="headerlink" title="服务注册与服务发现"></a>服务注册与服务发现</h2><ol>
 <li><p>背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。</p>
@@ -286,6 +473,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
+<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
 </ul>
 ]]></content>
     
@@ -312,7 +500,7 @@
     <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/</id>
     <published>2020-04-22T07:58:34.000Z</published>
-    <updated>2020-04-25T09:44:52.195Z</updated>
+    <updated>2020-04-27T08:32:27.821Z</updated>
     
     <content type="html"><![CDATA[<h2 id="微服务与-Spring-Cloud"><a href="#微服务与-Spring-Cloud" class="headerlink" title="微服务与 Spring Cloud"></a>微服务与 Spring Cloud</h2><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h4 id="从单体到微服务"><a href="#从单体到微服务" class="headerlink" title="从单体到微服务"></a>从单体到微服务</h4><h5 id="单体服务"><a href="#单体服务" class="headerlink" title="单体服务"></a>单体服务</h5><ul>
 <li><p>概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。</p>
@@ -401,6 +589,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
+<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
 </ul>
 ]]></content>
     
@@ -2004,131 +2193,6 @@
     
     
       <category term="区块链" scheme="http://webfuse.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>以太坊学习摘要</title>
-    <link href="http://webfuse.cn/2018/08/24/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%AD%A6%E4%B9%A0%E6%91%98%E8%A6%81/"/>
-    <id>http://webfuse.cn/2018/08/24/以太坊学习摘要/</id>
-    <published>2018-08-24T14:05:11.000Z</published>
-    <updated>2018-08-24T16:26:56.271Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="以太坊"><a href="#以太坊" class="headerlink" title="以太坊"></a>以太坊</h2><p>以太坊（Ethereum）是一个建立在区块链技术之上， 去中心化应用平台。它允许任何人在平台中建立和使用通过区块链技术运行的去中心化应用。与比特币相比，以太坊属于区块链2.0的范畴。</p>
-<p>从平台角度来看，以太坊类似于苹果或者安卓的应用商店；从技术角度来说，以太坊类似于一个区块链操作系统。</p>
-<p>下图是以太坊的组成：</p>
-<img src="/2018/08/24/以太坊学习摘要/以太坊组成.png" alt="以太坊组成.png" title="">
-<p>所以，可以理解为：“以太坊=区块链+智能合约”。开发者在以太坊上可以开发任意的应用，实现任意的智能合约。以太坊的虚拟机和智能合约扩展了外部应用程序在区块链技术上的应用。另外，以太坊中的智能合约是运行在虚拟机（也就是EVM，Ethereum Virtual Machine，以太坊虚拟机）上的。</p>
-<h2 id="智能合约"><a href="#智能合约" class="headerlink" title="智能合约"></a>智能合约</h2><p>智能合约就是以太坊上的程序，它是代码和数据（状态）的集合。所以，不管什么样功能的合约，站在技术的角度上来讲，就是通过执行一组程序改变了一些值。</p>
-<p>我们不但可以实现数字货币，还可以实现众筹合约、担保合约、融资租赁合约、期货合约以及各种金融与非金融的订单合约。</p>
-<p>在以太坊中，每个合约都有一个唯一的地址来标识它自己（由创建者的哈希地址和曾经发送过的交易的数量推算出来）。客户端可以与这个地址进行交互，可以发送ether，调用函数，查询当前的状态等。</p>
-<p>有三种常见的智能合约语言，这些语言可以被编译成智能合约运行在以太坊虚拟矿机上。它们是：</p>
-<ul>
-<li>Solidity：和Javascript语言类似。这是目前最受欢迎的和功能丰富的智能合约脚本语言。</li>
-<li>Serpent：和Python语言类似，在以太坊历史的早期受欢迎。</li>
-<li>LLL (Lisp Like Language)：和Lisp类似，只有在早期使用。它大概是最难用的。</li>
-</ul>
-<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>状态可以理解为以太坊中的某些内容发生变化。</p>
-<p>对于区块链账本，这里的变化可以指一笔转账，也可以是合约的某个规则被激活等，总之就是数据动了，以太坊中将变化的过程称为<strong>状态转变函数</strong></p>
-<p>在以太坊系统中，状态是由被称为“账户”的对象和在两个账户之间转移价值和信息的状态转换构成的。</p>
-<blockquote>
-<p>以太坊的每个区块头中都包含了指向三棵树（状态树、交易树、数据树）的指针。</p>
-</blockquote>
-<h2 id="账户"><a href="#账户" class="headerlink" title="账户"></a>账户</h2><p>以太坊具有账户的概念。在以太坊中有两类的账户：外部账户 和 合约账户。</p>
-<h3 id="外部账户"><a href="#外部账户" class="headerlink" title="外部账户"></a>外部账户</h3><p>外部账户（EOA，Externally Owned Account）,它就是一个一般账户的概念。外部账户是由一对秘钥定义的，一个私钥一个公钥，公钥的后20位作为地址。</p>
-<p>外部账户没有关联任何的代码。</p>
-<h3 id="合约账户"><a href="#合约账户" class="headerlink" title="合约账户"></a>合约账户</h3><p>智能合约的部署是指把合约字节码发布到区块链上，并使用一个特定的地址来标示这个合约，这个地址称为合约账户。合约账户是可编程的，可以执行图灵完备的计算任务，合约账户之间可以传递消息。</p>
-<h3 id="区别和联系"><a href="#区别和联系" class="headerlink" title="区别和联系"></a>区别和联系</h3><p>合约账户的地址是通过合约创建者的地址和该地址发出过的交易数量计算得到的。</p>
-<p>一个外部账户可以通过创建和用自己的私钥来对交易进行签名，来发送消息给另一个外部账户或合约账户。</p>
-<p>在两个外部账户之间传送消息是价值转移的过程。但从外部账户到合约账户的消息会激活合约账户的代码，允许它执行各种动作（比如转移代币，写入内部存储，挖出一个新代币，执行一些运算，创建一个新的合约等等）。</p>
-<p>只有当外部账户发出指令时，合同账户才会执行相应的操作。</p>
-<h3 id="账户的结构"><a href="#账户的结构" class="headerlink" title="账户的结构"></a>账户的结构</h3><p>以太坊中的账户包含以下4个部分：</p>
-<ul>
-<li>随机数（Nonce）。用于确定每笔交易智能被处理一次的计数器，也就是每个账户的交易计数，用于防止重放攻击。当某个账户发送一笔交易时，根据已生成的交易数来累加这个数字。</li>
-<li>账户目前的以太币余额（Balance）。</li>
-<li>账户的存储（Root），它是一个哈希值，指向的是一棵patricia trie（帕夏尔前缀树）。默认为空</li>
-<li>账户的合约代码（CodeHash），只有合约账户才有，否则为空。</li>
-</ul>
-<h2 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h2><p>以太坊中的交易就是状态的转换过程。</p>
-<p>交易在以太坊中是在签名的数据包，这个数据包中存储了从外部账户发送的消息。所谓的交易就是一个消息，这个消息被发送者签名了。</p>
-<h3 id="交易类型："><a href="#交易类型：" class="headerlink" title="交易类型："></a>交易类型：</h3><ul>
-<li>转账交易。也就是从一个账户往另一个账户转账发以太币。</li>
-<li>合约创建交易。也就是创建一个合约，因为创建合约也要消耗以太坊。</li>
-<li>合约执行交易。在以太坊中，执行合约也算一种交易。</li>
-</ul>
-<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><ul>
-<li>AccountNonce：表明交易的发送者已经发送过的交易数，与账户中定义的随机数对应。</li>
-<li>Price和GasLimit：用来抵抗拒绝服务攻击。就是为了让交易的执行带上成本，每进行一次交易都要支付一定的手续费，GasLimit是交易执行所需的计算量，Price是单价，两者的乘积就是手续费。如果交易在执行的过程中实际所需的消耗超出了Gas限制就会出错回滚，如果存在多余的Gas就会退还多余部分。</li>
-<li>Recipient：接收方的地址。</li>
-<li>Amount：发送的以太坊金额，单位wei。</li>
-<li>Payload：交易携带的数据，根据不同的交易类型有不同的用法。</li>
-<li>V、R、S：交易的签名数字。</li>
-</ul>
-<blockquote>
-<p>以太坊的区块头中有交易信息。</p>
-</blockquote>
-<h3 id="计量单位"><a href="#计量单位" class="headerlink" title="计量单位"></a>计量单位</h3><p>最小单位是wei。1 ether = 1000 000 000 000 000 000 wei。</p>
-<blockquote>
-<p>kwei = 1000wei</p>
-<p>mwei = 1000kwei</p>
-<p>gwei = 1000mwei</p>
-<p>szabo = 1000gwei</p>
-<p>finney = 1000szabo</p>
-<p>ether = 1000finney</p>
-</blockquote>
-<h2 id="收据"><a href="#收据" class="headerlink" title="收据"></a>收据</h2><p>在以太坊中，收据是指每条交易执行所影响的数据条，在以太坊的区块头中存储了收据树的根哈希值。</p>
-<p>收据实际上是一个数据的统计记录，记录了执行后的特征数据。</p>
-<p>数据结构如下：</p>
-<ul>
-<li>PostState： 状态树的根哈希。通过这个字段使得收据可以直接访问都状态数据。</li>
-<li>CumulativeGasUsed：累计的Gas消耗，包含关联的本条交易以及之前的交易所消耗的Gas之和，或者说是指所在区域的Gas消耗之和。</li>
-<li>TxHash：交易事务的哈希值。</li>
-<li>ContractAddress：合约地址，如果是普通的转账交易则为空。</li>
-<li>GasUsed：本条交易消耗的Gas。</li>
-</ul>
-<h2 id="Gas"><a href="#Gas" class="headerlink" title="Gas"></a>Gas</h2><p>在以太坊中Gas可以理解为在以太坊平台上执行程序需要付出的成本或者手续费。</p>
-<p>Gas是通过以太坊中合约的执行计算量来决定的，这个计算量可以简单理解为是算力的消耗，执行一次SHA3哈希计算会消耗20个Gas，执行一次普通的转账交易就要消耗21000个Gas。</p>
-<p>以太币总额 = 消耗的Gas ✖️ Gas单价。</p>
-<h2 id="以太坊客户端"><a href="#以太坊客户端" class="headerlink" title="以太坊客户端"></a>以太坊客户端</h2><p>以太坊客户端，其实我们可以把它理解为一个开发者工具，它提供账户管理、挖矿、转账、智能合约的部署和执行等等功能。</p>
-<p>go-ethereum是官方的Go语言客户端。可用于挖矿、组件私有链、管理账号、部署智能合约等。它提供了一个交互式命令控制台，通过命令控制台中包含了以太坊的各种功能（API）。</p>
-<p>除go-ethereum外，官方还提供了cpp-ethereum，基于C++写的。</p>
-<h2 id="以太坊网络"><a href="#以太坊网络" class="headerlink" title="以太坊网络"></a>以太坊网络</h2><p>我们可以把以太网络分为3种：主网、测试网络和私有网络。</p>
-<ul>
-<li>生产环境网络（主网）: 以太坊的生产网络顾名思义，也就是产生真正有价值的 的以太币的网络。</li>
-<li>测试网络: 以太坊的测试网络也是官方提供的，顾名思义就是专供用户来开发、调试和测试的。上面的合约执行不消耗真实的以太币。官方提供的为：Rinkeby</li>
-<li>私有网络：以太坊的私有网络，顾名思义就是由用户自己创建的私有网络。</li>
-</ul>
-<h2 id="以太币"><a href="#以太币" class="headerlink" title="以太币"></a>以太币</h2><p>以太币每年的产量则是固定的。</p>
-<p>以太币的数量以这种形式存在：Pre-mine（矿前） + Block rewards（区块奖励） + Uncle rewards（叔块奖励） + Uncle referencing rewards（叔块引用奖励）</p>
-<ul>
-<li>矿前：2014年7月/8月间，为众筹大约发行了7200万以太币。这些币有的时候被称之为“矿前”。众筹阶段之后，以太币每年的产量被限制在7200万以太币的25%（每年以太币的矿产量，不高于1800万，除了一次性为crowdsale而发行的7200万以太币）</li>
-<li>区块奖励：每产生一个新区块就会产生5个新以太币。每年有225万个区块被挖出来，每个区块5个以太币，也就是每年会产出1130万个以太币。</li>
-<li>叔块奖励：有些区块被挖得稍晚一些，因此不能称为主区块链的组成部分，以太币称它们为“ uncles”，并且在之后的区块中，可以引用它们。如果uncles在之后的区块链中作为叔块被引用，每个叔块会为挖矿者产出大约4.375个以太币（5个以太币奖励的8分之7）.这被称之为叔块奖励。</li>
-<li>叔块引用奖励：矿工每引用一个叔块，就得到了大约0.15个以太币（最多引用两个叔块）。</li>
-</ul>
-<hr>
-<p>引用：</p>
-<ul>
-<li>《白话区块链》</li>
-<li><a href="https://github.com/ethereum/wiki/wiki/%5B%E4%B8%AD%E6%96%87%5D-%E4%BB%A5%E5%A4%AA%E5%9D%8A%E7%99%BD%E7%9A%AE%E4%B9%A6" target="_blank" rel="external">以太坊白皮书</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/24012669" target="_blank" rel="external">一个基础的以太坊介绍</a></li>
-<li><a href="https://learnblockchain.cn/2017/11/20/whatiseth/" target="_blank" rel="external">以太坊是什么 - 以太坊开发入门指南</a></li>
-<li><a href="http://me.tryblockchain.org/getting-up-to-speed-on-ethereum.html" target="_blank" rel="external">以太坊开发入门，完整入门篇</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;以太坊&quot;&gt;&lt;a href=&quot;#以太坊&quot; class=&quot;headerlink&quot; title=&quot;以太坊&quot;&gt;&lt;/a&gt;以太坊&lt;/h2&gt;&lt;p&gt;以太坊（Ethereum）是一个建立在区块链技术之上， 去中心化应用平台。它允许任何人在平台中建立和使用通过区块链技术运行的去中心化
-    
-    </summary>
-    
-      <category term="区块链" scheme="http://webfuse.cn/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-    
-      <category term="区块链" scheme="http://webfuse.cn/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-      <category term="以太坊" scheme="http://webfuse.cn/tags/%E4%BB%A5%E5%A4%AA%E5%9D%8A/"/>
     
   </entry>
   

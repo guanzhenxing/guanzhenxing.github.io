@@ -94,19 +94,17 @@
 
 
 
-  <meta name="description" content="微服务与 Spring Cloud微服务从单体到微服务单体服务 概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。  优点：容易开发、测试、部署，适合项目初期试错。  缺点：  随着项目越来越复杂，团队不断扩大。坏处就显现出来了。  复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。 技术债务：人员流">
+  <meta name="description" content="容错基本的容错模式有：  主动超时： 限流：限制最大并发数 熔断：错误数达到阈值时，类似保险丝熔断 隔离：隔离不同的依赖调用或者隔离不同的线程 降级：服务降低  容错理念：  凡是依赖都可能会失败 凡是资源都有限制 CPU/Memory/Threads/Queue   网络并不可靠 延迟是应用稳定性杀手  Netflix HystrixHystrix实现了 超时机制和断路器模式。 Hystrix是">
 <meta name="keywords" content="微服务,Spring Cloud">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从0开始用SpringCloud搭建微服务系统【一】">
-<meta property="og:url" content="http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/index.html">
+<meta property="og:title" content="从0开始用SpringCloud搭建微服务系统【四】">
+<meta property="og:url" content="http://webfuse.cn/2020/04/27/从0开始用SpringCloud搭建微服务系统【四】/index.html">
 <meta property="og:site_name" content="WebFuse">
-<meta property="og:description" content="微服务与 Spring Cloud微服务从单体到微服务单体服务 概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。  优点：容易开发、测试、部署，适合项目初期试错。  缺点：  随着项目越来越复杂，团队不断扩大。坏处就显现出来了。  复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。 技术债务：人员流">
-<meta property="og:image" content="http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/基础微服务架构图.png">
-<meta property="og:updated_time" content="2020-04-27T08:32:27.821Z">
+<meta property="og:description" content="容错基本的容错模式有：  主动超时： 限流：限制最大并发数 熔断：错误数达到阈值时，类似保险丝熔断 隔离：隔离不同的依赖调用或者隔离不同的线程 降级：服务降低  容错理念：  凡是依赖都可能会失败 凡是资源都有限制 CPU/Memory/Threads/Queue   网络并不可靠 延迟是应用稳定性杀手  Netflix HystrixHystrix实现了 超时机制和断路器模式。 Hystrix是">
+<meta property="og:updated_time" content="2020-04-27T08:32:20.403Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从0开始用SpringCloud搭建微服务系统【一】">
-<meta name="twitter:description" content="微服务与 Spring Cloud微服务从单体到微服务单体服务 概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。  优点：容易开发、测试、部署，适合项目初期试错。  缺点：  随着项目越来越复杂，团队不断扩大。坏处就显现出来了。  复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。 技术债务：人员流">
-<meta name="twitter:image" content="http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/基础微服务架构图.png">
+<meta name="twitter:title" content="从0开始用SpringCloud搭建微服务系统【四】">
+<meta name="twitter:description" content="容错基本的容错模式有：  主动超时： 限流：限制最大并发数 熔断：错误数达到阈值时，类似保险丝熔断 隔离：隔离不同的依赖调用或者隔离不同的线程 降级：服务降低  容错理念：  凡是依赖都可能会失败 凡是资源都有限制 CPU/Memory/Threads/Queue   网络并不可靠 延迟是应用稳定性杀手  Netflix HystrixHystrix实现了 超时机制和断路器模式。 Hystrix是">
 
 
 
@@ -116,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/"/>
+  <link rel="canonical" href="http://webfuse.cn/2020/04/27/从0开始用SpringCloud搭建微服务系统【四】/"/>
 
 
 
@@ -126,7 +124,7 @@
   };
 </script>
 
-  <title>从0开始用SpringCloud搭建微服务系统【一】 | WebFuse</title>
+  <title>从0开始用SpringCloud搭建微服务系统【四】 | WebFuse</title>
   
 
 
@@ -381,7 +379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2020/04/27/从0开始用SpringCloud搭建微服务系统【四】/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jesen Kwan"/>
@@ -398,7 +396,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">从0开始用SpringCloud搭建微服务系统【一】
+          <h1 class="post-title" itemprop="name headline">从0开始用SpringCloud搭建微服务系统【四】
 
               
             
@@ -424,23 +422,13 @@
                 
               
 
-              <time title="创建时间：2020-04-22 15:58:34" itemprop="dateCreated datePublished" datetime="2020-04-22T15:58:34+08:00">2020-04-22</time>
+              <time title="创建时间：2020-04-27 16:30:38 / 修改时间：16:32:20" itemprop="dateCreated datePublished" datetime="2020-04-27T16:30:38+08:00">2020-04-27</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-04-27 16:32:27" itemprop="dateModified" datetime="2020-04-27T16:32:27+08:00">2020-04-27</time>
-              </span>
             
           
 
@@ -507,87 +495,154 @@
       
 
       
-        <h2 id="微服务与-Spring-Cloud"><a href="#微服务与-Spring-Cloud" class="headerlink" title="微服务与 Spring Cloud"></a>微服务与 Spring Cloud</h2><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h4 id="从单体到微服务"><a href="#从单体到微服务" class="headerlink" title="从单体到微服务"></a>从单体到微服务</h4><h5 id="单体服务"><a href="#单体服务" class="headerlink" title="单体服务"></a>单体服务</h5><ul>
-<li><p>概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。</p>
-</li>
-<li><p>优点：容易开发、测试、部署，适合项目初期试错。</p>
-</li>
-<li><p>缺点：</p>
-<p> 随着项目越来越复杂，团队不断扩大。坏处就显现出来了。</p>
+        <h2 id="容错"><a href="#容错" class="headerlink" title="容错"></a>容错</h2><p>基本的容错模式有：</p>
 <ul>
-<li>复杂性高：代码多，十万行，百万行级别。加一个小功能，会带来其他功能的隐患，因为它们在一起。</li>
-<li>技术债务：人员流动，不坏不修，因为不敢修。</li>
-<li>持续部署困难：由于是全量应用，改一个小功能，全部部署，会导致无关的功能暂停使用。编译部署上线耗时长，不敢随便部署，导致部署频率低，进而又导致两次部署之间 功能修改多，越不敢部署，恶性循环。</li>
-<li>可靠性差：某个小问题，比如小功能出现 OOM，会导致整个应用崩溃。</li>
-<li>扩展受限：只能整体扩展，无法按照需要进行扩展， 不能根据计算密集型（派单系统）和IO密集型（文件服务） 进行合适的区分。</li>
-<li>阻碍创新：单体应用是以一种技术解决所有问题，不容易引入新技术。但在高速的互联网发展过程中，适应的潮流是：用合适的语言做合适的事情。比如在单体应用中，一个项目用 spring MVC，想换成s pring boot，切换成本很高，因为有可能10万，百万行代码都要改。</li>
+<li>主动超时：</li>
+<li>限流：限制最大并发数</li>
+<li>熔断：错误数达到阈值时，类似保险丝熔断</li>
+<li>隔离：隔离不同的依赖调用或者隔离不同的线程</li>
+<li>降级：服务降低</li>
 </ul>
-</li>
-</ul>
-<h5 id="微服务-1"><a href="#微服务-1" class="headerlink" title="微服务"></a>微服务</h5><ul>
-<li><p><a href="https://martinfowler.com/" target="_blank" rel="external">Martin Fowler</a> 在 2014年提出 <a href="https://www.martinfowler.com/articles/microservices.html" target="_blank" rel="external">Microservices架构</a></p>
-</li>
-<li><p>微服务是一种架构风格，将单体应用划分为小型的服务单元。</p>
-</li>
-<li><p>微服务架构是一种使用一系列粒度较小的服务来开发单个应用的方式。</p>
+<p>容错理念：</p>
 <ul>
-<li>每个服务运行在自己的进程中</li>
-<li>服务间采用轻量级的方式进行通信（通常是HTTP API）</li>
-<li>这些服务是基于业务逻辑和范围，通过自动化部署的机制来独立部署的，并且服务的集中管理应该是最低限度的，即每个服务可以采用不同的编程语言编写，使用不同的数据存储技术。</li>
+<li>凡是依赖都可能会失败</li>
+<li>凡是资源都有限制<ul>
+<li>CPU/Memory/Threads/Queue</li>
 </ul>
 </li>
-<li><p>优点：</p>
+<li>网络并不可靠</li>
+<li>延迟是应用稳定性杀手</li>
+</ul>
+<h3 id="Netflix-Hystrix"><a href="#Netflix-Hystrix" class="headerlink" title="Netflix Hystrix"></a>Netflix Hystrix</h3><p>Hystrix实现了 超时机制和断路器模式。</p>
+<p>Hystrix是Netflix开源的一个类库，用于隔离远程系统、服务或者第三方库，防止级联失败，从而提升系统的可用性与容错性。主要有以下几点功能：</p>
 <ul>
-<li>独立部署。不依赖其他服务，耦合性低，不用管其他服务的部署对自己的影响。</li>
-<li>易于开发和维护。关注特定业务，所以业务清晰，代码量少，模块变的易开发、易理解、易维护。</li>
-<li>启动快。功能少，代码少，所以启动快，有需要停机维护的服务，不会长时间暂停服务。</li>
-<li>局部修改容易。只需要部署 相应的服务即可，适合敏捷开发。</li>
-<li>技术栈不受限。java，node.js，go 等</li>
-<li>按需伸缩.某个服务受限，可以按需增加内存，cpu 等。</li>
-<li>职责专一。专门团队负责专门业务，有利于团队分工。</li>
-<li>代码复用。不需要重复写。底层实现通过接口方式提供。</li>
-<li>便于团队协作：每个团队只需要提供 API 就行，定义好 API 后，可以并行开发。</li>
+<li>为系统提供保护机制。在依赖的服务出现高延迟或失败时，为系统提供保护和控制。</li>
+<li>防止雪崩。</li>
+<li>包裹请求：使用HystrixCommand（或HystrixObservableCommand）包裹对依赖的调用逻辑，每个命令在独立线程中运行。</li>
+<li>跳闸机制：当某服务失败率达到一定的阈值时，Hystrix可以自动跳闸，停止请求该服务一段时间。</li>
+<li>资源隔离：Hystrix为每个请求都的依赖都维护了一个小型线程池，如果该线程池已满，发往该依赖的请求就被立即拒绝，而不是排队等候，从而加速失败判定。防止级联失败。</li>
+<li>快速失败：Fail Fast。同时能快速恢复。侧重点是：（不去真正的请求服务，发生异常再返回），而是直接失败。</li>
+<li>监控：Hystrix可以实时监控运行指标和配置的变化，提供近实时的监控、报警、运维控制。</li>
+<li>回退机制：fallback，当请求失败、超时、被拒绝，或当断路器被打开时，执行回退逻辑。回退逻辑我们自定义，提供优雅的服务降级。</li>
+<li>自我修复：断路器打开一段时间后，会自动进入“半开”状态，可以进行打开，关闭，半开状态的转换。</li>
 </ul>
-</li>
-<li>缺点：<ul>
-<li>分布式固有的复杂性。容错，网络延时，调用关系、分布式事务等，都会带来复杂。</li>
-<li>分布式事务的挑战。每个服务有自己的数据库，有点在于不同服务可以选择适合自身业务的数据库。订单用MySQL，评论用Mongodb等。目前最理想解决方案是：柔性事务的最终一致性。</li>
-<li>接口调整成本高。改一个接口，调用方都要改。</li>
-<li>测试难度提升。一个接口改变，所有调用方都得测。自动化测试就变得重要了，API文档的管理也尤为重要。</li>
-<li>运维要求高。需要维护几十上百个服务，监控变的复杂，并且还要关注多个集群。</li>
-<li>重复工作。比如 java 的工具类可以在共享 common.ja r中，但在多语言下行不通，C++ 无法直接用 java的 jar 包。</li>
-</ul>
-</li>
-</ul>
-<h4 id="微服务组件"><a href="#微服务组件" class="headerlink" title="微服务组件"></a>微服务组件</h4><p>基于微服务的特性，微服务的组件不局限于技术的实现。主要的组件有：</p>
-<ul>
-<li>服务注册与发现：服务提供方将己方调用地址注册到服务注册中心，让服务调用方能够方便地找到自己；服务调用方从服务注册中心找到自己需要调用的服务的地址。</li>
-<li>负载均衡：服务提供方一般以多实例的形式提供服务，负载均衡功能能够让服务调用方连接到合适的服务节点。并且，服务节点选择的过程对服务调用方来说是透明的。</li>
-<li>服务网关：服务网关是服务调用的唯一入口，可以在这个组件中实现用户鉴权、动态路由、灰度发布、A/B测试、负载限流等功能。</li>
-<li>配置中心：将本地化的配置信息（Properties、XML、YAML等形式）注册到配置中心，实现程序包在开发、测试、生产环境中的无差别性，方便程序包的迁移，也是无状态特性。</li>
-<li>集成框架：微服务组件都以职责单一的程序包对外提供服务，集成框架以配置的形式将所有微服务组件(特别是管理端组件)集成到统一的界面框架下，让用户能够在统一的界面中使用系统。Spring Cloud 就是一个集成框架。</li>
-<li>调用链监控：记录完成一次请求的先后衔接和调用关系，并将这种串行或并行的调用关系展示出来。在系统出错时，可以方便地找到出错点。</li>
-<li>支撑平台：系统微服务化后，各个业务模块经过拆分变得更加细化，系统的部署、运维、监控等都比单体应用架构更加复杂，这就需要将大部分的工作自动化。现在，Docker 等工具可以给微服务架构的部署带来较多的便利，例如持续集成、蓝绿发布、健康检查、性能监控等等。如果没有合适的支撑平台或工具，微服务架构就无法发挥它最大的功效。</li>
-</ul>
-<h5 id="常见的架构图"><a href="#常见的架构图" class="headerlink" title="常见的架构图"></a>常见的架构图</h5><img src="/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/基础微服务架构图.png" alt="基础微服务架构图.png" title="">
-<h4 id="Spring-Cloud"><a href="#Spring-Cloud" class="headerlink" title="Spring Cloud"></a>Spring Cloud</h4><p>Spring Cloud 是实现微服务架构的一系列框架的有机集合。是在 Spring Boot 基础上构建的，用于简化分布式系统构建的工具集。是拥有众多子项目的项目集合。利用 Spring Boot 的开发便利性，巧妙地简化了分布式系统基础设施（服务注册与发现、熔断机制、网关路由、配置中心、消息总线、负载均衡、链路追踪等）的开发。</p>
-<h6 id="Spring-Cloud的基础组件"><a href="#Spring-Cloud的基础组件" class="headerlink" title="Spring Cloud的基础组件"></a>Spring Cloud的基础组件</h6><ul>
-<li><p>Eureka：服务注册与发现，用于服务管理。</p>
-</li>
-<li><p>Feign： web调用客户端，能够简化HTTP接口的调用。</p>
-</li>
-<li><p>Ribbon：基于客户端的负载均衡。</p>
-</li>
-<li><p>Hystrix：熔断降级，防止服务雪崩。</p>
-</li>
-<li><p>Zuul：网关路由，提供路由转发、请求过滤、限流降级等功能。</p>
-</li>
-<li><p>Config：配置中心，分布式配置管理。</p>
-</li>
-<li><p>Sleuth：服务链路追踪</p>
-</li>
-<li><p>Admin：健康管理</p>
-</li>
+<h3 id="Hystrix设计原理"><a href="#Hystrix设计原理" class="headerlink" title="Hystrix设计原理"></a>Hystrix设计原理</h3><p>Hystrix的工作原理可以可以参考官网的<a href="https://github.com/Netflix/Hystrix/wiki/How-it-Works" target="_blank" rel="external">How it Works</a>。如果要看中文版，可以参考：<a href="https://segmentfault.com/a/1190000012439580" target="_blank" rel="external">Hystrix工作原理</a>。</p>
+<h4 id="信号量隔离与线程隔离"><a href="#信号量隔离与线程隔离" class="headerlink" title="信号量隔离与线程隔离"></a>信号量隔离与线程隔离</h4><p>默认情况下hystrix使用线程池控制请求隔离</p>
+<p>线程池隔离技术，是用 Hystrix 自己的线程去执行调用；而信号量隔离技术，是直接让 tomcat 线程去调用依赖服务。信号量隔离，只是一道关卡，信号量有多少，就允许多少个 tomcat 线程通过它，然后去执行。</p>
+<p>信号量隔离主要维护的是Tomcat的线程，不需要内部线程池，更加轻量级。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>优点</th>
+<th>不足</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>信号量隔离</td>
+<td>轻量，无额外开销</td>
+<td>不支持任务排队和主动超时<br>不支持异步调用</td>
+<td>受信客户<br>高扇出(网关)<br>高频高速调用(cache)</td>
+</tr>
+<tr>
+<td>线程池隔离</td>
+<td>支持排队和超时<br>支持异步调用</td>
+<td>线程调用会产生额外的开销</td>
+<td>不受信客户<br>有限扇出</td>
+</tr>
+</tbody>
+</table>
+<h3 id="使用Hystrix"><a href="#使用Hystrix" class="headerlink" title="使用Hystrix"></a>使用Hystrix</h3><h4 id="独立使用"><a href="#独立使用" class="headerlink" title="独立使用"></a>独立使用</h4><p>独立使用Hystrix可以参考<a href="https://github.com/Netflix/Hystrix/wiki/How-To-Use" target="_blank" rel="external">How To Use</a>。</p>
+<p>如果想要中文，可以参考：<a href="https://juejin.im/post/5c009ff6f265da614b11b84d" target="_blank" rel="external">Hystrix都停更了，我为什么还要学？</a></p>
+<h4 id="与Resttemplate整合"><a href="#与Resttemplate整合" class="headerlink" title="与Resttemplate整合"></a>与Resttemplate整合</h4><p>引入依赖<code>spring-cloud-starter-netflix-hystrix</code>。</p>
+<p>在Service中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GreetingService</span> </span>&#123;</div><div class="line">    <span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"defaultGreeting"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getGreeting</span><span class="params">(String username)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate()</div><div class="line">          .getForObject(<span class="string">"http://localhost:9090/greeting/&#123;username&#125;"</span>, </div><div class="line">          String.class, username);</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">defaultGreeting</span><span class="params">(String username)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Hello User!"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在Application中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SpringBootApplication</span></div><div class="line"><span class="meta">@EnableCircuitBreaker</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestConsumerApplication</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        SpringApplication.run(RestConsumerApplication.class, args);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>@EnableCircuitBreaker注释将扫描类路径以查找任何兼容的Circuit Breaker实现。</p>
+<h4 id="与Feign整合"><a href="#与Feign整合" class="headerlink" title="与Feign整合"></a>与Feign整合</h4><p>在集成Feign的基础上修改如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FeignClient</span>(name = <span class="string">"statistics-service"</span>, fallback = StatisticsServiceClientFallback.class)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StatisticsServiceClient</span> </span>&#123;</div><div class="line">	<span class="meta">@RequestMapping</span>(method = RequestMethod.PUT, value = <span class="string">"/statistics/&#123;accountName&#125;"</span>)</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">updateStatistics</span><span class="params">(@PathVariable(<span class="string">"accountName"</span>)</span> String accountName, Account account)</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@Component</span></div><div class="line"><span class="meta">@Slf</span>4j</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StatisticsServiceClientFallback</span> <span class="keyword">implements</span> <span class="title">StatisticsServiceClient</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateStatistics</span><span class="params">(String accountName, Account account)</span> </span>&#123;</div><div class="line">        log.error(<span class="string">"Error during update statistics for account: &#123;&#125;"</span>, accountName);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后在配置文件中打开：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">feign.hystrix.enabled=true</div></pre></td></tr></table></figure>
+<h4 id="使用fallbackFactory检查具体错误"><a href="#使用fallbackFactory检查具体错误" class="headerlink" title="使用fallbackFactory检查具体错误"></a>使用fallbackFactory检查具体错误</h4><p>在一些场景中，简单的触发在 FeignClient 加入 Fallback 属性即可，而另外有一些场景需要访问导致回退触发的原因，那么这个时候可以在 FeignClient 中加入 FallbackFactory 属性即可；</p>
+<ol>
+<li>定义一个类，实现FallbackFactory</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Component</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebError</span> <span class="keyword">implements</span> <span class="title">FallbackFactory</span>&lt;<span class="title">ConsumerApi</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> ConsumerApi <span class="title">create</span><span class="params">(Throwable cause)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ConsumerApi() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> String <span class="title">getById</span><span class="params">(Integer id)</span> </span>&#123;</div><div class="line">        <span class="comment">//针对不同异常返回响应</span></div><div class="line">				<span class="keyword">if</span>(cause <span class="keyword">instanceof</span> InternalServerError) &#123;</div><div class="line">					System.out.println(<span class="string">"InternalServerError"</span>);</div><div class="line">					<span class="keyword">return</span> <span class="string">"远程服务报错"</span>;</div><div class="line">				&#125;<span class="keyword">else</span> <span class="keyword">if</span>(cause <span class="keyword">instanceof</span> RuntimeException) &#123;</div><div class="line">					<span class="keyword">return</span> <span class="string">"请求时异常："</span> + cause;</div><div class="line">				&#125;<span class="keyword">else</span> &#123;</div><div class="line">					<span class="keyword">return</span> <span class="string">"都算不上"</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>@Feign中的使用<code>@FeignClient(name = &quot;statistics-service&quot;, fallbackFactory = WebError.class)</code></li>
+</ol>
+<h3 id="主要配置项"><a href="#主要配置项" class="headerlink" title="主要配置项"></a>主要配置项</h3><table>
+<thead>
+<tr>
+<th>配置项(前缀hystrix.command.*.)</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>execution.isolation.strategy</td>
+<td>线程“THREAD”或信号量“SEMAPHORE”隔离(Default: THREAD)</td>
+</tr>
+<tr>
+<td>execution.isolation.thread.timeoutInMilliseconds</td>
+<td>run()方法执行超时时间(Default: 1000)</td>
+</tr>
+<tr>
+<td>execution.isolation.semaphore.maxConcurrentRequests</td>
+<td>信号量隔离最大并发数(Default:10)</td>
+</tr>
+<tr>
+<td>circuitBreaker.errorThresholdPercentage</td>
+<td>熔断的错误百分比阀值(Default:50)</td>
+</tr>
+<tr>
+<td>circuitBreaker.requestVolumeThreshold</td>
+<td>断路器生效必须满足的流量阀值(Default:20)</td>
+</tr>
+<tr>
+<td>circuitBreaker.sleepWindowInMilliseconds</td>
+<td>熔断后重置断路器的时间间隔(Default:5000)</td>
+</tr>
+<tr>
+<td>circuitBreaker.forceOpen</td>
+<td>设true表示强制熔断器进入打开状态(Default: false)</td>
+</tr>
+<tr>
+<td>circuitBreaker.forceClosed</td>
+<td>设true表示强制熔断器进入关闭状态(Default: false)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>配置项(前缀hystrix.threadpool.*.)</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>coreSize</td>
+<td>使用线程池时的最大并发请求(Default: 10)</td>
+</tr>
+<tr>
+<td>maxQueueSize</td>
+<td>最大LinkedBlockingQueue大小，-1表示用SynchronousQueue(Default:-1)</td>
+</tr>
+<tr>
+<td>default.queueSizeRejectionThreshold</td>
+<td>队列大小阀值，超过则拒绝(Default:5)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Hystrix-Dashboard"><a href="#Hystrix-Dashboard" class="headerlink" title="Hystrix Dashboard"></a><strong>Hystrix Dashboard</strong></h3><p>Hystrix有一个不错的可选功能是能够在仪表板上监视其状态。 为了启用它，我们将<code>spring-cloud-starter-hystrix-dashboard</code>和<code>spring-boot-starter-actuator</code>放入项目的pom.xml中。</p>
+<p>然后添加<code>@EnableHystrixDashboard</code>注解。</p>
+<p>启动应用程序后，将浏览器指向<a href="http://localhost:8080/hystrix，输入“" target="_blank" rel="external">http://localhost:8080/hystrix，输入“</a> hystrix.stream”的指标URL并开始监视。</p>
+<h3 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h3><ul>
+<li><a href="https://www.baeldung.com/spring-cloud-netflix-hystrix" target="_blank" rel="external">A Guide to Spring Cloud Netflix – Hystrix</a></li>
 </ul>
 <hr>
 <ul>
@@ -637,8 +692,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/06/Golang简单入门笔记/" rel="next" title="Golang简单入门笔记">
-                <i class="fa fa-chevron-left"></i> Golang简单入门笔记
+              <a href="/2020/04/25/从0开始用SpringCloud搭建微服务系统【三】/" rel="next" title="从0开始用SpringCloud搭建微服务系统【三】">
+                <i class="fa fa-chevron-left"></i> 从0开始用SpringCloud搭建微服务系统【三】
               </a>
             
           </div>
@@ -646,10 +701,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/22/从0开始用SpringCloud搭建微服务系统【二】/" rel="prev" title="从0开始用SpringCloud搭建微服务系统【二】">
-                从0开始用SpringCloud搭建微服务系统【二】 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -971,7 +1022,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#微服务与-Spring-Cloud"><span class="nav-number">1.</span> <span class="nav-text">微服务与 Spring Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#微服务"><span class="nav-number">1.1.</span> <span class="nav-text">微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从单体到微服务"><span class="nav-number">1.1.1.</span> <span class="nav-text">从单体到微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单体服务"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">单体服务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#微服务-1"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">微服务</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微服务组件"><span class="nav-number">1.1.2.</span> <span class="nav-text">微服务组件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常见的架构图"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">常见的架构图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-Cloud"><span class="nav-number">1.1.3.</span> <span class="nav-text">Spring Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Spring-Cloud的基础组件"><span class="nav-number">1.1.3.0.1.</span> <span class="nav-text">Spring Cloud的基础组件</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#容错"><span class="nav-number">1.</span> <span class="nav-text">容错</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Netflix-Hystrix"><span class="nav-number">1.1.</span> <span class="nav-text">Netflix Hystrix</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hystrix设计原理"><span class="nav-number">1.2.</span> <span class="nav-text">Hystrix设计原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信号量隔离与线程隔离"><span class="nav-number">1.2.1.</span> <span class="nav-text">信号量隔离与线程隔离</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Hystrix"><span class="nav-number">1.3.</span> <span class="nav-text">使用Hystrix</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#独立使用"><span class="nav-number">1.3.1.</span> <span class="nav-text">独立使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与Resttemplate整合"><span class="nav-number">1.3.2.</span> <span class="nav-text">与Resttemplate整合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与Feign整合"><span class="nav-number">1.3.3.</span> <span class="nav-text">与Feign整合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用fallbackFactory检查具体错误"><span class="nav-number">1.3.4.</span> <span class="nav-text">使用fallbackFactory检查具体错误</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要配置项"><span class="nav-number">1.4.</span> <span class="nav-text">主要配置项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hystrix-Dashboard"><span class="nav-number">1.5.</span> <span class="nav-text">Hystrix Dashboard</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考："><span class="nav-number">1.6.</span> <span class="nav-text">参考：</span></a></li></ol></li></ol></div>
             
 
           </div>
