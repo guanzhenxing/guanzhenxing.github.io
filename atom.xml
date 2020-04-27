@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2020-04-27T08:32:20.403Z</updated>
+  <updated>2020-04-27T08:34:14.464Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/27/从0开始用SpringCloud搭建微服务系统【四】/</id>
     <published>2020-04-27T08:30:38.000Z</published>
-    <updated>2020-04-27T08:32:20.403Z</updated>
+    <updated>2020-04-27T08:34:14.464Z</updated>
     
     <content type="html"><![CDATA[<h2 id="容错"><a href="#容错" class="headerlink" title="容错"></a>容错</h2><p>基本的容错模式有：</p>
 <ul>
@@ -176,7 +176,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
-<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+<li><a href="https://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
 </ul>
 ]]></content>
     
@@ -206,7 +206,7 @@
     <link href="http://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/25/从0开始用SpringCloud搭建微服务系统【三】/</id>
     <published>2020-04-25T09:38:59.000Z</published>
-    <updated>2020-04-27T08:32:23.570Z</updated>
+    <updated>2020-04-27T08:34:08.791Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务间通信"><a href="#服务间通信" class="headerlink" title="服务间通信"></a>服务间通信</h2><p>微服务间可以使用 HTTP 协议，RESTful 规范进行通信。Spring Cloud 提供了 2 种 RESTful 调用方式：Ribbon 和 Feign 。</p>
 <h3 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h3><p>客户端软负载组件，支持Eureka对接，支持多种可插拔LB策略。依赖 <code>spring-cloud-starter-netflix-eureka-client</code> 中已经默认加载了 Ribbon 的依赖。</p>
@@ -333,7 +333,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
-<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+<li><a href="https://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
 </ul>
 ]]></content>
     
@@ -359,7 +359,7 @@
     <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【二】/</id>
     <published>2020-04-22T12:22:35.000Z</published>
-    <updated>2020-04-27T08:32:17.463Z</updated>
+    <updated>2020-04-27T08:34:18.046Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务注册与服务发现"><a href="#服务注册与服务发现" class="headerlink" title="服务注册与服务发现"></a>服务注册与服务发现</h2><ol>
 <li><p>背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。</p>
@@ -473,7 +473,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
-<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+<li><a href="https://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
 </ul>
 ]]></content>
     
@@ -500,7 +500,7 @@
     <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/</id>
     <published>2020-04-22T07:58:34.000Z</published>
-    <updated>2020-04-27T08:32:27.821Z</updated>
+    <updated>2020-04-27T08:33:58.037Z</updated>
     
     <content type="html"><![CDATA[<h2 id="微服务与-Spring-Cloud"><a href="#微服务与-Spring-Cloud" class="headerlink" title="微服务与 Spring Cloud"></a>微服务与 Spring Cloud</h2><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h4 id="从单体到微服务"><a href="#从单体到微服务" class="headerlink" title="从单体到微服务"></a>从单体到微服务</h4><h5 id="单体服务"><a href="#单体服务" class="headerlink" title="单体服务"></a>单体服务</h5><ul>
 <li><p>概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。</p>
@@ -589,7 +589,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
-<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+<li><a href="https://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
 </ul>
 ]]></content>
     
