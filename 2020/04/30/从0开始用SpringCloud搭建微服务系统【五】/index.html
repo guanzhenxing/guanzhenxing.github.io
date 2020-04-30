@@ -94,17 +94,19 @@
 
 
 
-  <meta name="description" content="这是一篇日常使用MongoDB时候遇到的问题的解决技巧的文章。 查找数组字段不为空的记录查找数据中数组字段不为空的记录。 举个例子：有以下Mongo文档， {     &amp;quot;id&amp;quot; : &amp;quot;581c060f2b436c05aafb1632&amp;quot;,     &amp;quot;commit_history&amp;quot; : [          &amp;quot;581c20d52b4">
-<meta name="keywords" content="实战,MongoDB">
+  <meta name="description" content="调用链监控如果能跟踪每个请求，中间请求经过哪些微服务，请求耗时，网络延迟，业务逻辑耗时等。我们就能更好地分析系统瓶颈、解决系统问题。因此链路跟踪很重要。 链路追踪目的：解决错综复杂的服务调用中链路的查看。排查慢服务。 市面上链路追踪产品，大部分基于google的Dapper论文。 链路追踪要考虑的几个问题 探针的性能消耗。尽量不影响 服务本尊。 易用。开发可以很快接入，别浪费太多精力。 数据分析。">
+<meta name="keywords" content="微服务,Spring Cloud">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MongoDB使用技巧Tips">
-<meta property="og:url" content="http://webfuse.cn/2016/11/07/MongoDB使用技巧Tips/index.html">
+<meta property="og:title" content="从0开始用SpringCloud搭建微服务系统【五】">
+<meta property="og:url" content="http://webfuse.cn/2020/04/30/从0开始用SpringCloud搭建微服务系统【五】/index.html">
 <meta property="og:site_name" content="WebFuse">
-<meta property="og:description" content="这是一篇日常使用MongoDB时候遇到的问题的解决技巧的文章。 查找数组字段不为空的记录查找数据中数组字段不为空的记录。 举个例子：有以下Mongo文档， {     &amp;quot;id&amp;quot; : &amp;quot;581c060f2b436c05aafb1632&amp;quot;,     &amp;quot;commit_history&amp;quot; : [          &amp;quot;581c20d52b4">
-<meta property="og:updated_time" content="2018-07-28T03:19:46.910Z">
+<meta property="og:description" content="调用链监控如果能跟踪每个请求，中间请求经过哪些微服务，请求耗时，网络延迟，业务逻辑耗时等。我们就能更好地分析系统瓶颈、解决系统问题。因此链路跟踪很重要。 链路追踪目的：解决错综复杂的服务调用中链路的查看。排查慢服务。 市面上链路追踪产品，大部分基于google的Dapper论文。 链路追踪要考虑的几个问题 探针的性能消耗。尽量不影响 服务本尊。 易用。开发可以很快接入，别浪费太多精力。 数据分析。">
+<meta property="og:image" content="http://webfuse.cn/2020/04/30/从0开始用SpringCloud搭建微服务系统【五】/sleuth.png">
+<meta property="og:updated_time" content="2020-04-30T02:22:36.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MongoDB使用技巧Tips">
-<meta name="twitter:description" content="这是一篇日常使用MongoDB时候遇到的问题的解决技巧的文章。 查找数组字段不为空的记录查找数据中数组字段不为空的记录。 举个例子：有以下Mongo文档， {     &amp;quot;id&amp;quot; : &amp;quot;581c060f2b436c05aafb1632&amp;quot;,     &amp;quot;commit_history&amp;quot; : [          &amp;quot;581c20d52b4">
+<meta name="twitter:title" content="从0开始用SpringCloud搭建微服务系统【五】">
+<meta name="twitter:description" content="调用链监控如果能跟踪每个请求，中间请求经过哪些微服务，请求耗时，网络延迟，业务逻辑耗时等。我们就能更好地分析系统瓶颈、解决系统问题。因此链路跟踪很重要。 链路追踪目的：解决错综复杂的服务调用中链路的查看。排查慢服务。 市面上链路追踪产品，大部分基于google的Dapper论文。 链路追踪要考虑的几个问题 探针的性能消耗。尽量不影响 服务本尊。 易用。开发可以很快接入，别浪费太多精力。 数据分析。">
+<meta name="twitter:image" content="http://webfuse.cn/2020/04/30/从0开始用SpringCloud搭建微服务系统【五】/sleuth.png">
 
 
 
@@ -114,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://webfuse.cn/2016/11/07/MongoDB使用技巧Tips/"/>
+  <link rel="canonical" href="http://webfuse.cn/2020/04/30/从0开始用SpringCloud搭建微服务系统【五】/"/>
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>MongoDB使用技巧Tips | WebFuse</title>
+  <title>从0开始用SpringCloud搭建微服务系统【五】 | WebFuse</title>
   
 
 
@@ -379,7 +381,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2016/11/07/MongoDB使用技巧Tips/"/>
+    <link itemprop="mainEntityOfPage" href="http://webfuse.cn/2020/04/30/从0开始用SpringCloud搭建微服务系统【五】/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jesen Kwan"/>
@@ -396,7 +398,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MongoDB使用技巧Tips
+          <h1 class="post-title" itemprop="name headline">从0开始用SpringCloud搭建微服务系统【五】
 
               
             
@@ -422,23 +424,13 @@
                 
               
 
-              <time title="创建时间：2016-11-07 19:29:50" itemprop="dateCreated datePublished" datetime="2016-11-07T19:29:50+08:00">2016-11-07</time>
+              <time title="创建时间：2020-04-30 10:20:21 / 修改时间：10:22:36" itemprop="dateCreated datePublished" datetime="2020-04-30T10:20:21+08:00">2020-04-30</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-28 11:19:46" itemprop="dateModified" datetime="2018-07-28T11:19:46+08:00">2018-07-28</time>
-              </span>
             
           
 
@@ -451,7 +443,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MongoDB/" itemprop="url" rel="index"><span itemprop="name">MongoDB</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/Spring-Cloud/" itemprop="url" rel="index"><span itemprop="name">Spring Cloud</span></a></span>
 
                 
                 
@@ -498,26 +497,46 @@
       
 
       
-        <p>这是一篇日常使用MongoDB时候遇到的问题的解决技巧的文章。</p>
-<h1 id="查找数组字段不为空的记录"><a href="#查找数组字段不为空的记录" class="headerlink" title="查找数组字段不为空的记录"></a>查找数组字段不为空的记录</h1><p>查找数据中数组字段不为空的记录。</p>
-<p>举个例子：有以下Mongo文档，</p>
-<pre><code>{
-    &quot;id&quot; : &quot;581c060f2b436c05aafb1632&quot;,
-    &quot;commit_history&quot; : [ 
-        &quot;581c20d52b436c05aafb1633&quot;, 
-        &quot;581c21c12b436c05aafb1634&quot;
-    ]
-},
-{
-    &quot;id&quot; : &quot;581c060f2b436c05aafb1633&quot;,
-    &quot;commit_history&quot; : []
-}
-</code></pre><p>想要查找<code>commit_history</code>不为空的记录，有以下方法：</p>
-<p>方法一： <code>db.collection.find({commit_history: {$not: {$size: 0}}})</code></p>
-<p>方法二： <code>db.collection.find({&#39;commit_history.0&#39;: {$exists: 1}})</code></p>
-<h1 id="MongoDB添加用户"><a href="#MongoDB添加用户" class="headerlink" title="MongoDB添加用户"></a>MongoDB添加用户</h1><p>在MongoDB中为一个Collection添加用户，可以如下操作：</p>
-<p><code>use collection_name</code> 切换到某个库</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">db.createUser(</div><div class="line">   &#123;</div><div class="line">     user: "collection_name",</div><div class="line">     pwd: "password",</div><div class="line">     roles: [ "readWrite", "dbAdmin" ]</div><div class="line">   &#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+        <h2 id="调用链监控"><a href="#调用链监控" class="headerlink" title="调用链监控"></a>调用链监控</h2><p>如果能跟踪每个请求，中间请求经过哪些微服务，请求耗时，网络延迟，业务逻辑耗时等。我们就能更好地分析系统瓶颈、解决系统问题。因此链路跟踪很重要。</p>
+<p>链路追踪目的：解决错综复杂的服务调用中链路的查看。排查慢服务。</p>
+<p>市面上链路追踪产品，大部分基于<a href="http://static.googleusercontent.com/media/research.google.com/zh-CN//pubs/archive/36356.pdf" target="_blank" rel="external">google的Dapper论文</a>。</p>
+<h3 id="链路追踪要考虑的几个问题"><a href="#链路追踪要考虑的几个问题" class="headerlink" title="链路追踪要考虑的几个问题"></a>链路追踪要考虑的几个问题</h3><ol>
+<li>探针的性能消耗。尽量不影响 服务本尊。</li>
+<li>易用。开发可以很快接入，别浪费太多精力。</li>
+<li>数据分析。要实时分析。维度足够。</li>
+</ol>
+<h3 id="Sleuth"><a href="#Sleuth" class="headerlink" title="Sleuth"></a>Sleuth</h3><p>Sleuth是Spring cloud的分布式跟踪解决方案。</p>
+<ol>
+<li><p>span(跨度)，基本工作单元。一次链路调用，创建一个span，span用一个64位id唯一标识。包括：id，描述，时间戳事件，spanId,span父id。</p>
+<p>span被启动和停止时，记录了时间信息，初始化span叫：root span，它的span id和trace id相等。</p>
+</li>
+<li><p>trace(跟踪)，一组共享“root span”的span组成的树状结构 称为 trace，trace也有一个64位ID，trace中所有span共享一个trace id。类似于一颗 span 树。</p>
+</li>
+<li><p>annotation（标签），annotation用来记录事件的存在，其中，核心annotation用来定义请求的开始和结束。</p>
+<ul>
+<li>CS(Client Send客户端发起请求)。客户端发起请求描述了span开始。</li>
+<li>SR(Server Received服务端接到请求)。服务端获得请求并准备处理它。SR-CS=网络延迟。</li>
+<li>SS（Server Send服务器端处理完成，并将结果发送给客户端）。表示服务器完成请求处理，响应客户端时。SS-SR=服务器处理请求的时间。</li>
+<li>CR（Client Received 客户端接受服务端信息）。span结束的标识。客户端接收到服务器的响应。CR-CS=客户端发出请求到服务器响应的总时间。</li>
+</ul>
+</li>
+</ol>
+<p>其实数据结构是一颗树，从root span 开始。</p>
+<img src="/2020/04/30/从0开始用SpringCloud搭建微服务系统【五】/sleuth.png" alt="sleuth.png" title="">
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>在每个需要被监控的系统的pom中引入：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 引入sleuth依赖 --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-sleuth<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>启动后，日志中可以看到类似于：<code>[account-service,,,]</code>的数据，说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[服务名称，traceId（一条请求调用链中 唯一ID），spanID（基本的工作单元，获取数据等），是否让zipkin收集和展示此信息]</div></pre></td></tr></table></figure>
+<h3 id="zipkin"><a href="#zipkin" class="headerlink" title="zipkin"></a>zipkin</h3><p>zipkin是twitter开源的分布式跟踪系统。</p>
+<p>原理收集系统的时序数据，从而追踪微服务架构中系统延时等问题。还有一个友好的界面。</p>
+<p>由4个部分组成：Collector（采集器）、Storage（存储器）、Restful API（接口）、Web UI</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>sleuth收集跟踪信息通过http请求发送给zipkin server，zipkin将跟踪信息存储，以及提供RESTful API接口，zipkin ui通过调用api进行数据展示。</p>
+<p>默认内存存储，可以用mysql，ES等存储。</p>
+<h4 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h4><p>在每个需要被监控的系统的pom中引入：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- zipkin --&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-zipkin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在每个需要监听的服务的配置文件中加入：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">spring:</span></div><div class="line">  <span class="comment">#zipkin</span></div><div class="line"><span class="attr">  zipkin:</span></div><div class="line"><span class="attr">    base-url:</span> <span class="attr">http://localhost:9411/</span></div><div class="line">    <span class="comment">#采样比例1</span></div><div class="line"><span class="attr">  sleuth:</span></div><div class="line"><span class="attr">    sampler:</span></div><div class="line"><span class="attr">      rate:</span> <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>根据<a href="https://zipkin.io/pages/quickstart.html" target="_blank" rel="external">zipkin官网中的Quickstart</a>，启动zipkin。</p>
 
       
     </div>
@@ -544,9 +563,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/实战/" rel="tag"># 实战</a>
+            <a href="/tags/微服务/" rel="tag"># 微服务</a>
           
-            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+            <a href="/tags/Spring-Cloud/" rel="tag"># Spring Cloud</a>
           
         </div>
       
@@ -559,8 +578,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/01/在NodeJs中使用事件、监听器、定时器和回调/" rel="next" title="在NodeJs中使用事件、监听器、定时器和回调">
-                <i class="fa fa-chevron-left"></i> 在NodeJs中使用事件、监听器、定时器和回调
+              <a href="/2020/04/27/从0开始用SpringCloud搭建微服务系统【四】/" rel="next" title="从0开始用SpringCloud搭建微服务系统【四】">
+                <i class="fa fa-chevron-left"></i> 从0开始用SpringCloud搭建微服务系统【四】
               </a>
             
           </div>
@@ -568,10 +587,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/09/代码之外的软技能/" rel="prev" title="代码之外的软技能">
-                代码之外的软技能 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -893,7 +908,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#查找数组字段不为空的记录"><span class="nav-number">1.</span> <span class="nav-text">查找数组字段不为空的记录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MongoDB添加用户"><span class="nav-number">2.</span> <span class="nav-text">MongoDB添加用户</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#调用链监控"><span class="nav-number">1.</span> <span class="nav-text">调用链监控</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#链路追踪要考虑的几个问题"><span class="nav-number">1.1.</span> <span class="nav-text">链路追踪要考虑的几个问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sleuth"><span class="nav-number">1.2.</span> <span class="nav-text">Sleuth</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zipkin"><span class="nav-number">1.3.</span> <span class="nav-text">zipkin</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">1.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">使用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
