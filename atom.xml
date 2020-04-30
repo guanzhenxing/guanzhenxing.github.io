@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://webfuse.cn/"/>
-  <updated>2020-04-30T02:22:36.149Z</updated>
+  <updated>2020-04-30T03:15:21.152Z</updated>
   <id>http://webfuse.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://webfuse.cn/2020/04/30/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%94%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/30/从0开始用SpringCloud搭建微服务系统【五】/</id>
     <published>2020-04-30T02:20:21.000Z</published>
-    <updated>2020-04-30T02:22:36.149Z</updated>
+    <updated>2020-04-30T03:15:21.152Z</updated>
     
     <content type="html"><![CDATA[<h2 id="调用链监控"><a href="#调用链监控" class="headerlink" title="调用链监控"></a>调用链监控</h2><p>如果能跟踪每个请求，中间请求经过哪些微服务，请求耗时，网络延迟，业务逻辑耗时等。我们就能更好地分析系统瓶颈、解决系统问题。因此链路跟踪很重要。</p>
 <p>链路追踪目的：解决错综复杂的服务调用中链路的查看。排查慢服务。</p>
@@ -62,6 +62,46 @@
 <p>在每个需要监听的服务的配置文件中加入：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attr">spring:</span></div><div class="line">  <span class="comment">#zipkin</span></div><div class="line"><span class="attr">  zipkin:</span></div><div class="line"><span class="attr">    base-url:</span> <span class="attr">http://localhost:9411/</span></div><div class="line">    <span class="comment">#采样比例1</span></div><div class="line"><span class="attr">  sleuth:</span></div><div class="line"><span class="attr">    sampler:</span></div><div class="line"><span class="attr">      rate:</span> <span class="number">1</span></div></pre></td></tr></table></figure>
 <p>根据<a href="https://zipkin.io/pages/quickstart.html" target="_blank" rel="external">zipkin官网中的Quickstart</a>，启动zipkin。</p>
+<h2 id="监控告警"><a href="#监控告警" class="headerlink" title="监控告警"></a>监控告警</h2><h3 id="使用-Spring-Boot2-x-Actuator-监控应用"><a href="#使用-Spring-Boot2-x-Actuator-监控应用" class="headerlink" title="使用 Spring Boot2.x Actuator 监控应用"></a>使用 Spring Boot2.x Actuator 监控应用</h3><p>在项目的 POM 中引入</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="Endpoints"><a href="#Endpoints" class="headerlink" title="Endpoints"></a>Endpoints</h4><p>可以通过<code>/actuator</code>查看所有的暴露端点。</p>
+<h5 id="暴露配置"><a href="#暴露配置" class="headerlink" title="暴露配置"></a>暴露配置</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="attr">management:</span></div><div class="line"><span class="attr">  endpoints:</span></div><div class="line"><span class="attr">    web:</span></div><div class="line"><span class="attr">      exposure:</span></div><div class="line"><span class="attr">        include:</span> <span class="string">'*'</span> <span class="comment"># 通过HTTP暴露所有的端点</span></div><div class="line"><span class="attr">      base-path:</span> <span class="string">'/actuator'</span></div><div class="line"><span class="attr">    jmx:</span></div><div class="line"><span class="attr">      exposure:</span></div><div class="line"><span class="attr">        include:</span> <span class="string">'*'</span> <span class="comment"># 通过JMX暴露所有的端点</span></div></pre></td></tr></table></figure>
+<h5 id="health端点"><a href="#health端点" class="headerlink" title="health端点"></a>health端点</h5><p>health端点会聚合你程序的健康指标，来检查程序的健康情况。端点公开的应用健康信息取决于：<code>management.endpoint.health.show-details=always</code></p>
+<p>show-details的值：</p>
+<ul>
+<li>never    不展示详细信息，up或者down的状态，默认配置</li>
+<li>when-authorized    详细信息将会展示给通过认证的用户。授权的角色可以通过 management.endpoint.health.roles配置</li>
+<li>always    对所有用户暴露详细信息</li>
+</ul>
+<h5 id="metrics端点"><a href="#metrics端点" class="headerlink" title="metrics端点"></a>metrics端点</h5><p>metrics端点用来返回当前应用的各类重要度量指标，比如：内存信息、线程信息、垃圾回收信息、tomcat、数据库连接池等。</p>
+<p>调用：<code>&quot;http://localhost:8080/actuator/metrics/{requiredMetricName}&quot;</code> 获得各个指标。如：<code>http://localhost:8080/actuator/metrics/jvm.memory.max</code></p>
+<h5 id="loggers端点"><a href="#loggers端点" class="headerlink" title="loggers端点"></a>loggers端点</h5><p>loggers 端点暴露了我们程序内部配置的所有logger的信息。</p>
+<p>调用：<code>http://localhost:8080/actuator/loggers</code>获得所有的logger信息。</p>
+<p>可以调用对应的POST接口，修改日志级别等。</p>
+<h5 id="info端点"><a href="#info端点" class="headerlink" title="info端点"></a>info端点</h5><p>info端点可以用来展示你程序的信息。我理解过来就是一些程序的基础信息。并且你可以按照自己的需求在配置文件 application.properties中个性化配置。</p>
+<h5 id="beans端点"><a href="#beans端点" class="headerlink" title="beans端点"></a>beans端点</h5><p>beans端点会返回Spring 容器中所有bean的别名、类型、是否单例、依赖等信息。</p>
+<h5 id="heapdump端点"><a href="#heapdump端点" class="headerlink" title="heapdump端点"></a>heapdump端点</h5><p>访问：<code>http://localhost:8080/actuator/heapdump</code>会自动生成一个 Jvm 的堆文件 heapdump。我们可以使用 JDK 自带的 Jvm监控工具，VisualVM 打开此文件查看内存快照。</p>
+<h5 id="threaddump-端点"><a href="#threaddump-端点" class="headerlink" title="threaddump 端点"></a>threaddump 端点</h5><p>主要展示了线程名、线程ID、线程的状态、是否等待锁资源、线程堆栈等信息。就是可能查看起来不太直观。访问：<code>http://localhost:8080/actuator/threaddump</code></p>
+<h5 id="shutdown端点"><a href="#shutdown端点" class="headerlink" title="shutdown端点"></a>shutdown端点</h5><p>这个端点属于操作控制类端点，可以优雅关闭 Spring Boot 应用。要使用这个功能首先需要在配置文件中开启：<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">management:</span></div><div class="line"><span class="attr">  endpoint:</span></div><div class="line"><span class="attr">    shutdown:</span></div><div class="line"><span class="attr">      enabled:</span> <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>由于 shutdown 接口默认只支持 POST 请求。</p>
+<h5 id="env端点"><a href="#env端点" class="headerlink" title="env端点"></a>env端点</h5><p>获取应用所有可用的环境属性报告</p>
+<h5 id="mappings端点"><a href="#mappings端点" class="headerlink" title="mappings端点"></a>mappings端点</h5><p>获取应用所有Spring Web的控制器映射关系报告</p>
+<h5 id="configprops端点"><a href="#configprops端点" class="headerlink" title="configprops端点"></a>configprops端点</h5><p>获取应用中配置的属性信息报告</p>
+<h2 id="SpringCloud-Admin健康检查"><a href="#SpringCloud-Admin健康检查" class="headerlink" title="SpringCloud Admin健康检查"></a>SpringCloud Admin健康检查</h2><h3 id="Admin客户端"><a href="#Admin客户端" class="headerlink" title="Admin客户端"></a>Admin客户端</h3><p>在要被监控的客户端添加pom引用：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>de.codecentric<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-admin-starter-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>在配置文件中如下配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">spring:</span></div><div class="line"><span class="attr">  boot:</span></div><div class="line"><span class="attr">    admin:</span></div><div class="line"><span class="attr">      client:</span></div><div class="line"><span class="attr">        url:</span> <span class="attr">http://localhost:9030</span></div></pre></td></tr></table></figure>
+<h3 id="Admin服务端"><a href="#Admin服务端" class="headerlink" title="Admin服务端"></a>Admin服务端</h3><p>新建一个项目，引入：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>de.codecentric<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-admin-starter-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">           <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">       <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>然后添加注解<code>@EnableAdminServer</code></p>
+<hr>
+<ul>
+<li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91">从0开始用SpringCloud搭建微服务系统【一】</a></li>
+<li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
+<li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
+<li><a href="https://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+<li><a href="https://webfuse.cn/2020/04/30/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%94%E3%80%91/">从0开始用SpringCloud搭建微服务系统【五】</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
@@ -86,7 +126,7 @@
     <link href="http://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/27/从0开始用SpringCloud搭建微服务系统【四】/</id>
     <published>2020-04-27T08:30:38.000Z</published>
-    <updated>2020-04-27T08:34:14.464Z</updated>
+    <updated>2020-04-30T02:25:33.310Z</updated>
     
     <content type="html"><![CDATA[<h2 id="容错"><a href="#容错" class="headerlink" title="容错"></a>容错</h2><p>基本的容错模式有：</p>
 <ul>
@@ -243,6 +283,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
 <li><a href="https://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+<li><a href="https://webfuse.cn/2020/04/30/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%94%E3%80%91/">从0开始用SpringCloud搭建微服务系统【五】</a></li>
 </ul>
 ]]></content>
     
@@ -272,7 +313,7 @@
     <link href="http://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/25/从0开始用SpringCloud搭建微服务系统【三】/</id>
     <published>2020-04-25T09:38:59.000Z</published>
-    <updated>2020-04-27T08:34:08.791Z</updated>
+    <updated>2020-04-30T02:25:26.833Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务间通信"><a href="#服务间通信" class="headerlink" title="服务间通信"></a>服务间通信</h2><p>微服务间可以使用 HTTP 协议，RESTful 规范进行通信。Spring Cloud 提供了 2 种 RESTful 调用方式：Ribbon 和 Feign 。</p>
 <h3 id="Ribbon"><a href="#Ribbon" class="headerlink" title="Ribbon"></a>Ribbon</h3><p>客户端软负载组件，支持Eureka对接，支持多种可插拔LB策略。依赖 <code>spring-cloud-starter-netflix-eureka-client</code> 中已经默认加载了 Ribbon 的依赖。</p>
@@ -400,6 +441,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
 <li><a href="https://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+<li><a href="https://webfuse.cn/2020/04/30/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%94%E3%80%91/">从0开始用SpringCloud搭建微服务系统【五】</a></li>
 </ul>
 ]]></content>
     
@@ -425,7 +467,7 @@
     <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【二】/</id>
     <published>2020-04-22T12:22:35.000Z</published>
-    <updated>2020-04-27T08:34:18.046Z</updated>
+    <updated>2020-04-30T02:25:15.091Z</updated>
     
     <content type="html"><![CDATA[<h2 id="服务注册与服务发现"><a href="#服务注册与服务发现" class="headerlink" title="服务注册与服务发现"></a>服务注册与服务发现</h2><ol>
 <li><p>背景：在传统应用中，组件之间的调用，通过有规范的约束的接口来实现，从而实现不同模块间良好的协作。但是被拆分成微服务后，每个微服务实例的网络地址都可能动态变化，数量也会变化，使得原来硬编码的地址失去了作用。需要一个中心化的组件来进行服务的登记和管理。</p>
@@ -540,6 +582,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
 <li><a href="https://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+<li><a href="https://webfuse.cn/2020/04/30/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%94%E3%80%91/">从0开始用SpringCloud搭建微服务系统【五】</a></li>
 </ul>
 ]]></content>
     
@@ -566,7 +609,7 @@
     <link href="http://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%80%E3%80%91/"/>
     <id>http://webfuse.cn/2020/04/22/从0开始用SpringCloud搭建微服务系统【一】/</id>
     <published>2020-04-22T07:58:34.000Z</published>
-    <updated>2020-04-27T08:33:58.037Z</updated>
+    <updated>2020-04-30T02:24:56.445Z</updated>
     
     <content type="html"><![CDATA[<h2 id="微服务与-Spring-Cloud"><a href="#微服务与-Spring-Cloud" class="headerlink" title="微服务与 Spring Cloud"></a>微服务与 Spring Cloud</h2><h3 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h3><h4 id="从单体到微服务"><a href="#从单体到微服务" class="headerlink" title="从单体到微服务"></a>从单体到微服务</h4><h5 id="单体服务"><a href="#单体服务" class="headerlink" title="单体服务"></a>单体服务</h5><ul>
 <li><p>概念：所有功能全部打包在一起，也就是全部的功能都在一个应用包中。应用大部分是一个 war 包或 jar 包。</p>
@@ -656,6 +699,7 @@
 <li><a href="https://webfuse.cn/2020/04/22/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%8C%E3%80%91/">从0开始用SpringCloud搭建微服务系统【二】</a></li>
 <li><a href="https://webfuse.cn/2020/04/25/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%B8%89%E3%80%91/">从0开始用SpringCloud搭建微服务系统【三】</a></li>
 <li><a href="https://webfuse.cn/2020/04/27/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E5%9B%9B%E3%80%91/">从0开始用SpringCloud搭建微服务系统【四】</a></li>
+<li><a href="https://webfuse.cn/2020/04/30/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%94%A8SpringCloud%E6%90%AD%E5%BB%BA%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E7%BB%9F%E3%80%90%E4%BA%94%E3%80%91/">从0开始用SpringCloud搭建微服务系统【五】</a></li>
 </ul>
 ]]></content>
     
